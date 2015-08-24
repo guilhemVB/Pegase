@@ -1,0 +1,95 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Table(name="country")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CountryRepository")
+ */
+class Country
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var ArrayCollection|Destination[]
+     * @ORM\OneToMany(targetEntity="Destination", mappedBy="country")
+     */
+    private $destinations;
+
+    function __construct()
+    {
+        $this->destinations = new ArrayCollection();
+    }
+
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param Destination $destinations
+     * @return Country
+     */
+    public function addDestination(Destination $destinations)
+    {
+        $this->destinations[] = $destinations;
+
+        return $this;
+    }
+
+    /**
+     * @param Destination $destinations
+     */
+    public function removeDestination(Destination $destinations)
+    {
+        $this->destinations->removeElement($destinations);
+    }
+
+    /**
+     * @return ArrayCollection|Destination[]
+     */
+    public function getDestinations()
+    {
+        return $this->destinations;
+    }
+}
