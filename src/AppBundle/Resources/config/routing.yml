@@ -1,0 +1,12 @@
+#homepage:
+#    path:      /
+#    defaults:  { _controller: AppBundle:Requests:home }
+
+
+country:
+    path: /country/{slugCountry}
+    defaults:  { _controller: AppBundle:Destination:viewCountry }
+
+destination:
+    path: /destination/{slugDestination}
+    defaults:  { _controller: AppBundle:Destination:viewDestination }

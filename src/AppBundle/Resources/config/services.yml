@@ -1,0 +1,121 @@
+#services:
+#    data_sailor_form_algo:
+#        class : AppBundle\Services\DataSailorForm\DataSailorAlgoForm
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#
+#    data_sailor_form_source:
+#        class : AppBundle\Services\DataSailorForm\DataSailorSourceForm
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#
+#    data_sailor_form_request:
+#        class : AppBundle\Services\DataSailorForm\DataSailorRequestForm
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#            - false
+#
+#    data_sailor_form_request_in_batch:
+#        class : AppBundle\Services\DataSailorForm\DataSailorRequestForm
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#            - true
+#
+#    data_sailor_form_batch:
+#        class : AppBundle\Services\DataSailorForm\DataSailorBatchForm
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#
+#    tools_inputData:
+#        class: AppBundle\Services\Tools\InputData
+#
+#    dan_evaluator:
+#        class: AppBundle\Services\DanEvaluator
+#        arguments: [@url_element_title, @url_element_link, @url_element_domain_name, @url_element_domain_name_white, @url_element_description]
+#
+#    dan_service:
+#        class: AppBundle\Services\DANService
+#        arguments:
+#            - @dan_evaluator
+#            - @doctrine.orm.entity_manager
+#
+#    scheduler_service:
+#        class: AppBundle\Services\Scheduler\SchedulerService
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#            - @service_container
+#
+#    batch_service:
+#        class: AppBundle\Services\BatchService
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#
+## Twig
+#    dan.twig.dan_twig_extension:
+#        class: AppBundle\Twig\DanExtension
+#        arguments:
+#            - %kernel.root_dir%
+#        tags:
+#            - { name: twig.extension }
+#
+## Listener
+#    listener.post_persist:
+#        class: AppBundle\Listener\PostPresistListener
+#        tags:
+#            - { name: doctrine.event_listener, event: postPersist }
+#
+##Source
+#    source_service:
+#        class: AppBundle\Services\SourceService
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#
+##Request
+#    request_service:
+#        class: AppBundle\Services\RequestService
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#            - @sqs_service
+#
+##URL
+#    url_element_title:
+#        class: AppBundle\Services\URLElements\URLTitle
+#        arguments:
+#            - [@rule_blacklist]
+#
+#    url_element_link:
+#        class: AppBundle\Services\URLElements\URLLink
+#        arguments:
+#            - [@rule_blacklist]
+#
+#    url_element_domain_name:
+#        class: AppBundle\Services\URLElements\URLDomainName
+#        arguments:
+#            - [@rule_NDD]
+#
+#    url_element_domain_name_white:
+#        class: AppBundle\Services\URLElements\URLDomainName
+#        arguments:
+#            - [@rule_NDD_white_list]
+#
+#    url_element_description:
+#        class: AppBundle\Services\URLElements\URLDescription
+#        arguments:
+#            - [@rule_blacklist]
+#
+##RULES
+#    rule_blacklist:
+#        class: AppBundle\Services\Rules\RuleBlacklist
+#        arguments: [@service_container]
+#    rule_NDD:
+#        class: AppBundle\Services\Rules\RuleDomainName
+#        arguments: [@service_container]
+#    rule_NDD_white_list:
+#        class: AppBundle\Services\Rules\RuleDomainNameWhiteList
+#        arguments: [@service_container]
+#
+##SQS
+#    sqs_service:
+#        class: AppBundle\Services\Tools\SQSService
+#        arguments:
+#            - @service_container
