@@ -1,6 +1,6 @@
 homepage:
     path:      /
-    defaults:  { _controller: AppBundle:Destination:toto }
+    defaults:  { _controller: AppBundle:Default:homepage }
 
 
 country:
