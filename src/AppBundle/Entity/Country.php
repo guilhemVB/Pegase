@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Table(name="country")
@@ -11,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Country
 {
+
+    use ORMBehaviors\Sluggable\Sluggable;
 
     /**
      * @var integer
@@ -26,6 +29,15 @@ class Country
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    public function getSluggableFields()
+    {
+        return [ 'name' ];
+    }
+
+    public function getRegenerateSlugOnUpdate() {
+        return false;
+    }
 
     /**
      * @var ArrayCollection|Destination[]
