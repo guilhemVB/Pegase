@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Table(
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DestinationRepository")
  */
 class Destination {
+
+    use ORMBehaviors\Sluggable\Sluggable;
 
     /**
      * @var integer
@@ -27,6 +30,15 @@ class Destination {
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    public function getSluggableFields()
+    {
+        return [ 'name' ];
+    }
+
+    public function getRegenerateSlugOnUpdate() {
+        return false;
+    }
 
     /**
      * @var string
