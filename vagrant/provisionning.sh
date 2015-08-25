@@ -71,13 +71,13 @@ VM_VHOST="
 </VirtualHost>
 "
 
-#VM_CONF_FILE="/etc/apache2/sites-available/fortress-v3.conf"
-#
-#[[ -f "$VM_CONF_FILE" ]] || touch "$VM_CONF_FILE"
-#[[ ! -f "$VM_CONF_FILE" ]] || echo "$VM_VHOST" > "$VM_CONF_FILE"
+VM_CONF_FILE="/etc/apache2/sites-available/pegase.conf"
+
+[[ -f "$VM_CONF_FILE" ]] || touch "$VM_CONF_FILE"
+[[ ! -f "$VM_CONF_FILE" ]] || echo "$VM_VHOST" > "$VM_CONF_FILE"
 
 a2enmod rewrite
-#a2ensite fortress-v3.conf
+a2ensite pegase.conf
 a2dissite 000-default.conf
 
 service apache2 reload

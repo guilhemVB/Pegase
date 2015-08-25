@@ -26,4 +26,8 @@ class DestinationController extends Controller
     {
 
     }
+
+    public function totoAction(){
+        echo "Toto";
+    }
 }
