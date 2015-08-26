@@ -61,9 +61,11 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $nbToFlush++;
             if($nbToFlush % 50 == 0) {
                 $em->flush();
+                $em->clear();
             }
         }
         $em->flush();
+        $em->clear();
     }
 
     private function getDataCountries(InputInterface $input, OutputInterface $output)
