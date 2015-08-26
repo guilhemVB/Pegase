@@ -1,4 +1,4 @@
-pays;nom;description;périodes
-France;Paris;c'est trop bien !!;{"january": -1,"february": -1,"march": 0,"april": 0,"may": 1,"june": 1,"july": 1,"august": 1,"september": 0,"october": -1,"november": -1,"december": -1}
-England;London; c'est pas trop mal;{"january": -1,"february": -1,"march": 0,"april": 0,"may": 1,"june": 1,"july": 1,"august": 1,"september": 0,"october": -1,"november": -1,"december": -1}
+pays;nom;description;janvier;fevrier;mars;avril;mai;juin;juillet;aout;septembre;octobre;novembre;decembre
+France;Paris;c'est trop bien !!;-1;-1;0;0;0;1;1;1;0;-1;-1;-1
+England;London; c'est pas trop mal;-1;-1;0;0;0;1;1;1;0;-1;-1;-1
 

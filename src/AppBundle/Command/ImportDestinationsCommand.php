@@ -56,7 +56,6 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $countryName = $dataDestination['pays'];
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
-            $periods = $dataDestination['périodes'];
 
             $country = $countryRepository->findOneByName($countryName);
             if (is_null($country)) {
@@ -72,8 +71,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             }
             $destination->setCountry($country);
             $destination->setDescription($description);
-            $output->writeln($periods);
-            $destination->setPeriods(json_decode($periods, true));
+            $destination->setPeriods($this->extractPeriods($dataDestination));
 
             $em->persist($destination);
 
@@ -85,5 +83,23 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         }
         $em->flush();
         $em->clear();
+    }
+
+    private function extractPeriods($dataDestination){
+
+        return [
+            "january" => $dataDestination['janvier'],
+            "february" => $dataDestination['févrierr'],
+            "march" => $dataDestination['mars'],
+            "april" => $dataDestination['avril'],
+            "may" => $dataDestination['mai'],
+            "june" => $dataDestination['juin'],
+            "july" => $dataDestination['juillet'],
+            "august" => $dataDestination['aout'],
+            "september" => $dataDestination['septembre'],
+            "october" => $dataDestination['octobre'],
+            "november" => $dataDestination['novembre'],
+            "december" => $dataDestination['décembre']
+        ];
     }
 }
