@@ -30,6 +30,12 @@ class Country
      */
     private $name;
 
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
     public function getSluggableFields()
     {
         return [ 'name' ];
@@ -76,6 +82,25 @@ class Country
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
