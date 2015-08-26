@@ -4,12 +4,12 @@ namespace AppBundle\Command;
 
 use AppBundle\Entity\Country;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Service\CSVParser;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Psr\Log\LoggerInterface;
 
 class ImportCountriesCommand extends ContainerAwareCommand
 {
@@ -41,7 +41,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
         /** @var CountryRepository $countryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
 
-        $dataCountries = $this->getDataCountries($input, $output);
+        $fileName = $input->getArgument('fileName');
+        $dataCountries = CSVParser::extract($fileName, $input, $output);
         $nbCountries = count($dataCountries);
         $output->writeln("<info>--- $nbCountries pays ont été trouvés dans le fichier ---</info>");
 
@@ -54,10 +55,11 @@ class ImportCountriesCommand extends ContainerAwareCommand
             if (is_null($country)) {
                 $country = new Country();
                 $country->setName($name);
-                $output->writeln("<info>Nouveau pays '$name' ---</info>");
+                $output->writeln("<info>Nouveau pays '$name'</info>");
             }
             $country->setDescription($description);
             $em->persist($country);
+
             $nbToFlush++;
             if($nbToFlush % 50 == 0) {
                 $em->flush();
@@ -67,31 +69,4 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $em->flush();
         $em->clear();
     }
-
-    private function getDataCountries(InputInterface $input, OutputInterface $output)
-    {
-        $filenName = $input->getArgument('fileName');
-        $delimiter = ';';
-
-        if (!file_exists($filenName) || !is_readable($filenName)) {
-            $output->writeln("<error>Le fichier '$filenName' n'a pas été trouvé</error>");
-            return [];
-        }
-
-        $header = NULL;
-        $data = array();
-
-        if (($handle = fopen($filenName, 'r')) !== FALSE) {
-            while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE) {
-                if (!$header) {
-                    $header = $row;
-                } else {
-                    $data[] = array_combine($header, $row);
-                }
-            }
-            fclose($handle);
-        }
-        return $data;
-    }
-
 }
