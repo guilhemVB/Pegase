@@ -67,11 +67,12 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             if (is_null($destination)) {
                 $destination = new Destination();
                 $destination->setName($name);
-                ("<info>Nouvelle destination '$name'</info>");
+                $output->writeln("<info>Nouvelle destination '$name'</info>");
             }
             $destination->setCountry($country);
             $destination->setDescription($description);
             $destination->setPeriods($this->extractPeriods($dataDestination));
+            $destination->setPrices($this->extractPrices($dataDestination));
 
             $em->persist($destination);
 
@@ -85,21 +86,37 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $em->clear();
     }
 
-    private function extractPeriods($dataDestination){
-
+    /**
+     * @param array $dataDestination
+     * @return array
+     */
+    private function extractPeriods($dataDestination)
+    {
         return [
-            "january" => $dataDestination['janvier'],
-            "february" => $dataDestination['février'],
-            "march" => $dataDestination['mars'],
-            "april" => $dataDestination['avril'],
-            "may" => $dataDestination['mai'],
-            "june" => $dataDestination['juin'],
-            "july" => $dataDestination['juillet'],
-            "august" => $dataDestination['août'],
-            "september" => $dataDestination['septembre'],
-            "october" => $dataDestination['octobre'],
-            "november" => $dataDestination['novembre'],
-            "december" => $dataDestination['décembre']
+            'january' => $dataDestination['janvier'],
+            'february' => $dataDestination['février'],
+            'march' => $dataDestination['mars'],
+            'april' => $dataDestination['avril'],
+            'may' => $dataDestination['mai'],
+            'june' => $dataDestination['juin'],
+            'july' => $dataDestination['juillet'],
+            'august' => $dataDestination['août'],
+            'september' => $dataDestination['septembre'],
+            'october' => $dataDestination['octobre'],
+            'november' => $dataDestination['novembre'],
+            'december' => $dataDestination['décembre'],
+        ];
+    }
+
+    /**
+     * @param array $dataDestination
+     * @return array
+     */
+    private function extractPrices($dataDestination)
+    {
+        return [
+            'accommodation' => $dataDestination["prix moyen de l'hébergement"],
+            'life cost' => $dataDestination['coût de la vie'],
         ];
     }
 }

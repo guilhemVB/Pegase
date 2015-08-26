@@ -60,9 +60,9 @@ class Destination {
 
     /**
      * @var array
-     * @ORM\Column(name="price_stats", type="json_array", nullable=false)
+     * @ORM\Column(name="prices", type="json_array", nullable=false)
      */
-    private $priceStats;
+    private $prices;
 
 
     /**
@@ -150,12 +150,12 @@ class Destination {
     }
 
     /**
-     * @param array $priceStats
+     * @param array $prices
      * @return Destination
      */
-    public function setPriceStats($priceStats)
+    public function setPrices($prices)
     {
-        $this->priceStats = $priceStats;
+        $this->prices = $prices;
 
         return $this;
     }
@@ -163,8 +163,8 @@ class Destination {
     /**
      * @return array
      */
-    public function getPriceStats()
+    public function getPrices()
     {
-        return $this->priceStats;
+        return $this->prices;
     }
 }
