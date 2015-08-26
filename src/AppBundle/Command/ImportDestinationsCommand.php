@@ -89,13 +89,13 @@ class ImportDestinationsCommand extends ContainerAwareCommand
 
         return [
             "january" => $dataDestination['janvier'],
-            "february" => $dataDestination['févrierr'],
+            "february" => $dataDestination['février'],
             "march" => $dataDestination['mars'],
             "april" => $dataDestination['avril'],
             "may" => $dataDestination['mai'],
             "june" => $dataDestination['juin'],
             "july" => $dataDestination['juillet'],
-            "august" => $dataDestination['aout'],
+            "august" => $dataDestination['août'],
             "september" => $dataDestination['septembre'],
             "october" => $dataDestination['octobre'],
             "november" => $dataDestination['novembre'],
