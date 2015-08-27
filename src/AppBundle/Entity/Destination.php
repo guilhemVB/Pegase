@@ -31,15 +31,6 @@ class Destination {
      */
     private $name;
 
-    public function getSluggableFields()
-    {
-        return [ 'name' ];
-    }
-
-    public function getRegenerateSlugOnUpdate() {
-        return false;
-    }
-
     /**
      * @var string
      * @ORM\Column(name="description", type="text")
@@ -76,6 +67,15 @@ class Destination {
      */
     private $latitude;
 
+
+    public function getSluggableFields()
+    {
+        return [ 'name' ];
+    }
+
+    public function getRegenerateSlugOnUpdate() {
+        return false;
+    }
 
     /**
      * @return integer

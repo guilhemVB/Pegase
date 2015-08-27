@@ -36,15 +36,6 @@ class Country
      */
     private $description;
 
-    public function getSluggableFields()
-    {
-        return [ 'name' ];
-    }
-
-    public function getRegenerateSlugOnUpdate() {
-        return false;
-    }
-
     /**
      * @var ArrayCollection|Destination[]
      * @ORM\OneToMany(targetEntity="Destination", mappedBy="country")
@@ -56,6 +47,14 @@ class Country
         $this->destinations = new ArrayCollection();
     }
 
+    public function getSluggableFields()
+    {
+        return [ 'name' ];
+    }
+
+    public function getRegenerateSlugOnUpdate() {
+        return false;
+    }
 
     /**
      * @return integer
