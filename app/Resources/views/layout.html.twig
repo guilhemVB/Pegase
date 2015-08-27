@@ -9,11 +9,11 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        {#{% stylesheets filter='cssrewrite'#}
-        {#'@AppBundle/Resources/public/css/*' %}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>#}
-        {#{% endstylesheets %}#}
+        {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     {% endblock %}
+
 </head>
 
 <body>
@@ -33,9 +33,10 @@
 {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {#{% javascripts '@AppBundle/Resources/public/js/*' %}#}
-    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
-    {#{% endjavascripts %}#}
+    <script src="js/maplace.js"></script>
+    {% javascripts '@AppBundle/Resources/public/js/*' output='js/compiled/main.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 </body>
