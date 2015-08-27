@@ -73,6 +73,8 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setDescription($description);
             $destination->setPeriods($this->extractPeriods($dataDestination));
             $destination->setPrices($this->extractPrices($dataDestination));
+            $destination->setLatitude($dataDestination['latitude']);
+            $destination->setLongitude($dataDestination['longitude']);
 
             $em->persist($destination);
 
