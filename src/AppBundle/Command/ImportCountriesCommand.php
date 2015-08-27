@@ -58,6 +58,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $output->writeln("<info>Nouveau pays '$name'</info>");
             }
             $country->setDescription($description);
+            $country->setTips($dataCountry['bons plans']);
             $em->persist($country);
 
             $nbToFlush++;

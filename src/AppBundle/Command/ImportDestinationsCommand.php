@@ -71,6 +71,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             }
             $destination->setCountry($country);
             $destination->setDescription($description);
+            $destination->setTips($dataDestination['bons plans']);
             $destination->setPeriods($this->extractPeriods($dataDestination));
             $destination->setPrices($this->extractPrices($dataDestination));
             $destination->setLatitude($dataDestination['latitude']);

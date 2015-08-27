@@ -37,6 +37,12 @@ class Country
     private $description;
 
     /**
+     * @var string
+     * @ORM\Column(name="tips", type="text")
+     */
+    private $tips;
+
+    /**
      * @var ArrayCollection|Destination[]
      * @ORM\OneToMany(targetEntity="Destination", mappedBy="country")
      */
@@ -127,5 +133,24 @@ class Country
     public function getDestinations()
     {
         return $this->destinations;
+    }
+
+    /**
+     * @param string $tips
+     * @return Country
+     */
+    public function setTips($tips)
+    {
+        $this->tips = $tips;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTips()
+    {
+        return $this->tips;
     }
 }

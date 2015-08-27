@@ -1,3 +1,3 @@
-pays;nom;description;prix moyen de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
-France;Paris;c'est trop bien !!;32;24;-1;-1;0;0;0;1;1;1;0;-1;-1;-1;48.880195;2.317879
-England;London; c'est pas trop mal;41;30;-1;-1;0;0;0;1;1;1;0;-1;-1;-1;51.505782;-0.131124
+pays;nom;description;bons plans;prix moyen de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
+France;Paris;c'est trop bien !!;kdfh;32;24;-1;-1;0;0;0;1;1;1;0;-1;-1;-1;48.880195;2.317879
+England;London; c'est pas trop mal;jgdf;41;30;-1;-1;0;0;0;1;1;1;0;-1;-1;-1;51.505782;-0.131124

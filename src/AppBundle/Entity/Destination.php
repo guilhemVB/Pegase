@@ -38,6 +38,12 @@ class Destination {
     private $description;
 
     /**
+     * @var string
+     * @ORM\Column(name="tips", type="text")
+     */
+    private $tips;
+
+    /**
      * @var Country
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="destinations")
      */
@@ -216,5 +222,24 @@ class Destination {
     public function getLatitude()
     {
         return $this->latitude;
+    }
+
+    /**
+     * @param string $tips
+     * @return Destination
+     */
+    public function setTips($tips)
+    {
+        $this->tips = $tips;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTips()
+    {
+        return $this->tips;
     }
 }
