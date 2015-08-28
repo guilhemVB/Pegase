@@ -20,3 +20,4 @@ _main:
 _assetic:
     resource: .
     type:     assetic
+

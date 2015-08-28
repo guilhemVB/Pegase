@@ -1,8 +1,19 @@
-#services:
-#    data_sailor_form_algo:
-#        class : AppBundle\Services\DataSailorForm\DataSailorAlgoForm
-#        arguments:
-#            - @doctrine.orm.entity_manager
+services:
+    maplace_marker_builder:
+        class : AppBundle\Service\MaplaceMarkerBuilder
+        arguments:
+            - @twig
+
+
+
+
+
+
+
+
+
+
+
 #
 #    data_sailor_form_source:
 #        class : AppBundle\Services\DataSailorForm\DataSailorSourceForm
