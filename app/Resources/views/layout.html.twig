@@ -33,10 +33,6 @@
 {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="js/maplace.js"></script>
-    {% javascripts '@AppBundle/Resources/public/js/*' output='js/compiled/main.js' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 {% endblock %}
 
 </body>

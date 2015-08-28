@@ -2,32 +2,21 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class DestinationController extends Controller
 {
-    /**
-     * @ParamConverter("country", options={"mapping": {"slugCountry": "slug"}})
-     * @param Country $country
-     */
-    public function viewCountryAction(Country $country)
-    {
-
-    }
 
     /**
-     * @ParamConverter("destination", options={"mapping": {"slugDestination": "slug"}})
+     * @Route("/destination/{slug}", name="destination")
      * @param Destination $destination
+     * @return Response
      */
     public function viewDestinationAction(Destination $destination)
     {
-
-    }
-
-    public function totoAction(){
-        echo "Toto";
+        return $this->render('AppBundle:Destination:view.html.twig', ['destination' => $destination]);
     }
 }

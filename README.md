@@ -4,6 +4,6 @@ Pegase
 Pour générer les sources :
 
 ```
-php app/console assetic:dump
+php app/console assets:install
 ```
 
