@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Destination;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DestinationController extends Controller
 {
@@ -15,7 +15,7 @@ class DestinationController extends Controller
      * @param Destination $destination
      * @return Response
      */
-    public function viewDestinationAction(Destination $destination)
+    public function viewAction(Destination $destination)
     {
         return $this->render('AppBundle:Destination:view.html.twig', ['destination' => $destination]);
     }

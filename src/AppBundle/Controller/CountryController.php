@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Country;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class CountryController extends Controller
 {
@@ -14,7 +14,7 @@ class CountryController extends Controller
      * @param Country $country
      * @return Response
      */
-    public function viewCountryAction(Country $country)
+    public function viewAction(Country $country)
     {
         return $this->render('AppBundle:Country:view.html.twig', ['country' => $country]);
     }
