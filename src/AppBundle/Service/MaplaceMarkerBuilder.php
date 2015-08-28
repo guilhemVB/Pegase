@@ -26,9 +26,9 @@ class MaplaceMarkerBuilder
         return [
             'lat' => $destination->getLatitude(),
             'lon' => $destination->getLongitude(),
-            'zoom' => 7,
+            'zoom' => 10,
             'title' => $destination->getName(),
-            'html' => $this->twig->render('AppBunlde:Destination:googleMarker.html.twig', ['destination' => $destination]),
+            'html' => $this->twig->render('AppBundle:Destination:googleMarker.html.twig', ['destination' => $destination]),
         ];
     }
 
