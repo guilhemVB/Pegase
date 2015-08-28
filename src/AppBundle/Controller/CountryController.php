@@ -7,10 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/country")
+ */
 class CountryController extends Controller
 {
     /**
-     * @Route("/country/{slug}", name="country")
+     * @Route("/{slug}", name="country")
      * @param Country $country
      * @return Response
      */

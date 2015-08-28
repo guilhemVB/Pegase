@@ -7,11 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route("/destination")
+ */
 class DestinationController extends Controller
 {
 
     /**
-     * @Route("/destination/{slug}", name="destination")
+     * @Route("/{slug}", name="destination")
      * @param Destination $destination
      * @return Response
      */
