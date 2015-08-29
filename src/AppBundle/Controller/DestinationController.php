@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Destination;
+use AppBundle\Service\MaplaceMarkerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,6 +21,14 @@ class DestinationController extends Controller
      */
     public function viewAction(Destination $destination)
     {
-        return $this->render('AppBundle:Destination:view.html.twig', ['destination' => $destination]);
+        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
+        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestination($destination, ['disableHtml' => true]);
+
+        return $this->render('AppBundle:Destination:view.html.twig',
+            [
+                'destination' => $destination,
+                'maplaceData' => json_encode([$maplaceData]),
+            ]);
     }
 }

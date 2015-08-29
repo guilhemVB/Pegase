@@ -17,31 +17,47 @@ class MaplaceMarkerBuilder
         $this->twig = $twig;
     }
 
-    /**
-     * @param Destination $destination
-     * @return array
-     */
-    public function buildMarkerFromDestination(Destination $destination)
+    private function defaultOptions()
     {
         return [
-            'lat' => $destination->getLatitude(),
-            'lon' => $destination->getLongitude(),
-            'zoom' => 10,
-            'title' => $destination->getName(),
-            'html' => $this->twig->render('AppBundle:Destination:googleMarker.html.twig', ['destination' => $destination]),
+            'disableHtml' => false
         ];
     }
 
     /**
-     * @param Destination[] $destinations
+     * @param Destination $destination
+     * @param array $options
      * @return array
      */
-    public function buildMarkerFromDestinations($destinations)
+    public function buildMarkerFromDestination(Destination $destination, $options = [])
+    {
+        $options = array_merge($this->defaultOptions(), $options);
+        $dataMaplace = [
+            'lat' => $destination->getLatitude(),
+            'lon' => $destination->getLongitude(),
+            'zoom' => 10,
+            'title' => $destination->getName(),
+        ];
+
+        if (!$options['disableHtml']) {
+            $dataMaplace['html'] = $this->twig->render('AppBundle:Destination:googleMarker.html.twig', ['destination' => $destination]);
+        }
+
+        return $dataMaplace;
+    }
+
+    /**
+     * @param Destination[] $destinations
+     * @param array $options
+     * @return array
+     */
+    public function buildMarkerFromDestinations($destinations, $options = [])
     {
         $dataMaplace = [];
         foreach ($destinations as $destination) {
-            $dataMaplace[] = $this->buildMarkerFromDestination($destination);
+            $dataMaplace[] = $this->buildMarkerFromDestination($destination, $options);
         }
+
         return $dataMaplace;
     }
 

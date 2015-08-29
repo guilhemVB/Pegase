@@ -1,24 +1,28 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-{{ destination.name }} - {{ parent() }}
+    {{ destination.name }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    {{ destination.name }}
-    {{ destination.description }}
-    <div id="gmap" style="width: 900px;height: 300px;"></div>
-    <div id="controls"></div>
-</div>
+    <div class="container-fluid">
+        {{ destination.name }} - <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+
+        {{ destination.description }}
+
+        <div id="gmap" style="width: 900px;height: 300px;"></div>
+    </div>
 {% endblock %}
 
 
 {% block javascripts %}
     <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
-    <script src="js/maplace.js"></script>
     {{ parent() }}
-    <script src="{{ 'bundles/app/js/homepage/maplaceCountry.js' }}"></script>
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+        var maplaceData = {{ maplaceData|raw }};
+    </script>
+    <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
 
 {% endblock %}
 
