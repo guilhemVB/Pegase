@@ -52,9 +52,9 @@ class BagItemVoyage
 
     /**
      * @var int
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $number= 1 ;
+    private $quantity= 1 ;
 
     /**
      * @return integer
@@ -160,12 +160,12 @@ class BagItemVoyage
     }
 
     /**
-     * @param integer $number
+     * @param integer $quantity
      * @return BagItemVoyage
      */
-    public function setNumber($number)
+    public function setQuantity($quantity)
     {
-        $this->number = $number;
+        $this->quantity = $quantity;
 
         return $this;
     }
@@ -173,8 +173,8 @@ class BagItemVoyage
     /**
      * @return integer
      */
-    public function getNumber()
+    public function getQuantity()
     {
-        return $this->number;
+        return $this->quantity;
     }
 }
