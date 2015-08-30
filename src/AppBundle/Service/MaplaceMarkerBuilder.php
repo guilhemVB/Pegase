@@ -35,7 +35,7 @@ class MaplaceMarkerBuilder
         $dataMaplace = [
             'lat' => $destination->getLatitude(),
             'lon' => $destination->getLongitude(),
-            'zoom' => 10,
+            'zoom' => 11,
             'title' => $destination->getName(),
         ];
 

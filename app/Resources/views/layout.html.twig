@@ -10,7 +10,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+        <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
 
@@ -19,13 +19,8 @@
 <body>
 
 
-<div class="container">
-
-    <div class="row">
-        {% block body %}
-        {% endblock %}
-    </div>
-</div>
+{% block body %}
+{% endblock %}
 
 
 
