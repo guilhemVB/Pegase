@@ -2,7 +2,9 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Entity\BagItem;
 use AppBundle\Entity\Country;
+use AppBundle\Repository\BagItemRepository;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Service\CSVParser;
 use Doctrine\ORM\EntityManager;
@@ -17,8 +19,8 @@ class ImportBagItemsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('countries:import')
-            ->setDescription("Permet d'importer et mettre à jour la liste des pays")
+            ->setName('bagItems:import')
+            ->setDescription("Permet d'importer et mettre à jour la liste des objets d'un sac à dos")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
     }
 
@@ -38,28 +40,30 @@ class ImportBagItemsCommand extends ContainerAwareCommand
         /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine')->getManager();
 
-        /** @var CountryRepository $countryRepository */
-        $countryRepository = $em->getRepository('AppBundle:Country');
+        /** @var BagItemRepository $bagItemRepository */
+        $bagItemRepository = $em->getRepository('AppBundle:BagItem');
 
         $fileName = $input->getArgument('fileName');
-        $dataCountries = CSVParser::extract($fileName, $input, $output);
-        $nbCountries = count($dataCountries);
-        $output->writeln("<info>--- $nbCountries pays ont été trouvés dans le fichier ---</info>");
+        $dataBagItems = CSVParser::extract($fileName, $input, $output);
+        $nbBagItems = count($dataBagItems);
+        $output->writeln("<info>--- $nbBagItems objets ont été trouvés dans le fichier ---</info>");
 
         $nbToFlush = 0;
-        foreach ($dataCountries as $dataCountry) {
-            $name = $dataCountry['nom'];
-            $description = $dataCountry['description'];
+        foreach ($dataBagItems as $dataBagItem) {
+            $name = $dataBagItem['nom'];
+            $quantity = $dataBagItem['quantité'];
 
-            $country = $countryRepository->findOneByName($name);
-            if (is_null($country)) {
-                $country = new Country();
-                $country->setName($name);
-                $output->writeln("<info>Nouveau pays '$name'</info>");
+            $bagItem = $bagItemRepository->findOneByName($name);
+            if (is_null($bagItem)) {
+                $bagItem = new BagItem();
+                $bagItem->setName($name);
+                $output->writeln("<info>Nouvel objet '$name'</info>");
             }
-            $country->setDescription($description);
-            $country->setTips($dataCountry['bons plans']);
-            $em->persist($country);
+            $bagItem->setQuantity($quantity);
+
+            $bagItem->setPrice($dataBagItem['prix unitaire en euro']);
+            $bagItem->setWeight($dataBagItem['poids unitaire en g']);
+            $em->persist($bagItem);
 
             $nbToFlush++;
             if($nbToFlush % 50 == 0) {
