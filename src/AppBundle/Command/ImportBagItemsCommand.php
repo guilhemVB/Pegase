@@ -3,9 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\BagItem;
-use AppBundle\Entity\Country;
 use AppBundle\Repository\BagItemRepository;
-use AppBundle\Repository\CountryRepository;
 use AppBundle\Service\CSVParser;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
