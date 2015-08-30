@@ -27,16 +27,22 @@ class BagItem
     private $name;
 
     /**
-     * @var int
-     * @ORM\Column(name="price", type="integer")
+     * @var float
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
     /**
-     * @var int
-     * @ORM\Column(name="weight", type="integer")
+     * @var float
+     * @ORM\Column(name="weight", type="float")
      */
     private $weight;
+
+    /**
+     * @var int
+     * @ORM\Column(name="quantity", type="integer")
+     */
+    private $quantity= 1 ;
 
     /**
      * @return integer
@@ -66,7 +72,7 @@ class BagItem
     }
 
     /**
-     * @param integer $price
+     * @param float $price
      * @return BagItem
      */
     public function setPrice($price)
@@ -77,7 +83,7 @@ class BagItem
     }
 
     /**
-     * @return integer
+     * @return float
      */
     public function getPrice()
     {
@@ -85,7 +91,7 @@ class BagItem
     }
 
     /**
-     * @param integer $weight
+     * @param float $weight
      * @return BagItem
      */
     public function setWeight($weight)
@@ -96,10 +102,29 @@ class BagItem
     }
 
     /**
-     * @return integer
+     * @return float
      */
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * @param integer $quantity
+     * @return BagItemVoyage
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 }
