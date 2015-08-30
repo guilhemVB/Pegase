@@ -36,9 +36,33 @@
             </div>
         </div>
 
+
         <div class="row" style="margin-top: 50px;">
             <div class="col-md-8">
-                <h2>Description</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <blockquote>
+                            <h4>
+                                Coût moyen de la vie sur place<span
+                                        class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
+                                    €</span>
+                            </h4>
+                            <footer>
+                                Prix moyen de l'hébergement<span
+                                        class="pull-right label label-primary">{{ destination.prices.accommodation }} €</span>
+                            </footer>
+                            <footer>
+                                Dépenses quotidiennes moyenne<span
+                                        class="pull-right label label-primary">{{ destination.prices['life cost'] }} €</span>
+                            </footer>
+                        </blockquote>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <h2>Description</h2>
+                    </div>
+                </div>
 
                 <p>{{ destination.description }}</p>
             </div>
