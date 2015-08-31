@@ -5,22 +5,22 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12">
-                <h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
-                        </li>
-                        <li class="active">{{ destination.name }}</li>
-                    </ul>
-                </h1>
+
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>
+                        <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+                        /
+                        {{ destination.name }}
+                    </h1>
+                </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="padding: 30px">
             <div class="col-md-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -37,7 +37,7 @@
         </div>
 
 
-        <div class="row" style="margin-top: 50px;">
+        <div class="row" style="padding: 30px; background-color: #4C84B2; color: white;">
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-8">
@@ -47,11 +47,11 @@
                                         class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
                                     €</span>
                             </h4>
-                            <footer>
+                            <footer style="color: silver;">
                                 Prix moyen de l'hébergement<span
                                         class="pull-right label label-primary">{{ destination.prices.accommodation }} €</span>
                             </footer>
-                            <footer>
+                            <footer style="color: silver;">
                                 Dépenses quotidiennes moyenne<span
                                         class="pull-right label label-primary">{{ destination.prices['life cost'] }} €</span>
                             </footer>
@@ -69,7 +69,7 @@
             <div class="col-md-4">
                 <h2>Périodes</h2>
 
-                <div class="row">
+                <div class="row" style="color: #000000;">
                     <div class="col-sm-6">
                         <ul class="list-group">
                             <li class="list-group-item">

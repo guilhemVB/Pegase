@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12">
-                <h1>
-                    <ul class="breadcrumb">
-                        <li class="active">{{ country.name }}</li>
-                    </ul>
-                </h1>
+
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>{{ country.name }}</h1>
+                </div>
             </div>
+
         </div>
 
-        <div class="row">
+        <div class="row" style="padding: 30px;">
             <div class="col-md-4">
                 <div id="controls"></div>
             </div>
@@ -27,28 +27,23 @@
         </div>
 
 
-        <div class="row" style="margin-top: 50px;">
+        <div class="row" style="padding: 30px; background-color: chocolate; color: white;">
             <div class="col-md-8">
                 <h2>Description</h2>
 
                 <p>{{ country.description }}</p>
             </div>
             <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Pensez-y !</h2>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ country.tips }}</p>
-                    </div>
-                </div>
+                <h2>Pensez-y !</h2>
+
+                <p>{{ country.tips }}</p>
             </div>
         </div>
 
 
-        <div class="row" style="margin-top: 50px;">
+        <div class="row" style="padding: 30px; background-color: #3D3D3D; color: white;">
             <div class="col-md-12">
-                <table class="table table-striped">
+                <table class="table">
                     <thead>
                     <tr>
                         <th class="col-md-3">Destination</th>
@@ -59,7 +54,7 @@
                     <tbody>
                     {% for destination in country.destinations %}
                         <tr>
-                            <td scope="row"><strong><a
+                            <td scope="row"><strong><a style="color: white;"
                                             href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></strong>
                             </td>
                             <td>{{ destination.description|length > 160 ? destination.description|slice(0, 160) ~ '...' : destination.description }}</td>
