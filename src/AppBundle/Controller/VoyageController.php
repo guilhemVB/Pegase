@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -20,9 +21,18 @@ class VoyageController extends Controller
         /** @var User $user */
         $user = $this->getUser();
 
-        if(count($user->getVoyages()) == 0) {
+        if (count($user->getVoyages()) == 0) {
             // redirect to voyage creation
         }
+    }
+
+    /**
+     * @Route("/create", name="createVoyage")
+     * @return Response
+     */
+    public function createVoyageAction()
+    {
+        return $this->render('AppBundle:Voyage:create.html.twig');
     }
 
 }
