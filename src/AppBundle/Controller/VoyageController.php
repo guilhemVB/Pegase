@@ -22,8 +22,9 @@ class VoyageController extends Controller
         $user = $this->getUser();
 
         if (count($user->getVoyages()) == 0) {
-            // redirect to voyage creation
+            return $this->redirectToRoute('createVoyage');
         }
+        echo 'totot';
     }
 
     /**

@@ -1,18 +1,58 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-    {{ destination.name }} - {{ parent() }}
+    Création de votre voyage - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     <div class="container-fluid">
 
-
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4">
-                New voyage
+        <form class="text-center">
+            <div class="row" style="padding: 100px 30px 100px 30px; background-color: chocolate; color: #ffffff;">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <div class="form-group">
+                        <label for="voyageName" style="display: block; margin-bottom: 20px;"><h3>Nom de votre
+                                voyage</h3></label>
+                        <input type="text" class="form-control input-lg" id="voyageName"
+                               style="text-align: center; font-size: 20px;" placeholder="Tour du monde">
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row" style="padding: 30px; background-color: #3D3D3D; color: #ffffff;">
+                <div class="col-sm-offset-4 col-sm-4">
+                    <div class="form-group">
+                        <label for="numberTravellers" style="display: block; margin-bottom: 20px;"><h3>Nombre de voyageurs</h3></label>
+                        <select class="form-control input-lg" id="numberTravellers">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding: 30px;">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <div class="form-group">
+                        <label for="numberTravellers" style="display: block; margin-bottom: 20px;"><h3>Date et lieu de départ</h3></label>
+                        <select class="form-control input-lg" id="numberTravellers">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
 
     </div>
 
@@ -24,7 +64,7 @@
     {{ parent() }}
     {#<script src="{{ asset('/js/maplace.js') }}"></script>#}
     {#<script>#}
-        {#var maplaceData = {{ maplaceData|raw }};#}
+    {#var maplaceData = {{ maplaceData|raw }};#}
     {#</script>#}
     {#<script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>#}
 
