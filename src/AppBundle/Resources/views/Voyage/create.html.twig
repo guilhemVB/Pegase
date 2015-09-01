@@ -4,6 +4,12 @@
     Création de votre voyage - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/datepicker.css') }}">
+
+{% endblock %}
+
 {% block body %}
     <div class="container-fluid">
 
@@ -36,19 +42,10 @@
                 </div>
             </div>
             <div class="row" style="padding: 30px;">
-                <div class="col-sm-offset-2 col-sm-6">
+                <div class="col-sm-offset-1 col-sm-4">
                     <div class="form-group">
-                        <label for="numberTravellers" style="display: block; margin-bottom: 20px;"><h3>Date et lieu de départ</h3></label>
-                        <select class="form-control input-lg" id="numberTravellers">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
+                        <label for="deparatureDate" style="display: block; margin-bottom: 20px;"><h3>Date de départ</h3></label>
+                        <input type="text" value="02-16-2012" id="deparatureDate">
                     </div>
                 </div>
             </div>
@@ -62,12 +59,11 @@
 {% block javascripts %}
     {#<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>#}
     {{ parent() }}
-    {#<script src="{{ asset('/js/maplace.js') }}"></script>#}
+    <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
     {#<script>#}
     {#var maplaceData = {{ maplaceData|raw }};#}
     {#</script>#}
-    {#<script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>#}
-
+    <script src="{{ asset('bundles/app/js/voyage/voyage.js') }}"></script>
 {% endblock %}
 
 
