@@ -11,4 +11,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class CountryRepository extends EntityRepository
 {
+
+    /**
+     * @return Country[]
+     */
+    public function findCountriesWithDestinations()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->join('c.destinations', 'd')
+            ->addSelect('d')
+            ->orderBy('c.name')
+            ->addGroupBy('d.name');
+
+        return $qb->getQuery()->getResult();
+    }
 }

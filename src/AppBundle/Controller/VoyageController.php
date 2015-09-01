@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use AppBundle\Repository\CountryRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -33,7 +35,15 @@ class VoyageController extends Controller
      */
     public function createVoyageAction()
     {
-        return $this->render('AppBundle:Voyage:create.html.twig');
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $countryRepository CountryRepository */
+        $countryRepository = $em->getRepository('AppBundle:Country');
+
+        $countries = $countryRepository->findCountriesWithDestinations();
+
+        return $this->render('AppBundle:Voyage:create.html.twig', ['countries' => $countries]);
     }
 
 }

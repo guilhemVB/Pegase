@@ -1,0 +1,11 @@
+{#doc : https://select2.github.io/examples.html #}
+<select class="form-control input-lg" id="destinations">
+    <option></option>
+    {% for country in countries %}
+        <optgroup label="{{ country.name }}">
+            {% for destination in country.destinations %}
+                <option value="{{ destination.slug }}">{{ destination.name }}</option>
+            {% endfor %}
+        </optgroup>
+    {% endfor %}
+</select>
