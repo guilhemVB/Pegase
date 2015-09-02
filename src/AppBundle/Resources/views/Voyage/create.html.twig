@@ -78,22 +78,22 @@
 
     </div>
 
-    <style>
-        #destination .select2-selection {
-            height: 46px;
-            line-height: 46px;
-            padding-top: 6px;
-        }
+    {#<style>#}
+        {##destination .select2-selection {#}
+            {#height: 46px;#}
+            {#line-height: 46px;#}
+            {#padding-top: 6px;#}
+        {#}#}
 
-        #destination .select2-selection__placeholder {
-            font-size: 18px;
-        }
+        {##destination .select2-selection__placeholder {#}
+            {#font-size: 18px;#}
+        {#}#}
 
-        #destination .select2-selection__arrow b {
-            margin-top: 7px;
-        }
+        {##destination .select2-selection__arrow b {#}
+            {#margin-top: 7px;#}
+        {#}#}
 
-    </style>
+    {#</style>#}
 
 {% endblock %}
 
@@ -103,9 +103,9 @@
     {{ parent() }}
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
-    {#<script>#}
-    {#var maplaceData = {{ maplaceData|raw }};#}
-    {#</script>#}
+    <script>
+    var voyageCRUDCreateUrl = "{{ path('voyageCRUDCreate') }}";
+    </script>
     <script src="{{ asset('bundles/app/js/voyage/voyage.js') }}"></script>
 {% endblock %}
 

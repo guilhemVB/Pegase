@@ -35,6 +35,12 @@ class VoyageController extends Controller
      */
     public function createVoyageAction()
     {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if (count($user->getVoyages()) != 0) {
+            return $this->redirectToRoute('dashboard');
+        }
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
@@ -42,7 +48,6 @@ class VoyageController extends Controller
         $countryRepository = $em->getRepository('AppBundle:Country');
 
         $countries = $countryRepository->findCountriesWithDestinations();
-
         return $this->render('AppBundle:Voyage:create.html.twig', ['countries' => $countries]);
     }
 
