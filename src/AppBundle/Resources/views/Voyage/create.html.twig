@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('/css/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/datepicker.css') }}">
+    {{ parent() }}
 
 {% endblock %}
 
@@ -59,7 +60,7 @@
             <div class="row" style="padding: 30px;">
                 <div class="col-sm-offset-4 col-sm-4">
                     <div class="form-group">
-                        <label for="destinations" style="display: block; margin-bottom: 20px;"><h3>Lieu de
+                        <label for="destination" style="display: block; margin-bottom: 20px;"><h3>Lieu de
                                 départ</h3></label>
 
                         {% include 'AppBundle:Destination:selectDestination.html.twig' %}
@@ -76,6 +77,23 @@
         </form>
 
     </div>
+
+    <style>
+        #destination .select2-selection {
+            height: 46px;
+            line-height: 46px;
+            padding-top: 6px;
+        }
+
+        #destination .select2-selection__placeholder {
+            font-size: 18px;
+        }
+
+        #destination .select2-selection__arrow b {
+            margin-top: 7px;
+        }
+
+    </style>
 
 {% endblock %}
 
