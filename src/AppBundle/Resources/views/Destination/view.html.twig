@@ -22,6 +22,14 @@
 
         <div class="row" style="padding: 30px">
             <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addToVoyageModal" data-destination-name="{{ destination.name }}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter à votre voyage
+                        </button>
+                    </div>
+                </div>
+                <br>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h2 class="panel-title">A voir</h2>
@@ -49,11 +57,13 @@
                             </h4>
                             <footer style="color: silver;">
                                 Prix moyen de l'hébergement<span
-                                        class="pull-right label label-primary">{{ destination.prices.accommodation }} €</span>
+                                        class="pull-right label label-primary">{{ destination.prices.accommodation }}
+                                    €</span>
                             </footer>
                             <footer style="color: silver;">
                                 Dépenses quotidiennes moyenne<span
-                                        class="pull-right label label-primary">{{ destination.prices['life cost'] }} €</span>
+                                        class="pull-right label label-primary">{{ destination.prices['life cost'] }}
+                                    €</span>
                             </footer>
                         </blockquote>
                     </div>
@@ -181,18 +191,21 @@
         </div>
     </div>
 
-{% endblock %}
-
-
-{% block javascripts %}
-    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
-    {{ parent() }}
-    <script src="{{ asset('/js/maplace.js') }}"></script>
-    <script>
-        var maplaceData = {{ maplaceData|raw }};
-    </script>
-    <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
+    {% include 'AppBundle:Destination:addToVoyage.html.twig' %}
 
 {% endblock %}
+
+
+    {% block javascripts %}
+        <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
+        {{ parent() }}
+        <script src="{{ asset('/js/maplace.js') }}"></script>
+        <script>
+            var maplaceData = {{ maplaceData|raw }};
+        </script>
+        <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
+        <script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>
+
+    {% endblock %}
 
 
