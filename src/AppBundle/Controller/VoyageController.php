@@ -79,16 +79,23 @@ class VoyageController extends Controller
             return new JsonResponse(['error' => $error], 400);
         }
 
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
         $voyage = $voyages[0];
 
         $stage = new Stage();
         $stage->setDestination($destination);
         $stage->setNbDays($nbDays);
-
-        //TODO : finir !!!!
+        $stage->setPosition(count($voyage->getStages()) - 1);
+        $stage->setVoyage($voyage);
+        $em->persist($stage);
 
         $voyage->addStage($stage);
+        $em->persist($voyage);
 
+        $em->flush();
+        return new JsonResponse(['valid' => true]);
     }
 
 }
