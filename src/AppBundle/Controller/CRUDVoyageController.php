@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Traveller;
-use AppBundle\Entity\User;
 use AppBundle\Entity\Voyage;
 use AppBundle\Repository\DestinationRepository;
 use Doctrine\ORM\EntityManager;

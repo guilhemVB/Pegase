@@ -6,12 +6,18 @@
                 <h4 class="modal-title">Ajout de la destination <span id="destinationNameModal"></span> à votre voyage</h4>
             </div>
             <div class="modal-body">
-                <p>Some text in the modal.</p>
+                <h5>Combien de jours souhaitez-vous rester sur place ?</h5>
+                <select class="form-control input-lg" id="numberDays">
+                    <option value="1">1 jour</option>
+                    {% for i in 2..60 %}
+                        <option value="{{ i }}">{{ i }} jours</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="addToVoyageBtn" type="button" class="btn btn-success" data-dismiss="modal">Valider</button>
             </div>
         </div>
-
     </div>
 </div>

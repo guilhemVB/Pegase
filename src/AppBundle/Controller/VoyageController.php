@@ -2,11 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Destination;
+use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -49,6 +53,42 @@ class VoyageController extends Controller
 
         $countries = $countryRepository->findCountriesWithDestinations();
         return $this->render('AppBundle:Voyage:create.html.twig', ['countries' => $countries]);
+    }
+
+
+    /**
+     * @Route("/destination/{id}/add", name="addDestination")
+     * @param Destination $destination
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function addDestinationAction(Destination $destination, Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $voyages = $user->getVoyages();
+        if(count($voyages) === 0) {
+            $error = "Can't find voyage";
+            return new JsonResponse(['error' => $error], 400);
+        }
+
+        $nbDays = $request->get('nbDays');
+        if($nbDays == 0) {
+            $error = "nbDays cannot be empty";
+            return new JsonResponse(['error' => $error], 400);
+        }
+
+        $voyage = $voyages[0];
+
+        $stage = new Stage();
+        $stage->setDestination($destination);
+        $stage->setNbDays($nbDays);
+
+        //TODO : finir !!!!
+
+        $voyage->addStage($stage);
+
     }
 
 }

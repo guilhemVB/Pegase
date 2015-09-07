@@ -202,6 +202,7 @@
         <script src="{{ asset('/js/maplace.js') }}"></script>
         <script>
             var maplaceData = {{ maplaceData|raw }};
+            var addDestinationUrl = "{{ path('addDestination', {'id' : destination.id}) }}";
         </script>
         <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
         <script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>
