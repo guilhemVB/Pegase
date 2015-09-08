@@ -6,6 +6,7 @@ use AppBundle\Entity\Destination;
 use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\StageRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -68,13 +69,13 @@ class VoyageController extends Controller
         $user = $this->getUser();
 
         $voyages = $user->getVoyages();
-        if(count($voyages) === 0) {
+        if (count($voyages) === 0) {
             $error = "Can't find voyage";
             return new JsonResponse(['error' => $error], 400);
         }
 
         $nbDays = $request->get('nbDays');
-        if($nbDays == 0) {
+        if ($nbDays == 0) {
             $error = "nbDays cannot be empty";
             return new JsonResponse(['error' => $error], 400);
         }
