@@ -22,9 +22,10 @@ class VoyageStats
         foreach ($stages as $stage) {
             $nbDays += $stage->getNbDays();
             $destination = $stage->getDestination();
-            $countries[$destination->getName()] =
-                isset($countries[$destination->getName()]) ?
-                    $countries[$destination->getName()] + 1 :
+            $country = $destination->getCountry();
+            $countries[$country->getName()] =
+                isset($countries[$country->getName()]) ?
+                    $countries[$country->getName()] + 1 :
                     1;
         }
 
