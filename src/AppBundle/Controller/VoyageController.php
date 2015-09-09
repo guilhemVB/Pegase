@@ -7,6 +7,7 @@ use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\StageRepository;
+use AppBundle\Service\MaplaceMarkerBuilder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,11 +28,22 @@ class VoyageController extends Controller
     {
         /** @var User $user */
         $user = $this->getUser();
+        $voyages = $user->getVoyages();
 
-        if (count($user->getVoyages()) == 0) {
+        if (count($voyages) == 0) {
             return $this->redirectToRoute('createVoyage');
         }
-        echo 'totot';
+        $voyage = $voyages[0];
+
+        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
+        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromVoyage($voyage, ['disableHtml' => true]);
+
+        return $this->render('AppBundle:Voyage:view.html.twig',
+            [
+                'voyage'      => $voyage,
+                'maplaceData' => json_encode([$maplaceData]),
+            ]);
     }
 
     /**

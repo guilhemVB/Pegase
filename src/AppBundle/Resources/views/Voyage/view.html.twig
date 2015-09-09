@@ -1,0 +1,75 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    {{ voyage.name }} - tableau de bord - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1>{{ voyage.name }}</h1>
+        </div>
+
+        <div class="row" style="padding: 30px">
+            <div class="col-md-12">
+                <div id="gmap"></div>
+            </div>
+        </div>
+
+
+        {#<div class="row" style="padding: 30px; background-color: #4C84B2; color: white;">#}
+            {#<div class="col-md-8">#}
+                {#<div class="row">#}
+                    {#<div class="col-md-8">#}
+                        {#<blockquote>#}
+                            {#<h4>#}
+                                {#Coût moyen de la vie sur place<span#}
+                                        {#class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}#}
+                                    {#€</span>#}
+                            {#</h4>#}
+                            {#<footer style="color: silver;">#}
+                                {#Prix moyen de l'hébergement<span#}
+                                        {#class="pull-right label label-primary">{{ destination.prices.accommodation }}#}
+                                    {#€</span>#}
+                            {#</footer>#}
+                            {#<footer style="color: silver;">#}
+                                {#Dépenses quotidiennes moyenne<span#}
+                                        {#class="pull-right label label-primary">{{ destination.prices['life cost'] }}#}
+                                    {#€</span>#}
+                            {#</footer>#}
+                        {#</blockquote>#}
+                    {#</div>#}
+
+
+                    {#<div class="col-md-12">#}
+                        {#<h2>Description</h2>#}
+                    {#</div>#}
+                {#</div>#}
+
+                {#<p>{{ destination.description }}</p>#}
+            {#</div>#}
+
+        {#</div>#}
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
+    {{ parent() }}
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+        var maplaceData = {{ maplaceData|raw }};
+        {#var addStepUrl = "{{ path('addStep', {'id' : destination.id}) }}";#}
+        {#var removeStepUrl = "{{ path('removeStep', {'id' : 0}) }}";#}
+
+
+    </script>
+    <script src="{{ asset('bundles/app/js/dashboard/maplaceDashboard.js') }}"></script>
+    {#<script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>#}
+
+{% endblock %}
+
+

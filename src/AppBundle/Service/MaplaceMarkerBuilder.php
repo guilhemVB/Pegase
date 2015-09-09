@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Destination;
+use AppBundle\Entity\Voyage;
 
 class MaplaceMarkerBuilder
 {
@@ -33,9 +34,9 @@ class MaplaceMarkerBuilder
     {
         $options = array_merge($this->defaultOptions(), $options);
         $dataMaplace = [
-            'lat' => $destination->getLatitude(),
-            'lon' => $destination->getLongitude(),
-            'zoom' => 11,
+            'lat'   => $destination->getLatitude(),
+            'lon'   => $destination->getLongitude(),
+            'zoom'  => 11,
             'title' => $destination->getName(),
         ];
 
@@ -59,6 +60,21 @@ class MaplaceMarkerBuilder
         }
 
         return $dataMaplace;
+    }
+
+    /**
+     * @param Voyage $voyage
+     * @param array $options
+     * @return array
+     */
+    public function buildMarkerFromVoyage($voyage, $options = [])
+    {
+        $destinations = [];
+        $stages = $voyage->getStages();
+        foreach ($stages as $stage) {
+            $destinations[] = $stage->getDestination();
+        }
+        return $this->buildMarkerFromDestinations($destinations, $options);
     }
 
 }
