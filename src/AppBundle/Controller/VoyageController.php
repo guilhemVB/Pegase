@@ -46,7 +46,7 @@ class VoyageController extends Controller
         return $this->render('AppBundle:Voyage:view.html.twig',
             [
                 'voyage'      => $voyage,
-                'maplaceData' => json_encode([$maplaceData]),
+                'maplaceData' => json_encode($maplaceData),
                 'voyageStats' => $voyageStats->calculate($voyage),
             ]);
     }
