@@ -4,11 +4,8 @@ services:
         arguments:
             - @twig
 
-    CRUD_stage:
-        class : AppBundle\Service\CRUD\CRUDStage
-        arguments:
-            - @doctrine.orm.entity_manager
-
+    voyage_stats:
+        class : AppBundle\Service\Stats\VoyageStats
 
 
 

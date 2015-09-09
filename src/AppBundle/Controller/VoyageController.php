@@ -8,6 +8,7 @@ use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
+use AppBundle\Service\Stats\VoyageStats;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -39,10 +40,14 @@ class VoyageController extends Controller
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromVoyage($voyage, ['disableHtml' => true]);
 
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
         return $this->render('AppBundle:Voyage:view.html.twig',
             [
                 'voyage'      => $voyage,
                 'maplaceData' => json_encode([$maplaceData]),
+                'voyageStats' => $voyageStats->calculate($voyage),
             ]);
     }
 
