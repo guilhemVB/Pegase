@@ -1,26 +1,15 @@
 $().ready(function () {
 
-    //$('#deparatureDate').datepicker();
-    //
-    //$("#destination").select2({
-    //    placeholder: "Choix d'un lieu de départ",
-    //    theme: "bootstrap"
-    //});
-    //
-    //$("form").submit(function (event) {
-    //    event.preventDefault();
-    //
-    //    var data = {
-    //        name: $('#voyageName').val(),
-    //        nbTraveller: $('#numberTravellers').val(),
-    //        deparatureDate: $('#deparatureDate').val(),
-    //        destinationId: $('#destination').val()
-    //    };
-    //
-    //    $.post(voyageCRUDCreateUrl, data, function (response) {
-    //        if (true === response.success) {
-    //            document.location.href = response.nextUri;
-    //        }
-    //    }, "json");
-    //});
+    //doc sortable :  https://github.com/RubaXa/Sortable/wiki/Sortable-v1.0-%E2%80%94-New-capabilities
+
+    $(document).ready(function () {
+        Sortable.create(listDestinations, {
+            group: {
+                name: 'shared',
+                animation: 200,
+                pull: 'clone',
+                put: false
+            }
+        });
+    });
 });
