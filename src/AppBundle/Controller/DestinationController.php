@@ -3,7 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Destination;
+use AppBundle\Entity\User;
+use AppBundle\Repository\StageRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,10 +28,34 @@ class DestinationController extends Controller
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestination($destination, ['disableHtml' => true]);
 
-        return $this->render('AppBundle:Destination:view.html.twig',
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $stage = null;
+        if (!is_null($user)) {
+            $voyages = $user->getVoyages();
+            if (count($voyages) > 0) {
+                $stage = $stageRepository->findOneStageFromDestinationAndVoyage($destination, $voyages[0]);
+            }
+        }
+
+        $btnAddToVoyage = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
             [
                 'destination' => $destination,
-                'maplaceData' => json_encode([$maplaceData]),
+                'stage'       => $stage,
+            ]);
+
+        return $this->render('AppBundle:Destination:view.html.twig',
+            [
+                'destination'    => $destination,
+                'btnAddToVoyage' => $btnAddToVoyage,
+                'maplaceData'    => json_encode([$maplaceData]),
             ]);
     }
 }

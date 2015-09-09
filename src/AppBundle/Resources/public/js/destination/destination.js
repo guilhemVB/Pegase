@@ -14,18 +14,17 @@ $().ready(function () {
         var data = {
             nbDays : $("#numberDays").val()
         };
-
-        $.post(addDestinationUrl, data, function (response) {
-            debugger;
-            //if (true === response.success) {
-            //    location.reload();
-            //} else {
-            //    $createSpinsSpinner.hide();
-            //    var message = response.error || 'Une erreur inconnue est survenue';
-            //    $modalSpinAlert.append(message).show();
-            //}
+        $.post(addStepUrl, data, function (response) {
+            $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");
+    });
 
+    $("#btnAddToVoyage").on('click', '#removeStage', function (event) {
+        debugger;
+        var url = removeStepUrl.replace("0", $(this).data("stageId"));
+        $.post(url, function (response) {
+            $("#btnAddToVoyage").html(response.btnAddToVoyage);
+        }, "json");
     });
 
 });
