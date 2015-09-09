@@ -21,7 +21,8 @@ class MaplaceMarkerBuilder
     private function defaultOptions()
     {
         return [
-            'disableHtml' => false
+            'disableHtml' => false,
+            'disableZoom' => false,
         ];
     }
 
