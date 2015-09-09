@@ -36,12 +36,15 @@ class MaplaceMarkerBuilder
         $dataMaplace = [
             'lat'   => $destination->getLatitude(),
             'lon'   => $destination->getLongitude(),
-            'zoom'  => 11,
             'title' => $destination->getName(),
         ];
 
         if (!$options['disableHtml']) {
             $dataMaplace['html'] = $this->twig->render('AppBundle:Destination:googleMarker.html.twig', ['destination' => $destination]);
+        }
+
+        if (!$options['disableZoom']) {
+            $dataMaplace['zoom'] = 11;
         }
 
         return $dataMaplace;

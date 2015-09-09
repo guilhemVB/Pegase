@@ -38,7 +38,7 @@ class VoyageController extends Controller
 
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromVoyage($voyage, ['disableHtml' => true]);
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromVoyage($voyage, ['disableZoom' => true]);
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
