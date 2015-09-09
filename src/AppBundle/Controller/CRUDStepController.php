@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * @Route("/step")
  */
-class StepController extends Controller
+class CRUDStepController extends Controller
 {
 
     /**
@@ -48,7 +48,7 @@ class StepController extends Controller
         $stage = new Stage();
         $stage->setDestination($destination);
         $stage->setNbDays($nbDays);
-        $stage->setPosition(count($voyage->getStages()) - 1);
+        $stage->setPosition(count($voyage->getStages()) + 1);
         $stage->setVoyage($voyage);
         $em->persist($stage);
 
