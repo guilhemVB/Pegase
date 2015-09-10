@@ -18,6 +18,10 @@ class VoyageStats
         $nbStages = count($stages);
         $nbDays = 0;
         $countries = [];
+        $crowFliesDistance = 0;
+
+        $destinationFrom = null;
+        $destinationTo = null;
 
         foreach ($stages as $stage) {
             $nbDays += $stage->getNbDays();
@@ -27,6 +31,12 @@ class VoyageStats
                 isset($countries[$country->getName()]) ?
                     $countries[$country->getName()] + 1 :
                     1;
+            $destinationFrom = $destinationTo;
+            $destinationTo = $destination;
+
+            if (!is_null($destinationFrom) && !is_null($destinationTo)) {
+                $crowFliesDistance += CrowFliesCalculator::calculate($destinationFrom, $destinationTo);
+            }
         }
 
         $startDate = $voyage->getStartDate();
@@ -35,11 +45,12 @@ class VoyageStats
         $endDate->add(new \DateInterval('P' . $nbDays . 'D'));
 
         return [
-            'nbStages'    => $nbStages,
-            'nbDays'      => $nbDays,
-            'nbCountries' => count($countries),
-            'startDate'   => $startDate,
-            'endDate'     => $endDate,
+            'nbStages'          => $nbStages,
+            'nbDays'            => $nbDays,
+            'nbCountries'       => count($countries),
+            'startDate'         => $startDate,
+            'endDate'           => $endDate,
+            'crowFliesDistance' => $crowFliesDistance,
         ];
     }
 
