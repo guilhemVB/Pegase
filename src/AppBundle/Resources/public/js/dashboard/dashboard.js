@@ -4,11 +4,17 @@ $().ready(function () {
 
     $(document).ready(function () {
         Sortable.create(listDestinations, {
-            group: {
-                name: 'shared',
-                animation: 200,
-                pull: 'clone',
-                put: false
+            animation: 200,
+            onUpdate: function (evt) {
+                var item = evt.item;
+                var stageId = item.dataset.stageId;
+                var data = {
+                    newPosition: evt.newIndex + 1,
+                    oldPosition: evt.oldIndex + 1
+                }
+                var url = changePositionStageUrl.replace(0, stageId);
+                $.post(url, data, function (response) {
+                }, "json");
             }
         });
     });

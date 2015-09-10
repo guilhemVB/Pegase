@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Destination;
+use AppBundle\Entity\Stage;
 use AppBundle\Entity\Voyage;
 
 class MaplaceMarkerBuilder
@@ -67,14 +68,13 @@ class MaplaceMarkerBuilder
     }
 
     /**
-     * @param Voyage $voyage
+     * @param Stage[] $stages
      * @param array $options
      * @return array
      */
-    public function buildMarkerFromVoyage($voyage, $options = [])
+    public function buildMarkerFromStages($stages, $options = [])
     {
         $destinations = [];
-        $stages = $voyage->getStages();
         foreach ($stages as $stage) {
             $destinations[] = $stage->getDestination();
         }

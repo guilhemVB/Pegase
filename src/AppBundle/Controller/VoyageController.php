@@ -36,18 +36,27 @@ class VoyageController extends Controller
         }
         $voyage = $voyages[0];
 
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromVoyage($voyage, ['disableZoom' => true]);
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true]);
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
         return $this->render('AppBundle:Voyage:view.html.twig',
             [
-                'voyage'      => $voyage,
-                'maplaceData' => json_encode($maplaceData),
-                'voyageStats' => $voyageStats->calculate($voyage),
+                'voyage'       => $voyage,
+                'stagesSorted' => $stagesSorted,
+                'maplaceData'  => json_encode($maplaceData),
+                'voyageStats'  => $voyageStats->calculate($voyage, $stagesSorted),
             ]);
     }
 

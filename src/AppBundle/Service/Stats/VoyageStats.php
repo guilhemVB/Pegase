@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service\Stats;
 
+use AppBundle\Entity\Stage;
 use AppBundle\Entity\Voyage;
 
 class VoyageStats
@@ -9,13 +10,12 @@ class VoyageStats
 
     /**
      * @param Voyage $voyage
+     * @param Stage[] $stagesSorted
      * @return array
      */
-    public function calculate(Voyage $voyage)
+    public function calculate(Voyage $voyage, $stagesSorted)
     {
-        $stages = $voyage->getStages();
-
-        $nbStages = count($stages);
+        $nbStages = count($stagesSorted);
         $nbDays = 0;
         $countries = [];
         $crowFliesDistance = 0;
@@ -23,7 +23,7 @@ class VoyageStats
         $destinationFrom = null;
         $destinationTo = null;
 
-        foreach ($stages as $stage) {
+        foreach ($stagesSorted as $stage) {
             $nbDays += $stage->getNbDays();
             $destination = $stage->getDestination();
             $country = $destination->getCountry();

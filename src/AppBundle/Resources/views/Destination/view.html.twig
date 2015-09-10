@@ -200,8 +200,8 @@
         <script src="{{ asset('/js/maplace.js') }}"></script>
         <script>
             var maplaceData = {{ maplaceData|raw }};
-            var addStepUrl = "{{ path('addStep', {'id' : destination.id}) }}";
-            var removeStepUrl = "{{ path('removeStep', {'id' : 0}) }}";
+            var addStageUrl = "{{ path('addStage', {'id' : destination.id}) }}";
+            var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
         </script>
         <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
         <script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>

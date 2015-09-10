@@ -21,10 +21,14 @@
 
 
         <div class="row" style="padding: 30px; background-color: #4C84B2; color: white;">
+            <div class="col-md-12">
+                <h3>Tableau de bord de votre voyage</h3>
+            </div>
+
             <div class="col-md-6">
                 <blockquote>
                     <h4>
-                        Nombre d'étape<span class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
+                        Nombre d'étapes<span class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
                     </h4>
                     <h4>
                         Durée du voyage<span class="pull-right label label-danger">
@@ -44,18 +48,24 @@
                     </h4>
                     <h4>
                         Distance parcourue à vol d'oiseau <span
-                                class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round  }}</span>
+                                class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round }}
+                            km</span>
                     </h4>
                 </blockquote>
             </div>
         </div>
 
         <div class="row" style="padding: 30px;">
-            <ul id="listDestinations">
-                {% for stage in voyage.stages %}
-                    <li>{{ stage.destination.name }}</li>
-                {% endfor %}
-            </ul>
+            <div class="col-md-12">
+                <h3>Liste des destinations</h3>
+            </div>
+            <div class="col-md-12">
+                <ul id="listDestinations">
+                    {% for stage in stagesSorted %}
+                        <li data-stage-id="{{ stage.destination.id }}">{{ stage.destination.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -69,10 +79,7 @@
     <script src="{{ asset('/js/maplace.js') }}"></script>
     <script>
         var maplaceData = {{ maplaceData|raw }};
-        {#var addStepUrl = "{{ path('addStep', {'id' : destination.id}) }}";#}
-        {#var removeStepUrl = "{{ path('removeStep', {'id' : 0}) }}";#}
-
-
+        var changePositionStageUrl = "{{ path('changePositionStage', {'id' : 0}) }}";
     </script>
     <script src="{{ asset('bundles/app/js/dashboard/maplaceDashboard.js') }}"></script>
     <script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>

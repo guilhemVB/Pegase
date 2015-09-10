@@ -14,14 +14,14 @@ $().ready(function () {
         var data = {
             nbDays : $("#numberDays").val()
         };
-        $.post(addStepUrl, data, function (response) {
+        $.post(addStageUrl, data, function (response) {
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");
     });
 
     $("#btnAddToVoyage").on('click', '#removeStage', function (event) {
         debugger;
-        var url = removeStepUrl.replace("0", $(this).data("stageId"));
+        var url = removeStageUrl.replace("0", $(this).data("stageId"));
         $.post(url, function (response) {
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");

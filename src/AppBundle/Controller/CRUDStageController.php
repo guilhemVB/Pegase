@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
+use AppBundle\Repository\StageRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,13 +13,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * @Route("/step")
+ * @Route("/stage/crud")
  */
-class CRUDStepController extends Controller
+class CRUDStageController extends Controller
 {
 
     /**
-     * @Route("create/destination/{id}/add", name="addStep")
+     * @Route("/create/destination/{id}/add", name="addStage")
      * @param Destination $destination
      * @param Request $request
      * @return JsonResponse
@@ -63,12 +64,12 @@ class CRUDStepController extends Controller
                 'stage'       => $stage,
             ]);
 
-        return new JsonResponse(['valid' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
+        return new JsonResponse(['success' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
     }
 
 
     /**
-     * @Route("{id}/remove", name="removeStep")
+     * @Route("/{id}/remove", name="removeStage")
      * @param Stage $stage
      * @return JsonResponse
      */
@@ -88,7 +89,44 @@ class CRUDStepController extends Controller
                 'destination' => $destination,
             ]);
 
-        return new JsonResponse(['valid' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
+        return new JsonResponse(['success' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
+    }
+
+
+    /**
+     * @Route("/{id}/changePosition", name="changePositionStage")
+     * @param Stage $stage
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function changeStagePositionAction(Stage $stage, Request $request)
+    {
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        $newPosition = $request->get('newPosition');
+        $oldPosition = $request->get('oldPosition');
+
+        if ($newPosition < $oldPosition) {
+            $itPosition = $newPosition;
+
+            while ($itPosition != ($oldPosition - 1)) {
+                /** @var Stage $stageIt */
+                $stageIt = $stageRepository->findOneBy(['position' => $itPosition]);
+                $itPosition++;
+                $stageIt->setPosition($itPosition);
+                $em->persist($stageIt);
+            }
+        }
+
+        $stage->setPosition($newPosition);
+        $em->persist($stage);
+        $em->flush();
+
+        return new JsonResponse(['success' => true]);
     }
 
 }
