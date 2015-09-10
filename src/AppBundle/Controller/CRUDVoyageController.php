@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * @Route("/voyage/crud")
+ * @Route("/crud/voyage")
  */
 class CRUDVoyageController extends Controller
 {

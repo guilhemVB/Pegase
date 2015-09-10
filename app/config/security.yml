@@ -30,6 +30,5 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/voyage, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/stage, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/crud, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
