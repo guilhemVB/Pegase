@@ -1,8 +1,9 @@
+{% set destination = stage.destination %}
 <li data-stage-id="{{ stage.id }}">
     <div class="row">
-        <div class="col-sm-4">{{ stage.destination.name }}</div>
-        <div class="col-sm-4">{{ stage.destination.country.name }}</div>
+        <div class="col-sm-4"><a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></div>
+        <div class="col-sm-4"><a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a></div>
         <div class="col-sm-2">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</div>
-        <div class="col-sm-2">{{ (stage.destination.prices.accommodation + stage.destination.prices['life cost']) * stage.nbDays }} €</div>
+        <div class="col-sm-2">{{ (destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays }} €</div>
     </div>
 </li>
