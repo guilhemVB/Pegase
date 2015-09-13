@@ -7,11 +7,14 @@ $().ready(function () {
             animation: 200,
             onUpdate: function (evt) {
                 var item = evt.item;
+                if(evt.newIndex == evt.oldIndex) {
+                    return;
+                }
                 var stageId = item.dataset.stageId;
                 var data = {
                     newPosition: evt.newIndex + 1,
                     oldPosition: evt.oldIndex + 1
-                }
+                };
                 var url = changePositionStageUrl.replace(0, stageId);
                 $.post(url, data, function (response) {
                 }, "json");

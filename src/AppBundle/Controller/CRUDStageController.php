@@ -112,11 +112,19 @@ class CRUDStageController extends Controller
 
         if ($newPosition < $oldPosition) {
             $itPosition = $newPosition;
-
-            while ($itPosition != ($oldPosition - 1)) {
+            while ($itPosition != $oldPosition) {
                 /** @var Stage $stageIt */
                 $stageIt = $stageRepository->findOneBy(['position' => $itPosition]);
                 $itPosition++;
+                $stageIt->setPosition($itPosition);
+                $em->persist($stageIt);
+            }
+        } elseif($newPosition > $oldPosition) {
+            $itPosition = $newPosition;
+            while ($itPosition != $oldPosition) {
+                /** @var Stage $stageIt */
+                $stageIt = $stageRepository->findOneBy(['position' => $itPosition]);
+                $itPosition--;
                 $stageIt->setPosition($itPosition);
                 $em->persist($stageIt);
             }
