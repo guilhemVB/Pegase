@@ -19,24 +19,31 @@ class VoyageStats
         $nbDays = 0;
         $countries = [];
         $crowFliesDistance = 0;
+        $totalCost = 0;
 
         $destinationFrom = null;
         $destinationTo = null;
 
         foreach ($stagesSorted as $stage) {
-            $nbDays += $stage->getNbDays();
             $destination = $stage->getDestination();
             $country = $destination->getCountry();
+            
+            $nbDays += $stage->getNbDays();
+
             $countries[$country->getName()] =
                 isset($countries[$country->getName()]) ?
                     $countries[$country->getName()] + 1 :
                     1;
+            
             $destinationFrom = $destinationTo;
             $destinationTo = $destination;
 
             if (!is_null($destinationFrom) && !is_null($destinationTo)) {
                 $crowFliesDistance += CrowFliesCalculator::calculate($destinationFrom, $destinationTo);
             }
+            
+            $prices = $destination->getPrices();
+            $totalCost += ($prices['accommodation'] + $prices['life cost']) * $stage->getNbDays();
         }
 
         $startDate = $voyage->getStartDate();
@@ -51,6 +58,7 @@ class VoyageStats
             'startDate'         => $startDate,
             'endDate'           => $endDate,
             'crowFliesDistance' => $crowFliesDistance,
+            'totalCost'         => $totalCost,
         ];
     }
 
