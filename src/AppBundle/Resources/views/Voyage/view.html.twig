@@ -65,7 +65,7 @@
             <div class="col-md-12">
                 <ul id="listDestinations">
                     {% for stage in stagesSorted %}
-                        <li data-stage-id="{{ stage.id }}">{{ stage.destination.name }}</li>
+                        {% include 'AppBundle:Voyage:stage.html.twig' %}
                     {% endfor %}
                 </ul>
             </div>
