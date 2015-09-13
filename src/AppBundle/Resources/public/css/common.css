@@ -11,3 +11,12 @@
     overflow: hidden;
 }
 
+footer .row {
+    background-color: #404040;
+    color: grey;
+    padding: 20px;
+}
+
+footer a {
+    color: grey;
+}
