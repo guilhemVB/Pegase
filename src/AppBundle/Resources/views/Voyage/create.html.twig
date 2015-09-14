@@ -78,28 +78,10 @@
 
     </div>
 
-    {#<style>#}
-        {##destination .select2-selection {#}
-            {#height: 46px;#}
-            {#line-height: 46px;#}
-            {#padding-top: 6px;#}
-        {#}#}
-
-        {##destination .select2-selection__placeholder {#}
-            {#font-size: 18px;#}
-        {#}#}
-
-        {##destination .select2-selection__arrow b {#}
-            {#margin-top: 7px;#}
-        {#}#}
-
-    {#</style>#}
-
 {% endblock %}
 
 
 {% block javascripts %}
-    {#<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>#}
     {{ parent() }}
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
