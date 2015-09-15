@@ -1,0 +1,51 @@
+<header>
+    <div class="container container--large">
+        <h1>Pegase
+            <small>The World waiting for you</small>
+        </h1>
+    </div>
+</header>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-menu"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+
+            <div class="collapse navbar-collapse" id="navigation-menu">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Tableau de bord</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><i class="fa fa-cog"></i> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profil</a></li>
+                        </ul>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+
+    </div>
+</nav>
