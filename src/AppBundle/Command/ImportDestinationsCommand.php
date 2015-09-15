@@ -7,6 +7,7 @@ use AppBundle\Entity\Destination;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\CSVParser;
+use AppBundle\Service\Tools\DestinationPeriods;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -95,19 +96,20 @@ class ImportDestinationsCommand extends ContainerAwareCommand
      */
     private function extractPeriods($dataDestination)
     {
+        $periods = DestinationPeriods::getPeriods();
         return [
-            'january' => $dataDestination['janvier'],
-            'february' => $dataDestination['février'],
-            'march' => $dataDestination['mars'],
-            'april' => $dataDestination['avril'],
-            'may' => $dataDestination['mai'],
-            'june' => $dataDestination['juin'],
-            'july' => $dataDestination['juillet'],
-            'august' => $dataDestination['août'],
-            'september' => $dataDestination['septembre'],
-            'october' => $dataDestination['octobre'],
-            'november' => $dataDestination['novembre'],
-            'december' => $dataDestination['décembre'],
+            $periods[1] => $dataDestination['janvier'],
+            $periods[2] => $dataDestination['février'],
+            $periods[3] => $dataDestination['mars'],
+            $periods[4] => $dataDestination['avril'],
+            $periods[5] => $dataDestination['mai'],
+            $periods[6] => $dataDestination['juin'],
+            $periods[7] => $dataDestination['juillet'],
+            $periods[8] => $dataDestination['août'],
+            $periods[9] => $dataDestination['septembre'],
+            $periods[10] => $dataDestination['octobre'],
+            $periods[11] => $dataDestination['novembre'],
+            $periods[12] => $dataDestination['décembre'],
         ];
     }
 

@@ -1,5 +1,6 @@
-<span class="badge">
-    {% for i in 1..nbStarts %}
+<span class="badge"
+      {% if toolTipData is defined %} data-toggle="tooltip" data-placement="top" title="{{ toolTipData }}"{% endif %}>
+    {% for i in 1..nbStars %}
         <i class="glyphicon glyphicon-star"></i>
     {% endfor %}
 </span>
