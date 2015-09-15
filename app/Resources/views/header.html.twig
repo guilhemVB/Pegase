@@ -1,30 +1,30 @@
 <div class="container-fluid" id="banner">
     <div class="row">
-        <div class="col-sm-7 col-md-offset-2">
+        <div class="col-sm-7 col-md-offset-1">
             <h1>
                 <a class="navbar-brand" href="{{ path('homepage') }}">Pegase
                     <small class="backgroundTextBanner">The World waiting for you</small>
                 </a>
             </h1>
         </div>
-        <div class="col-sm-2" id="logger">
-            <div class="row backgroundTextBanner">
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="col-md-12">
-                        <a href="{{ path('fos_user_security_logout') }}"><span
-                                    class="glyphicon glyphicon-user"></span> logout</a>
-                    </div>
-                {% else %}
-                    <div class="col-md-6">
-                        <a href="{{ path('fos_user_registration_register') }}"><span
-                                    class="glyphicon glyphicon-user"></span> Sign Up</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        {#<div class="col-sm-3" id="logger">#}
+            {#<div class="row backgroundTextBanner">#}
+                {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                    {#<div class="col-md-12">#}
+                        {#<a href="{{ path('fos_user_security_logout') }}"><span#}
+                                    {#class="glyphicon glyphicon-user"></span> logout</a>#}
+                    {#</div>#}
+                {#{% else %}#}
+                    {#<div class="col-md-6">#}
+                        {#<a href="{{ path('fos_user_registration_register') }}"><span#}
+                                    {#class="glyphicon glyphicon-user"></span> Sign Up</a>#}
+                    {#</div>#}
+                    {#<div class="col-md-6">#}
+                        {#<a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>#}
+                    {#</div>#}
+                {#{% endif %}#}
+            {#</div>#}
+        {#</div>#}
     </div>
 </div>
 

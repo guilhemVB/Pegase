@@ -1,6 +1,7 @@
 #banner {
     padding-bottom: 7px;
-    background: #000 url("../../../banner.JPG") center center;
+    background-color: #ffffff;
+    color: grey;
 }
 
 #banner h1 {
@@ -34,7 +35,7 @@
 
 #banner #logger a {
     padding: 5px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #gmap {
