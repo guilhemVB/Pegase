@@ -6,15 +6,112 @@
 
 {% block body %}
 
-    <div class="container">
+    <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item">
+                <img class="first-slide" src="{{ asset('paris_500.jpg') }}" alt="First slide">
 
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Example headline.</h1>
+
+                        <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous"
+                            Glyphicon buttons on the left and right might not load/display properly due to web browser
+                            security rules.</p>
+
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item active">
+                <img class="second-slide" src="{{ asset('taj_mahal_500.jpg') }}" alt="Second slide">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Another example headline.</h1>
+
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
+                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="third-slide" src="{{ asset('taj_mahal_500.jpg') }}" alt="Third slide">
+
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>One more for good measure.</h1>
+
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
+                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carouselHomepage" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carouselHomepage" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div id="homepageVignette" class="container">
         <div class="row">
-            homepage
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{ asset('paris_500.jpg') }}" alt="Paris" width="140" height="140">
 
-            {% render url('fos_user_registration_register') %}
-            {% render url('fos_user_security_login') %}
+                <h2>Paris</h2>
+
+                <p>Paris est la ville lumière, les gents sont aps très sympa, le métro ets null mais c'est cool :)</p>
+
+                <p><a class="btn btn-default" href="{{ path('destination', {'slug' : 'paris' }) }}" role="button">En
+                        savoir plus</a></p>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{ asset('paris_500.jpg') }}" alt="Paris" width="140" height="140">
+
+                <h2>Paris</h2>
+
+                <p>Paris est la ville lumière, les gents sont aps très sympa, le métro ets null mais c'est cool :)</p>
+
+                <p><a class="btn btn-default" href="{{ path('destination', {'slug' : 'paris' }) }}" role="button">En
+                        savoir plus</a></p>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{ asset('paris_500.jpg') }}" alt="Paris" width="140" height="140">
+
+                <h2>Paris</h2>
+
+                <p>Paris est la ville lumière, les gents sont aps très sympa, le métro ets null mais c'est cool :)</p>
+
+                <p><a class="btn btn-default" href="{{ path('destination', {'slug' : 'paris' }) }}" role="button">En
+                        savoir plus</a></p>
+            </div>
         </div>
     </div>
+
+
+    <div id="homepageSearch" class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
 

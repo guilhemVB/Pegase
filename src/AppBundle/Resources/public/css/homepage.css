@@ -1,0 +1,22 @@
+#carouselHomepage {
+    height: 500px;
+    margin-bottom: 60px;
+}
+
+#carouselHomepage img {
+    height: 500px;
+    width: 100%;
+}
+
+#homepageVignette {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+#homepageSearch {
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: chocolate;
+}
