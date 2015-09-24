@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Repository\CountryRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -14,6 +16,14 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('AppBundle:Default:homepage.html.twig');
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $countryRepository CountryRepository */
+        $countryRepository = $em->getRepository('AppBundle:Country');
+
+        $countries = $countryRepository->findCountriesWithDestinations();
+
+        return $this->render('AppBundle:Default:homepage.html.twig', ['countries' => $countries]);
     }
 }
