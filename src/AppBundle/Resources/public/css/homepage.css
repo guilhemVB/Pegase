@@ -1,3 +1,7 @@
+#homepage p {
+    font-size: 18px;
+}
+
 #carouselHomepage {
     height: 500px;
     margin-bottom: 60px;
@@ -8,15 +12,36 @@
     width: 100%;
 }
 
+#carouselHomepage h1 {
+    font-size: 80px;
+}
+
+
 #homepageVignette {
     margin-bottom: 20px;
     text-align: center;
 }
 
-
 #homepageSearch {
-    height: 300px;
+    height: 270px;
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: chocolate;
+}
+
+#homepageSearch {
+    color: #ffffff;
+}
+
+#homepageSearch h2 {
+    margin-top: 50px;
+}
+
+#homepageSearch .select2 {
+    margin-top: 50px;
+
+}
+
+#connectionRow {
+    margin-top: 30px;
 }
