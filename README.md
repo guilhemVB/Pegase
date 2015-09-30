@@ -1,9 +1,13 @@
 Pegase
 ======
 
-Pour générer les sources :
+Pour lancer les tests behat :
+
+Créer la table travel_test
+
+lancer la commande
 
 ```
-php app/console assets:install
+bin/behat
 ```
 

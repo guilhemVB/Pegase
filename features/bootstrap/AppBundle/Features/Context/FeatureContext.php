@@ -23,8 +23,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $kernel->boot();
         $this->application = new Application($kernel);
         $this->application->setAutoExit(false);
-        $this->runConsole("doctrine:schema:drop", ["--force" => true, "--full-database" => true, "--em" => "default_database_generator"]);
-        $this->runConsole("doctrine:schema:create", ["--em" => "default_database_generator"]);
+        $this->runConsole("doctrine:schema:drop", ["--force" => true, "--full-database" => true]);
+        $this->runConsole("doctrine:schema:create");
         $kernel->shutdown();
     }
 

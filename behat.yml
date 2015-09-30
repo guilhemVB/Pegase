@@ -6,22 +6,15 @@ default:
             type: symfony_bundle
             bundle: 'AppBundle'
             contexts :
-#                - Rvip\Bundle\GlobalContext\Features\Context\FeatureContext:
-#                    container: @service_container
-#                - Rvip\Bundle\GlobalContext\Features\Context\CommonGivenContext:
-#                    container: @service_container
-#                - Rvip\Bundle\GlobalContext\Features\Context\EmRvipContext:
-#                    container: @service_container
-#                - Rvip\Bundle\CampaignBundle\Features\Context\BoostContext:
-#                    container: @service_container
-#                    boostGenerator: @boost_generator
-#                    queueClientInterface: @queue_client
-#                    boostLaunchChecker: @boost_launch_checker
-#                    boostItemTerminator: @boost_item_terminator
-#                - Rvip\Bundle\SpinBundle\Features\Context\SpinContext:
-#                    container: @service_container
-#                    themeManager: @theme_manager
-#                    spinManager: @spin_manager
-#                    metaThemeManager: @metaTheme_manager
-#                    paragraphGenerator: @paragraph_generator
+                - AppBundle\Features\Context\FeatureContext
+                - AppBundle\Features\Context\BagItemContext:
+                    container: @service_container
+                - AppBundle\Features\Context\CountryContext:
+                    container: @service_container
+                - AppBundle\Features\Context\DestinationContext:
+                    container: @service_container
+                - AppBundle\Features\Context\UserContext:
+                    container: @service_container
+                - AppBundle\Features\Context\VoyageContext:
+                    container: @service_container
 
