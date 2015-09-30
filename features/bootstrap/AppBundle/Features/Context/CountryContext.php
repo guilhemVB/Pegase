@@ -22,8 +22,8 @@ class CountryContext extends CommonContext
         foreach ($tableCountries as $countryRow) {
             $country = new Country();
             $country->setName($countryRow['nom']);
-            $country->setDescription($countryRow['description']);
-            $country->setTips($countryRow['bon plans']);
+            $country->setDescription(isset($countryRow['description']) ? $countryRow['description'] : '');
+            $country->setTips(isset($countryRow['bon plans']) ? $countryRow['bon plans'] : '');
 
             $this->em->persist($country);
         }
