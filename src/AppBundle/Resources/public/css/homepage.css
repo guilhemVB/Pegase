@@ -23,7 +23,7 @@
 }
 
 #homepageSearch {
-    height: 270px;
+    height: 285px;
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: chocolate;
@@ -39,7 +39,6 @@
 
 #homepageSearch .select2 {
     margin-top: 50px;
-
 }
 
 #connectionRow {
