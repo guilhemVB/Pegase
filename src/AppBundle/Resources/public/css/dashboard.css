@@ -1,9 +1,9 @@
-ul {
+#dashboard ul {
     list-style: none;
     padding: 0;
 }
 
-li {
+#dashboard li {
     background: #eee;
     margin: 1px;
     padding: 10px 15px;
@@ -11,7 +11,7 @@ li {
     border-radius: 5px;
 }
 
-.sortable-ghost {
+#dashboard .sortable-ghost {
     opacity: .3;
     background: #f60;
 }

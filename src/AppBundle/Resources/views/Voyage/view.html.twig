@@ -1,3 +1,4 @@
+{% set activeDashboard = true %}
 {% extends "::layout.html.twig" %}
 
 {% block title %}
@@ -5,89 +6,91 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="container">
+    <div id="dashboard">
+        <div class="container-fluid">
+            <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>{{ voyage.name }}</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{ voyage.name }}</h1>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row" style="padding: 30px">
-                <div class="col-md-12">
-                    <div id="gmap"></div>
+                <div class="row" style="padding: 30px">
+                    <div class="col-md-12">
+                        <div id="gmap"></div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 
-    <div class="container-fluid" style="padding: 30px; background-color: #4C84B2; color: white;">
-        <div class="container">
+        <div class="container-fluid" style="padding: 30px; background-color: #4C84B2; color: white;">
+            <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Tableau de bord de votre voyage</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Tableau de bord de votre voyage</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <blockquote>
-                        <h4>
-                            Nombre d'étapes<span class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
-                        </h4>
-                        <h4>
-                            Coût moyen estimé, sans transport<span
+                <div class="row">
+                    <div class="col-md-6">
+                        <blockquote>
+                            <h4>
+                                Nombre d'étapes<span
+                                    class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
+                            </h4>
+                            <h4>
+                                Coût moyen estimé, sans transport<span
                                     class="pull-right label label-danger">{{ voyageStats.totalCost }}€</span>
-                        </h4>
-                        <h4>
-                            Durée du voyage<span class="pull-right label label-danger">
+                            </h4>
+                            <h4>
+                                Durée du voyage<span class="pull-right label label-danger">
                             {{ voyageStats.nbDays }} jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
-                        </h4>
-                        <h4>
-                            Date de départ<span
+                            </h4>
+                            <h4>
+                                Date de départ<span
                                     class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
-                        </h4>
-                        <h4>
-                            Date de retour<span
+                            </h4>
+                            <h4>
+                                Date de retour<span
                                     class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
-                        </h4>
-                        <h4>
-                            Nombre de pays traversés<span
+                            </h4>
+                            <h4>
+                                Nombre de pays traversés<span
                                     class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
-                        </h4>
-                        <h4>
-                            Distance parcourue à vol d'oiseau <span
+                            </h4>
+                            <h4>
+                                Distance parcourue à vol d'oiseau <span
                                     class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round }}
-                                km</span>
-                        </h4>
-                    </blockquote>
+                                    km</span>
+                            </h4>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-6">
+                        Date de départ
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    Date de départ
-                </div>
-            </div>
 
-        </div>
-    </div>
-    <div class="container-fluid" style="padding: 30px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Liste des destinations</h3>
-                </div>
-                <div class="col-md-12">
-                    <ul id="listDestinations">
-                        {% for stage in stagesSorted %}
-                            {% include 'AppBundle:Voyage:stage.html.twig' %}
-                        {% endfor %}
-                    </ul>
-                </div>
             </div>
         </div>
+        <div class="container-fluid" style="padding: 30px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Liste des destinations</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <ul id="listDestinations">
+                            {% for stage in stagesSorted %}
+                                {% include 'AppBundle:Voyage:stage.html.twig' %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 {% endblock %}
 
 

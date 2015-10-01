@@ -1,73 +1,43 @@
-<div class="container-fluid" id="banner">
-    <div class="row">
-        <div class="col-sm-7 col-md-offset-1">
-            <h1>
-                <a class="navbar-brand" href="{{ path('homepage') }}">Pegase
-                    <small class="backgroundTextBanner">The World waiting for you</small>
-                </a>
-            </h1>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-menu"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Pegase</a>
         </div>
-        {#<div class="col-sm-3" id="logger">#}
-            {#<div class="row backgroundTextBanner">#}
-                {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                    {#<div class="col-md-12">#}
-                        {#<a href="{{ path('fos_user_security_logout') }}"><span#}
-                                    {#class="glyphicon glyphicon-user"></span> logout</a>#}
-                    {#</div>#}
-                {#{% else %}#}
-                    {#<div class="col-md-6">#}
-                        {#<a href="{{ path('fos_user_registration_register') }}"><span#}
-                                    {#class="glyphicon glyphicon-user"></span> Sign Up</a>#}
-                    {#</div>#}
-                    {#<div class="col-md-6">#}
-                        {#<a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>#}
-                    {#</div>#}
-                {#{% endif %}#}
-            {#</div>#}
-        {#</div>#}
+
+
+        <div class="collapse navbar-collapse" id="navigation-menu">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <ul class="nav navbar-nav">
+                    <li {% if activeDashboard is defined %}class="active"{% endif %}><a href="{{ path('dashboard') }}">Tableau de bord</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><i class="fa fa-cog"></i> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profil</a></li>
+                        </ul>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('fos_user_security_login') }}">
+                            <i class="fa fa-sign-in"></i> Connexion</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">
+                            <i class="fa fa-user"></i> Inscription</a></li>
+                </ul>
+            {% endif %}
+        </div>
+
     </div>
-</div>
-
-{#<nav class="navbar navbar-inverse">#}
-    {#<div class="container-fluid">#}
-        {#<div class="navbar-header">#}
-            {#<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-menu"#}
-                    {#aria-expanded="false">#}
-                {#<span class="sr-only">Toggle navigation</span>#}
-                {#<span class="icon-bar"></span>#}
-                {#<span class="icon-bar"></span>#}
-                {#<span class="icon-bar"></span>#}
-            {#</button>#}
-            {#<a class="navbar-brand" href="{{ path('homepage') }}">Brand</a>#}
-        {#</div>#}
-
-
-        {#<div class="collapse navbar-collapse" id="navigation-menu">#}
-            {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
-                {#<ul class="nav navbar-nav">#}
-                    {#<li class="active"><a href="{{ path('dashboard') }}">Tableau de bord</a></li>#}
-                {#</ul>#}
-                {#<ul class="nav navbar-nav navbar-right">#}
-                    {#<li class="dropdown">#}
-                        {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"#}
-                           {#aria-expanded="false"><i class="fa fa-cog"></i> <span class="caret"></span></a>#}
-                        {#<ul class="dropdown-menu">#}
-                            {#<li><a href="#">Profil</a></li>#}
-                        {#</ul>#}
-                        {#<ul class="dropdown-menu">#}
-                            {#<li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>#}
-                        {#</ul>#}
-                    {#</li>#}
-                {#</ul>#}
-            {#{% else %}#}
-                {#<ul class="nav navbar-nav navbar-right">#}
-                    {#<li><a href="{{ path('fos_user_registration_register') }}"><span#}
-                                    {#class="glyphicon glyphicon-user"></span> Sign Up</a></li>#}
-                    {#<li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span>#}
-                            {#Login</a></li>#}
-                {#</ul>#}
-            {#{% endif %}#}
-        {#</div>#}
-
-    {#</div>#}
-{#</nav>#}
+</nav>

@@ -1,3 +1,14 @@
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+.navbar-header {
+    padding-left: 10px;
+    width: 100px;
+}
+
 #banner {
     padding-bottom: 7px;
     background-color: #ffffff;
@@ -49,10 +60,12 @@
     height: 300px;
     background-size: cover;
     overflow: hidden;
+    border-radius: 0;
 }
 
 footer .row {
-    background-color: #404040;
+    background-color: #222;
+    border-color: #080808;
     color: grey;
     padding: 20px;
 }
