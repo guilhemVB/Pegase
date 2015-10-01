@@ -1,0 +1,15 @@
+.containerMap {
+    margin-bottom: 30px;
+}
+
+.containerDescription {
+    padding: 30px;
+    background-color: #3D3D3D;
+    color: white;
+}
+
+.containerListDestinations {
+    padding: 30px;
+    background-color: chocolate;
+    color: white;
+}
