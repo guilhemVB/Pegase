@@ -53,7 +53,7 @@ class VoyageController extends Controller
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
-        return $this->render('AppBundle:Voyage:view.html.twig',
+        return $this->render('AppBundle:Voyage:dashboard.html.twig',
             [
                 'voyage'       => $voyage,
                 'stagesSorted' => $stagesSorted,
