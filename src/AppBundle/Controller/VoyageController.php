@@ -48,6 +48,8 @@ class VoyageController extends Controller
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true]);
 
+        $maplaceData = array_merge([$maplaceMarkerBuilder->buildMarkerFromDestination($voyage->getStartDestination())], $maplaceData);
+
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
