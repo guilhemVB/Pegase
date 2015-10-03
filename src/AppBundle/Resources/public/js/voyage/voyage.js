@@ -1,6 +1,8 @@
 $().ready(function () {
 
-    $('#deparatureDate').datepicker();
+    $('#deparatureDate').datepicker({
+        format: 'dd-mm-yyyy'
+    });
 
     $("#destination").select2({
         placeholder: "Choix d'un lieu de départ",
