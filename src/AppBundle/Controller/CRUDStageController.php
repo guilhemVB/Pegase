@@ -6,6 +6,8 @@ use AppBundle\Entity\Destination;
 use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\StageRepository;
+use AppBundle\Service\CRUD\CRUDStage;
+use AppBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -41,55 +43,48 @@ class CRUDStageController extends Controller
             return new JsonResponse(['error' => $error], 400);
         }
 
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $stage = $CRUDStage->add($destination, $voyages[0], $nbDays);
 
-        $voyage = $voyages[0];
+        $response = ['success' => true];
 
-        $stage = new Stage();
-        $stage->setDestination($destination);
-        $stage->setNbDays($nbDays);
-        $stage->setPosition(count($voyage->getStages()) + 1);
-        $stage->setVoyage($voyage);
-        $em->persist($stage);
+        if ($request->get('addBtnAddToVoyage')) {
+            $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
+                [
+                    'destination' => $destination,
+                    'stage'       => $stage,
+                ]);
+        }
 
-        $voyage->addStage($stage);
-        $em->persist($voyage);
-
-        $em->flush();
-
-        $btnAddToVoyage = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
-            [
-                'destination' => $destination,
-                'stage'       => $stage,
-            ]);
-
-        return new JsonResponse(['success' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
+        return new JsonResponse($response);
     }
 
 
     /**
      * @Route("/{id}/remove", name="removeStage")
      * @param Stage $stage
+     * @param Request $request
      * @return JsonResponse
      */
-    public function removeStageAction(Stage $stage)
+    public function removeStageAction(Stage $stage, Request $request)
     {
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->remove($stage);
 
         $destination = $stage->getDestination();
 
-        $em->remove($stage);
-        $em->flush();
+        $response = ['success' => true];
 
+        if ($request->get('addBtnAddToVoyage')) {
+            $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
+                [
+                    'destination' => $destination,
+                ]);
+        }
 
-        $btnAddToVoyage = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
-            [
-                'destination' => $destination,
-            ]);
-
-        return new JsonResponse(['success' => true, 'btnAddToVoyage' => $btnAddToVoyage]);
+        return new JsonResponse($response);
     }
 
 
@@ -101,40 +96,18 @@ class CRUDStageController extends Controller
      */
     public function changeStagePositionAction(Stage $stage, Request $request)
     {
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $stageRepository StageRepository */
-        $stageRepository = $em->getRepository('AppBundle:Stage');
-
         $newPosition = $request->get('newPosition');
         $oldPosition = $request->get('oldPosition');
 
-        if ($newPosition < $oldPosition) {
-            $itPosition = $newPosition;
-            while ($itPosition != $oldPosition) {
-                /** @var Stage $stageIt */
-                $stageIt = $stageRepository->findOneBy(['position' => $itPosition]);
-                $itPosition++;
-                $stageIt->setPosition($itPosition);
-                $em->persist($stageIt);
-            }
-        } elseif($newPosition > $oldPosition) {
-            $itPosition = $newPosition;
-            while ($itPosition != $oldPosition) {
-                /** @var Stage $stageIt */
-                $stageIt = $stageRepository->findOneBy(['position' => $itPosition]);
-                $itPosition--;
-                $stageIt->setPosition($itPosition);
-                $em->persist($stageIt);
-            }
-        }
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->changePosition($stage, $oldPosition, $newPosition);
 
-        $stage->setPosition($newPosition);
-        $em->persist($stage);
-        $em->flush();
+        /** @var VoyageService $voyageService */
+        $voyageService =$this->get('voyage_service');
+        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($stage->getVoyage());
 
-        return new JsonResponse(['success' => true]);
+        return new JsonResponse(['success' => true, 'maplaceData' => $maplaceData]);
     }
 
 }

@@ -2,16 +2,7 @@
     height: 350px;
 }
 
-/*#destination .select2-selection {*/
-    /*height: 46px;*/
-    /*line-height: 46px;*/
-    /*padding-top: 6px;*/
-/*}*/
+.createVoyage #destination {
+    width: 100%;
+}
 
-/*#destination .select2-selection__placeholder {*/
-    /*font-size: 18px;*/
-/*}*/
-
-/*#destination .select2-selection__arrow b {*/
-    /*margin-top: 7px;*/
-/*}*/

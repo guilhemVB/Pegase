@@ -4,7 +4,7 @@ $().ready(function () {
         format: 'dd-mm-yyyy'
     });
 
-    $("#destination").select2({
+    $("#createVoyage #destination").select2({
         placeholder: "Choix d'un lieu de départ",
         theme: "bootstrap"
     });

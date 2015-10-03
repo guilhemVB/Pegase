@@ -2,10 +2,22 @@
 {% set toolTipData = voyageStats.stagesStats[stage.id].dateFrom|date("d/m/Y") ~ " - " ~ voyageStats.stagesStats[stage.id].dateTo|date("d/m/Y") %}
 <li data-stage-id="{{ stage.id }}">
     <div class="row">
-        <div class="col-sm-3"><a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></div>
-        <div class="col-sm-3"><a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a></div>
-        <div class="col-sm-2">{% include 'AppBundle:Destination:stars.html.twig' with {'nbStars' : voyageStats.stagesStats[stage.id].nbStars, 'toolTipData' : toolTipData } %}</div>
-        <div class="col-sm-2">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</div>
-        <div class="col-sm-2">{{ (destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays }} €</div>
+        <div class="col-sm-3">
+            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
+        </div>
+        <div class="col-sm-3">
+            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+        </div>
+        <div class="col-sm-1">
+            {% include 'AppBundle:Destination:stars.html.twig' with {'nbStars' : voyageStats.stagesStats[stage.id].nbStars, 'toolTipData' : toolTipData } %}
+        </div>
+        <div class="col-sm-2">
+            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
+        </div>
+        <div class="col-sm-3">
+            {{ (destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays }} €
+            <button type="button" class="btn btn-danger btn-xs pull-right btnDeleteStage"
+                    data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i> Supprimer</button>
+        </div>
     </div>
 </li>

@@ -33,3 +33,21 @@ footer .row {
 footer a {
     color: grey;
 }
+
+.containerGrey {
+    padding: 30px;
+    background-color: #3D3D3D;
+    color: white;
+}
+
+.containerOrange {
+    padding: 30px;
+    background-color: chocolate;
+    color: white;
+}
+
+.containerBlue {
+    padding: 30px;
+    background-color: #4C84B2;
+    color: white;
+}

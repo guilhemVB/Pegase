@@ -12,69 +12,72 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="createVoyage">
+        <div class="container-fluid">
 
-        <form class="text-center">
+            <form class="text-center">
 
-            <div class="row" style="padding: 100px 30px 30px 30px; background-color: chocolate; color: #ffffff;">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="form-group">
-                        <label for="voyageName" style="display: block; margin-bottom: 20px;"><h3>Nom de votre
-                                voyage</h3></label>
-                        <input type="text" class="form-control input-lg" id="voyageName"
-                               style="text-align: center; font-size: 20px;" placeholder="Tour du monde">
+                <div class="row" style="padding: 100px 30px 30px 30px; background-color: chocolate; color: #ffffff;">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <div class="form-group">
+                            <label for="voyageName" style="display: block; margin-bottom: 20px;"><h3>Nom de votre
+                                    voyage</h3></label>
+                            <input type="text" class="form-control input-lg" id="voyageName"
+                                   style="text-align: center; font-size: 20px;" placeholder="Tour du monde">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row" style="padding: 30px;">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="form-group">
-                        <label for="numberTravellers" style="display: block; margin-bottom: 20px;"><h3>Nombre de
-                                voyageurs</h3></label>
-                        <select class="form-control input-lg" id="numberTravellers">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
+                <div class="row" style="padding: 30px;">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <div class="form-group">
+                            <label for="numberTravellers" style="display: block; margin-bottom: 20px;"><h3>Nombre de
+                                    voyageurs</h3></label>
+                            <select class="form-control input-lg" id="numberTravellers">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row" style="padding: 30px;">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="form-group">
-                        <label for="deparatureDate" style="display: block; margin-bottom: 20px;"><h3>Date de départ</h3>
-                        </label>
-                        <input type="text" class="form-control" id="deparatureDate">
+                <div class="row" style="padding: 30px;">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <div class="form-group">
+                            <label for="deparatureDate" style="display: block; margin-bottom: 20px;"><h3>Date de
+                                    départ</h3>
+                            </label>
+                            <input type="text" class="form-control" id="deparatureDate">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row" style="padding: 30px;">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <div class="form-group">
-                        <label for="destination" style="display: block; margin-bottom: 20px;"><h3>Lieu de
-                                départ</h3></label>
+                <div class="row" style="padding: 30px;">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <div class="form-group">
+                            <label for="destination" style="display: block; margin-bottom: 20px;"><h3>Lieu de
+                                    départ</h3></label>
 
-                        {% include 'AppBundle:Destination:selectDestination.html.twig' %}
+                            {% include 'AppBundle:Destination:selectDestination.html.twig' %}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row" style="padding: 50px; background-color: #3D3D3D; color: #ffffff;">
-                <div class="col-sm-offset-4 col-sm-4">
-                    <input type="submit" class="btn btn-success btn-lg" value="Commencer votre voyage">
+                <div class="row" style="padding: 50px; background-color: #3D3D3D; color: #ffffff;">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <input type="submit" class="btn btn-success btn-lg" value="Commencer votre voyage">
+                    </div>
                 </div>
-            </div>
 
-        </form>
+            </form>
 
+        </div>
     </div>
 
 {% endblock %}
@@ -85,9 +88,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
     <script>
-    var voyageCRUDCreateUrl = "{{ path('voyageCRUDCreate') }}";
+        var voyageCRUDCreateUrl = "{{ path('voyageCRUDCreate') }}";
     </script>
-    <script src="{{ asset('bundles/app/js/voyage/voyage.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/voyage/createVoyage.js') }}"></script>
 {% endblock %}
 
 

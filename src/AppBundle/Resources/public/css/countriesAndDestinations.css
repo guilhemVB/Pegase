@@ -2,20 +2,7 @@
     margin-bottom: 30px;
 }
 
-.containerDescription {
-    padding: 30px;
-    background-color: #3D3D3D;
-    color: white;
+#destinationView #destination {
+    width: 100%;
 }
 
-.containerListDestinations {
-    padding: 30px;
-    background-color: chocolate;
-    color: white;
-}
-
-.containerInfo {
-    padding: 30px;
-    background-color: #4C84B2;
-    color: white;
-}

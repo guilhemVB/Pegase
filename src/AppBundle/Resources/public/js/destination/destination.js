@@ -12,7 +12,8 @@ $().ready(function () {
 
     $("#addToVoyageBtn").on("click", function() {
         var data = {
-            nbDays : $("#numberDays").val()
+            nbDays : $("#numberDays").val(),
+            addBtnAddToVoyage : true
         };
         $.post(addStageUrl, data, function (response) {
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
@@ -20,9 +21,11 @@ $().ready(function () {
     });
 
     $("#btnAddToVoyage").on('click', '#removeStage', function (event) {
-        debugger;
+        var data = {
+            addBtnAddToVoyage : true
+        };
         var url = removeStageUrl.replace("0", $(this).data("stageId"));
-        $.post(url, function (response) {
+        $.post(url, data, function (response) {
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");
     });

@@ -9,6 +9,7 @@ use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
 use AppBundle\Service\Stats\VoyageStats;
+use AppBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -39,16 +40,19 @@ class VoyageController extends Controller
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
+        /** @var $countryRepository CountryRepository */
+        $countryRepository = $em->getRepository('AppBundle:Country');
+
+        $countries = $countryRepository->findCountriesWithDestinations();
+
         /** @var $stageRepository StageRepository */
         $stageRepository = $em->getRepository('AppBundle:Stage');
 
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true]);
-
-        $maplaceData = array_merge([$maplaceMarkerBuilder->buildMarkerFromDestination($voyage->getStartDestination())], $maplaceData);
+        /** @var VoyageService $voyageService */
+        $voyageService =$this->get('voyage_service');
+        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
@@ -59,6 +63,7 @@ class VoyageController extends Controller
                 'stagesSorted' => $stagesSorted,
                 'maplaceData'  => json_encode($maplaceData),
                 'voyageStats'  => $voyageStats->calculate($voyage, $stagesSorted),
+                'countries'    => $countries,
             ]);
     }
 
