@@ -3,7 +3,13 @@
 namespace AppBundle\Features\Context;
 
 use AppBundle\Entity\Country;
+use AppBundle\Entity\Destination;
+use AppBundle\Entity\User;
+use AppBundle\Entity\Voyage;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\DestinationRepository;
+use AppBundle\Repository\UserRepository;
+use AppBundle\Repository\VoyageRepository;
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,9 +34,42 @@ class CommonContext extends \PHPUnit_Framework_TestCase implements Context
      */
     protected function findCountryByName($name)
     {
-        /** @var CountryRepository $countryrepository */
-        $countryrepository = $this->em->getRepository('AppBundle:Country');
-        return $countryrepository->findOneByName($name);
+        /** @var CountryRepository $countryRepository */
+        $countryRepository = $this->em->getRepository('AppBundle:Country');
+        return $countryRepository->findOneByName($name);
+    }
+
+    /**
+     * @param string $userName
+     * @return null|User
+     */
+    protected function findUserByName($userName)
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em->getRepository('AppBundle:User');
+        return $userRepository->findOneBy(['username' => $userName]);
+    }
+
+    /**
+     * @param string $name
+     * @return Destination
+     */
+    protected function findDestinationByName($name)
+    {
+        /** @var DestinationRepository $destinationRepository */
+        $destinationRepository = $this->em->getRepository('AppBundle:Destination');
+        return $destinationRepository->findOneByName($name);
+    }
+
+    /**
+     * @param string $name
+     * @return Voyage
+     */
+    protected function findVoyageByName($name)
+    {
+        /** @var VoyageRepository $voyageRepository */
+        $voyageRepository = $this->em->getRepository('AppBundle:Voyage');
+        return $voyageRepository->findOneByName($name);
     }
 
 }

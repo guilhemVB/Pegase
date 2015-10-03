@@ -55,6 +55,19 @@ class CRUDStage
      */
     public function remove(Stage $stage)
     {
+        $voyage = $stage->getVoyage();
+        $position = $stage->getPosition();
+
+        /** @var Stage $stageToChange */
+        $stageToChange = $this->stageRepository->findOneBy(['voyage' => $voyage, 'position' => $position + 1]);
+        while(!is_null($stageToChange)) {
+            $stageToChange->setPosition($position);
+            $this->em->persist($stageToChange);
+            $this->em->flush();
+            $position++;
+            $stageToChange = $this->stageRepository->findOneBy(['voyage' => $voyage, 'position' => $position]);
+        }
+
         $this->em->remove($stage);
         $this->em->flush();
     }

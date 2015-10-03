@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Traveller;
 use AppBundle\Entity\Voyage;
 use AppBundle\Repository\DestinationRepository;
+use AppBundle\Service\CRUD\CRUDVoyage;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,24 +36,11 @@ class CRUDVoyageController extends Controller
         $deparatureDate = $request->get('deparatureDate');
         $destinationId = $request->get('destinationId');
         $nbTraveller = $request->get('nbTraveller');
+        $destination = $destinationRepository->find($destinationId);
 
-        $voyage = new Voyage();
-        $voyage->setUser($this->getUser());
-        $voyage->setName($name);
-        $voyage->setStartDate(new \DateTime($deparatureDate));
-        $voyage->setStartDestination($destinationRepository->find($destinationId));
-
-        for ($i = 0; $i < $nbTraveller; $i++) {
-            $traveller = new Traveller();
-            $traveller->setName('Voyageur ' . ($i + 1));
-            $traveller->setVoyage($voyage);
-            $voyage->addTraveller($traveller);
-
-            $em->persist($traveller);
-        }
-
-        $em->persist($voyage);
-        $em->flush();
+        /** @var CRUDVoyage $CRUDVoyage */
+        $CRUDVoyage = $this->get('crud_voyage');
+        $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination, $nbTraveller);
 
         return new JsonResponse(['success' => true, 'nextUri' => $this->generateUrl('dashboard')]);
     }

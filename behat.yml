@@ -17,4 +17,6 @@ default:
                     container: @service_container
                 - AppBundle\Features\Context\VoyageContext:
                     container: @service_container
+                - AppBundle\Features\Context\StageContext:
+                    container: @service_container
 

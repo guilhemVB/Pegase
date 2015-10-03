@@ -12,6 +12,11 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
 
+    crud_voyage:
+        class : AppBundle\Service\CRUD\CRUDVoyage
+        arguments:
+            - @doctrine.orm.entity_manager
+
     voyage_service:
         class : AppBundle\Service\VoyageService
         arguments:
