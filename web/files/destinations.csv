@@ -1,18 +1,18 @@
-pays;nom;description;bons plans;prix moyen de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
-France;Paris;Paris (prononcé [pa.ʁi ] Prononciation du titre dans sa version originale Écouter) est la capitale de la France. Elle se situe au cœur d'une vaste plaine fertile au climat tempéré, le Bassin parisien, sur une boucle de la Seine, entre les confluents de celle-ci avec la Marne et l'Oise. Ses habitants s’appellent les Parisiens. Paris est également le chef-lieu de la région Île-de-France et l'unique commune française qui est en même temps un département. Comme les villes françaises de Lyon et de Marseille, elle est divisée en arrondissements, au nombre de vingt, et possède un préfet de police.;Va manger  un macaron  à la pistache!!;32;24;1;1;2;2;2;3;3;3;2;1;1;1;48.864592;2.336492
-France;Lyon; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;45.756573;4.818846
-France;Marseille; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-Espagne;Madrid; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-France;Toulouse; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.648965;1.408876
-France;Brest; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;48.433011;-4.535708
-Espagne;Barcelone; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-France;Lille; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;50.686726;2.989743
-Japon;Nagoya;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;35.157560;136.918567
-Japon;Toyohashi;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.769394;137.389987
-Japon;Okazaki;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.954924;137.173285
-Japon;Hachinohe;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;40.511358;141.485591
-Viêt Nam;Hô-Chi-Minh-Ville;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;10.792060;106.673763
-Viêt Nam;Hanoi;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;20.858688;106.690335
-Pérou;Lima;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-12.043467;-77.042610
-Pérou;Arequipa;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-16.413586;-71.538271
-Pérou;Trujillo;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-8.109940;-79.025181
+pays;nom;capitale;description;bons plans;prix moyen de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
+France;Paris;oui;Paris (prononcé [pa.ʁi ] Prononciation du titre dans sa version originale Écouter) est la capitale de la France. Elle se situe au cœur d'une vaste plaine fertile au climat tempéré, le Bassin parisien, sur une boucle de la Seine, entre les confluents de celle-ci avec la Marne et l'Oise. Ses habitants s’appellent les Parisiens. Paris est également le chef-lieu de la région Île-de-France et l'unique commune française qui est en même temps un département. Comme les villes françaises de Lyon et de Marseille, elle est divisée en arrondissements, au nombre de vingt, et possède un préfet de police.;Va manger  un macaron  à la pistache!!;32;24;1;1;2;2;2;3;3;3;2;1;1;1;48.864592;2.336492
+France;Lyon;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;45.756573;4.818846
+France;Marseille;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
+Espagne;Madrid;oui; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
+France;Toulouse;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.648965;1.408876
+France;Brest;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;48.433011;-4.535708
+Espagne;Barcelone;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
+France;Lille;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;50.686726;2.989743
+Japon;Nagoya;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;35.157560;136.918567
+Japon;Toyohashi;oui;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.769394;137.389987
+Japon;Okazaki;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.954924;137.173285
+Japon;Hachinohe;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;40.511358;141.485591
+Pérou;Lima;oui;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-12.043467;-77.042610
+Pérou;Arequipa;;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-16.413586;-71.538271
+Pérou;Trujillo;;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-8.109940;-79.025181
+Viêt Nam;Hô-Chi-Minh-Ville;;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;10.792060;106.673763
+Viêt Nam;Hanoi;oui;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;20.858688;106.690335

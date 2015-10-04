@@ -77,6 +77,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setPrices($this->extractPrices($dataDestination));
             $destination->setLatitude($dataDestination['latitude']);
             $destination->setLongitude($dataDestination['longitude']);
+            $destination->setIsTheCapital($dataDestination['capitale'] === 'oui');
 
             $em->persist($destination);
 
