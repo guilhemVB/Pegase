@@ -11,7 +11,6 @@ Feature: Stages
       | Lyon      | France    |
       | Marseille | France    |
       | New-York  | Etat-Unis |
-      | Seatle    | Etat-Unis |
       | Boston    | Etat-Unis |
     Given les utilisateurs :
       | nom     |
@@ -42,7 +41,6 @@ Feature: Stages
       | Lyon      | France    |
       | Marseille | France    |
       | New-York  | Etat-Unis |
-      | Seatle    | Etat-Unis |
       | Boston    | Etat-Unis |
     Given les utilisateurs :
       | nom     |
@@ -76,7 +74,6 @@ Feature: Stages
       | Lyon      | France    |
       | Marseille | France    |
       | New-York  | Etat-Unis |
-      | Seatle    | Etat-Unis |
       | Boston    | Etat-Unis |
     Given les utilisateurs :
       | nom     |
