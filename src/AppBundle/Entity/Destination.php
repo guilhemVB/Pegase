@@ -12,7 +12,8 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * )
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DestinationRepository")
  */
-class Destination {
+class Destination
+{
 
     use ORMBehaviors\Sluggable\Sluggable;
 
@@ -30,6 +31,12 @@ class Destination {
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     */
+    private $isTheCapital = false;
 
     /**
      * @var string
@@ -76,10 +83,11 @@ class Destination {
 
     public function getSluggableFields()
     {
-        return [ 'name' ];
+        return ['name'];
     }
 
-    public function getRegenerateSlugOnUpdate() {
+    public function getRegenerateSlugOnUpdate()
+    {
         return false;
     }
 
@@ -108,6 +116,25 @@ class Destination {
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTheCapital()
+    {
+        return $this->isTheCapital;
+    }
+
+    /**
+     * @param bool $isTheCapital
+     * @return $this
+     */
+    public function setIsTheCapital($isTheCapital)
+    {
+        $this->isTheCapital = $isTheCapital;
+
+        return $this;
     }
 
     /**
