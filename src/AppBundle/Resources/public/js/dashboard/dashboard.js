@@ -34,9 +34,7 @@ $().ready(function () {
             return;
         }
 
-        $destination.val(null).trigger("change");
-        $numberDays.val(7);
-
+        $("#containerAddDestination form button").button('loading');
         var url = addStageUrl.replace("0", data.destinationId);
         $.post(url, data, function (response) {
             window.location.reload();
