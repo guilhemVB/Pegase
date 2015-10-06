@@ -132,7 +132,14 @@ class CRUDStageController extends Controller
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->changeNumberDays($stage, $nbDays);
 
-        return new JsonResponse(['success' => true, 'nbDays' => $nbDays]);
+        $prices = $stage->getDestination()->getPrices();
+        $stagePrice = $nbDays * ($prices['accommodation'] + $prices['life cost']);
+
+        return new JsonResponse([
+            'nbDays'     => $nbDays,
+            'stageId'    => $stage->getId(),
+            'stagePrice' => $stagePrice,
+        ]);
     }
 
 }
