@@ -1,6 +1,17 @@
-<span class="badge"
+<span class="badge badgeStarsColorYellow"
       {% if toolTipData is defined %} data-toggle="tooltip" data-placement="top" title="{{ toolTipData }}"{% endif %}>
-    {% for i in 1..nbStars %}
-        <i class="glyphicon glyphicon-star"></i>
-    {% endfor %}
+    {% set numberStars = 3 %}
+
+    {% if nbStars != 0 %}
+        {% for i in 1..nbStars %}
+            <i class="fa fa-star"></i>
+            {% set numberStars = numberStars - 1 %}
+        {% endfor %}
+    {% endif %}
+
+    {% if numberStars != 0 %}
+        {% for i in 1..numberStars %}
+            <i class="fa fa-star-o"></i>
+        {% endfor %}
+    {% endif %}
 </span>

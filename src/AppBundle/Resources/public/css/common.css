@@ -51,3 +51,11 @@ footer a {
     background-color: #4C84B2;
     color: white;
 }
+
+.badgeStarsColorYellow .fa-star {
+    color: #FFD800;
+}
+
+.badgeStarsColorYellow .fa-star-o {
+    opacity: 0.6;
+}
