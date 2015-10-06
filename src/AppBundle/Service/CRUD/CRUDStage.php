@@ -108,4 +108,15 @@ class CRUDStage
 
         return $stage;
     }
+
+    /**
+     * @param Stage $stage
+     * @param float $nbDays
+     */
+    public function changeNumberDays($stage, $nbDays)
+    {
+        $stage->setNbDays($nbDays);
+        $this->em->persist($stage);
+        $this->em->flush();
+    }
 }

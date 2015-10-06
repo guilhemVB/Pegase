@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 /**
  * @package AppBundle\Repository
+ * @method Stage find($id)
  */
 class StageRepository extends EntityRepository
 {

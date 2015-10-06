@@ -104,10 +104,35 @@ class CRUDStageController extends Controller
         $CRUDStage->changePosition($stage, $oldPosition, $newPosition);
 
         /** @var VoyageService $voyageService */
-        $voyageService =$this->get('voyage_service');
+        $voyageService = $this->get('voyage_service');
         $maplaceData = $voyageService->buildMaplaceDataFromVoyage($stage->getVoyage());
 
         return new JsonResponse(['success' => true, 'maplaceData' => $maplaceData]);
+    }
+
+    /**
+     * @Route("/changeNbDays", name="changeNbDaysStage")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function changeNumberDaysAction(Request $request)
+    {
+        $stageId = $request->get('pk');
+        $nbDays = $request->get('value');
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        $stage = $stageRepository->find($stageId);
+
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->changeNumberDays($stage, $nbDays);
+
+        return new JsonResponse(['success' => true, 'nbDays' => $nbDays]);
     }
 
 }

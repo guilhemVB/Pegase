@@ -12,7 +12,7 @@
             {% include 'AppBundle:Destination:stars.html.twig' with {'nbStars' : voyageStats.stagesStats[stage.id].nbStars, 'toolTipData' : toolTipData } %}
         </div>
         <div class="col-sm-2">
-            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
+            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
         </div>
         <div class="col-sm-3">
             {{ (destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays }} €
