@@ -7,6 +7,7 @@ use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\CRUD\CRUDStage;
+use AppBundle\Service\Stats\VoyageStats;
 use AppBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -135,10 +136,17 @@ class CRUDStageController extends Controller
         $prices = $stage->getDestination()->getPrices();
         $stagePrice = $nbDays * ($prices['accommodation'] + $prices['life cost']);
 
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $voyage = $stage->getVoyage();
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+
         return new JsonResponse([
             'nbDays'     => $nbDays,
             'stageId'    => $stage->getId(),
             'stagePrice' => $stagePrice,
+            'voyageStats'  => $voyageStats->calculate($voyage, $stagesSorted),
         ]);
     }
 

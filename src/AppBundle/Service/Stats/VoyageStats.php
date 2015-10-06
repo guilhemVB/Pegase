@@ -11,6 +11,16 @@ class VoyageStats
 {
 
     /**
+     * @var \Twig_Environment
+     */
+    private $twig;
+
+    public function __construct(\Twig_Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
+    /**
      * @param Voyage $voyage
      * @param Stage[] $stagesSorted
      * @return array
@@ -58,10 +68,13 @@ class VoyageStats
             $prices = $destination->getPrices();
             $totalCost += ($prices['accommodation'] + $prices['life cost']) * $stage->getNbDays();
 
+            $nbStars = $this->extractNbStart($dateFrom, $dateTo, $destination);
+            $toolTipData = $dateFrom->format('d/m/Y') . ' - ' . $dateTo->format('d/m/Y');
             $stagesStats[$stage->getId()] = [
-                'dateFrom' => $dateFrom,
-                'dateTo'   => $dateTo,
-                'nbStars'  => $this->extractNbStart($dateFrom, $dateTo, $destination),
+                'dateFrom'  => $dateFrom,
+                'dateTo'    => $dateTo,
+                'nbStars'   => $nbStars,
+                'starsView' => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars, 'toolTipData' => $toolTipData]),
             ];
         }
 

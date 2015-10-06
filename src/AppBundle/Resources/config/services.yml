@@ -6,6 +6,8 @@ services:
 
     voyage_stats:
         class : AppBundle\Service\Stats\VoyageStats
+        arguments:
+            - @twig
 
     crud_stage:
         class : AppBundle\Service\CRUD\CRUDStage
