@@ -100,11 +100,11 @@
                         <blockquote>
                             <h4>
                                 Nombre d'étapes<span
-                                        class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
+                                    class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
                             </h4>
                             <h4>
                                 Coût moyen estimé, sans transport<span
-                                        class="pull-right label label-danger">{{ voyageStats.totalCost }}€</span>
+                                    class="pull-right label label-danger">{{ voyageStats.totalCost }}€</span>
                             </h4>
                             <h4>
                                 Durée du voyage<span class="pull-right label label-danger">
@@ -112,19 +112,19 @@
                             </h4>
                             <h4>
                                 Date de départ<span
-                                        class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
+                                    class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
                             </h4>
                             <h4>
                                 Date de retour<span
-                                        class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
+                                    class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
                             </h4>
                             <h4>
                                 Nombre de pays traversés<span
-                                        class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
+                                    class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
                             </h4>
                             <h4>
                                 Distance parcourue à vol d'oiseau <span
-                                        class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round }}
+                                    class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round }}
                                     km</span>
                             </h4>
                         </blockquote>
@@ -145,7 +145,8 @@
     {% block javascripts %}
         <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
         {{ parent() }}
-        <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+        <script
+            src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
         <script src="//cdn.jsdelivr.net/sortable/1.2.1/Sortable.min.js"></script>
         <script src="{{ asset('/js/maplace.js') }}"></script>
@@ -172,8 +173,12 @@
                         var priceHtml = response.stagePrice + ' €';
                         $stagePrice.html(priceHtml);
 
+                        $.each(response.voyageStats.stagesStats, function (stageId, stats) {
+                            var $stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
+                            $stageStars.html(stats.starsView);
+                        });
+
                         //response.voyageStats.stagesStats
-                        debugger;
                     },
                     source: [
                         {value: 1, text: '1 jour'},
