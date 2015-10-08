@@ -1,6 +1,6 @@
 Feature: Stats voyage
 
-  Scenario: Changer l'ordre des étapes -> de 2 à 3
+  Scenario: Calculer les stats
     Given les pays :
       | nom       |
       | France    |
