@@ -35,12 +35,11 @@ class CRUDVoyageController extends Controller
         $name = $request->get('name');
         $deparatureDate = $request->get('deparatureDate');
         $destinationId = $request->get('destinationId');
-        $nbTraveller = $request->get('nbTraveller');
         $destination = $destinationRepository->find($destinationId);
 
         /** @var CRUDVoyage $CRUDVoyage */
         $CRUDVoyage = $this->get('crud_voyage');
-        $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination, $nbTraveller);
+        $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination);
 
         return new JsonResponse(['success' => true, 'nextUri' => $this->generateUrl('dashboard')]);
     }

@@ -25,25 +25,15 @@ class CRUDVoyage
      * @param string $name
      * @param string $deparatureDate
      * @param Destination $destination
-     * @param int $nbTraveller
      * @return Voyage
      */
-    public function add(User $user, $name, $deparatureDate, $destination, $nbTraveller)
+    public function add(User $user, $name, $deparatureDate, $destination)
     {
         $voyage = new Voyage();
         $voyage->setUser($user);
         $voyage->setName($name);
         $voyage->setStartDate(new \DateTime($deparatureDate));
         $voyage->setStartDestination($destination);
-
-        for ($i = 0; $i < $nbTraveller; $i++) {
-            $traveller = new Traveller();
-            $traveller->setName('Voyageur ' . ($i + 1));
-            $traveller->setVoyage($voyage);
-            $voyage->addTraveller($traveller);
-
-            $this->em->persist($traveller);
-        }
 
         $this->em->persist($voyage);
         $this->em->flush();

@@ -46,12 +46,6 @@ class Voyage
     private $user;
 
     /**
-     * @var ArrayCollection|Traveller[]
-     * @ORM\OneToMany(targetEntity="Traveller", mappedBy="voyage")
-     */
-    private $travellers;
-
-    /**
      * @var ArrayCollection|Stage[]
      * @ORM\OneToMany(targetEntity="Stage", mappedBy="voyage")
      */
@@ -66,7 +60,6 @@ class Voyage
 
     public function __construct()
     {
-        $this->travellers = new ArrayCollection();
         $this->stages = new ArrayCollection();
         $this->bagItemsVoyage = new ArrayCollection();
     }
@@ -135,33 +128,6 @@ class Voyage
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * @param Traveller $travellers
-     * @return Voyage
-     */
-    public function addTraveller(Traveller $travellers)
-    {
-        $this->travellers[] = $travellers;
-
-        return $this;
-    }
-
-    /**
-     * @param Traveller $travellers
-     */
-    public function removeTraveller(Traveller $travellers)
-    {
-        $this->travellers->removeElement($travellers);
-    }
-
-    /**
-     * @return ArrayCollection|Traveller[]
-     */
-    public function getTravellers()
-    {
-        return $this->travellers;
     }
 
     /**

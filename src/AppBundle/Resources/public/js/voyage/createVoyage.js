@@ -14,7 +14,6 @@ $().ready(function () {
 
         var data = {
             name: $('#voyageName').val(),
-            nbTraveller: $('#numberTravellers').val(),
             deparatureDate: $('#deparatureDate').val(),
             destinationId: $('#destination').val()
         };

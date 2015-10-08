@@ -59,3 +59,7 @@ footer a {
 .badgeStarsColorYellow .fa-star-o {
     opacity: 0.6;
 }
+
+.navbar .liLabel {
+    padding: 15px;
+}
