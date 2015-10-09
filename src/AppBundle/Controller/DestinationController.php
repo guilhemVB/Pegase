@@ -37,18 +37,18 @@ class DestinationController extends Controller
         /** @var User $user */
         $user = $this->getUser();
 
-        $stage = null;
+        $stages = [];
         if (!is_null($user)) {
             $voyages = $user->getVoyages();
             if (count($voyages) > 0) {
-                $stage = $stageRepository->findOneStageFromDestinationAndVoyage($destination, $voyages[0]);
+                $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyages[0]);
             }
         }
 
         $btnAddToVoyage = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
             [
                 'destination' => $destination,
-                'stage'       => $stage,
+                'stages'      => $stages,
             ]);
 
         return $this->render('AppBundle:Destination:view.html.twig',

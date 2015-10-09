@@ -45,7 +45,7 @@ class StageContext extends CommonContext
         /** @var StageRepository $stageRepository */
         $stageRepository = $this->em->getRepository('AppBundle:Stage');
 
-        $this->CRUDStage->remove($stageRepository->findOneStageFromDestinationAndVoyage($destination, $voyage));
+        $this->CRUDStage->remove($stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage)[0]);
     }
 
     /**
@@ -82,8 +82,8 @@ class StageContext extends CommonContext
         /** @var StageRepository $stageRepository */
         $stageRepository = $this->em->getRepository('AppBundle:Stage');
 
-        $stage = $stageRepository->findOneStageFromDestinationAndVoyage($destination, $voyage);
+        $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
 
-        $this->CRUDStage->changePosition($stage, $oldPosition, $newPosition);
+        $this->CRUDStage->changePosition($stages[0], $oldPosition, $newPosition);
     }
 }

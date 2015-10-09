@@ -47,7 +47,15 @@ class CRUDStageController extends Controller
 
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
-        $stage = $CRUDStage->add($destination, $voyages[0], $nbDays);
+        $CRUDStage->add($destination, $voyages[0], $nbDays);
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyages[0]);
 
         $response = ['success' => true];
 
@@ -55,7 +63,7 @@ class CRUDStageController extends Controller
             $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
                 [
                     'destination' => $destination,
-                    'stage'       => $stage,
+                    'stages'      => $stages,
                 ]);
         }
 
@@ -80,9 +88,18 @@ class CRUDStageController extends Controller
         $response = ['success' => true];
 
         if ($request->get('addBtnAddToVoyage')) {
+            /** @var $em EntityManager $em */
+            $em = $this->get('doctrine')->getManager();
+
+            /** @var $stageRepository StageRepository */
+            $stageRepository = $em->getRepository('AppBundle:Stage');
+
+            $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $stage->getVoyage());
+
             $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
                 [
                     'destination' => $destination,
+                    'stages'      => $stages,
                 ]);
         }
 

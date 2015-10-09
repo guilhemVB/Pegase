@@ -1,12 +1,21 @@
-{% if is_granted('IS_AUTHENTICATED_FULLY') and stage is defined and stage is not null %}
-    <button id="removeStage" type="button" class="btn btn-danger btn-lg" data-stage-id="{{ stage.id }}">
-        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Retirer de votre voyage ({{ stage.nbDays }} {% if stage.nbDays < 2 %}jour{% else %}jours{% endif %})
-    </button>
-{% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
-    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addToVoyageModal"
-            data-destination-name="{{ destination.name }}">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter à votre voyage
-    </button>
-{% else %}
-    <a href="/login" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter à votre voyage</a>
-{% endif %}
+<div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addToVoyageModal"
+                data-destination-name="{{ destination.name }}">
+            <i class="fa fa-plus"></i> Ajouter
+        </button>
+    {% else %}
+        <a href="/login" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter à
+            votre voyage</a>
+    {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') and stages is defined %}
+
+        {% for stage in stages %}
+            <button id="removeStage" type="button" class="btn btn-danger" data-stage-id="{{ stage.id }}">
+                <i class="fa fa-minus"></i> {{ stage.nbDays }} jour{% if stage.nbDays > 1 %}s{% endif %}
+            </button>
+        {% endfor %}
+    {% endif %}
+</div>
+

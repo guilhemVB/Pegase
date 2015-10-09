@@ -17,9 +17,9 @@ class StageRepository extends EntityRepository
     /**
      * @param Destination $destination
      * @param Voyage $voyage
-     * @return Stage|null
+     * @return Stage[]
      */
-    public function findOneStageFromDestinationAndVoyage(Destination $destination, Voyage $voyage)
+    public function findStagesFromDestinationAndVoyage(Destination $destination, Voyage $voyage)
     {
         $qb = $this->createQueryBuilder('stage')
             ->select('stage')
@@ -30,9 +30,9 @@ class StageRepository extends EntityRepository
             ->setParameter('destination', $destination)
             ->setParameter('voyage', $voyage);
         try {
-            return $qb->getQuery()->getSingleResult();
+            return $qb->getQuery()->getResult();
         } catch (\Exception $e) {
-            return null;
+            return [];
         }
     }
 }
