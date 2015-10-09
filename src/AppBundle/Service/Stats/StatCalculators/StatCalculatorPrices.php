@@ -7,12 +7,17 @@ use AppBundle\Entity\Stage;
 class StatCalculatorPrices implements StatCalculatorInterface
 {
     /** @var int */
-    private $totalCost = 0;
+    private $totalCostAccommodation = 0;
+
+    /** @var int */
+    private $totalCostLifeCost = 0;
 
     public function addStage(Stage $stage)
     {
         $prices = $stage->getDestination()->getPrices();
-        $this->totalCost += ($prices['accommodation'] + $prices['life cost']) * $stage->getNbDays();
+        $nbDays = $stage->getNbDays();
+        $this->totalCostAccommodation += $prices['accommodation'] * $nbDays;
+        $this->totalCostLifeCost += $prices['life cost'] * $nbDays;
     }
 
     /**
@@ -20,6 +25,10 @@ class StatCalculatorPrices implements StatCalculatorInterface
      */
     public function getStats()
     {
-        return ['totalCost' => $this->totalCost];
+        return [
+            'totalCost'              => $this->totalCostAccommodation + $this->totalCostLifeCost,
+            'totalCostAccommodation' => $this->totalCostAccommodation,
+            'totalCostLifeCost'      => $this->totalCostLifeCost,
+        ];
     }
 }
