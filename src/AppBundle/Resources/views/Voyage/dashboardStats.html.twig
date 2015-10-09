@@ -1,0 +1,59 @@
+<div class="container-fluid containerBlue" id="containerStats">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <h3 class="text-center">
+                            <span class="label label-warning">{{ voyageStats.nbDays }}
+                                jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
+                </h3>
+                <blockquote class="col-lg-10 col-lg-offset-1">
+                    <p>
+                        Date de départ <span class="pull-right">{{ voyageStats.startDate|date("d/m/Y") }}</span>
+                    </p>
+
+                    <p>
+                        Date de retour <span class="pull-right">{{ voyageStats.endDate|date("d/m/Y") }}</span>
+                    </p>
+                </blockquote>
+            </div>
+
+            <div class="col-lg-4">
+                <h3 class="text-center">
+                    <span class="label label-success">{{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+                </h3>
+                <blockquote class="col-lg-8 col-lg-offset-2">
+                    <p>
+                        Logement <span
+                                class="pull-right">{{ voyageStats.totalCostAccommodation|number_format(0, ',', ' ') }} &euro;</span>
+                    </p>
+
+                    <p>
+                        Autre <span
+                                class="pull-right">{{ voyageStats.totalCostLifeCost|number_format(0, ',', ' ') }} &euro;</span>
+                    </p>
+                </blockquote>
+            </div>
+
+            <div class="col-lg-4">
+                <h3 class="text-center">
+                            <span class="label label-danger">{{ voyageStats.nbStages }}
+                                étape{% if voyageStats.nbStages > 0 %}s{% endif %}</span>
+                </h3>
+                <blockquote class="col-lg-10 col-lg-offset-1">
+                    <p>
+                        Nombre de pays <span class="pull-right">{{ voyageStats.nbCountries }} pays</span>
+                    </p>
+
+                    <p>
+                        Distance parcourue <span class="pull-right">
+                                    {{ voyageStats.crowFliesDistance|round|number_format(0, ',', ' ') }} km
+                                </span>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+
+    </div>
+</div>
+

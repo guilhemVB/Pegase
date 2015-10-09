@@ -66,18 +66,28 @@ $().ready(function () {
                 };
                 var url = changePositionStageUrl.replace(0, stageId);
                 $.post(url, data, function (response) {
+
                     maplace.Load({
                         locations: response.maplaceData,
                         map_div: '#gmap',
                         controls_on_map: false,
                         type: 'polyline'
                     });
+
+                    updateStats(response.statsView);
+
                 }, "json");
             }
         });
 
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    function updateStats(statsView) {
+        var $dashboardStatsContainer = $("#dashboardStatsContainer");
+        $dashboardStatsContainer.empty();
+        $dashboardStatsContainer.append(statsView);
+    }
 
 
     $.fn.editable.defaults.mode = 'inline';
@@ -93,6 +103,7 @@ $().ready(function () {
             },
             success: function (response, newValue) {
                 $.updateNavBarInfos();
+                updateStats(response.statsView);
 
                 var $stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
                 $stagePrice.removeClass('editableform-loading');

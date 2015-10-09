@@ -101,15 +101,32 @@ class CRUDStageController extends Controller
         $newPosition = $request->get('newPosition');
         $oldPosition = $request->get('oldPosition');
 
+        $voyage = $stage->getVoyage();
+
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->changePosition($stage, $oldPosition, $newPosition);
 
         /** @var VoyageService $voyageService */
         $voyageService = $this->get('voyage_service');
-        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($stage->getVoyage());
+        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
 
-        return new JsonResponse(['success' => true, 'maplaceData' => $maplaceData]);
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('AppBundle:Stage');
+
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($stagesSorted);
+
+        return new JsonResponse([
+            'maplaceData' => $maplaceData,
+            'statsView'   => $this->renderView('AppBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+        ]);
     }
 
     /**
@@ -143,11 +160,14 @@ class CRUDStageController extends Controller
         $voyage = $stage->getVoyage();
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($stagesSorted);
+
         return new JsonResponse([
-            'nbDays'     => $nbDays,
-            'stageId'    => $stage->getId(),
-            'stagePrice' => $stagePrice,
-            'voyageStats'  => $voyageStats->calculate($stagesSorted, [new StatCalculatorStageStats($this->get('twig'))]),
+            'nbDays'      => $nbDays,
+            'stageId'     => $stage->getId(),
+            'stagePrice'  => $stagePrice,
+            'voyageStats' => $voyageStatsCalculated,
+            'statsView'   => $this->renderView('AppBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated])
         ]);
     }
 
