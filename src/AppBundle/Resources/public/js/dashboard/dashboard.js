@@ -94,7 +94,7 @@ $().ready(function () {
             success: function (response, newValue) {
                 var $stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
                 $stagePrice.removeClass('editableform-loading');
-                var priceHtml = response.stagePrice + ' €';
+                var priceHtml = response.stagePrice + ' &euro;';
                 $stagePrice.html(priceHtml);
 
                 $.each(response.voyageStats.stagesStats, function (stageId, stats) {

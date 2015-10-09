@@ -7,6 +7,7 @@ use AppBundle\Entity\Stage;
 use AppBundle\Entity\User;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\CRUD\CRUDStage;
+use AppBundle\Service\Stats\StatCalculators\StatCalculatorStageStats;
 use AppBundle\Service\Stats\VoyageStats;
 use AppBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
@@ -146,7 +147,7 @@ class CRUDStageController extends Controller
             'nbDays'     => $nbDays,
             'stageId'    => $stage->getId(),
             'stagePrice' => $stagePrice,
-            'voyageStats'  => $voyageStats->calculate($voyage, $stagesSorted),
+            'voyageStats'  => $voyageStats->calculate($stagesSorted, [new StatCalculatorStageStats($this->get('twig'))]),
         ]);
     }
 

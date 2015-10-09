@@ -13,9 +13,9 @@ class StatCalculatorCountries implements StatCalculatorInterface
     {
         $country = $stage->getDestination()->getCountry();
 
-        $countries[$country->getName()] =
-            isset($countries[$country->getName()]) ?
-                $countries[$country->getName()] + 1 :
+        $this->countries[$country->getName()] =
+            isset($this->countries[$country->getName()]) ?
+                $this->countries[$country->getName()] + 1 :
                 1;
     }
 

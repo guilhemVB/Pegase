@@ -62,7 +62,7 @@ class VoyageController extends Controller
                 'voyage'       => $voyage,
                 'stagesSorted' => $stagesSorted,
                 'maplaceData'  => json_encode($maplaceData),
-                'voyageStats'  => $voyageStats->calculate($voyage, $stagesSorted),
+                'voyageStats'  => $voyageStats->calculateAllStats($stagesSorted),
                 'countries'    => $countries,
             ]);
     }

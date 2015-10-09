@@ -3,23 +3,20 @@
 namespace AppBundle\Service\Stats\StatCalculators;
 
 use AppBundle\Entity\Stage;
-use AppBundle\Entity\Voyage;
 
 class StatCalculatorDates implements StatCalculatorInterface
 {
     /** @var int */
     private $nbDays = 0;
 
-    /** @var  \DateTime */
-    private $startDate;
-
-    function __construct(Voyage $voyage)
-    {
-        $this->startDate = $voyage->getStartDate();
-    }
+    /** @var  \DateTime|null */
+    private $startDate = null;
 
     public function addStage(Stage $stage)
     {
+        if (is_null($this->startDate)) {
+            $this->startDate = $stage->getVoyage()->getStartDate();
+        }
         $this->nbDays += $stage->getNbDays();
     }
 

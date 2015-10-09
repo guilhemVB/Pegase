@@ -4,7 +4,6 @@ namespace AppBundle\Service\Stats\StatCalculators;
 
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\Stage;
-use AppBundle\Entity\Voyage;
 use AppBundle\Service\Tools\DestinationPeriods;
 
 class StatCalculatorStageStats implements StatCalculatorInterface
@@ -24,16 +23,20 @@ class StatCalculatorStageStats implements StatCalculatorInterface
     /** @var \DateTime */
     private $dateTo;
 
-    public function __construct(Voyage $voyage, \Twig_Environment $twig)
+    public function __construct(\Twig_Environment $twig)
     {
         $this->twig = $twig;
         $this->dateFrom = null;
-        $this->dateTo = $voyage->getStartDate();
+        $this->dateTo = null;
     }
 
 
     public function addStage(Stage $stage)
     {
+        if (is_null($this->dateTo)) {
+            $this->dateTo = $stage->getVoyage()->getStartDate();
+        }
+
         $this->dateFrom = $this->dateTo;
         $this->dateTo = clone $this->dateFrom;
         $this->dateTo->add(new \DateInterval('P' . $stage->getNbDays() . 'D'));
