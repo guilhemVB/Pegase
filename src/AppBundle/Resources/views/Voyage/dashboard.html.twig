@@ -45,7 +45,7 @@
                     <div class="col-sm-12">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h3>Ajouter une destination</h3>
+                                <h3 id="addDestinationHeader">Ajouter une destination</h3>
 
                                 <form class="form-inline">
                                     <div class="form-group">
@@ -91,59 +91,54 @@
         </div>
 
 
-        <div class="container-fluid containerBlue">
+        <div class="container-fluid containerBlue" id="containerStats">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <span class="label label-success pull-right">Success</span>
-                    </div>
-
-                    <div class="col-lg-5 col-lg-offset-2">
-                        <span class="label label-success">Success</span>
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <h3>Tableau de bord de votre voyage</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <blockquote>
-                            <h4>
-                                Nombre d'étapes<span
-                                        class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
-                            </h4>
-                            <h4>
-                                Coût moyen estimé, sans transport<span
-                                        class="pull-right label label-danger">{{ voyageStats.totalCost|number_format(0, ',', ' ') }}€</span>
-                            </h4>
-                            <h4>
-                                Durée du voyage<span class="pull-right label label-danger">
-                            {{ voyageStats.nbDays }} jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
-                            </h4>
-                            <h4>
-                                Date de départ<span
-                                        class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
-                            </h4>
-                            <h4>
-                                Date de retour<span
-                                        class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
-                            </h4>
-                            <h4>
-                                Nombre de pays traversés<span
-                                        class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
-                            </h4>
-                            <h4>
-                                Distance parcourue à vol d'oiseau <span
-                                        class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round|number_format(0, ',', ' ') }}
-                                    km</span>
-                            </h4>
+                    <div class="col-lg-4">
+                        <h3 class="text-center">
+                            <span class="label label-warning">{{ voyageStats.nbDays }}
+                                jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
+                        </h3>
+                        <blockquote class="col-lg-10 col-lg-offset-1">
+                            <p>
+                                Date de départ <span class="pull-right">{{ voyageStats.startDate|date("d/m/Y") }}</span>
+                            </p>
+                            <p>
+                                Date de retour <span class="pull-right">{{ voyageStats.endDate|date("d/m/Y") }}</span>
+                            </p>
                         </blockquote>
                     </div>
-                    <div class="col-md-6">
-                        Date de départ
+
+                    <div class="col-lg-4">
+                        <h3 class="text-center">
+                            <span class="label label-success">{{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+                        </h3>
+                        <blockquote class="col-lg-8 col-lg-offset-2">
+                            <p>
+                                Logement <span class="pull-right">{{ voyageStats.totalCostAccommodation|number_format(0, ',', ' ') }} &euro;</span>
+                            </p>
+                            <p>
+                                Autre <span class="pull-right">{{ voyageStats.totalCostLifeCost|number_format(0, ',', ' ') }} &euro;</span>
+                            </p>
+                        </blockquote>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h3 class="text-center">
+                            <span class="label label-danger">{{ voyageStats.nbStages }}
+                                étape{% if voyageStats.nbStages > 0 %}s{% endif %}</span>
+                        </h3>
+                        <blockquote class="col-lg-10 col-lg-offset-1">
+                            <p>
+                                Nombre de pays <span class="pull-right">{{ voyageStats.nbCountries }} pays</span>
+                            </p>
+                            <p>
+                                Distance parcourue <span class="pull-right">
+                                    {{ voyageStats.crowFliesDistance|round|number_format(0, ',', ' ') }} km
+                                </span>
+                            </p>
+                        </blockquote>
                     </div>
                 </div>
 
