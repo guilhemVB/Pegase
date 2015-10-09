@@ -25,8 +25,11 @@ class StatCalculatorDates implements StatCalculatorInterface
      */
     public function getStats()
     {
-        $endDate = clone $this->startDate;
-        $endDate->add(new \DateInterval('P' . $this->nbDays . 'D'));
+        $endDate = null;
+        if (!is_null($this->startDate)) {
+            $endDate = clone $this->startDate;
+            $endDate->add(new \DateInterval('P' . $this->nbDays . 'D'));
+        }
 
         return [
             'startDate' => $this->startDate,

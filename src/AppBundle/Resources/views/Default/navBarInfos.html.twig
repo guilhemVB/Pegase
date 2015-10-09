@@ -1,4 +1,4 @@
 <ul class="nav navbar-nav">
     <li class="liLabel"><span class="label label-primary">{{ nbDays }} jour{% if nbDays > 1 %}s{% endif %}</span></li>
-    <li class="liLabel"><span class="label label-success">{{ totalCost }} €</span></li>
+    <li class="liLabel"><span class="label label-success">{{ totalCost|number_format(0, ',', ' ') }} €</span></li>
 </ul>

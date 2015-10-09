@@ -73,7 +73,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Liste des destinations</h3>
+                        {% if stagesSorted|length > 0 %}
+                            <h3>Liste des destinations</h3>
+                        {% else %}
+                            <h3>Aucune destination</h3>
+                        {% endif %}
                     </div>
                     <div class="col-md-12">
                         <ul id="listDestinations">
@@ -89,6 +93,15 @@
 
         <div class="container-fluid containerBlue">
             <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span class="label label-success pull-right">Success</span>
+                    </div>
+
+                    <div class="col-lg-5 col-lg-offset-2">
+                        <span class="label label-success">Success</span>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -100,11 +113,11 @@
                         <blockquote>
                             <h4>
                                 Nombre d'étapes<span
-                                    class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
+                                        class="pull-right label label-danger">{{ voyageStats.nbStages }}</span>
                             </h4>
                             <h4>
                                 Coût moyen estimé, sans transport<span
-                                    class="pull-right label label-danger">{{ voyageStats.totalCost }}€</span>
+                                        class="pull-right label label-danger">{{ voyageStats.totalCost|number_format(0, ',', ' ') }}€</span>
                             </h4>
                             <h4>
                                 Durée du voyage<span class="pull-right label label-danger">
@@ -112,19 +125,19 @@
                             </h4>
                             <h4>
                                 Date de départ<span
-                                    class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
+                                        class="pull-right label label-danger">{{ voyageStats.startDate|date("d/m/Y") }}</span>
                             </h4>
                             <h4>
                                 Date de retour<span
-                                    class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
+                                        class="pull-right label label-danger">{{ voyageStats.endDate|date("d/m/Y") }}</span>
                             </h4>
                             <h4>
                                 Nombre de pays traversés<span
-                                    class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
+                                        class="pull-right label label-danger">{{ voyageStats.nbCountries }}</span>
                             </h4>
                             <h4>
                                 Distance parcourue à vol d'oiseau <span
-                                    class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round }}
+                                        class="pull-right label label-danger">{{ voyageStats.crowFliesDistance|round|number_format(0, ',', ' ') }}
                                     km</span>
                             </h4>
                         </blockquote>
@@ -146,7 +159,7 @@
         <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
         {{ parent() }}
         <script
-            src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+                src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
         <script src="//cdn.jsdelivr.net/sortable/1.2.1/Sortable.min.js"></script>
         <script src="{{ asset('/js/maplace.js') }}"></script>

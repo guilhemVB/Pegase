@@ -16,6 +16,7 @@ $().ready(function () {
             addBtnAddToVoyage : true
         };
         $.post(addStageUrl, data, function (response) {
+            $.updateNavBarInfos();
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");
     });
@@ -26,6 +27,7 @@ $().ready(function () {
         };
         var url = removeStageUrl.replace("0", $(this).data("stageId"));
         $.post(url, data, function (response) {
+            $.updateNavBarInfos();
             $("#btnAddToVoyage").html(response.btnAddToVoyage);
         }, "json");
     });

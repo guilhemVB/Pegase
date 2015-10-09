@@ -63,3 +63,9 @@ footer a {
 .navbar .liLabel {
     padding: 15px;
 }
+
+.navbar .fa-spinner {
+    padding: 15px;
+    color: white;
+}
+

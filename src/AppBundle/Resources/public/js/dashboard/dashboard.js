@@ -92,6 +92,8 @@ $().ready(function () {
                 $stagePrice.addClass('editableform-loading');
             },
             success: function (response, newValue) {
+                $.updateNavBarInfos();
+
                 var $stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
                 $stagePrice.removeClass('editableform-loading');
                 var priceHtml = response.stagePrice + ' &euro;';
