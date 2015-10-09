@@ -19,10 +19,7 @@
                 </ul>
                 {#{{ render(controller('AcmeArticleBundle:Article:recentArticles', { 'max': 3 })) }}#}
 
-                <ul class="nav navbar-nav">
-                    <li class="liLabel" ><span class="label label-primary">412 jours</span></li>
-                    <li class="liLabel" ><span class="label label-success">5 421 €</span></li>
-                </ul>
+                <span id="navBarInfos"></span>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

@@ -21,13 +21,58 @@
 {% include '::header.html.twig' %}
 
 <main>
-{% block body %}
-{% endblock %}
+    {% block body %}
+    {% endblock %}
 </main>
 
 {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script>
+        var navbarInfosUrl = null;
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        navbarInfosUrl = "{{ path('navbarInfos') }}";
+        {% endif %}
+        (function ($) {
+            //$.startLoader = function ($e) {
+            //    $e = $e || $("#loaderGlobal");
+            //    $e.addClass('rv-loader--shown');
+            //    $e.addClass('rv-loader--loading');
+            //};
+            //
+            //$.stopLoader = function ($e, force) {
+            //    $e = $e || $("#loaderGlobal");
+            //    $e.removeClass('rv-loader--loading');
+            //    if (force) {
+            //        $e.removeClass('rv-loader--shown');
+            //    } else {
+            //        $e.one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+            //            function () {
+            //                if ($e.css('opacity') == 0) {
+            //                    $e.removeClass('rv-loader--shown');
+            //                }
+            //            });
+            //    }
+            //};
+
+            $.updateNavBarInfos = function (voyageId) {
+                if (navbarInfosUrl == null) {
+                    return;
+                }
+                var $navBarInfo = $("#navBarInfos");
+                $navBarInfo.empty();
+                $navBarInfo.append('<i class="fa fa-spinner fa-pulse"></i>');
+
+                $.post(navbarInfosUrl, {}, function (response) {
+                    $navBarInfo.empty();
+                    $navBarInfo.append(response.viewInfos)
+                }, "json");
+
+            };
+        })($);
+
+        $.updateNavBarInfos();
+    </script>
 {% endblock %}
 
 {% include '::footer.html.twig' %}
