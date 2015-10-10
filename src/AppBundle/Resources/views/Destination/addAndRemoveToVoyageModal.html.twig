@@ -1,0 +1,43 @@
+<div id="addToVoyageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ajout de la destination "<span class="destinationNameModal"></span>" à votre voyage</h4>
+            </div>
+            <div class="modal-body">
+                <h5>Combien de jours souhaitez-vous rester sur place ?</h5>
+                {% include 'AppBundle:Destination:selectNbDays.html.twig' with { 'classNbSelect' : 'input-lg'} %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="addToVoyageBtn" type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="removeFromVoyageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Retrait de la destination "<span class="destinationNameModal"></span>" de votre voyage</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Nombre de jour : <span id="nbDaysRemoveFromVoyageModal"></span>
+                </p>
+                <p>
+                    Etape numéro <span id="positionRemoveFromVoyageModal"></span> dans votre voyage
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="removeFromVoyageBtn" type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
+            </div>
+        </div>
+    </div>
+</div>
