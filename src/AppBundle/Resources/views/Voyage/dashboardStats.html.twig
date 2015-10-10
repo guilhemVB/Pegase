@@ -1,4 +1,4 @@
-<div class="container-fluid containerBlue" id="containerStats">
+<div class="container-fluid containerBlue containerPadding" id="containerStats">
     <div class="container">
 
         <div class="row">
@@ -9,11 +9,11 @@
                 </h3>
                 <blockquote class="col-lg-10 col-lg-offset-1">
                     <p>
-                        Date de départ <span class="pull-right">{{ voyageStats.startDate|date("d/m/Y") }}</span>
+                        Date de départ <span class="pull-right">{{ voyageStats.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
                     </p>
 
                     <p>
-                        Date de retour <span class="pull-right">{{ voyageStats.endDate|date("d/m/Y") }}</span>
+                        Date de retour <span class="pull-right">{{ voyageStats.endDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
                     </p>
                 </blockquote>
             </div>

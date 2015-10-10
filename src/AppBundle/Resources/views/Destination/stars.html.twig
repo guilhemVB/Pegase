@@ -1,5 +1,8 @@
 <span class="badge badgeStarsColorYellow"
-      {% if toolTipData is defined %} data-toggle="tooltip" data-placement="top" title="{{ toolTipData }}"{% endif %}>
+        {% if dateFrom is defined and dateTo is defined %}
+    data-toggle="tooltip" data-placement="top"
+    title="{{ dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') ~ " - " ~ dateTo|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}"
+        {% endif %}>
     {% set numberStars = 3 %}
 
     {% if nbStars != 0 %}

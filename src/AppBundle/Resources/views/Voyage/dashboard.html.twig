@@ -20,15 +20,37 @@
     <div id="dashboard">
 
 
-        <div class="container-fluid">
+        <div class="container-fluid containerOrange containerTitleDashboard">
             <div class="container">
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <h1>{{ voyage.name }}</h1>
+                    <div class="col-md-5 page-header" style="margin-top: 0;">
+                        <h1><em>{{ voyage.name }}</em></h1>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Date et lieu de départ</h3>
+                            </div>
+                            <div class="col-md-5">
+                                <p class="lead">{{ voyage.startDestination.name }}</p>
+                            </div>
+                            <div class="col-md-5">
+                                <p class="lead">{{ voyage.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary btn-sm pull-right">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <div class="container-fluid">
+            <div class="container">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
                     <div class="col-md-12">
                         <div id="gmap"></div>

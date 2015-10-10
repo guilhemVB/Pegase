@@ -42,12 +42,11 @@ class StatCalculatorStageStats implements StatCalculatorInterface
         $this->dateTo->add(new \DateInterval('P' . $stage->getNbDays() . 'D'));
 
         $nbStars = $this->extractNbStart($this->dateFrom, $this->dateTo, $stage->getDestination());
-        $toolTipData = $this->dateFrom->format('d/m/Y') . ' - ' . $this->dateTo->format('d/m/Y');
         $this->stagesStats[$stage->getId()] = [
             'dateFrom'  => $this->dateFrom,
             'dateTo'    => $this->dateTo,
             'nbStars'   => $nbStars,
-            'starsView' => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars, 'toolTipData' => $toolTipData]),
+            'starsView' => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars, 'dateFrom' => $this->dateFrom, 'dateTo' => $this->dateTo]),
         ];
     }
 
