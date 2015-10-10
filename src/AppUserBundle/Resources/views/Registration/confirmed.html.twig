@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Inscription - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid containerBlue">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+
+                    <p class="text-center">Bienvenue {{ user.username }}, votre inscription est terminé, vous pouvez désormais commencer à
+                        créer votre voyage.</p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="text-center">
+                    <a class="btn btn-success" href="{{ path('dashboard') }}" role="button">Commencer <i class="fa fa-globe"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        {% include 'AppBundle:Default:vignettes.html.twig' %}
+    </div>
+{% endblock %}
