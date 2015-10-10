@@ -42,6 +42,7 @@ $().ready(function () {
     });
 
     $(".btnDeleteStage").on('click', function (e) {
+        $(this).button('loading');
         var url = removeStageUrl.replace("0", $(this).data('stageId'));
         $.post(url, function (response) {
             window.location.reload();
