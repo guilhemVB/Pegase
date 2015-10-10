@@ -9,12 +9,19 @@
     <div class="container-fluid containerOrange">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 col-sm-offset-4">
+
+                <div class="col-sm-3 col-sm-offset-1">
+                    <h1>Connexion</h1>
+                </div>
+
+                <div class="col-sm-4 col-sm-offset-1">
 
                     {% include 'AppUserBundle:Security:connectionForm.html.twig' %}
 
                     {% if error %}
-                        <p class="text-center"><strong>Nom d'utilisateur ou mot de passe incorrect</strong></p>
+                        <p class="text-center ">
+                            <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
+                        </p>
                     {% endif %}
 
                 </div>
