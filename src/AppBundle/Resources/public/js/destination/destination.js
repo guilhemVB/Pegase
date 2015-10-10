@@ -4,7 +4,7 @@ $().ready(function () {
         var button = $(event.relatedTarget);
         var destinationName = button.data('destinationName');
 
-        $("#numberDays").val(1);
+        $("#numberDays").val(7);
 
         var modal = $(this);
         modal.find('.destinationNameModal').text(destinationName);

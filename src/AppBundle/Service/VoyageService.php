@@ -28,7 +28,7 @@ class VoyageService
     public function buildMaplaceDataFromVoyage(Voyage $voyage)
     {
         $stagesSorted = $this->stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
-        $maplaceData = $this->maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true]);
+        $maplaceData = $this->maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true, 'ordereIcons' => true]);
 
         return array_merge(
             [$this->maplaceMarkerBuilder->buildMarkerFromDestination($voyage->getStartDestination())],
