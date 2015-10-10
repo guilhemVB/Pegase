@@ -1,19 +1,33 @@
 <footer class="container-fluid">
+    <div class="container">
 
-    <div class="row">
-        <p>Site créé par Laura Cucchietti et Guilhem Bourgoin</p>
-        <div class="col-sm-1">
-            <a href="{{ path('country', {'slug' : 'france' }) }}">France</a>
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Site créé par Laura Cucchietti et <a href="http://guilhembourgoin.com/" target="_blank">Guilhem
+                        Bourgoin</a></p>
+            </div>
+            <div class="col-sm-6">
+                <div class="pull-right">
+                    <a href="{{ path('contact') }}"><i class="fa fa-envelope"></i> Contact</a>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-1">
-            <a href="{{ path('country', {'slug' : 'perou' }) }}">Pérou</a>
+
+        <div class="row">
+
+            <div class="col-sm-1">
+                <a href="{{ path('country', {'slug' : 'france' }) }}">France</a>
+            </div>
+            <div class="col-sm-1">
+                <a href="{{ path('country', {'slug' : 'perou' }) }}">Pérou</a>
+            </div>
+            <div class="col-sm-1">
+                <a href="{{ path('country', {'slug' : 'viet-nam' }) }}">Viêt Nam</a>
+            </div>
+            <div class="col-sm-1">
+                <a href="{{ path('country', {'slug' : 'japon' }) }}">Japon</a>
+            </div>
         </div>
-        <div class="col-sm-1">
-            <a href="{{ path('country', {'slug' : 'viet-nam' }) }}">Viêt Nam</a>
-        </div>
-        <div class="col-sm-1">
-            <a href="{{ path('country', {'slug' : 'japon' }) }}">Japon</a>
-        </div>
+
     </div>
-
 </footer>

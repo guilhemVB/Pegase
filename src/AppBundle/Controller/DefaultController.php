@@ -26,4 +26,13 @@ class DefaultController extends Controller
 
         return $this->render('AppBundle:Default:homepage.html.twig', ['countries' => $countries]);
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function contactAction()
+    {
+        return $this->render('AppBundle:Default:contact.html.twig');
+    }
 }
