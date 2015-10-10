@@ -2,8 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Traveller;
-use AppBundle\Entity\Voyage;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\CRUD\CRUDVoyage;
 use Doctrine\ORM\EntityManager;
@@ -41,7 +39,7 @@ class CRUDVoyageController extends Controller
         $CRUDVoyage = $this->get('crud_voyage');
         $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination);
 
-        return new JsonResponse(['success' => true, 'nextUri' => $this->generateUrl('dashboard')]);
+        return new JsonResponse(['nextUri' => $this->generateUrl('dashboard')]);
     }
 
 }

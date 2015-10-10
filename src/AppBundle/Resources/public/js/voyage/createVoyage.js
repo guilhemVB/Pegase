@@ -19,9 +19,7 @@ $().ready(function () {
         };
 
         $.post(voyageCRUDCreateUrl, data, function (response) {
-            if (true === response.success) {
-                document.location.href = response.nextUri;
-            }
+            document.location.href = response.nextUri;
         }, "json");
     });
 });

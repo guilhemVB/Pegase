@@ -1,7 +1,7 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-    Inscription Validée - {{ parent() }}
+    Email envoyé - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -13,8 +13,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
 
                     <p class="text-center lead">
-                        Bienvenu {{ user.username }}, votre inscription est terminé, vous pouvez désormais commencer à
-                        créer votre voyage.
+                        Votre email a bien été envoyé, nous y répondrons dans les plus bref délais !
                     </p>
 
                 </div>
@@ -25,8 +24,9 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="text-center">
-                    <a class="btn btn-success" href="{{ path('dashboard') }}" role="button">Commencer <i
-                                class="fa fa-globe"></i></a>
+                    <a class="btn btn-success" href="{{ path('homepage') }}" role="button">
+                        Retour à la page d'accueil
+                    </a>
                 </div>
 
             </div>
