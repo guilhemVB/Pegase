@@ -1,0 +1,29 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Connexion - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid containerOrange">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+
+                    {% include 'AppUserBundle:Security:connectionForm.html.twig' %}
+
+                    {% if error %}
+                        <p class="text-center"><strong>Nom d'utilisateur ou mot de passe incorrect</strong></p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        {% include 'AppBundle:Default:vignettes.html.twig' %}
+    </div>
+
+{% endblock %}
