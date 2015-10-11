@@ -77,7 +77,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setPrices($this->extractPrices($dataDestination));
             $destination->setLatitude($dataDestination['latitude']);
             $destination->setLongitude($dataDestination['longitude']);
-            $destination->setIsTheCapital($dataDestination['capitale'] === 'oui');
+            $destination->setIsTheCapital($dataDestination['Capitale'] === 'oui');
 
             $em->persist($destination);
 
@@ -121,7 +121,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     private function extractPrices($dataDestination)
     {
         return [
-            'accommodation' => $dataDestination["prix moyen de l'hébergement"],
+            'accommodation' => $dataDestination["prix de l'hébergement"],
             'life cost' => $dataDestination['coût de la vie'],
         ];
     }

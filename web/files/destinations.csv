@@ -1,18 +1,183 @@
-pays;nom;capitale;description;bons plans;prix moyen de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
-France;Paris;oui;Paris (prononcé [pa.ʁi ] Prononciation du titre dans sa version originale Écouter) est la capitale de la France. Elle se situe au cœur d'une vaste plaine fertile au climat tempéré, le Bassin parisien, sur une boucle de la Seine, entre les confluents de celle-ci avec la Marne et l'Oise. Ses habitants s’appellent les Parisiens. Paris est également le chef-lieu de la région Île-de-France et l'unique commune française qui est en même temps un département. Comme les villes françaises de Lyon et de Marseille, elle est divisée en arrondissements, au nombre de vingt, et possède un préfet de police.;Va manger  un macaron  à la pistache!!;32;24;1;1;2;2;2;3;3;3;2;1;1;1;48.864592;2.336492
-France;Lyon;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;45.756573;4.818846
-France;Marseille;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-Espagne;Madrid;oui; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-France;Toulouse;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.648965;1.408876
-France;Brest;; c'est pas trop mal;jgdf;41;30;0;1;2;2;2;3;3;3;2;0;0;1;48.433011;-4.535708
-Espagne;Barcelone;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;43.288654;5.354511
-France;Lille;; c'est pas trop mal;jgdf;41;30;1;1;2;2;2;3;3;3;2;1;1;1;50.686726;2.989743
-Japon;Nagoya;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;35.157560;136.918567
-Japon;Toyohashi;oui;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.769394;137.389987
-Japon;Okazaki;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;34.954924;137.173285
-Japon;Hachinohe;;Si tu aimes les sushis;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;40.511358;141.485591
-Pérou;Lima;oui;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-12.043467;-77.042610
-Pérou;Arequipa;;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-16.413586;-71.538271
-Pérou;Trujillo;;Holà !;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;-8.109940;-79.025181
-Viêt Nam;Hô-Chi-Minh-Ville;;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;10.792060;106.673763
-Viêt Nam;Hanoi;oui;Vibe les nouilles;jgdf;42;23;1;1;2;2;2;3;3;3;2;1;1;1;20.858688;106.690335
+pays;nom;Capitale;description;bons plans;prix de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
+Emirats Arabes Unis;Abou Dabi;oui;;;36;41;3;3;3;3;2;1;0;0;1;2;3;3;;
+Algerie;Alger;oui;capitale de l'Algérie, est surnommée Alger la Joyeuse ou Alger la blanche.;"> Découvrir le Jardin d'Essai du Hamma.
+> Faire une balade au port de Sidi Fredj.
+> Se cultiver au musée national du Bardo.
+> Se rendre au parc aquatique Aquafortland pour se rafraîchir l'été.
+> Visiter les grottes de Cervantès.";14;;2;2;2;2;3;3;3;3;3;3;2;2;;
+Jordanie;Amman;oui;Capitale de la Jordanie, Amman réussi l'alliance de la modernité et des vestiges antiques. ;"> Visiter la citadelle en premier lieu pour une vue imprenable sur le théatre romain
+> La mosquée du roi Abdallah est ouverte au non-musulman mais veiller à vous vêtir de manière appropriée
+> Faire un pique-nique au bord de la Mer Morte.
+> Se promener dans le souk de la ville basse.";8;25;2;2;3;3;3;3;3;3;3;3;3;2;;
+Pays-Bas;Amsterdam;oui;;"> Faire des emplettes dans les multiples marchés d'Amsterdam : le marché aux fleurs flottant, le marché des antiquités , le marché Albert Cuyp...
+> Visiter le quartier des diamantaires et bénéficier de prix avantageux.
+> Faire du patin sur les canaux gelés en hiver.
+> Déambuler dans le quatier rouge (attention, caméra interdite).
+> Découvrir l'ambiance uique des coffee shop.
+> Pique-niquer dans le Vondel Park.
+> Visiter la ville comme les habitants, à bicyclette";22;58;0;0;1;2;3;3;3;3;2;1;1;1;;
+Turquie;Ankara;oui;;;15;;0;0;1;1;3;3;3;3;3;3;1;1;;
+Grèce;Athènes;oui;;"> Se balader dans les quartiers de Monastiraki et de Plaka
+> Assister à un spectacle Karaghiozis
+> Se rendre au grand marché d'Athènes ou encore au marché aux puces de Monastiraki
+> Passer une soirée dans une taverne et écouter les orchestres de danses traditionnelles";16;39;1;1;2;3;3;3;3;3;3;3;3;2;;
+Thaïlande;Bangkok;oui;;;8;16;3;3;3;3;2;2;2;2;1;2;3;3;;
+Espagne;Barcelone;;;"> S'attabler dans un bar à tapas
+> Profiter de l'animation du quartier des Ramblas
+> Admirer les jeux d'éclairage et de jets d'eaux des fontaines de Montjuic 
+> Assister à une course de taureaux
+> Si vous n'êtes pas pudique, rendez-vous  à la plage nudiste de Mar Bella
+> S'immerger dans l'ambiance électrique d' un match de football de la fameuse équipe de Barcelone";12;42;2;2;3;3;3;3;3;3;3;3;3;2;;
+Belize;Belmopan;oui;;;15;35;2;3;3;3;1;1;1;0;0;0;1;1;;
+Allemagne;Berlin;oui;;"> Profiter des marchés de noël en Décembre
+> Découvrir vestige le plus important du mur de Berlin, la East Side Gallery.
+> Visiter Berlin sur la Spree en bateau.
+> Se rendre au Café de Moscou, un des endroits les plus animés de la ville.";14;40;0;0;1;2;3;3;3;3;3;2;1;0;;
+Colombie;Bogota;oui;;;9;;3;3;2;1;2;2;2;2;3;2;2;2;;
+France ;Bordeaux;;;;28;;2;2;2;2;2;3;3;3;3;2;2;2;;
+États-Unis;Boston;;;;45;;0;0;0;1;1;3;3;3;3;1;1;0;;
+Belgique;Bruxelles;oui;;;23;46;0;1;1;1;1;3;3;3;3;1;1;1;;
+Roumanie;Bucarest;oui;;;7;21;0;0;0;1;2;2;3;3;3;1;1;0;;
+Hongrie;Budapest;oui;;"> Découvrir  le Bastion des Pêcheurs.
+> Se relaxer dans une des nombreuses sources thermales réputées depuis les Romains.
+> Se rendre au Château, inscrit depuis 1987 au Patrimoine mondial de l'Humanité par l'UNESCO.
+> Observer la ville depuis le Mont Gellért qui abrite la citadelle.
+> Faire du canoë et se détendre au parc Városliget";9;19;0;0;1;1;3;3;3;3;3;1;1;0;;
+Argentine;Buenos Aires;oui;;"> Admirer le Tango dansé par les Argentins.
+> Partir à la découverte des 40 plaques commémoratives aux grands danseurs de tango sur « Avenue Corrientes ».
+> Regarder un match de football.
+> Flâner dans la Boca (rue commerçante très animée).
+> Goûter à un morceau de boeuf argentin.";14;25;3;3;3;3;1;1;1;1;1;2;3;3;;
+Egypte;Caire;oui;;"> Se promener dans le quartier Khan El Khallili où l'on peut fumer la chicha.
+> Longer les bords du Nil et y admirer les couchers de soleil.
+> Se mêler à la foule des souks et des bazars";7;17;1;1;3;3;3;2;1;2;3;3;3;2;;
+Mexique;Cancun;;;;11;;3;3;3;3;2;2;2;2;2;2;3;3;;
+Venezuela;Caracas;oui;;;15;20;3;3;3;3;3;3;3;3;3;3;3;3;;
+Thaïlande;Chiang Mai;;;;5;13;3;3;3;1;2;2;0;0;0;3;3;3;;
+Thaïlande;Chiang Rai;;;;6;;3;3;3;2;2;0;0;0;2;2;3;3;;
+Danemark;Copenhague;oui;;;24;46;0;0;0;1;1;3;3;3;3;1;1;0;;
+Tunisie;Djerba;;;;18;;1;1;1;3;3;3;3;3;3;3;3;1;;
+Qatar;Doha;oui;;;;;2;3;3;3;2;1;0;0;1;2;3;3;;
+Irlande;Dublin;oui;;;15;52;2;2;2;2;2;2;3;3;2;2;2;2;;
+Croatie;Dubrovnik;;;;23;44;1;1;1;3;3;3;3;3;3;2;0;1;;
+Royaume-Uni;Edinbourg;oui;;;14;53;2;2;2;2;2;2;3;3;2;2;2;2;;
+Maroc;Fes;;;;9;18;1;2;2;3;3;3;2;1;3;3;3;2;;
+Italie;Florence;;;;19;38;1;1;2;3;3;3;3;3;3;3;1;1;;
+Suisse;Genève;;;;38;;0;0;1;1;1;3;3;3;3;1;1;0;;
+Vietnam;Ha Noi;oui;;;7;12;1;1;2;3;2;1;0;1;2;3;3;2;;
+Finlande;Helsinki;;;;26;55;0;0;0;0;1;1;3;3;1;1;0;0;;
+Chine;Hong Kong;;;;15;29;3;3;3;2;0;0;0;0;0;2;3;3;;
+Chili;Ile de Pâques;;;;25;;2;2;2;1;1;3;3;3;3;3;3;2;;
+Turquie;Istanbul;;;;10;23;1;1;1;1;3;3;3;3;3;3;1;1;;
+Indonesie;Jakarta;oui;;;9;14;0;0;0;2;2;3;3;3;3;2;2;0;;
+Israël;Jerusalem;oui;;;17;46;1;1;1;2;3;3;3;3;3;3;3;1;;
+Afrique du Sud;Johannesbourg;;;;11;25;2;3;3;2;1;1;1;1;1;3;3;2;;
+Nepal;Katmandou;oui;;;5;13;1;1;1;3;2;0;0;0;2;3;1;1;;
+Malaisie;Kuala Lumpur;oui;;;6;24;2;0;0;0;0;2;3;2;0;0;0;0;;
+Japon;Kyoto;;;;24;;1;1;1;2;3;2;2;1;2;3;2;2;;
+Cuba;La Havane;oui;;;;;3;3;3;3;2;2;2;2;2;2;3;3;;
+Bolivie;La Paz;;;"> Se rendre à la place Murillo où est érigé le palais législatif, et à la place San Francisco abritant la cathédrale.
+> Apprécier l'architecture des belles maisons coloniales de la calle Jaen.
+> Parcourir les marchés artisanaux de la calle Sagarnaga ou le marché de la sorcellerie.
+> Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;;
+États-Unis;Las Vegas;;;;12;43;2;3;3;2;1;1;0;0;1;3;3;3;;
+Afrique du Sud;Le Cap;;;;11;26;3;3;3;3;1;1;1;1;1;3;3;3;;
+Perou;Lima;oui;;"> Se promener dans le vieux Lima et découvrir son passé colonial.
+> Siroter un verre de pisco sur la place St-Martin.
+> Négocier le prix des marchandises au Mayorista, le grand marché-foire.
+> Monter en taxi et partir à la découverte des quartiers chics et résidentiels de Miraflores et de San Isidro, au sud de la ville.
+> Pratiquer un peu de trekking à l'Instituto Geografico Nacional.
+> Se détendre dans les jardins des quartiers de Miraflores, San Isidro
+> Se rendre à Barranco et à Chorrillos, endroit où est situé El Puente de los Suspiros (le Pont des Soupirs), lieu idyllique pour les amoureux.";9;21;3;3;3;3;3;3;3;3;3;3;3;3;;
+Portugal;Lisbonne;oui;;"> Goûter les pâtisseries de l'Antigua Confeitera de Belém.
+> Se rendre dans le quartier de Barrio Alto pour une de ses maisons de fado";11;35;1;1;2;3;3;3;3;3;3;3;3;1;;
+Royaume-Uni;Londres;oui;;" > Aller dans le West End pour voir une représentation théâtrale ou une comédie musicale.
+> Boire une bière et manger un Fish'n chips dans un pub.
+> Se balader dans Hyde Park et Kensington Gardens.
+> Assister à la relève de la garde devant Buckingham Palace à 11h30 (durée : 45 minutes).
+> Faire les boutiques situées dans les célèbres endroits comme Oxford Streert, Regent Street, Covent Garden, King's Road, Soho, Harrod's ou encore Harvey'Nichols.
+> Dejeuner sur un des nombreux stands de nourriture du monde entier au marché de Camden Town.
+> Essayer la London Eye, la grande roue de Londres (si vous avez les moyens).";24;72;2;2;2;2;2;3;3;3;3;2;2;2;;
+États-Unis;Los Angeles;;;;28;39;1;1;1;1;3;3;3;3;3;3;1;1;;
+Laos;Luang Prabang;;;;6;16;3;3;2;2;1;1;0;0;1;2;3;3;;
+France;Lyon;;;;23;;1;2;2;2;2;3;3;3;3;2;2;2;;
+Espagne;Madrid;oui;;"> Savourer des tapas dans l'un des bars de la capitale.
+> Se rendre le dimanche matin au quartier ""la Latina"" pour chiner divers objets sur le marché du Rastro.
+> Sortir le 31 décembre à la Puerta del Sol pour fêter au son de cloche le Nouvel An.
+> Passer à la ""Casa del Pueblo"" célèbre pour le flamenco.";15;38;1;1;1;1;1;3;3;3;3;2;1;1;;
+Nicaragua;Managa;oui;;;;;3;3;3;3;3;0;2;2;2;0;3;3;;
+Birmanie;Mandalay;;;;16;;3;3;3;1;0;1;2;3;3;2;3;3;;
+Maroc;Marrakech;;;;7;18;1;1;1;3;3;3;0;0;3;3;1;1;;
+Australie;Merlbourne;;;;19;41;3;3;3;3;2;2;2;2;2;2;3;3;;
+États-Unis;Miami;;;;25;46;3;3;3;3;2;2;2;2;0;0;3;3;;
+Canada;Montreal;;;;15;35;0;0;0;0;1;3;3;3;1;1;0;0;;
+Russie;Moscou;oui;;;9;36;0;0;0;1;1;3;3;3;1;1;0;0;;
+Japon;Nagasaki;;;;23;;1;1;1;2;2;0;0;2;0;2;1;1;;
+Kenya;Nairobi;oui;;;13;;3;3;2;0;2;3;3;3;3;3;3;3;;
+Italie;Naples;;;;14;35;1;1;1;2;3;3;3;3;3;3;1;1;;
+États-Unis;New York;;;;43;53;0;0;0;1;3;3;3;3;3;1;0;0;;
+France;Nice;;;;18;43;2;2;2;2;3;3;3;3;3;3;2;2;;
+États-Unis;Nouvelle Orleans;;;;22;33;1;2;2;2;2;2;2;2;2;3;3;1;;
+Norvège;Oslo;oui;;"> Monter sur le tremplin d'Holmenkollen pour profiter du panorama sur Oslo et son fjord.
+> Se prélasser dans un sauna d'Oslo.
+> Déguster un plat local dans un restaurant typique de la ville.
+> Se promener dans Frognerparken 
+> Assister à une représentation au théâtre de la ville.
+> Se rendre à l'opéra.";28;50;0;0;0;1;1;2;3;3;1;1;0;0;;
+Mongolie;Oulan Bator;oui;;;8;;0;0;0;0;0;1;3;1;1;0;0;0;;
+France;Paris;oui;;"> Faire une promenade en bateau-mouche de nuit pour profiter des illuminations sur les façades.
+> Pique-niquer sur le champs de Mars
+> Diner dans le quartier latin pour profiter de l'animation
+> Assister à l'un des multiples spectacles et concerts parisiens.
+> Aller manger dans un bistrot typiquement parisien.";23;51;2;2;2;2;2;3;3;3;3;2;2;2;;
+Chine;Pekin;oui;;;8;21;0;0;0;1;3;3;0;2;3;1;0;0;;
+Australie;Perth;;;;19;;3;3;2;2;2;1;1;1;3;3;3;3;;
+Jordanie;Petra;;;;15;;2;2;3;3;3;3;3;3;3;3;3;2;;
+Cambodge;Phom Penh;oui;;;6;17;3;3;3;2;2;2;1;1;1;2;2;3;;
+Republique Tchèque;Prague;Oui;;"> Se balader sur la rue piétonne Celetna.
+> Se rendre au quartier Art Nouveau.
+> Se promener sur le quai Mazarykovo Nabrezi.
+> Flâner sur Vaclavske Namesti, les Champs-Élysées de Prague.";12;27;0;0;0;1;1;3;3;3;1;1;1;0;;
+Canada;Quebec;;;;17;;0;0;0;0;1;3;3;3;1;1;0;0;;
+Birmanie;Rangoon;oui;;;13;10;3;3;3;1;1;0;0;0;0;0;2;3;;
+Islande;Reykjavik;oui;;;24;50;0;0;0;1;1;1;1;1;1;1;0;0;;
+Grèce;Rhodes;;;;14;;1;1;2;3;3;3;3;3;3;3;2;1;;
+Bresil;Rio de Janeiro;;;;9;26;2;2;2;3;3;3;3;3;3;3;3;2;;
+Italie;Rome;oui;;"> Regarder des pièces de théâtre et des opéras.
+> Assister à des concerts de musique classique, de jazz et de rock.
+> Aller visiter le Vatican à midi pour faire moins de queue.
+> Sortir de Rome pour visiter les thermes de Caracalla, vestiges très bien conservés de thermes romains";20;50;1;1;1;2;3;3;3;3;3;3;1;1;;
+Russie;Saint Petersbourg;;;;6;26;0;0;0;1;1;3;3;3;1;1;0;0;;
+États-Unis;San Francisco;;;;45;46;1;1;1;1;3;3;3;3;3;3;3;1;;
+Costa Rica;San Jose;oui;;"> Se rendre à la Esmeralda vers 23 heures et profiter de la musique jouée par les trios ou les mariachis qui attendent les clients.
+> Préparer une randonnée au Parc National Rincon de la Vieja.
+> Découvrir le rafting.
+> Jouer dans l'un des casinos";10;25;3;3;3;3;0;0;0;0;0;0;3;3;;
+Chine;Shangai;;;;10;27;1;1;1;2;3;2;2;2;2;3;1;1;;
+Cambodge;Siem Reap;;;;5;21;3;3;2;1;2;1;1;1;1;2;3;3;;
+Singapour;Singapour;oui;;;16;38;0;2;0;2;2;2;2;0;2;0;0;0;;
+Bulgarie;Sofia;oui;;;8;30;0;0;1;1;2;3;3;3;3;1;1;0;;
+Suède;Stockholm;oui;;;25;58;0;0;0;1;1;3;3;3;1;1;1;0;;
+Australie;Sydney;;;;19;40;3;3;2;2;2;1;1;1;3;3;3;3;;
+Guatemala;Tikal;;;;;;3;3;3;3;2;0;0;0;0;2;3;3;;
+Japon;Tokyo;oui;;;20;41;0;0;1;1;2;2;2;2;0;0;1;1;;
+Canada;Toronto;;;;22;30;0;0;0;1;1;3;3;3;3;1;0;0;;
+Tunisie;Tunis;oui;;;;;1;1;1;3;3;3;3;3;3;3;3;1;;
+Argentine;Ushuaia;;;;21;;1;1;1;1;0;0;0;0;0;1;1;1;;
+Espagne;Valence;;;;14;;1;1;1;2;3;3;3;3;3;3;2;1;;
+Canada;Vancouver;;;;18;35;0;1;1;1;1;3;3;3;1;1;0;0;;
+Italie;Venise;;;"> Faire une balade en gondole.
+> Assister au Carnaval pour voir les magnifiques costumes
+> Visiter la Fenice, l'opera de Venise, un des temples les plus prestigieux de l'opera Italien.
+> Se perdre dans la multitudes de ses petites ruelles.
+> Découvrir l'art du verre sur l'île de Murano.
+> Goûter à l'authentique café italien sur la place Saint Marc.";18;55;1;1;1;2;3;3;3;3;3;3;1;1;;
+Autriche;Vienne;oui;;"> Marcher dans la ville et apprécier son architecture flamboyante.
+> Prendre un cours de valse dans l'une des écoles de danse de la ville.
+> L'été, profiter des concerts / ballet gratuits en plein air sur la place de l'hôtel de ville.
+> L'hiver, assister à l'un des nombreux bals
+> Se rendre sur les tombes de Beethoven, Schubert, Brahms, Strauss, Schönberg, Stolz au cimetière de Zentralfriedhof.
+> Déguster un café Viennois et une torte dans le café Sacher.";17;49;0;0;0;1;2;3;3;3;3;1;1;0;;
+Laos;Vientiane;oui;;;6;12;3;3;3;3;0;0;0;0;0;3;3;3;;
+États-Unis;Washington;oui;;;27;46;0;0;1;1;3;3;2;3;3;1;1;0;;
+Croatie;Zagreb;oui;;;10;22;0;1;1;1;2;3;3;3;3;2;1;0;;
