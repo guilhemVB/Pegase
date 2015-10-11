@@ -47,6 +47,7 @@ class DestinationController extends Controller
 
         $btnAddToVoyage = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
             [
+                'user'        => $user,
                 'destination' => $destination,
                 'stages'      => $stages,
             ]);

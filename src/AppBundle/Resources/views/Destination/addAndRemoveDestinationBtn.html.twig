@@ -1,9 +1,15 @@
 <div>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addToVoyageModal"
-                data-destination-name="{{ destination.name }}">
-            <i class="fa fa-plus"></i> Ajouter
-        </button>
+        {% if user is not null and user.voyages|length > 0 %}
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addToVoyageModal"
+                    data-destination-name="{{ destination.name }}">
+                <i class="fa fa-plus"></i> Ajouter
+            </button>
+        {% else %}
+            <a href="{{ path('dashboard') }}" class="btn btn-success">
+                <i class="fa fa-plus"></i> Ajouter
+            </a>
+        {% endif %}
     {% else %}
         <a href="/login" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter à
             votre voyage</a>

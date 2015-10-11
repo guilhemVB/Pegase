@@ -35,13 +35,13 @@ class CRUDStageController extends Controller
         $voyages = $user->getVoyages();
         if (count($voyages) === 0) {
             $error = "Can't find voyage";
-            return new JsonResponse(['error' => $error], 400);
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
         }
 
         $nbDays = $request->get('nbDays');
         if ($nbDays == 0) {
             $error = "nbDays cannot be empty";
-            return new JsonResponse(['error' => $error], 400);
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
         }
 
         /** @var CRUDStage $CRUDStage */
@@ -61,6 +61,7 @@ class CRUDStageController extends Controller
         if ($request->get('addBtnAddToVoyage')) {
             $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
                 [
+                    'user'        => $this->getUser(),
                     'destination' => $destination,
                     'stages'      => $stages,
                 ]);
@@ -97,6 +98,7 @@ class CRUDStageController extends Controller
 
             $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
                 [
+                    'user'        => $this->getUser(),
                     'destination' => $destination,
                     'stages'      => $stages,
                 ]);
