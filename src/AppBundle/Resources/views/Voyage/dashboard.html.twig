@@ -39,7 +39,8 @@
                                 <p class="lead">{{ voyage.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</p>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-primary btn-sm pull-right">
+                                <button type="button" class="btn btn-primary btn-sm pull-right"
+                                        data-toggle="modal" data-target="#updateVoyageModal">
                                     <i class="fa fa-pencil"></i> Modifier
                                 </button>
                             </div>
@@ -117,28 +118,28 @@
             {% include 'AppBundle:Voyage:dashboardStats.html.twig' %}
         </span>
 
-
+        {% include 'AppBundle:Voyage:updateModal.html.twig' %}
     </div>
 {% endblock %}
 
 
-    {% block javascripts %}
-        <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
-        {{ parent() }}
-        <script
-                src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-        <script src="//cdn.jsdelivr.net/sortable/1.2.1/Sortable.min.js"></script>
-        <script src="{{ asset('/js/maplace.js') }}"></script>
-        <script>
-            var maplaceData = {{ maplaceData|raw }};
-            var changePositionStageUrl = "{{ path('changePositionStage', {'id' : 0}) }}";
-            var addStageUrl = "{{ path('addStage', {'id' : 0}) }}";
-            var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
-            var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
-        </script>
-        <script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>
+{% block javascripts %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
+    {{ parent() }}
+    <script
+            src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/sortable/1.2.1/Sortable.min.js"></script>
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+        var maplaceData = {{ maplaceData|raw }};
+        var changePositionStageUrl = "{{ path('changePositionStage', {'id' : 0}) }}";
+        var addStageUrl = "{{ path('addStage', {'id' : 0}) }}";
+        var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
+        var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
+    </script>
+    <script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>
 
-    {% endblock %}
+{% endblock %}
 
 

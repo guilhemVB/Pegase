@@ -1,6 +1,6 @@
 {#doc : https://select2.github.io/examples.html #}
 {#doc : https://github.com/select2/select2-bootstrap-theme #}
-<select class="form-control input-lg" id="destination" >
+<select class="form-control {% if classSelect is defined %}{{ classSelect }}{% endif %}" id="destination" required="required">
     <option></option>
     {% for country in countries %}
         <optgroup label="{{ country.name }}">

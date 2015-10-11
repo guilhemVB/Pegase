@@ -36,6 +36,7 @@ class Voyage
     /**
      * @var Destination
      * @ORM\ManyToOne(targetEntity="Destination", inversedBy="voyage")
+     * @ORM\JoinColumn(name="destination_id", referencedColumnName="id", nullable=false)
      */
     private $startDestination;
 

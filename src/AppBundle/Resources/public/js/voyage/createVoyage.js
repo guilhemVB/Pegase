@@ -1,7 +1,9 @@
 $().ready(function () {
 
-    $('#deparatureDate').datepicker({
-        format: 'dd-mm-yyyy'
+    $('#deparatureDate div').datepicker({
+        language: "fr",
+        format: 'dd-mm-yyyy',
+        todayHighlight: true
     });
 
     $("#createVoyage #destination").select2({
@@ -18,6 +20,7 @@ $().ready(function () {
             destinationId: $('#destination').val()
         };
 
+        $("form button").button('loading');
         $.post(voyageCRUDCreateUrl, data, function (response) {
             document.location.href = response.nextUri;
         }, "json");
