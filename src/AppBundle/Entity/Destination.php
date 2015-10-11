@@ -45,8 +45,8 @@ class Destination
     private $description;
 
     /**
-     * @var string
-     * @ORM\Column(name="tips", type="text")
+     * @var array
+     * @ORM\Column(name="tips", type="array")
      */
     private $tips;
 
@@ -252,7 +252,7 @@ class Destination
     }
 
     /**
-     * @param string $tips
+     * @param array $tips
      * @return Destination
      */
     public function setTips($tips)
@@ -263,7 +263,7 @@ class Destination
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getTips()
     {

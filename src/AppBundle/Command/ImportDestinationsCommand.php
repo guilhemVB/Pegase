@@ -58,6 +58,11 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
 
+            if (strlen($description) > 650) {
+                $output->writeln("<error>La description de la destination '$name' est trop grande, 650 caractères maximum. La destination n'a pas été importée.</error>");
+                continue;
+            }
+
             $country = $countryRepository->findOneByName($countryName);
             if (is_null($country)) {
                 $output->writeln("<error>Le pays '$countryName' de la destination '$name' n'a pas été trouvé. La destination n'a pas été importée.</error>");
@@ -72,7 +77,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             }
             $destination->setCountry($country);
             $destination->setDescription($description);
-            $destination->setTips($dataDestination['bons plans']);
+            $destination->setTips($this->extractTips($dataDestination['bons plans']));
             $destination->setPeriods($this->extractPeriods($dataDestination));
             $destination->setPrices($this->extractPrices($dataDestination));
             $destination->setLatitude($dataDestination['latitude']);
@@ -99,15 +104,15 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     {
         $periods = DestinationPeriods::getPeriods();
         return [
-            $periods[1] => $dataDestination['janvier'],
-            $periods[2] => $dataDestination['février'],
-            $periods[3] => $dataDestination['mars'],
-            $periods[4] => $dataDestination['avril'],
-            $periods[5] => $dataDestination['mai'],
-            $periods[6] => $dataDestination['juin'],
-            $periods[7] => $dataDestination['juillet'],
-            $periods[8] => $dataDestination['août'],
-            $periods[9] => $dataDestination['septembre'],
+            $periods[1]  => $dataDestination['janvier'],
+            $periods[2]  => $dataDestination['février'],
+            $periods[3]  => $dataDestination['mars'],
+            $periods[4]  => $dataDestination['avril'],
+            $periods[5]  => $dataDestination['mai'],
+            $periods[6]  => $dataDestination['juin'],
+            $periods[7]  => $dataDestination['juillet'],
+            $periods[8]  => $dataDestination['août'],
+            $periods[9]  => $dataDestination['septembre'],
             $periods[10] => $dataDestination['octobre'],
             $periods[11] => $dataDestination['novembre'],
             $periods[12] => $dataDestination['décembre'],
@@ -122,7 +127,26 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     {
         return [
             'accommodation' => $dataDestination["prix de l'hébergement"],
-            'life cost' => $dataDestination['coût de la vie'],
+            'life cost'     => $dataDestination['coût de la vie'],
         ];
+    }
+
+    /**
+     * @param array $tipsStr
+     * @return array
+     */
+    private function extractTips($tipsStr)
+    {
+        $tips = [];
+
+        foreach (explode('>', $tipsStr) as $tip) {
+            $tip = trim($tip);
+
+            if (!empty($tip)) {
+                $tips[] = $tip;
+            }
+        }
+
+        return $tips;
     }
 }
