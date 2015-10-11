@@ -11,8 +11,9 @@
             </a>
         {% endif %}
     {% else %}
-        <a href="/login" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter à
-            votre voyage</a>
+        <a href="#" data-toggle="modal" class="btn btn-success" data-target="#connectionModal">
+            <i class="fa fa-plus"></i> Ajouter à votre voyage
+        </a>
     {% endif %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') and stages is defined %}

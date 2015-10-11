@@ -23,14 +23,14 @@
     border-radius: 0 !important;
 }
 
-footer {
+#footer {
     background-color: #222;
     border-color: #080808;
     color: grey;
     padding: 20px;
 }
 
-footer a {
+#footer a {
     color: grey;
 }
 
