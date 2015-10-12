@@ -11,3 +11,9 @@
     background: cadetblue;
 }
 
+
+.datepicker table tr td.today {
+    color: #000000;
+    background-color: cornsilk;
+    border-color: #ffb733;
+}

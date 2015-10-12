@@ -35,26 +35,6 @@
         navbarInfosUrl = "{{ path('navbarInfos') }}";
         {% endif %}
         (function ($) {
-            //$.startLoader = function ($e) {
-            //    $e = $e || $("#loaderGlobal");
-            //    $e.addClass('rv-loader--shown');
-            //    $e.addClass('rv-loader--loading');
-            //};
-            //
-            //$.stopLoader = function ($e, force) {
-            //    $e = $e || $("#loaderGlobal");
-            //    $e.removeClass('rv-loader--loading');
-            //    if (force) {
-            //        $e.removeClass('rv-loader--shown');
-            //    } else {
-            //        $e.one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
-            //            function () {
-            //                if ($e.css('opacity') == 0) {
-            //                    $e.removeClass('rv-loader--shown');
-            //                }
-            //            });
-            //    }
-            //};
 
             $.updateNavBarInfos = function (voyageId) {
                 if (navbarInfosUrl == null) {
@@ -69,6 +49,7 @@
                     $navBarInfo.append(response.viewInfos)
                 }, "json");
             };
+
         })($);
 
         $.updateNavBarInfos();
