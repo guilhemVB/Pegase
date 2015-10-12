@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-sm-12 col-sm-offset-1">
+                <div class="col-md-10 col-md-offset-1">
                     <h1>Création de votre voyage</h1>
                 </div>
             </div>
@@ -27,10 +27,14 @@
 
 
     <div id="createVoyage" class="container-fluid containerPadding containerGrey">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
 
-            {% include 'AppBundle:Voyage:createForm.html.twig' %}
+                    {% include 'AppBundle:Voyage:createForm.html.twig' %}
 
+                </div>
+            </div>
         </div>
     </div>
 
