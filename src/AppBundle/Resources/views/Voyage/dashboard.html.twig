@@ -53,6 +53,7 @@
             </div>
         </div>
 
+
         <div class="container-fluid">
             <div class="container">
                 <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
@@ -121,11 +122,7 @@
             {% include 'AppBundle:Voyage:dashboardStats.html.twig' %}
         </span>
 
-        {% include 'AppBundle:Voyage:updateModal.html.twig' with {
-        'voyageName' : voyage.name,
-        'startDestinationName' : voyage.startDestination.name,
-        'startDestinationId' : voyage.startDestination.id
-        } %}
+        {% include 'AppBundle:Voyage:updateModal.html.twig' %}
     </div>
 {% endblock %}
 
@@ -146,6 +143,10 @@
         var addStageUrl = "{{ path('addStage', {'id' : 0}) }}";
         var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
         var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
+
+        var currentVoyageName = "{{ voyage.name }}";
+        var currentStartDestinationId ="{{ voyage.startDestination.id }}";
+        var currentStartDate = "{{ voyage.startDate|date('d-m-Y') }}";
     </script>
     <script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>
     <script src="{{ asset('bundles/app/js/dashboard/updateVoyage.js') }}"></script>

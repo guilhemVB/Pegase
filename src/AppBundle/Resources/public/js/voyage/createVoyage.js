@@ -3,7 +3,8 @@ $().ready(function () {
     $('#deparatureDate div').datepicker({
         language: "fr",
         format: 'dd-mm-yyyy',
-        todayHighlight: true
+        todayHighlight: true,
+        startDate: new Date()
     });
 
     $("#createVoyage #destination").select2({
