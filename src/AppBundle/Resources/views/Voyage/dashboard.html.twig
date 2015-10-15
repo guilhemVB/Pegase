@@ -117,7 +117,6 @@
             </div>
         </div>
 
-
         <span id="dashboardStatsContainer">
             {% include 'AppBundle:Voyage:dashboardStats.html.twig' %}
         </span>
@@ -146,7 +145,13 @@
 
         var currentVoyageName = "{{ voyage.name }}";
         var currentStartDestinationId ="{{ voyage.startDestination.id }}";
-        var currentStartDate = "{{ voyage.startDate|date('d-m-Y') }}";
+
+        var currentStartDate = new Date(
+                {{ voyage.startDate|date('Y') }},
+                {{ voyage.startDate|date('m') }} - 1,
+                {{ voyage.startDate|date('d') }});
+
+        var voyageCRUDUpdateUrl = "{{ path('voyageCRUDUpdate', {'id' : voyage.id}) }}";
     </script>
     <script src="{{ asset('bundles/app/js/dashboard/dashboard.js') }}"></script>
     <script src="{{ asset('bundles/app/js/dashboard/updateVoyage.js') }}"></script>

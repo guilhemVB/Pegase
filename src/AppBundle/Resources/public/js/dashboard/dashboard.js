@@ -12,9 +12,9 @@ $().ready(function () {
 
 
     var $numberDays = $('#numberDays'),
-        $destination = $('#destination');
+        $destination = $('#containerAddDestination .destination');
 
-    $("#dashboard #destination").select2({
+    $(".destination").select2({
         placeholder: "",
         theme: "bootstrap"
     });

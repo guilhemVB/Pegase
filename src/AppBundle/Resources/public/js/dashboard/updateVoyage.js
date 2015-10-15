@@ -1,23 +1,38 @@
 $().ready(function () {
 
 
-    $('#deparatureDate div').datepicker({
-        language: "fr",
-        format: 'dd-mm-yyyy',
-        startDate: new Date(),
-        todayHighlight: true
-    });
-
-    $('#updateVoyageModal').on('show.bs.modal', function (event) {
+    $(document).ready(function () {
         var select = $("#updateVoyageModal .select2");
         select.width("100%");
 
         $("#voyageName").val(currentVoyageName);
         $("#updateVoyageModal select").val(currentStartDestinationId).trigger("change");
 
-        debugger;
-        //var modal = $(this);
-        //modal.find('.destinationNameModal').text(destinationName);
+        $('#deparatureDate #deparatureDateContainer').datepicker({
+            language: "fr",
+            format: 'dd-mm-yyyy',
+            todayHighlight: true
+        });
+
+        $('#deparatureDate #deparatureDateContainer').datepicker('setDate', currentStartDate);
+    });
+
+    $("#updateVoyageModal form").submit(function (event) {
+        event.preventDefault();
+
+        var date = $('#deparatureDate #deparatureDateContainer').datepicker('getDate');
+
+        var data = {
+            name: $('#voyageName').val(),
+            deparatureDate: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+            destinationId: $('#updateVoyageModal .destination').val()
+        };
+
+        $("#updateVoyageModal form button").button('loading');
+
+        $.post(voyageCRUDUpdateUrl, data, function (response) {
+            document.location.href = response.nextUri;
+        }, "json");
     });
 
 

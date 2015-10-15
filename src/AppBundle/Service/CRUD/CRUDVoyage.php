@@ -41,4 +41,24 @@ class CRUDVoyage
         return $voyage;
     }
 
+
+    /**
+     * @param Voyage $voyage
+     * @param string $name
+     * @param string $deparatureDate
+     * @param Destination $destination
+     * @return Voyage
+     */
+    public function update(Voyage $voyage, $name, $deparatureDate, $destination)
+    {
+        $voyage->setName($name);
+        $voyage->setStartDestination($destination);
+        $voyage->setStartDate(new \DateTime($deparatureDate));
+
+        $this->em->persist($voyage);
+        $this->em->flush();
+
+        return $voyage;
+    }
+
 }
