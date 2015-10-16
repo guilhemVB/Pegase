@@ -6,6 +6,6 @@ $().ready(function () {
     });
 
     $("#homepage .destination").on("change", function(e) {
-        document.location.href= e.target.selectedOptions.item().dataset.href;
+        document.location.href= e.target.selectedOptions[0].dataset.href;
     });
 });
