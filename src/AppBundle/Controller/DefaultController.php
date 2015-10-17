@@ -2,7 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\DestinationRepository;
+use AppBundle\Service\MaplaceMarkerBuilder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,11 +20,14 @@ class DefaultController extends Controller
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
-        /** @var $countryRepository CountryRepository */
-        $countryRepository = $em->getRepository('AppBundle:Country');
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
 
-        $countries = $countryRepository->findCountriesWithDestinations();
+        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
+        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll());
 
-        return $this->render('AppBundle:Default:homepage.html.twig', ['countries' => $countries]);
+        return $this->render('AppBundle:Default:homepage.html.twig',
+            ['maplaceData' => json_encode($maplaceData),]);
     }
 }

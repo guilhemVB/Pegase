@@ -73,40 +73,46 @@
             </a>
         </div>
 
-        <div id="homepagePresentation" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="text-center">Pegase Vous permet de préparer vos voyages, et vous donne une estinmation du
-                        prix. Gérez les saisons
-                        et l'enchainement des destinations afin de préparer au mieu votre voyage . bla blabalbalablab bl
-                        ba
-                        labal bb balb albalbab b ab alb lab lab lab . b lab albab laa babl lba ab b lbab b ab alb lab
-                        lab
-                        lab . b lab albab laa babl lba ab b lbab b ab alb lab lab lab . b lab albab laa babl lba ab b
-                        alalbab b ab alb lab lab lab . b lab albab laa babl lba ab b lb
-                        lbab b ab alb lab lab lab . b lab albab laa babl lba ab b alba . nal na. a
-                        na mn !!</p>
-                </div>
-            </div>
-
-            <div id="connectionRow" class="row">
-                <div class="col-md-2 col-md-offset-4">
-                    <button type="button" class="btn btn-primary btn-lg btn-block pull-left"
-                            data-toggle="modal" data-target="#connectionModal">
-                        <i class="fa fa-sign-in"></i> Connexion
-                    </button>
-                </div>
-                <div class="col-md-2">
-                    <a href="{{ path('fos_user_registration_register') }}" role="button"
-                       class="btn btn-success btn-lg btn-block pull-right">
-                        <i class="fa fa-user"></i> Inscription</a>
+        <div class="container-fluid containerPadding">
+            <div id="homepagePresentation" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center">Pegase Vous permet de préparer vos voyages, et vous donne une estinmation
+                            du
+                            prix. Gérez les saisons
+                            et l'enchainement des destinations afin de préparer au mieu votre voyage . bla
+                            blabalbalablab bl
+                            ba
+                            labal bb balb albalbab b ab alb lab lab lab . b lab albab laa babl lba ab b lbab b ab alb
+                            lab
+                            lab
+                            lab . b lab albab laa babl lba ab b lbab b ab alb lab lab lab . b lab albab laa babl lba ab
+                            b
+                            alalbab b ab alb lab lab lab . b lab albab laa babl lba ab b lb
+                            lbab b ab alb lab lab lab . b lab albab laa babl lba ab b alba . nal na. a
+                            na mn !!</p>
+                    </div>
                 </div>
 
+                <div id="connectionRow" class="row">
+                    <div class="col-md-2 col-md-offset-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block pull-left"
+                                data-toggle="modal" data-target="#connectionModal">
+                            <i class="fa fa-sign-in"></i> Connexion
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ path('fos_user_registration_register') }}" role="button"
+                           class="btn btn-success btn-lg btn-block pull-right">
+                            <i class="fa fa-user"></i> Inscription</a>
+                    </div>
+
+                </div>
             </div>
         </div>
 
 
-        <div id="homepageSearch" class="container-fluid">
+        <div id="homepageSearch" class="container-fluid containerOrange containerPadding">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
@@ -117,8 +123,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4">
-                        {% include 'AppBundle:Destination:selectDestination.html.twig' with {'addCountrySelected' : true} %}
+                    <div class="col-md-12">
+                        <div id="gmap"></div>
                     </div>
                 </div>
             </div>
@@ -132,8 +138,14 @@
 
 
 {% block javascripts %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
     {{ parent() }}
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+        var maplaceData = {{ maplaceData|raw }};
+    </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="{{ asset('bundles/app/js/homepage/maplaceHomepage.js') }}"></script>
     <script src="{{ asset('bundles/app/js/homepage/homepage.js') }}"></script>
 {% endblock %}
 
