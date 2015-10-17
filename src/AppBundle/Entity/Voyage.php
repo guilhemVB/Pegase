@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Table(name="voyage")
@@ -11,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Voyage
 {
+
+    use ORMBehaviors\Sluggable\Sluggable;
 
     /**
      * @var integer
@@ -63,6 +66,17 @@ class Voyage
     {
         $this->stages = new ArrayCollection();
         $this->bagItemsVoyage = new ArrayCollection();
+    }
+
+
+    public function getSluggableFields()
+    {
+        return ['name'];
+    }
+
+    public function getRegenerateSlugOnUpdate()
+    {
+        return true;
     }
 
 
