@@ -1,0 +1,19 @@
+{% set destination = stage.destination %}
+<li data-stage-id="{{ stage.id }}">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
+        </div>
+        <div class="col-sm-3">
+            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+        </div>
+        <div class="col-sm-3">
+            <span class="stageStars" data-stage-id="{{ stage.id }}">
+                {{ voyageStats.stagesStats[stage.id].starsView | raw }}
+            </span>
+        </div>
+        <div class="col-sm-3">
+            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
+        </div>
+    </div>
+</li>

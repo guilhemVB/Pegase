@@ -1,41 +1,49 @@
+{% if hidePrices is not defined %}
+    {% set hidePrices = false %}
+{% endif %}
+
 <div class="container-fluid containerBlue containerPadding" id="containerStats">
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 {% if hidePrices == true %}col-lg-offset-1{% endif %}">
                 <h3 class="text-center">
                             <span class="label label-warning">{{ voyageStats.nbDays }}
                                 jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
                 </h3>
                 <blockquote class="col-lg-10 col-lg-offset-1">
                     <p>
-                        Date de départ <span class="pull-right">{{ voyageStats.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
+                        Départ <span
+                                class="pull-right">{{ voyageStats.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
                     </p>
 
                     <p>
-                        Date de retour <span class="pull-right">{{ voyageStats.endDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
+                        Retour <span
+                                class="pull-right">{{ voyageStats.endDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</span>
                     </p>
                 </blockquote>
             </div>
 
-            <div class="col-lg-4">
-                <h3 class="text-center">
-                    <span class="label label-success">{{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
-                </h3>
-                <blockquote class="col-lg-8 col-lg-offset-2">
-                    <p>
-                        Logement <span
-                                class="pull-right">{{ voyageStats.totalCostAccommodation|number_format(0, ',', ' ') }} &euro;</span>
-                    </p>
+            {% if hidePrices == false %}
+                <div class="col-lg-4">
+                    <h3 class="text-center">
+                        <span class="label label-success">{{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+                    </h3>
+                    <blockquote class="col-lg-8 col-lg-offset-2">
+                        <p>
+                            Logement <span
+                                    class="pull-right">{{ voyageStats.totalCostAccommodation|number_format(0, ',', ' ') }} &euro;</span>
+                        </p>
 
-                    <p>
-                        Autre <span
-                                class="pull-right">{{ voyageStats.totalCostLifeCost|number_format(0, ',', ' ') }} &euro;</span>
-                    </p>
-                </blockquote>
-            </div>
+                        <p>
+                            Autre <span
+                                    class="pull-right">{{ voyageStats.totalCostLifeCost|number_format(0, ',', ' ') }} &euro;</span>
+                        </p>
+                    </blockquote>
+                </div>
+            {% endif %}
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 {% if hidePrices == true %}col-lg-offset-2{% endif %}">
                 <h3 class="text-center">
                             <span class="label label-danger">{{ voyageStats.nbStages }}
                                 étape{% if voyageStats.nbStages > 0 %}s{% endif %}</span>

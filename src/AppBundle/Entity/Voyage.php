@@ -71,14 +71,13 @@ class Voyage
 
     public function getSluggableFields()
     {
-        return ['name'];
+        return ['startDestination.name', 'name'];
     }
 
     public function getRegenerateSlugOnUpdate()
     {
         return true;
     }
-
 
     /**
      * @return integer

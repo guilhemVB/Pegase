@@ -1,0 +1,42 @@
+<div class="container-fluid containerPadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Partagez votre voyage</h2>
+            </div>
+        </div>
+        <div class="row containerPadding">
+            <div class="col-md-2 col-md-offset-3 text-center">
+
+                <a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank"
+                   class="btn btn-block btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+
+            </div>
+            <div class="col-md-2 text-center">
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook"
+                   target="_blank" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i>
+                    Facebook</a>
+
+            </div>
+            <div class="col-md-2 text-center">
+
+                <a href="https://plus.google.com/share?url=" title="Share on Google+" target="_blank"
+                   class="btn btn-block btn-google"><i class="fa fa-google-plus"></i> Google+</a>
+
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p>
+                    <a href="{{ url('shareVoyage', {'slug' : voyage.slug}) }}"
+                       target="_blank"
+                       title="lien de partage">
+                        {{ url('shareVoyage', {'slug' : voyage.slug}) }}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

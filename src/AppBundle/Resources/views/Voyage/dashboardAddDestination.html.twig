@@ -1,0 +1,28 @@
+<div class="container-fluid" id="containerAddDestination">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 id="addDestinationHeader">Ajouter une destination</h3>
+
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                {% include 'AppBundle:Destination:selectDestination.html.twig' %}
+                            </div>
+                            <div class="form-group">
+                                <label for="numberDays">Nombre de jours</label>
+                                {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
+                            </div>
+                            <button type="submit" class="btn btn-default btn-success"
+                                    data-loading-text="Chargement ...">
+                                <i class="fa fa-plus"></i> Ajouter
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('/css/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/datepicker.css') }}">
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
           rel="stylesheet"/>
 {% endblock %}
@@ -20,39 +21,7 @@
 {% block body %}
     <div id="dashboard">
 
-
-        <div class="container-fluid containerOrange containerTitleDashboard">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-5 page-header" style="margin-top: 0;">
-                        <h1><em>{{ voyage.name }}</em></h1>
-                    </div>
-                    <div class="col-md-6 col-md-offset-1">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Date et lieu de départ</h3>
-                            </div>
-                            <div class="col-md-5">
-                                <p class="lead">
-                                    {{ voyage.startDestination.name }}
-                                </p>
-                            </div>
-                            <div class="col-md-5">
-                                <p class="lead">{{ voyage.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</p>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-primary btn-sm pull-right"
-                                        data-toggle="modal" data-target="#updateVoyageModal">
-                                    <i class="fa fa-pencil"></i> Modifier
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        {% include 'AppBundle:Voyage:dashboardHeader.html.twig' %}
 
         <div class="container-fluid">
             <div class="container">
@@ -65,63 +34,18 @@
             </div>
         </div>
 
+        {% include 'AppBundle:Voyage:dashboardAddDestination.html.twig' %}
 
-        <div class="container-fluid" id="containerAddDestination">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h3 id="addDestinationHeader">Ajouter une destination</h3>
-
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <label for="destination">Destination</label>
-                                        {% include 'AppBundle:Destination:selectDestination.html.twig' %}
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="numberDays">Nombre de jours</label>
-                                        {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
-                                    </div>
-                                    <button type="submit" class="btn btn-default btn-success"
-                                            data-loading-text="Chargement ...">
-                                        <i class="fa fa-plus"></i> Ajouter
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container-fluid" style="padding-bottom: 30px">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% if stagesSorted|length > 0 %}
-                            <h3>Liste des destinations</h3>
-                        {% else %}
-                            <h3>Aucune destination</h3>
-                        {% endif %}
-                    </div>
-                    <div class="col-md-12">
-                        <ul id="listDestinations">
-                            {% for stage in stagesSorted %}
-                                {% include 'AppBundle:Voyage:stage.html.twig' %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'AppBundle:Voyage:dashboardDestinationsList.html.twig' %}
 
         <span id="dashboardStatsContainer">
             {% include 'AppBundle:Voyage:dashboardStats.html.twig' %}
         </span>
 
+        {% include 'AppBundle:Voyage:dashboardShare.html.twig' %}
+
         {% include 'AppBundle:Voyage:updateModal.html.twig' %}
+
     </div>
 {% endblock %}
 
@@ -144,11 +68,11 @@
         var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
 
         var currentVoyageName = "{{ voyage.name }}";
-        var currentStartDestinationId ="{{ voyage.startDestination.id }}";
+        var currentStartDestinationId = "{{ voyage.startDestination.id }}";
 
         var currentStartDate = new Date(
                 {{ voyage.startDate|date('Y') }},
-                {{ voyage.startDate|date('m') }} - 1,
+                {{ voyage.startDate|date('m') }} -1,
                 {{ voyage.startDate|date('d') }});
 
         var voyageCRUDUpdateUrl = "{{ path('voyageCRUDUpdate', {'id' : voyage.id}) }}";
