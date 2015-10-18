@@ -1,0 +1,56 @@
+{% set activeProfile = true %}
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Profil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('fos_user_success') %}
+        <div class="container-fluid containerBlue">
+            <div class="container">
+                <div class="row">
+                    <p class="flash-notice text-center lead">
+                        {{ flashMessage|trans({}, 'FOSUserBundle') }}
+                    </p>
+                    <p class="text-center">
+                        <i class="fa fa-3x fa-check"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="container-fluid containerOrange containerPadding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-3 col-sm-offset-1">
+                    <h1>Votre profil</h1>
+                </div>
+
+                <div class="col-sm-7 col-sm-offset-1">
+
+                    <div class="fos_user_user_show">
+                        <div class="containerPadding15">
+                            <h4>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</h4>
+
+                            <p>{{ user.username }}</p>
+                        </div>
+
+                        <div class="containerPadding15">
+                            <h4>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</h4>
+
+                            <p>{{ user.email }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'AppBundle:Vignettes:vignettesLogin.html.twig' %}
+
+{% endblock %}

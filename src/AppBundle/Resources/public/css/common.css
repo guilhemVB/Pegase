@@ -53,6 +53,10 @@
     padding: 30px;
 }
 
+.containerPadding15 {
+    padding: 15px;
+}
+
 .badgeStarsColorYellow .fa-star {
     color: #FFD800;
 }
