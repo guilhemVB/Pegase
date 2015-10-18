@@ -1,7 +1,7 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
-    Connexion - {{ parent() }}
+    Modifier votre profil - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -11,18 +11,12 @@
             <div class="row">
 
                 <div class="col-sm-3 col-sm-offset-1">
-                    <h1>Connexion</h1>
+                    <h1>Modifier votre profil</h1>
                 </div>
 
                 <div class="col-sm-4 col-sm-offset-1">
 
-                    {% include 'AppUserBundle:Security:connectionForm.html.twig' %}
-
-                    {% if error %}
-                        <p class="text-center ">
-                            <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
-                        </p>
-                    {% endif %}
+                    {% include 'AppUserBundle:Profile:edit_content.html.twig' %}
 
                 </div>
             </div>
@@ -32,3 +26,4 @@
     {% include 'AppBundle:Vignettes:vignettesLogin.html.twig' %}
 
 {% endblock %}
+

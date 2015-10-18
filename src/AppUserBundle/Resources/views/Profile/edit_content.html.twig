@@ -1,0 +1,29 @@
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+
+    <div class="form-group">
+        {{ form_label(form.username, "Nom d'utilisateur") }}
+        {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.username) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.email, "Email") }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.current_password, "Mot de passe actuel") }}
+        {{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.current_password) }}
+    </div>
+
+    {{ form_widget(form) }}
+
+    <div class="text-center">
+        <button type="submit" id="_submit" class="btn btn-primary" name="_submit">
+            <i class="fa fa-floppy-o"></i> Mettre à jour
+        </button>
+    </div>
+
+</form>
