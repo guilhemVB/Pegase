@@ -8,7 +8,10 @@
         <div class="row containerPadding">
             <div class="col-md-2 col-md-offset-3 text-center">
 
-                <a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank"
+                {#https://dev.twitter.com/web/tweet-button#}
+
+                <a href="https://twitter.com/intent/tweet?text=Mon%20prochain%20voyage&amp;url={{ url('shareVoyage', {'slug' : voyage.slug}) }}"
+                   title="Share on Twitter" target="_blank"
                    class="btn btn-block btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
 
             </div>
