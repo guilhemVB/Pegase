@@ -1,0 +1,29 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Mot de passe perdu - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid containerOrange containerPadding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-3 col-sm-offset-1">
+                    <h1>Mot de passe perdu ?</h1>
+                </div>
+
+                <div class="col-sm-4 col-sm-offset-1">
+
+                    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'AppBundle:Vignettes:vignettesLogin.html.twig' %}
+
+{% endblock %}
+
