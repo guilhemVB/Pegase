@@ -74,3 +74,7 @@
     color: white;
 }
 
+.colorInherit {
+    color: inherit; !important;
+}
+
