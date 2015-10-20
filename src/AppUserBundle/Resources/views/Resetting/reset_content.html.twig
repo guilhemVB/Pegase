@@ -1,0 +1,23 @@
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+
+    <div class="form-group">
+        {{ form_label(form.new.first) }}
+        {{ form_widget(form.new.first, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.new.first) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.new.second) }}
+        {{ form_widget(form.new.second, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.new.second) }}
+    </div>
+
+    <div class="text-center">
+        <button type="submit" id="_submit" class="btn btn-primary" name="_submit">
+            <i class="fa fa-floppy-o"></i> Enregistrer
+        </button>
+    </div>
+
+    {{ form_widget(form) }}
+
+</form>

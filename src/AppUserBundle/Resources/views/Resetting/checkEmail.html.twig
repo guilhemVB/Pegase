@@ -1,0 +1,31 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    E-mail de changement de mot de passe envoyé - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid containerBlue containerPadding">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+
+                    <p class="text-center lead">
+                        {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+                    </p>
+
+                    <p class="text-center">
+                        <i class="fa fa-3x fa-check"></i>
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'AppBundle:Vignettes:vignettesConfirmation.html.twig' %}
+
+{% endblock %}
