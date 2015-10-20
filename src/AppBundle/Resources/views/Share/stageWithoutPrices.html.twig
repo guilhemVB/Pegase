@@ -13,7 +13,7 @@
             </span>
         </div>
         <div class="col-sm-3">
-            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
+            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
         </div>
     </div>
 </li>

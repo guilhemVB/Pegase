@@ -5,15 +5,16 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Table(name="voyage")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VoyageRepository")
+ * @UniqueEntity("token")
  */
 class Voyage
 {
-
-    use ORMBehaviors\Sluggable\Sluggable;
 
     /**
      * @var integer
@@ -29,6 +30,12 @@ class Voyage
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
     private $name;
+
+    /**
+     * @var string
+     * @ORM\Column(name="token", type="string", length=255, nullable=false, unique=true)
+     */
+    private $token;
 
     /**
      * @var \DateTime
@@ -66,17 +73,7 @@ class Voyage
     {
         $this->stages = new ArrayCollection();
         $this->bagItemsVoyage = new ArrayCollection();
-    }
-
-
-    public function getSluggableFields()
-    {
-        return ['startDestination.name', 'name'];
-    }
-
-    public function getRegenerateSlugOnUpdate()
-    {
-        return true;
+        $this->token = md5(uniqid(time(), true));
     }
 
     /**
@@ -104,6 +101,14 @@ class Voyage
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 
     /**

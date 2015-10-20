@@ -27,11 +27,11 @@ class ShareController extends Controller
 {
 
     /**
-     * @Route("/{slug}", name="shareVoyage")
-     * @param $slug
+     * @Route("/{token}", name="shareVoyage")
+     * @param string $token
      * @return RedirectResponse|Response
      */
-    public function shareVoyageAction($slug)
+    public function shareVoyageAction($token)
     {
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
@@ -39,7 +39,7 @@ class ShareController extends Controller
         /** @var $voyageRepository VoyageRepository */
         $voyageRepository = $em->getRepository('AppBundle:Voyage');
 
-        $voyage = $voyageRepository->findOneBySlug($slug);
+        $voyage = $voyageRepository->findOneByToken($token);
 
         if (is_null($voyage)) {
             return $this->redirectToRoute('createVoyage');
