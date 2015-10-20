@@ -25,7 +25,7 @@ class DefaultController extends Controller
 
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll());
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
 
         return $this->render('AppBundle:Default:homepage.html.twig',
             ['maplaceData' => json_encode($maplaceData),]);
