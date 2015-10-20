@@ -56,7 +56,9 @@
     </script>
 {% endblock %}
 
-{% include '::footer.html.twig' %}
+{% block footer %}
+    {% include '::footer.html.twig' %}
+{% endblock %}
 </body>
 </html>
 
