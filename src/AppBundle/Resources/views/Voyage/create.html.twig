@@ -5,11 +5,16 @@
     Création de votre voyage - {{ parent() }}
 {% endblock %}
 
-{% block stylesheets %}
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ asset('/css/select2-bootstrap.min.css') }}">
+{#   DOC Select 2   #}
+{#https://github.com/select2/select2/releases/tag/3.5.3#}
+{#https://fk.github.io/select2-bootstrap-css/index.html#}
+{#http://select2.github.io/select2/#}
+
+{% block stylesheets %
     <link rel="stylesheet" href="{{ asset('/css/datepicker.css') }}">
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/select2/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/select2/select2-bootstrap.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -47,7 +52,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="{{ asset('/js/select2/select2.js') }}"></script>
+    <script src="{{ asset('/js/select2/select2_locale_fr.js') }}"></script>
     <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('/js/bootstrap-datepicker.fr.js') }}"></script>
     <script>
