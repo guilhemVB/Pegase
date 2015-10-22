@@ -115,6 +115,8 @@ $().ready(function () {
                     var $stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
                     $stageStars.html(stats.starsView);
                 });
+
+                $('[data-toggle="tooltip"]').tooltip();
             },
             source: [
                 {value: 1, text: '1 jour'},
