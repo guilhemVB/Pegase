@@ -20,7 +20,7 @@ $().ready(function () {
         var data = {
             name: $('#voyageName').val(),
             deparatureDate: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
-            destinationId: $('#createVoyage .destination').val()
+            destinationId: $('#createVoyage #selectDestination').val()
         };
 
         $("form button").button('loading');

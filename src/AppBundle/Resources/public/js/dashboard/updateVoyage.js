@@ -25,7 +25,7 @@ $().ready(function () {
         var data = {
             name: $('#voyageName').val(),
             deparatureDate: date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
-            destinationId: $('#updateVoyageModal .destination').val()
+            destinationId: $('#updateVoyageModal #updateDestination').val()
         };
 
         $("#updateVoyageModal form button").button('loading');

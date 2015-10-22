@@ -9,7 +9,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <label for="destination">Destination</label>
-                                {% include 'AppBundle:Destination:selectDestination.html.twig' %}
+                                {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination'} %}
                             </div>
                             <div class="form-group">
                                 <label for="numberDays">Nombre de jours</label>

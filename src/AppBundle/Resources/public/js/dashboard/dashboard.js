@@ -12,7 +12,7 @@ $().ready(function () {
 
 
     var $numberDays = $('#numberDays'),
-        $destination = $('#containerAddDestination .destination');
+        $destination = $('#containerAddDestination #addDestination');
 
     $(".destination").select2({
         placeholder: "",
