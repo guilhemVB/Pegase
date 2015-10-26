@@ -1,193 +1,289 @@
-pays;nom;Capitale;description;bons plans;prix de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude
-Emirats Arabes Unis;Abou Dabi;oui;;;36;41;3;3;3;3;2;1;0;0;1;2;3;3;25.0627184;55.1307613
+pays;nom;Capitale;description;bons plans;prix de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude;;;;;
+Emirats Arabes Unis;Abou Dabi;oui;;;36;41;3;3;3;3;2;1;0;0;1;2;3;3;25.0627184;55.1307613;;;;;
 Algerie;Alger;oui;capitale de l'Algérie, est surnommée Alger la Joyeuse ou Alger la blanche.;"> Découvrir le Jardin d'Essai du Hamma.
+
 > Faire une balade au port de Sidi Fredj.
+
 > Se cultiver au musée national du Bardo.
+
 > Se rendre au parc aquatique Aquafortland pour se rafraîchir l'été.
-> Visiter les grottes de Cervantès.";14;;2;2;2;2;3;3;3;3;3;3;2;2;36.748550;3.076529
-Jordanie;Amman;oui;Capitale de la Jordanie, Amman réussi l'alliance de la modernité et des vestiges antiques. ;"> Visiter la citadelle en premier lieu pour une vue imprenable sur le théatre romain
+
+> Visiter les grottes de Cervantès.";14;10;2;2;2;2;3;3;3;3;3;3;2;2;36.748550;3.076529;;;;;
+Jordanie;Amman;oui;Capitale de la Jordanie, Amman réussi l'alliance de la modernité et des vestiges antiques.;"> Visiter la citadelle en premier lieu pour une vue imprenable sur le théatre romain
+
 > La mosquée du roi Abdallah est ouverte au non-musulman mais veiller à vous vêtir de manière appropriée
+
 > Faire un pique-nique au bord de la Mer Morte.
-> Se promener dans le souk de la ville basse.";8;25;2;2;3;3;3;3;3;3;3;3;3;2;31.9540165;35.932637
+
+> Se promener dans le souk de la ville basse.";8;25;2;2;3;3;3;3;3;3;3;3;3;2;31.9540165;35.932637;;;;;
 Pays-Bas;Amsterdam;oui;;"> Faire des emplettes dans les multiples marchés d'Amsterdam : le marché aux fleurs flottant, le marché des antiquités , le marché Albert Cuyp...
+
 > Visiter le quartier des diamantaires et bénéficier de prix avantageux.
+
 > Faire du patin sur les canaux gelés en hiver.
+
 > Déambuler dans le quatier rouge (attention, caméra interdite).
+
 > Découvrir l'ambiance uique des coffee shop.
+
 > Pique-niquer dans le Vondel Park.
-> Visiter la ville comme les habitants, à bicyclette";22;58;0;0;1;2;3;3;3;3;2;1;1;1;52.3579946;4.8686484
-Turquie;Ankara;oui;;;15;;0;0;1;1;3;3;3;3;3;3;1;1;39.9167994;32.854689
+
+> Visiter la ville comme les habitants, à bicyclette";22;58;0;0;1;2;3;3;3;3;2;1;1;1;52.3579946;4.8686484;;;;;
+Turquie;Ankara;oui;;;15;27;0;0;1;1;3;3;3;3;3;3;1;1;39.9167994;32.854689;;;;;
 Grèce;Athènes;oui;;"> Se balader dans les quartiers de Monastiraki et de Plaka
+
 > Assister à un spectacle Karaghiozis
+
 > Se rendre au grand marché d'Athènes ou encore au marché aux puces de Monastiraki
-> Passer une soirée dans une taverne et écouter les orchestres de danses traditionnelles";16;39;1;1;2;3;3;3;3;3;3;3;3;2;37.9715327;23.724527
-Thaïlande;Bangkok;oui;;;8;16;3;3;3;3;2;2;2;2;1;2;3;3;13.7517303;100.4919967
+
+> Passer une soirée dans une taverne et écouter les orchestres de danses traditionnelles";16;39;1;1;2;3;3;3;3;3;3;3;3;2;37.9715327;23.724527;;;;;
+Thaïlande;Bangkok;oui;;;8;16;3;3;3;3;2;2;2;2;1;2;3;3;13.7517303;100.4919967;;;;;
 Espagne;Barcelone;;;"> S'attabler dans un bar à tapas
+
 > Profiter de l'animation du quartier des Ramblas
+
 > Admirer les jeux d'éclairage et de jets d'eaux des fontaines de Montjuic 
+
 > Assister à une course de taureaux
-> Si vous n'êtes pas pudique, rendez-vous  à la plage nudiste de Mar Bella
-> S'immerger dans l'ambiance électrique d' un match de football de la fameuse équipe de Barcelone";12;42;2;2;3;3;3;3;3;3;3;3;3;2;41.4031105;2.1762023
-Belize;Belmopan;oui;;;15;35;2;3;3;3;1;1;1;0;0;0;1;1;17.4719143;-88.2499659
+
+> Si vous n'êtes pas pudique, rendez-vous à la plage nudiste de Mar Bella
+
+> S'immerger dans l'ambiance électrique d' un match de football de la fameuse équipe de Barcelone";12;42;2;2;3;3;3;3;3;3;3;3;3;2;41.4031105;2.1762023;;;;;
+Belize;Belmopan;oui;;;15;35;2;3;3;3;1;1;1;0;0;0;1;1;17.4719143;-88.2499659;;;;;
 Allemagne;Berlin;oui;;"> Profiter des marchés de noël en Décembre
+
 > Découvrir vestige le plus important du mur de Berlin, la East Side Gallery.
+
 > Visiter Berlin sur la Spree en bateau.
-> Se rendre au Café de Moscou, un des endroits les plus animés de la ville.";14;40;0;0;1;2;3;3;3;3;3;2;1;0;52.516304;13.3766257
-Colombie;Bogota;oui;;;9;;3;3;2;1;2;2;2;2;3;2;2;2;4.6682475;-74.1011817
-France ;Bordeaux;;;;28;;2;2;2;2;2;3;3;3;3;2;2;2;44.8415719;-0.570082
-Etats-Unis;Boston;;;;45;;0;0;0;1;1;3;3;3;3;1;1;0;42.354411;-71.0667946
-Belgique;Bruxelles;oui;;;23;46;0;1;1;1;1;3;3;3;3;1;1;1;50.8439026;4.3469415
-Roumanie;Bucarest;oui;;;7;21;0;0;0;1;2;2;3;3;3;1;1;0;44.441429;26.096827
-Hongrie;Budapest;oui;;"> Découvrir  le Bastion des Pêcheurs.
+
+> Se rendre au Café de Moscou, un des endroits les plus animés de la ville.";14;40;0;0;1;2;3;3;3;3;3;2;1;0;52.516304;13.3766257;;;;;
+Colombie;Bogota;oui;;;10;11;3;3;2;1;2;2;2;2;3;2;2;2;4.6682475;-74.1011817;;;;;
+France;Bordeaux;;;;23;31;2;2;2;2;2;3;3;3;3;2;2;2;44.8415719;-0.570082;;;;;
+Etats-Unis;Boston;;;;34;44;0;0;0;1;1;3;3;3;3;1;1;0;42.354411;-71.0667946;;;;;
+Belgique;Bruxelles;oui;;;23;46;0;1;1;1;1;3;3;3;3;1;1;1;50.8439026;4.3469415;;;;;
+Roumanie;Bucarest;oui;;;7;21;0;0;0;1;2;2;3;3;3;1;1;0;44.441429;26.096827;;;;;
+Hongrie;Budapest;oui;;"> Découvrir le Bastion des Pêcheurs.
+
 > Se relaxer dans une des nombreuses sources thermales réputées depuis les Romains.
+
 > Se rendre au Château, inscrit depuis 1987 au Patrimoine mondial de l'Humanité par l'UNESCO.
+
 > Observer la ville depuis le Mont Gellért qui abrite la citadelle.
-> Faire du canoë et se détendre au parc Városliget";9;19;0;0;1;1;3;3;3;3;3;1;1;0;47.5028546;19.057073
+
+> Faire du canoë et se détendre au parc Városliget";9;19;0;0;1;1;3;3;3;3;3;1;1;0;47.5028546;19.057073;;;;;
 Argentine;Buenos Aires;oui;;"> Admirer le Tango dansé par les Argentins.
+
 > Partir à la découverte des 40 plaques commémoratives aux grands danseurs de tango sur « Avenue Corrientes ».
+
 > Regarder un match de football.
+
 > Flâner dans la Boca (rue commerçante très animée).
-> Goûter à un morceau de boeuf argentin.";14;25;3;3;3;3;1;1;1;1;1;2;3;3;-34.6084373;-58.373264
+
+> Goûter à un morceau de boeuf argentin.";14;25;3;3;3;3;1;1;1;1;1;2;3;3;-34.6084373;-58.373264;;;;;
 Egypte;Caire;oui;;"> Se promener dans le quartier Khan El Khallili où l'on peut fumer la chicha.
+
 > Longer les bords du Nil et y admirer les couchers de soleil.
-> Se mêler à la foule des souks et des bazars";7;17;1;1;3;3;3;2;1;2;3;3;3;2;30.0448978;31.215365
-Mexique;Cancun;;;;11;;3;3;3;3;2;2;2;2;2;2;3;3;21.1452425;-86.842383
-Venezuela;Caracas;oui;;;15;20;3;3;3;3;3;3;3;3;3;3;3;3;10.4984039;-66.8994356
-Thaïlande;Chiang Mai;;;;5;13;3;3;3;1;2;2;0;0;0;3;3;3;18.7886766;98.9803935
-Thaïlande;Chiang Rai;;;;6;;3;3;3;2;2;0;0;0;2;2;3;3;19.8243398;99.7622116
-Danemark;Copenhague;oui;;;24;46;0;0;0;1;1;3;3;3;3;1;1;0;55.6813545;12.575494
-Tunisie;Djerba;;;;18;;1;1;1;3;3;3;3;3;3;3;3;1;33.876918;10.8505883
-Qatar;Doha;oui;;;;;2;3;3;3;2;1;0;0;1;2;3;3;25.3707148;51.5444467
-Irlande;Dublin;oui;;;15;52;2;2;2;2;2;2;3;3;2;2;2;2;53.3484209;-6.2784541
-Croatie;Dubrovnik;;;;23;44;1;1;1;3;3;3;3;3;3;2;0;1;42.6414002;18.1084066
-Royaume-Uni;Edinbourg;oui;;;14;53;2;2;2;2;2;2;3;3;2;2;2;2;55.9486908;-3.2010883
-Maroc;Fes;;;;9;18;1;2;2;3;3;3;2;1;3;3;3;2;34.0292396;-5.0224494
-Italie;Florence;;;;19;38;1;1;2;3;3;3;3;3;3;3;1;1;43.7732178;11.2552536
-Suisse;Genève;;;;38;;0;0;1;1;1;3;3;3;3;1;1;0;46.226609;6.1382926
-Vietnam;Ha Noi;oui;;;7;12;1;1;2;3;2;1;0;1;2;3;3;2;21.0376902;105.8312464
-Finlande;Helsinki;;;;26;55;0;0;0;0;1;1;3;3;1;1;0;0;60.1683675;24.9598481
-Chine;Hong Kong;;;;15;29;3;3;3;2;0;0;0;0;0;2;3;3;22.286178;114.1566148
-Chili;Ile de Pâques;;;;25;;2;2;2;1;1;3;3;3;3;3;3;2;-27.0911234;-109.3779564
-Turquie;Istanbul;;;;10;23;1;1;1;1;3;3;3;3;3;3;1;1;41.0057974;28.9751509
-Indonesie;Jakarta;oui;;;9;14;0;0;0;2;2;3;3;3;3;2;2;0;-6.1753871;106.8249641
-Israël;Jerusalem;oui;;;17;46;1;1;1;2;3;3;3;3;3;3;3;1;31.7767006;35.2336502
-Afrique du Sud;Johannesbourg;;;;11;25;2;3;3;2;1;1;1;1;1;3;3;2;-26.1593862;28.0258656
-Nepal;Katmandou;oui;;;5;13;1;1;1;3;2;0;0;0;2;3;1;1;27.721414;85.3597323
-Malaisie;Kuala Lumpur;oui;;;6;24;2;0;0;0;0;2;3;2;0;0;0;0;3.1453099;101.6815901
-Japon;Kyoto;;;;24;;1;1;1;2;3;2;2;1;2;3;2;2;35.0394403;135.7285618
+
+> Se mêler à la foule des souks et des bazars";7;17;1;1;3;3;3;2;1;2;3;3;3;2;30.0448978;31.215365;;;;;
+Mexique;Cancun;;;;11;19;3;3;3;3;2;2;2;2;2;2;3;3;21.1452425;-86.842383;;;;;
+Venezuela;Caracas;oui;;;15;20;3;3;3;3;3;3;3;3;3;3;3;3;10.4984039;-66.8994356;;;;;
+Thaïlande;Chiang Mai;;;;5;13;3;3;3;1;2;2;0;0;0;3;3;3;18.7886766;98.9803935;;;;;
+Thaïlande;Chiang Rai;;;;7;7;3;3;3;2;2;0;0;0;2;2;3;3;19.8243398;99.7622116;;;;;
+Danemark;Copenhague;oui;;;24;46;0;0;0;1;1;3;3;3;3;1;1;0;55.6813545;12.575494;;;;;
+Tunisie;Djerba;;;;18;12,5;1;1;1;3;3;3;3;3;3;3;3;1;33.876918;10.8505883;;;;;
+Qatar;Doha;oui;;;32;30;2;3;3;3;2;1;0;0;1;2;3;3;25.3707148;51.5444467;;;;;
+Irlande;Dublin;oui;;;15;52;2;2;2;2;2;2;3;3;2;2;2;2;53.3484209;-6.2784541;;;;;
+Croatie;Dubrovnik;;;;23;44;1;1;1;3;3;3;3;3;3;2;0;1;42.6414002;18.1084066;;;;;
+Royaume-Uni;Edinbourg;oui;;;14;53;2;2;2;2;2;2;3;3;2;2;2;2;55.9486908;-3.2010883;;;;;
+Maroc;Fes;;;;9;18;1;2;2;3;3;3;2;1;3;3;3;2;34.0292396;-5.0224494;;;;;
+Italie;Florence;;;;19;38;1;1;2;3;3;3;3;3;3;3;1;1;43.7732178;11.2552536;;;;;
+Suisse;Genève;;;;25;43;0;0;1;1;1;3;3;3;3;1;1;0;46.226609;6.1382926;;;;;
+Vietnam;Ha Noi;oui;;;7;12;1;1;2;3;2;1;0;1;2;3;3;2;21.0376902;105.8312464;;;;;
+Finlande;Helsinki;;;;26;55;0;0;0;0;1;1;3;3;1;1;0;0;60.1683675;24.9598481;;;;;
+Chine;Hong Kong;;;;15;29;3;3;3;2;0;0;0;0;0;2;3;3;22.286178;114.1566148;;;;;
+Chili;Ile de Pâques;;;;25;;2;2;2;1;1;3;3;3;3;3;3;2;-27.0911234;-109.3779564;;;;;
+Turquie;Istanbul;;;;10;23;1;1;1;1;3;3;3;3;3;3;1;1;41.0057974;28.9751509;;;;;
+Indonesie;Jakarta;oui;;;9;14;0;0;0;2;2;3;3;3;3;2;2;0;-6.1753871;106.8249641;;;;;
+Israël;Jerusalem;oui;;;17;46;1;1;1;2;3;3;3;3;3;3;3;1;31.7767006;35.2336502;;;;;
+Afrique du Sud;Johannesbourg;;;;11;25;2;3;3;2;1;1;1;1;1;3;3;2;-26.1593862;28.0258656;;;;;
+Nepal;Katmandou;oui;;;5;13;1;1;1;3;2;0;0;0;2;3;1;1;27.721414;85.3597323;;;;;
+Malaisie;Kuala Lumpur;oui;;;6;24;2;0;0;0;0;2;3;2;0;0;0;0;3.1453099;101.6815901;;;;;
+Japon;Kyoto;;;;24;27;1;1;1;2;3;2;2;1;2;3;2;2;35.0394403;135.7285618;;;;;
 Cuba;La Havane;oui;;"> Siroter un Cuba libre ou un mojito sur une terasse
-> Si l'on est amateur, fumer  un habano (authentique cigare cubain), roulé à la main exclusivement par des femmes
-> Déguster un  congri, plat national cubain.
+
+> Si l'on est amateur, fumer un habano (authentique cigare cubain), roulé à la main exclusivement par des femmes
+
+> Déguster un congri, plat national cubain.
+
 > Se rendre au célébrissime cabaret Tropicana ou au café Habana.
+
 > Pratiquer plongée sous-marine et sports nautiques au Marina Hemingway.
-> Flâner sur le Malécon.";;;3;3;3;3;2;2;2;2;2;2;3;3;23.1420513;-82.3765157
+
+> Flâner sur le Malécon.";22;14;3;3;3;3;2;2;2;2;2;2;3;3;23.1420513;-82.3765157;;;;;
 Bolivie;La Paz;;;"> Se rendre à la place Murillo où est érigé le palais législatif, et à la place San Francisco abritant la cathédrale.
+
 > Apprécier l'architecture des belles maisons coloniales de la calle Jaen.
+
 > Parcourir les marchés artisanaux de la calle Sagarnaga ou le marché de la sorcellerie.
-> Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;-16.4955017;-68.134689
-Etats-Unis;Las Vegas;;;;12;43;2;3;3;2;1;1;0;0;1;3;3;3;36.1122667;-115.1782286
-Afrique du Sud;Le Cap;;;;11;26;3;3;3;3;1;1;1;1;1;3;3;3;-33.9753806;18.4553078
+
+> Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;-16.4955017;-68.134689;;;;;
+Etats-Unis;Las Vegas;;;;12;43;2;3;3;2;1;1;0;0;1;3;3;3;36.1122667;-115.1782286;;;;;
+Afrique du Sud;Le Cap;;;;11;26;3;3;3;3;1;1;1;1;1;3;3;3;-33.9753806;18.4553078;;;;;
 Perou;Lima;oui;;"> Se promener dans le vieux Lima et découvrir son passé colonial.
+
 > Siroter un verre de pisco sur la place St-Martin.
+
 > Négocier le prix des marchandises au Mayorista, le grand marché-foire.
+
 > Monter en taxi et partir à la découverte des quartiers chics et résidentiels de Miraflores et de San Isidro, au sud de la ville.
+
 > Pratiquer un peu de trekking à l'Instituto Geografico Nacional.
+
 > Se détendre dans les jardins des quartiers de Miraflores, San Isidro
-> Se rendre à Barranco et à Chorrillos, endroit où est situé El Puente de los Suspiros (le Pont des Soupirs), lieu idyllique pour les amoureux.";9;21;3;3;3;3;3;3;3;3;3;3;3;3;-12.0461713;-77.031244
+
+> Se rendre à Barranco et à Chorrillos, endroit où est situé El Puente de los Suspiros (le Pont des Soupirs), lieu idyllique pour les amoureux.";9;21;3;3;3;3;3;3;3;3;3;3;3;3;-12.0461713;-77.031244;;;;;
 Portugal;Lisbonne;oui;;"> Goûter les pâtisseries de l'Antigua Confeitera de Belém.
-> Se rendre dans le quartier de Barrio Alto pour une de ses maisons de fado";11;35;1;1;2;3;3;3;3;3;3;3;3;1;-12.1206225;-77.0298484
-Royaume-Uni;Londres;oui;;" > Aller dans le West End pour voir une représentation théâtrale ou une comédie musicale.
+
+> Se rendre dans le quartier de Barrio Alto pour une de ses maisons de fado";11;35;1;1;2;3;3;3;3;3;3;3;3;1;-12.1206225;-77.0298484;;;;;
+Royaume-Uni;Londres;oui;;"> Aller dans le West End pour voir une représentation théâtrale ou une comédie musicale.
+
 > Boire une bière et manger un Fish'n chips dans un pub.
+
 > Se balader dans Hyde Park et Kensington Gardens.
+
 > Assister à la relève de la garde devant Buckingham Palace à 11h30 (durée : 45 minutes).
+
 > Faire les boutiques situées dans les célèbres endroits comme Oxford Streert, Regent Street, Covent Garden, King's Road, Soho, Harrod's ou encore Harvey'Nichols.
+
 > Dejeuner sur un des nombreux stands de nourriture du monde entier au marché de Camden Town.
-> Essayer la London Eye, la grande roue de Londres (si vous avez les moyens).";24;72;2;2;2;2;2;3;3;3;3;2;2;2;51.5082493;-0.0775694
-Etats-Unis;Los Angeles;;;;28;39;1;1;1;1;3;3;3;3;3;3;1;1;34.0563901;-118.2499271
-Laos;Luang Prabang;;;;6;16;3;3;2;2;1;1;0;0;1;2;3;3;19.8986086;102.1382389
-France;Lyon;;;;23;;1;2;2;2;2;3;3;3;3;2;2;2;45.7635056;4.8492387
+
+> Essayer la London Eye, la grande roue de Londres (si vous avez les moyens).";24;72;2;2;2;2;2;3;3;3;3;2;2;2;51.5082493;-0.0775694;;;;;
+Etats-Unis;Los Angeles;;;;28;39;1;1;1;1;3;3;3;3;3;3;1;1;34.0563901;-118.2499271;;;;;
+Laos;Luang Prabang;;;;6;16;3;3;2;2;1;1;0;0;1;2;3;3;19.8986086;102.1382389;;;;;
+France;Lyon;;;;20;28;1;2;2;2;2;3;3;3;3;2;2;2;45.7635056;4.8492387;;;;;
 Espagne;Madrid;oui;;"> Savourer des tapas dans l'un des bars de la capitale.
+
 > Se rendre le dimanche matin au quartier ""la Latina"" pour chiner divers objets sur le marché du Rastro.
+
 > Sortir le 31 décembre à la Puerta del Sol pour fêter au son de cloche le Nouvel An.
-> Passer à la ""Casa del Pueblo"" célèbre pour le flamenco.";15;38;1;1;1;1;1;3;3;3;3;2;1;1;40.413888;-3.6930927
-Nicaragua;Managa;oui;;;;;3;3;3;3;3;0;2;2;2;0;3;3;12.1256538;-86.2788069
-Birmanie;Mandalay;;;;16;;3;3;3;1;0;1;2;3;3;2;3;3;21.9928622;96.0854468
-Maroc;Marrakech;;;;7;18;1;1;1;3;3;3;0;0;3;3;1;1;31.6172084;-7.9917199
-Australie;Melbourne;;;;19;41;3;3;3;3;2;2;2;2;2;2;3;3;-37.821068;144.9573438
-Etats-Unis;Miami;;;;25;46;3;3;3;3;2;2;2;2;0;0;3;3;25.7872534;-80.1958926
-Canada;Montreal;;;;15;35;0;0;0;0;1;3;3;3;1;1;0;0;45.5047434;-73.5572577
-Russie;Moscou;oui;;;9;36;0;0;0;1;1;3;3;3;1;1;0;0;55.7525259;37.6208981
-Japon;Nagasaki;;;;23;;1;1;1;2;2;0;0;2;0;2;1;1;32.7754761;129.8621213
-Kenya;Nairobi;oui;;;13;;3;3;2;0;2;3;3;3;3;3;3;3;-1.3666613;36.8311446
-Italie;Naples;;;;14;35;1;1;1;2;3;3;3;3;3;3;1;1;40.8493417;14.2543848
-Etats-Unis;New York;;;;43;53;0;0;0;1;3;3;3;3;3;1;0;0;40.7590453;-73.9862683
-France;Nice;;;;18;43;2;2;2;2;3;3;3;3;3;3;2;2;43.6950824;7.2576875
-Etats-Unis;Nouvelle Orleans;;;;22;33;1;2;2;2;2;2;2;2;2;3;3;1;29.9619947;-90.0623861
+
+> Passer à la ""Casa del Pueblo"" célèbre pour le flamenco.";15;38;1;1;1;1;1;3;3;3;3;2;1;1;40.413888;-3.6930927;;;;;
+Nicaragua;Managa;oui;;;12,5;14;3;3;3;3;3;0;2;2;2;0;3;3;12.1256538;-86.2788069;;;;;
+Birmanie;Mandalay;;;;13;19;3;3;3;1;0;1;2;3;3;2;3;3;21.9928622;96.0854468;;;;;
+Maroc;Marrakech;;;;7;18;1;1;1;3;3;3;0;0;3;3;1;1;31.6172084;-7.9917199;;;;;
+Australie;Melbourne;;;;19;41;3;3;3;3;2;2;2;2;2;2;3;3;-37.821068;144.9573438;;;;;
+Etats-Unis;Miami;;;;25;46;3;3;3;3;2;2;2;2;0;0;3;3;25.7872534;-80.1958926;;;;;
+Canada;Montreal;;;;15;35;0;0;0;0;1;3;3;3;1;1;0;0;45.5047434;-73.5572577;;;;;
+Russie;Moscou;oui;;;9;36;0;0;0;1;1;3;3;3;1;1;0;0;55.7525259;37.6208981;;;;;
+Japon;Nagasaki;;;;23;;1;1;1;2;2;0;0;2;0;2;1;1;32.7754761;129.8621213;;;;;
+Kenya;Nairobi;oui;;;13;14;3;3;2;0;2;3;3;3;3;3;3;3;-1.3666613;36.8311446;;;;;
+Italie;Naples;;;;14;35;1;1;1;2;3;3;3;3;3;3;1;1;40.8493417;14.2543848;;;;;
+Etats-Unis;New York;;;;43;53;0;0;0;1;3;3;3;3;3;1;0;0;40.7590453;-73.9862683;;;;;
+France;Nice;;;;18;43;2;2;2;2;3;3;3;3;3;3;2;2;43.6950824;7.2576875;;;;;
+Etats-Unis;Nouvelle Orleans;;;;22;33;1;2;2;2;2;2;2;2;2;3;3;1;29.9619947;-90.0623861;;;;;
 Norvège;Oslo;oui;;"> Monter sur le tremplin d'Holmenkollen pour profiter du panorama sur Oslo et son fjord.
+
 > Se prélasser dans un sauna d'Oslo.
+
 > Déguster un plat local dans un restaurant typique de la ville.
+
 > Se promener dans Frognerparken 
+
 > Assister à une représentation au théâtre de la ville.
-> Se rendre à l'opéra.";28;50;0;0;0;1;1;2;3;3;1;1;0;0;59.9076747;10.7361291
-Mongolie;Oulan Bator;oui;;;8;;0;0;0;0;0;1;3;1;1;0;0;0;47.9148841;106.9177042
-France;Paris;oui;;"> Faire une promenade en bateau-mouche de nuit pour profiter des illuminations sur les façades.
+
+> Se rendre à l'opéra.";28;50;0;0;0;1;1;2;3;3;1;1;0;0;59.9076747;10.7361291;;;;;
+Mongolie;Oulan Bator;oui;;;8;14;0;0;0;0;0;1;3;1;1;0;0;0;47.9148841;106.9177042;;;;;
+France;Paris;oui;;"ASTUCE: réserver en ligne (ceetiz) son billet coupe-file pour la tour eiffel afin d'économiser 1h d'attente
+> Faire une promenade en bateau-mouche de nuit pour profiter des illuminations sur les façades.
+
 > Pique-niquer sur le champs de Mars
+
 > Diner dans le quartier latin pour profiter de l'animation
-> Assister à l'un des multiples spectacles et concerts parisiens.
-> Aller manger dans un bistrot typiquement parisien.";23;51;2;2;2;2;2;3;3;3;3;2;2;2;48.8580101;2.2946583
-Chine;Pekin;oui;;;8;21;0;0;0;1;3;3;0;2;3;1;0;0;39.916427;116.3965726
-Australie;Perth;;;;19;;3;3;2;2;2;1;1;1;3;3;3;3;-31.960906;115.8300042
-Jordanie;Petra;;;;15;;2;2;3;3;3;3;3;3;3;3;3;2;30.3290802;35.4441124
-Cambodge;Phom Penh;oui;;;6;17;3;3;3;2;2;2;1;1;1;2;2;3;11.5644048;104.92994
+
+> Assister à l'un des multiples spectacles et concerts parisiens.";23;51;2;2;2;2;2;3;3;3;3;2;2;2;48.8580101;2.2946583;;;;;
+Chine;Pekin;oui;;;8;21;0;0;0;1;3;3;0;2;3;1;0;0;39.916427;116.3965726;;;;;
+Australie;Perth;;;;19;38;3;3;2;2;2;1;1;1;3;3;3;3;-31.960906;115.8300042;;;;;
+Jordanie;Petra;;;;15;;2;2;3;3;3;3;3;3;3;3;3;2;30.3290802;35.4441124;;;;;
+Cambodge;Phom Penh;oui;;;6;17;3;3;3;2;2;2;1;1;1;2;2;3;11.5644048;104.92994;;;;;
 Republique Tchèque;Prague;Oui;;"> Se balader sur la rue piétonne Celetna.
+
 > Se rendre au quartier Art Nouveau.
+
 > Se promener sur le quai Mazarykovo Nabrezi.
-> Flâner sur Vaclavske Namesti, les Champs-Élysées de Prague.";12;27;0;0;0;1;1;3;3;3;1;1;1;0;50.090638;14.399656
-Canada;Quebec;;;;17;;0;0;0;0;1;3;3;3;1;1;0;0;46.812048;-71.204406
-Birmanie;Rangoon;oui;;;13;10;3;3;3;1;1;0;0;0;0;0;2;3;16.798438;96.148913
-Islande;Reykjavik;oui;;;24;50;0;0;0;1;1;1;1;1;1;1;0;0;64.142562;-21.927849
-Grèce;Rhodes;;;;14;;1;1;2;3;3;3;3;3;3;3;2;1;36.445076;28.224396
-Bresil;Rio de Janeiro;;;;9;26;2;2;2;3;3;3;3;3;3;3;3;2;-22.922188;-43.168282
+
+> Flâner sur Vaclavske Namesti, les Champs-Élysées de Prague.";12;27;0;0;0;1;1;3;3;3;1;1;1;0;50.090638;14.399656;;;;;
+Canada;Quebec;;;;17;36;0;0;0;0;1;3;3;3;1;1;0;0;46.812048;-71.204406;;;;;
+Birmanie;Rangoon;oui;;;13;10;3;3;3;1;1;0;0;0;0;0;2;3;16.798438;96.148913;;;;;
+Islande;Reykjavik;oui;;;24;50;0;0;0;1;1;1;1;1;1;1;0;0;64.142562;-21.927849;;;;;
+Grèce;Rhodes;;;;14;26;1;1;2;3;3;3;3;3;3;3;2;1;36.445076;28.224396;;;;;
+Bresil;Rio de Janeiro;;;;9;26;2;2;2;3;3;3;3;3;3;3;3;2;-22.922188;-43.168282;;;;;
 Italie;Rome;oui;;"> Regarder des pièces de théâtre et des opéras.
+
 > Assister à des concerts de musique classique, de jazz et de rock.
+
 > Aller visiter le Vatican à midi pour faire moins de queue.
-> Sortir de Rome pour visiter les thermes de Caracalla, vestiges très bien conservés de thermes romains";20;50;1;1;1;2;3;3;3;3;3;3;1;1;41.9022329;12.4566503
-Russie;Saint Petersbourg;;;;6;26;0;0;0;1;1;3;3;3;1;1;0;0;59.9399684;30.3143337
-Etats-Unis;San Francisco;;;;45;46;1;1;1;1;3;3;3;3;3;3;3;1;37.7685303,-122.4753509;
+
+> Sortir de Rome pour visiter les thermes de Caracalla, vestiges très bien conservés de thermes romains";20;50;1;1;1;2;3;3;3;3;3;3;1;1;41.9022329;12.4566503;;;;;
+Russie;Saint Petersbourg;;;;6;26;0;0;0;1;1;3;3;3;1;1;0;0;59.9399684;30.3143337;;;;;
+Etats-Unis;San Francisco;;;;45;46;1;1;1;1;3;3;3;3;3;3;3;1;37.7685303,-122.4753509;;;;;;
 Costa Rica;San Jose;oui;;"> Se rendre à la Esmeralda vers 23 heures et profiter de la musique jouée par les trios ou les mariachis qui attendent les clients.
+
 > Préparer une randonnée au Parc National Rincon de la Vieja.
+
 > Découvrir le rafting.
-> Jouer dans l'un des casinos";10;25;3;3;3;3;0;0;0;0;0;0;3;3;9.9358449;-84.1037328
-Chine;Shangai;;;;10;27;1;1;1;2;3;2;2;2;2;3;1;1;31.2396935;121.4996185
-Cambodge;Siem Reap;;;;5;21;3;3;2;1;2;1;1;1;1;2;3;3;13.4124876;103.8662776
-Singapour;Singapour;oui;;;16;38;0;2;0;2;2;2;2;0;2;0;0;0;1.2868533;103.8543954
-Bulgarie;Sofia;oui;;;8;30;0;0;1;1;2;3;3;3;3;1;1;0;42.6958001;23.3326573
-Suède;Stockholm;oui;;;25;58;0;0;0;1;1;3;3;3;1;1;1;0;59.3216697;17.8859742
-Australie;Sydney;;;;19;40;3;3;2;2;2;1;1;1;3;3;3;3;-33.8568935;151.2151438
-Guatemala;Tikal;;;;;;3;3;3;3;2;0;0;0;0;2;3;3;17.2219675;-89.6232897
-Japon;Tokyo;oui;;;20;41;0;0;1;1;2;2;2;2;0;0;1;1;35.7100919;139.8103962
-Canada;Toronto;;;;22;30;0;0;0;1;1;3;3;3;3;1;0;0;43.6425696;-79.3873293
-Tunisie;Tunis;oui;;;;;1;1;1;3;3;3;3;3;3;3;3;1;36.8092974;10.1341229
-Argentine;Ushuaia;;;;21;;1;1;1;1;0;0;0;0;0;1;1;1;-54.8060457;-68.3002905
-Espagne;Valence;;;;14;;1;1;1;2;3;3;3;3;3;3;2;1;39.4563455;-0.3535052
-Canada;Vancouver;;;;18;35;0;1;1;1;1;3;3;3;1;1;0;0;49.2694395;-123.2589868
+
+> Jouer dans l'un des casinos";10;25;3;3;3;3;0;0;0;0;0;0;3;3;9.9358449;-84.1037328;;;;;
+Chine;Shangai;;;;10;27;1;1;1;2;3;2;2;2;2;3;1;1;31.2396935;121.4996185;;;;;
+Cambodge;Siem Reap;;;;5;21;3;3;2;1;2;1;1;1;1;2;3;3;13.4124876;103.8662776;;;;;
+Singapour;Singapour;oui;;;16;38;0;2;0;2;2;2;2;0;2;0;0;0;1.2868533;103.8543954;;;;;
+Bulgarie;Sofia;oui;;;8;30;0;0;1;1;2;3;3;3;3;1;1;0;42.6958001;23.3326573;;;;;
+Suède;Stockholm;oui;;;25;58;0;0;0;1;1;3;3;3;1;1;1;0;59.3216697;17.8859742;;;;;
+Australie;Sydney;;;;19;40;3;3;2;2;2;1;1;1;3;3;3;3;-33.8568935;151.2151438;;;;;
+Guatemala;Tikal;;;;7;14;3;3;3;3;2;0;0;0;0;2;3;3;17.2219675;-89.6232897;;;;;
+Japon;Tokyo;oui;;"> Assister au spectacle (gratuit) et étonnant de dizaine de personnes en cosplay le dimanche dans le quartier de Harajuku
+> Faire un vu au temple Senso-ji
+> Déambuler dans les magasins d'Akhihabara pour une vision de la culture nippone";20;41;0;0;1;1;2;2;2;2;0;0;1;1;35.7100919;139.8103962;;;;;
+Canada;Toronto;;;;22;30;0;0;0;1;1;3;3;3;3;1;0;0;43.6425696;-79.3873293;;;;;
+Tunisie;Tunis;oui;;;15;12;1;1;1;3;3;3;3;3;3;3;3;1;36.8092974;10.1341229;;;;;
+Argentine;Ushuaia;;;;21;;1;1;1;1;0;0;0;0;0;1;1;1;-54.8060457;-68.3002905;;;;;
+Espagne;Valence;;;;14;25;1;1;1;2;3;3;3;3;3;3;2;1;39.4563455;-0.3535052;;;;;
+Canada;Vancouver;;;;18;35;0;1;1;1;1;3;3;3;1;1;0;0;49.2694395;-123.2589868;;;;;
 Italie;Venise;;;"> Faire une balade en gondole.
+(Ne pas hésiter à négocier)
 > Assister au Carnaval pour voir les magnifiques costumes
+
 > Visiter la Fenice, l'opera de Venise, un des temples les plus prestigieux de l'opera Italien.
+
 > Se perdre dans la multitudes de ses petites ruelles.
+
 > Découvrir l'art du verre sur l'île de Murano.
-> Goûter à l'authentique café italien sur la place Saint Marc.";18;55;1;1;1;2;3;3;3;3;3;3;1;1;45.4341705;12.3383349
+
+> Goûter à l'authentique café italien sur la place Saint Marc.";18;55;1;1;1;2;3;3;3;3;3;3;1;1;45.4341705;12.3383349;;;;;
 Autriche;Vienne;oui;;"> Marcher dans la ville et apprécier son architecture flamboyante.
+
 > Prendre un cours de valse dans l'une des écoles de danse de la ville.
+
 > L'été, profiter des concerts / ballet gratuits en plein air sur la place de l'hôtel de ville.
+
 > L'hiver, assister à l'un des nombreux bals
+
 > Se rendre sur les tombes de Beethoven, Schubert, Brahms, Strauss, Schönberg, Stolz au cimetière de Zentralfriedhof.
-> Déguster un café Viennois et une torte dans le café Sacher.";17;49;0;0;0;1;2;3;3;3;3;1;1;0;48.2080183;16.3662545
-Laos;Vientiane;oui;;;6;12;3;3;3;3;0;0;0;0;0;3;3;3;17.9580464;102.6169315
+
+> Déguster un café Viennois et une torte dans le café Sacher.";17;49;0;0;0;1;2;3;3;3;3;1;1;0;48.2080183;16.3662545;;;;;
+Laos;Vientiane;oui;;;6;12;3;3;3;3;0;0;0;0;0;3;3;3;17.9580464;102.6169315;;;;;
 Etats-Unis;Washington;oui;;"> Laissez vous charmer par une représentation de l'orchestre symphonique national des États-Unis au centre Kennedy.
+
 > Visiter la fameuse maison blanche. Attention: arriver 15 minutes en avance, avoir sur soi son passeport et interdiction aux sacs, appareils photos, bouteille d'eau... 
+
 > Voguer à bord d'un bateau sur la rivière Potomac en appréciant la vue.
+
 > Profiter de la verdure du parc Lafayette.
+
 > Déambuler dans les rues de Chinatown.
-> Contempler depuis le pont Théodore Roosevelt la ville de Washington qui s'illumine au crépuscule";27;46;0;0;1;1;3;3;2;3;3;1;1;0;38.8976972;-77.0367739
-Croatie;Zagreb;oui;;;10;22;0;1;1;1;2;3;3;3;3;2;1;0;45.8082042;15.9670908
+
+> Contempler depuis le pont Théodore Roosevelt la ville de Washington qui s'illumine au crépuscule";27;46;0;0;1;1;3;3;2;3;3;1;1;0;38.8976972;-77.0367739;;;;;
+Croatie;Zagreb;oui;;;10;22;0;1;1;1;2;3;3;3;3;2;1;0;45.8082042;15.9670908;;;;;
+Nouvelle-Zélande;Auckland;;;;18;36,5;3;3;3;3;3;2;2;2;2;2;2;3;-36.8596306;174.7757217;;;;;
+Chili;Santiago;oui;;"ASTUCES
+> Le taux de change sera plus avantageux ?antiago que dans le reste du pays. 
+> Sky airlines propose des tarifs en avion ?eine plus cher que le bus.";14;19;3;3;1;1;1;1;1;1;1;1;1;3;-33.4378394;-70.6507532;;;;;
