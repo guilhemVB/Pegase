@@ -38,6 +38,12 @@ class Voyage
     private $token;
 
     /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $showPricesInPublic = false;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime", nullable=false)
      */
@@ -62,17 +68,10 @@ class Voyage
      */
     private $stages;
 
-    /**
-     * @var ArrayCollection|BagItemVoyage[]
-     * @ORM\OneToMany(targetEntity="BagItemVoyage", mappedBy="voyage")
-     */
-    private $bagItemsVoyage;
-
 
     public function __construct()
     {
         $this->stages = new ArrayCollection();
-        $this->bagItemsVoyage = new ArrayCollection();
         $this->token = md5(uniqid(time(), true));
     }
 
@@ -177,33 +176,6 @@ class Voyage
     }
 
     /**
-     * @param BagItemVoyage $bagItemsVoyage
-     * @return Voyage
-     */
-    public function addBagItemsVoyage(BagItemVoyage $bagItemsVoyage)
-    {
-        $this->bagItemsVoyage[] = $bagItemsVoyage;
-
-        return $this;
-    }
-
-    /**
-     * @param BagItemVoyage $bagItemsVoyage
-     */
-    public function removeBagItemsVoyage(BagItemVoyage $bagItemsVoyage)
-    {
-        $this->bagItemsVoyage->removeElement($bagItemsVoyage);
-    }
-
-    /**
-     * @return ArrayCollection|BagItemVoyage[]
-     */
-    public function getBagItemsVoyage()
-    {
-        return $this->bagItemsVoyage;
-    }
-
-    /**
      * @param Destination $startDestination
      * @return Voyage
      */
@@ -220,5 +192,24 @@ class Voyage
     public function getStartDestination()
     {
         return $this->startDestination;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isShowPricesInPublic()
+    {
+        return $this->showPricesInPublic;
+    }
+
+    /**
+     * @param boolean $showPricesInPublic
+     * @return $this
+     */
+    public function setShowPricesInPublic($showPricesInPublic)
+    {
+        $this->showPricesInPublic = $showPricesInPublic;
+
+        return $this;
     }
 }

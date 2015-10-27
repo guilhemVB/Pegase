@@ -2,6 +2,10 @@
     {% set hidePrices = false %}
 {% endif %}
 
+{% if allowModification is not defined %}
+    {% set allowModification = true %}
+{% endif %}
+
 <div class="container-fluid" style="padding-bottom: 30px">
     <div class="container">
         <div class="row">
@@ -17,10 +21,12 @@
             <div class="col-md-12">
                 <ul id="listDestinations">
                     {% for stage in stagesSorted %}
-                        {% if hidePrices == true %}
-                            {% include 'AppBundle:Share:stageWithoutPrices.html.twig' %}
-                        {% else %}
+                        {% if hidePrices == false and allowModification == true %}
                             {% include 'AppBundle:Voyage:stage.html.twig' %}
+                        {% elseif hidePrices == false and allowModification == false %}
+                            {% include 'AppBundle:Share:stageWithPrices.html.twig' %}
+                         {% else %}
+                            {% include 'AppBundle:Share:stageWithoutPrices.html.twig' %}
                         {% endif %}
                     {% endfor %}
                 </ul>

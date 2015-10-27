@@ -26,9 +26,9 @@
             </div>
         </div>
 
-        {% include 'AppBundle:Voyage:dashboardDestinationsList.html.twig' with {'hidePrices' : true} %}
+        {% include 'AppBundle:Voyage:dashboardDestinationsList.html.twig' with {'hidePrices' : not voyage.showPricesInPublic, 'allowModification' : false} %}
 
-        {% include 'AppBundle:Voyage:dashboardStats.html.twig' with {'hidePrices' : true} %}
+        {% include 'AppBundle:Voyage:dashboardStats.html.twig' with {'hidePrices' : not voyage.showPricesInPublic} %}
 
     </div>
 {% endblock %}

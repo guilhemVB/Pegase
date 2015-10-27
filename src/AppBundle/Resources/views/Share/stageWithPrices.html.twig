@@ -1,5 +1,5 @@
 {% set destination = stage.destination %}
-<li class="cursorMove" data-stage-id="{{ stage.id }}">
+<li data-stage-id="{{ stage.id }}">
     <div class="row">
         <div class="col-sm-3">
             <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
@@ -7,19 +7,16 @@
         <div class="col-sm-3">
             <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
         </div>
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <span class="stageStars" data-stage-id="{{ stage.id }}">
                 {{ voyageStats.stagesStats[stage.id].starsView | raw }}
             </span>
         </div>
         <div class="col-sm-2">
-            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
+            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <span class="stagePrice" data-stage-id="{{ stage.id }}">{{ ((destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays)|number_format(0, ',', ' ') }} €</span>
-            <button type="button" class="btn btn-danger btn-xs pull-right btnDeleteStage"
-                    data-loading-text="Suppression ..."
-                    data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i> Supprimer</button>
         </div>
     </div>
 </li>
