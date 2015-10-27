@@ -2,7 +2,15 @@
     margin-bottom: 30px;
 }
 
-#destinationView #destination {
-    width: 100%;
+#countryView .page-header,
+#destinationView .page-header {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid chocolate;
+}
+
+#countryView h1,
+#destinationView h1 {
+    font-size: 46px;
 }
 

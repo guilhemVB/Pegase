@@ -7,17 +7,17 @@
 {% block body %}
     <div id="destinationView">
 
+        <div class="container-fluid containerBanner">
+        </div>
+
         <div class="container-fluid">
-            <div class="row">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1>
-                            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
-                            /
-                            {{ destination.name }}
-                        </h1>
-                    </div>
-                </div>
+            <div class="container page-header">
+                <h1>
+                    {{ destination.name }}
+                    <small>
+                        - <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+                    </small>
+                </h1>
             </div>
         </div>
 

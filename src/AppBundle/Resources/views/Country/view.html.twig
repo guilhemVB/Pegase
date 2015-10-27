@@ -5,76 +5,77 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div id="countryView">
 
-        <div class="row">
-
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>{{ country.name }}</h1>
-                </div>
-            </div>
-
+        <div class="container-fluid containerBanner">
         </div>
-    </div>
 
-    <div class="container-fluid containerMap">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div id="controls"></div>
-                </div>
-                <div class="col-md-8">
-                    <div id="gmap"></div>
-                </div>
+        <div class="container-fluid">
+            <div class="container page-header">
+                <h1>
+                    {{ country.name }}
+                </h1>
             </div>
         </div>
-    </div>
 
-    <div class="container-fluid containerGrey containerPadding">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-8">
-                    <h2>Description</h2>
-
-                    <p>{{ country.description }}</p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Pensez-y !</h2>
-
-                    <p>{{ country.tips }}</p>
+        <div class="container-fluid containerMap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="controls"></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div id="gmap"></div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
 
-    <div class="container-fluid containerOrange containerPadding">
-        <div class="container">
+        <div class="container-fluid containerGrey containerPadding">
+            <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th class="col-md-3">Destination</th>
-                            <th>Description</th>
-                            <th class="col-md-2">Coût de la vie</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for destination in country.destinations %}
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Description</h2>
+
+                        <p>{{ country.description }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Pensez-y !</h2>
+
+                        <p>{{ country.tips }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid containerOrange containerPadding">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <td scope="row"><strong><a style="color: white;"
-                                                           href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></strong>
-                                </td>
-                                <td>{{ destination.description|length > 160 ? destination.description|slice(0, 160) ~ '...' : destination.description }}</td>
-                                <td>{{ destination.prices.accommodation + destination.prices['life cost'] }} €</td>
+                                <th class="col-md-3">Destination</th>
+                                <th>Description</th>
+                                <th class="col-md-2">Coût de la vie</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {% for destination in country.destinations %}
+                                <tr>
+                                    <td scope="row"><strong><a style="color: white;"
+                                                               href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></strong>
+                                    </td>
+                                    <td>{{ destination.description|length > 160 ? destination.description|slice(0, 160) ~ '...' : destination.description }}</td>
+                                    <td>{{ destination.prices.accommodation + destination.prices['life cost'] }} €</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
