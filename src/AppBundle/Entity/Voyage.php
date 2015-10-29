@@ -103,6 +103,17 @@ class Voyage
     }
 
     /**
+     * @param $token
+     * @return Voyage
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getToken()

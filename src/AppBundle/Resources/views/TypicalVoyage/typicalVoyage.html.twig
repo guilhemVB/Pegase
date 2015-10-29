@@ -1,0 +1,11 @@
+<div class="col-md-4 col-sm-6 containerPadding15">
+    <img src="{{ asset('paris_500.jpg') }}"
+         class="img-responsive img-thumbnail"
+         alt="{{ typicalVoyage.voyage.name }}">
+
+    <div class="text-center">
+        <h2>{{ typicalVoyage.voyage.name }}</h2>
+        <span class="label label-primary">{{ typicalVoyage.nbDays }} jours</span>
+        <span class="label label-success">{{ typicalVoyage.price|number_format(0, ',', ' ') }} &euro;</span>
+    </div>
+</div>

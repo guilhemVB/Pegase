@@ -13,6 +13,10 @@
 
 
         <div class="collapse navbar-collapse" id="navigation-menu">
+            <ul class="nav navbar-nav">
+                <li {% if activeWorldTours is defined %}class="active"{% endif %}><a href="{{ path('voyages') }}">Tours du monde</a></li>
+            </ul>
+
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <ul class="nav navbar-nav">
                     <li {% if activeDashboard is defined %}class="active"{% endif %}><a href="{{ path('dashboard') }}">Tableau de bord</a></li>
