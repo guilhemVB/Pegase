@@ -7,7 +7,14 @@
 {% block body %}
     <div id="countryView">
 
-        <div class="container-fluid containerBanner">
+        {% set bannerAssetURL = 'images/banners/countries/' ~ country.slug ~ '.JPG' %}
+        {% set bannerUrl = 'images/banners/default.JPG' %}
+        {% if bannerAssetURL|asset_exists %}
+            {% set bannerUrl = bannerAssetURL %}
+        {% endif %}
+
+        <div class="container-fluid containerBanner"
+             style="background-image: url('{{ asset(bannerUrl) }}');">
         </div>
 
         <div class="container-fluid">

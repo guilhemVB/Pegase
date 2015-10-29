@@ -7,7 +7,14 @@
 {% block body %}
     <div id="destinationView">
 
-        <div class="container-fluid containerBanner">
+        {% set bannerAssetURL = 'images/banners/destinations/' ~ destination.slug ~ '.JPG' %}
+        {% set bannerUrl = 'images/banners/default.JPG' %}
+        {% if bannerAssetURL|asset_exists %}
+            {% set bannerUrl = bannerAssetURL %}
+        {% endif %}
+
+        <div class="container-fluid containerBanner"
+             style="background-image: url('{{ asset(bannerUrl) }}');">
         </div>
 
         <div class="container-fluid">
@@ -15,7 +22,8 @@
                 <h1>
                     {{ destination.name }}
                     <small>
-                        - <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+                        -
+                        <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
                     </small>
                 </h1>
             </div>
