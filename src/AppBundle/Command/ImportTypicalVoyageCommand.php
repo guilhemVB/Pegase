@@ -149,8 +149,6 @@ class ImportTypicalVoyageCommand extends ContainerAwareCommand
                 $em->persist($stage);
             }
 
-            $this->updateTypicalVoyage($typicalVoyage);
-
             $em->persist($voyage);
 
             $nbToFlush++;
@@ -177,21 +175,4 @@ class ImportTypicalVoyageCommand extends ContainerAwareCommand
         }
     }
 
-    /**
-     * @param TypicalVoyage $typicalVoyage
-     */
-    private function updateTypicalVoyage(TypicalVoyage $typicalVoyage)
-    {
-        /** @var VoyageStats $voyageStats */
-        $voyageStats = $this->getContainer()->get('voyage_stats');
-        $voyage = $typicalVoyage->getVoyage();
-
-        $stats = $voyageStats->calculate($voyage->getStages(), [
-            new StatCalculatorNumberDays(),
-            new StatCalculatorPrices(),
-        ]);
-
-        $typicalVoyage->setNbDays($stats['nbDays']);
-        $typicalVoyage->setPrice($stats['totalCost']);
-    }
 }

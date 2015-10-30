@@ -29,15 +29,15 @@ class TypicalVoyage
 
     /**
      * @var int
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $nbDays;
+    private $nbDays = 0;
 
     /**
      * @var int
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $price;
+    private $price = 0;
 
 
     public function __construct()
