@@ -17,3 +17,9 @@ Pour les langues en française :
 sudo apt-get install php5-intl
 ```
 
+
+Test de vulnérabilité des package :
+
+```
+php app/console security:check
+```
