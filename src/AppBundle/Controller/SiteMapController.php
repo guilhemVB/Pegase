@@ -35,31 +35,38 @@ class SiteMapController extends Controller
                    'changefreq' => 'weekly',
                    'priority'   => '0.9'];
 
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_registration_register', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.8'];
+
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_security_login', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.8'];
+
         $urls[] = ['loc'        => $this->get('router')->generate('contact', [], true),
                    'changefreq' => 'monthly',
                    'priority'   => '0.5'];
 
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_resetting_request', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.2'];
+
         /** @var $countryRepository CountryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
-        $countries = $countryRepository->findAll();
+        $countries = $countryRepository->findCountriesWithDestinations();
 
         /** @var Country $country */
         foreach ($countries as $country) {
             $urls[] = ['loc'        => $this->get('router')->generate('country', ['slug' => $country->getSlug()], true),
                        'changefreq' => 'monthly',
                        'priority'   => '0.7'];
-        }
 
-
-        /** @var $destinationRepository DestinationRepository */
-        $destinationRepository = $em->getRepository('AppBundle:Destination');
-        $destinations = $destinationRepository->findAll();
-
-        /** @var Destination $destination */
-        foreach ($destinations as $destination) {
-            $urls[] = ['loc'        => $this->get('router')->generate('destination', ['slug' => $destination->getSlug()], true),
-                       'changefreq' => 'monthly',
-                       'priority'   => '0.7'];
+            $destinations = $country->getDestinations();
+            foreach ($destinations as $destination) {
+                $urls[] = ['loc'        => $this->get('router')->generate('destination', ['slug' => $destination->getSlug()], true),
+                           'changefreq' => 'monthly',
+                           'priority'   => '0.7'];
+            }
         }
 
 
