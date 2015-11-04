@@ -24,7 +24,8 @@
         "friendsofsymfony/user-bundle": "~1.3",
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "twig/extensions": "^1.3"
+        "twig/extensions": "^1.3",
+        "ricbra/robots-txt-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new AppUserBundle\AppUserBundle(),
+            new Ricbra\Bundle\RobotsTxtBundle\RicbraRobotsTxtBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
