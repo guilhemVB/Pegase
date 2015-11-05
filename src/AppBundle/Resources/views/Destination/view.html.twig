@@ -175,31 +175,12 @@
 
                     <div class="row containerPadding">
                         {% for countryDestination in countryDestinations %}
-
-                            {% set bannerAssetURL = 'images/banners/destinations/' ~ countryDestination.slug ~ '.JPG' %}
-                            {% set bannerUrl = 'images/banners/default.JPG' %}
-                            {% if bannerAssetURL|asset_exists %}
-                                {% set bannerUrl = bannerAssetURL %}
-                            {% endif %}
-
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                {% if countryDestination.slug != destination.slug %}
-                                <a href="{{ path('destination', {'slug' : countryDestination.slug }) }}">
-                                    {% endif %}
-                                    <img class="img-responsive" src="{{ asset(bannerUrl) }}"
-                                         alt="{{ countryDestination.name }}">
-
-                                    <p class="text-center">
-                                        {{ countryDestination.name }}
-                                    </p>
-                                    {% if countryDestination.slug != destination.slug %}
-                                </a>
-                                {% endif %}
-
-                            </div>
-
+                            {% include 'AppBundle:Destination:linkToDestination.html.twig'
+                            with {
+                            'currentDestinationSlug' : destination.slug,
+                            'destination' : countryDestination
+                            } %}
                         {% endfor %}
-
                     </div>
 
                 </div>

@@ -1,0 +1,29 @@
+{% set bannerAssetURL = 'images/banners/destinations/' ~ destination.slug ~ '.JPG' %}
+{% set bannerUrl = 'images/banners/default.JPG' %}
+{% if bannerAssetURL|asset_exists %}
+    {% set bannerUrl = bannerAssetURL %}
+{% endif %}
+
+{% if currentDestinationSlug is not defined %}
+    {% set currentDestinationSlug = '' %}
+{% endif %}
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+
+    {% if currentDestinationSlug != destination.slug %}
+    <a href="{{ path('destination', {'slug' : destination.slug }) }}">
+        {% endif %}
+
+        <img class="img-responsive" src="{{ asset(bannerUrl) }}"
+             alt="{{ destination.name }}">
+
+        <p class="text-center">
+            {{ destination.name }}
+        </p>
+
+        {% if currentDestinationSlug != destination.slug %}
+    </a>
+    {% endif %}
+
+</div>
+
