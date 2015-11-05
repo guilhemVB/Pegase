@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" id="navigation-menu">
             <ul class="nav navbar-nav">
-                <li {% if activeWorldTours is defined %}class="active"{% endif %}><a href="{{ path('voyages') }}">Tours du monde</a></li>
+                <li {% if activeIdeasOfTravels is defined %}class="active"{% endif %}><a href="{{ path('ideasOfTravels') }}">Idées de voyage</a></li>
             </ul>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}

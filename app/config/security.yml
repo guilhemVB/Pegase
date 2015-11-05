@@ -32,6 +32,7 @@ security:
         - { path: ^/navbar, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/ideas-of-travels, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/share, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/voyage, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/crud, role: IS_AUTHENTICATED_FULLY }

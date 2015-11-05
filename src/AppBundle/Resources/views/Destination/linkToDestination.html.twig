@@ -8,18 +8,23 @@
     {% set currentDestinationSlug = '' %}
 {% endif %}
 
-<div class="col-lg-3 col-md-4 col-sm-6">
+<div class="col-lg-3 col-md-4 col-sm-6 containerPadding15">
 
     {% if currentDestinationSlug != destination.slug %}
     <a href="{{ path('destination', {'slug' : destination.slug }) }}">
         {% endif %}
 
-        <img class="img-responsive" src="{{ asset(bannerUrl) }}"
+        <img class="img-responsive img-thumbnail" src="{{ asset(bannerUrl) }}"
              alt="{{ destination.name }}">
 
-        <p class="text-center">
+        <h4 style="padding-left: 5px; padding-right: 5px;">
             {{ destination.name }}
-        </p>
+            <span class="label label-success pull-right" style="font-size: 12px;">
+                    {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro;
+            </span>
+
+        </h4>
+
 
         {% if currentDestinationSlug != destination.slug %}
     </a>

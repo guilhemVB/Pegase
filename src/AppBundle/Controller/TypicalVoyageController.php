@@ -11,7 +11,7 @@ class TypicalVoyageController extends Controller
 {
 
     /**
-     * @Route("/voyages", name="voyages")
+     * @Route("/ideas-of-travels", name="ideasOfTravels")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function voyagesAction()

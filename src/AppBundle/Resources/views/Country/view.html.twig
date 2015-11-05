@@ -57,35 +57,18 @@
             </div>
         </div>
 
-        <div class="container-fluid containerOrange containerPadding">
+        <div class="container-fluid containerPadding">
             <div class="container">
-
+                <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
                 <div class="row">
-                    <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th class="col-md-3">Destination</th>
-                                <th>Description</th>
-                                <th class="col-md-2">Coût de la vie</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for destination in country.destinations %}
-                                <tr>
-                                    <td scope="row"><strong><a style="color: white;"
-                                                               href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></strong>
-                                    </td>
-                                    <td>{{ destination.description|length > 160 ? destination.description|slice(0, 160) ~ '...' : destination.description }}</td>
-                                    <td>{{ destination.prices.accommodation + destination.prices['life cost'] }} €</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                    {% for destination in country.destinations %}
+                        {% include 'AppBundle:Destination:linkToDestination.html.twig' %}
+                    {% endfor %}
                 </div>
+
             </div>
         </div>
+
     </div>
 {% endblock %}
 
