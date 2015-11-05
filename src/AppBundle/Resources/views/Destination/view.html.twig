@@ -63,17 +63,17 @@
                                 <blockquote>
                                     <h4>
                                         Coût moyen de la vie sur place<span
-                                                class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
+                                            class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
                                             €</span>
                                     </h4>
                                     <footer style="color: silver;">
                                         Prix moyen de l'hébergement<span
-                                                class="pull-right label label-primary">{{ destination.prices.accommodation }}
+                                            class="pull-right label label-primary">{{ destination.prices.accommodation }}
                                             €</span>
                                     </footer>
                                     <footer style="color: silver;">
                                         Dépenses quotidiennes moyenne<span
-                                                class="pull-right label label-primary">{{ destination.prices['life cost'] }}
+                                            class="pull-right label label-primary">{{ destination.prices['life cost'] }}
                                             €</span>
                                     </footer>
                                 </blockquote>
@@ -160,6 +160,51 @@
                 </div>
             </div>
         </div>
+
+
+        {% set countryDestinations = destination.country.destinations %}
+        {% if countryDestinations|length > 1 %}
+            <div class="container-fluid containerPadding">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>{{ destination.country.name }} - les destinations du pays</h3>
+                        </div>
+                    </div>
+
+                    <div class="row containerPadding">
+                        {% for countryDestination in countryDestinations %}
+
+                            {% set bannerAssetURL = 'images/banners/destinations/' ~ countryDestination.slug ~ '.JPG' %}
+                            {% set bannerUrl = 'images/banners/default.JPG' %}
+                            {% if bannerAssetURL|asset_exists %}
+                                {% set bannerUrl = bannerAssetURL %}
+                            {% endif %}
+
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                {% if countryDestination.slug != destination.slug %}
+                                <a href="{{ path('destination', {'slug' : countryDestination.slug }) }}">
+                                    {% endif %}
+                                    <img class="img-responsive" src="{{ asset(bannerUrl) }}"
+                                         alt="{{ countryDestination.name }}">
+
+                                    <p class="text-center">
+                                        {{ countryDestination.name }}
+                                    </p>
+                                    {% if countryDestination.slug != destination.slug %}
+                                </a>
+                                {% endif %}
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+        {% endif %}
 
         {% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}
 
