@@ -13,9 +13,7 @@
             {% set bannerUrl = bannerAssetURL %}
         {% endif %}
 
-        <div class="container-fluid containerBanner"
-             style="background-image: url('{{ asset(bannerUrl) }}');">
-        </div>
+        <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ country.name }}">
 
         <div class="container-fluid">
             <div class="container page-header">

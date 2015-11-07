@@ -13,16 +13,6 @@
     height: 510px;
 }
 
-.containerBanner {
-    position: relative;
-    background-position: center center;
-    background-repeat:no-repeat;
-    height: 300px;
-    background-size: cover;
-    overflow: hidden;
-    border-radius: 0 !important;
-}
-
 .footer {
     background-color: #222;
     border-color: #080808;
