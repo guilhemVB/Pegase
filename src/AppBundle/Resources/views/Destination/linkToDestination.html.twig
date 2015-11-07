@@ -1,5 +1,5 @@
-{% set bannerAssetURL = 'images/banners/destinations/' ~ destination.slug ~ '.JPG' %}
-{% set bannerUrl = 'images/banners/default.JPG' %}
+{% set bannerAssetURL = image_banner_destinations_path ~ destination.slug ~ '.JPG' %}
+{% set bannerUrl = image_banner_default %}
 {% if bannerAssetURL|asset_exists %}
     {% set bannerUrl = bannerAssetURL %}
 {% endif %}

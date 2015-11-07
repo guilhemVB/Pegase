@@ -7,8 +7,8 @@
 {% block body %}
     <div id="countryView">
 
-        {% set bannerAssetURL = 'images/banners/countries/' ~ country.slug ~ '.JPG' %}
-        {% set bannerUrl = 'images/banners/default.JPG' %}
+        {% set bannerAssetURL = image_banner_countries_path ~ country.slug ~ '.JPG' %}
+        {% set bannerUrl = image_banner_default %}
         {% if bannerAssetURL|asset_exists %}
             {% set bannerUrl = bannerAssetURL %}
         {% endif %}
