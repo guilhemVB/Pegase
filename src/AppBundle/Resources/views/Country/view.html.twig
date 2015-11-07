@@ -62,7 +62,7 @@
                 <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
                 <div class="row">
                     {% for destination in country.destinations %}
-                        {% include 'AppBundle:Destination:linkToDestination.html.twig' %}
+                        {% include 'AppBundle:Vignette:destination.html.twig' %}
                     {% endfor %}
                 </div>
 

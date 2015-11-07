@@ -1,0 +1,33 @@
+{% set bannerAssetURL = image_banner_destinations_path ~ destination.slug ~ '.JPG' %}
+{% set bannerUrl = image_banner_default %}
+{% if bannerAssetURL|asset_exists %}
+    {% set bannerUrl = bannerAssetURL %}
+{% endif %}
+
+{% if currentDestinationSlug is not defined %}
+    {% set currentDestinationSlug = '' %}
+{% endif %}
+
+{% if currentDestinationSlug != destination.slug %}
+<a href="{{ path('destination', {'slug' : destination.slug }) }}">
+    {% endif %}
+
+    <img class="img-responsive img-thumbnail" src="{{ asset(bannerUrl) }}"
+         alt="{{ destination.name }}">
+
+    <h4 style="padding-left: 5px; padding-right: 5px;">
+        {{ destination.name }}
+        <span class="label label-success pull-right" style="font-size: 12px;">
+                {% if destinationPrices is defined %}
+                    {{ destinationPrices }} &euro;
+                {% else %}
+                    {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro;
+                {% endif %}
+            </span>
+
+    </h4>
+
+    {% if currentDestinationSlug != destination.slug %}
+</a>
+{% endif %}
+
