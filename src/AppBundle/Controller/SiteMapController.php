@@ -31,7 +31,7 @@ class SiteMapController extends Controller
                    'changefreq' => 'weekly',
                    'priority'   => '1.0'];
 
-        $urls[] = ['loc'        => $this->get('router')->generate('voyages', [], true),
+        $urls[] = ['loc'        => $this->get('router')->generate('ideasOfTravels', [], true),
                    'changefreq' => 'weekly',
                    'priority'   => '0.9'];
 
