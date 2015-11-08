@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Belmopan', 'slug' : 'belmopan'},
+            'destinationPrices' : '50',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Chiang Rai', 'slug' : 'chiang-rai'},
+            'destinationPrices' : '14',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Jerusalem', 'slug' : 'jerusalem'},
+            'destinationPrices' : '63',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Oslo', 'slug' : 'oslo'},
+            'destinationPrices' : '78',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Rio de Janeiro', 'slug' : 'rio-de-janeiro'},
+            'destinationPrices' : '35',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Venise', 'slug' : 'venise'},
+            'destinationPrices' : '73',
+            } %}
+
+        </div>
+    </div>
+</div>
