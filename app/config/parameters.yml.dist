@@ -21,9 +21,14 @@ parameters:
 
     allow_robots: true
 
+    image_banner_destinations_path : images/banners/destinations/
+    image_banner_countries_path : images/banners/countries/
+    image_banner_homepage_path : images/banners/homepage/
+    image_banner_default : images/banners/default.JPG
+
 twig:
     globals:
-        image_banner_destinations_path : images/banners/destinations/
-        image_banner_countries_path : images/banners/countries/
-        image_banner_homepage_path : images/banners/homepage/
-        image_banner_default : images/banners/default.JPG
+        image_banner_destinations_path : %image_banner_destinations_path%
+        image_banner_countries_path : %image_banner_countries_path%
+        image_banner_homepage_path : %image_banner_homepage_path%
+        image_banner_default : %image_banner_default%

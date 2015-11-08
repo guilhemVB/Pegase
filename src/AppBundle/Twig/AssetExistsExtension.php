@@ -19,6 +19,10 @@ class AssetExistsExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @param string $path
+     * @return bool
+     */
     public function assetExist($path)
     {
         $webRoot = realpath($this->kernel->getRootDir() . '/../web');

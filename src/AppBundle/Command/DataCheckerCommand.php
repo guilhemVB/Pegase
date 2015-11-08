@@ -6,16 +6,17 @@ use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
-use AppBundle\Service\CSVParser;
-use AppBundle\Service\Tools\DestinationPeriods;
+use AppBundle\Twig\AssetExistsExtension;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class DataCheckerCommand extends ContainerAwareCommand
 {
+
+    /** @var  AssetExistsExtension */
+    private $assetExistsExtension;
 
     protected function configure()
     {
@@ -28,6 +29,8 @@ class DataCheckerCommand extends ContainerAwareCommand
     {
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
+
+        $this->assetExistsExtension = new AssetExistsExtension($this->getContainer()->get('kernel'));
 
         $this->checkCountries($output);
         $this->checkDestinations($output);
@@ -49,6 +52,8 @@ class DataCheckerCommand extends ContainerAwareCommand
         $countryRepository = $em->getRepository('AppBundle:Country');
         /** @var Country[] $countries */
         $countries = $countryRepository->findAll();
+
+        $imagePath = $this->getContainer()->getParameter('image_banner_countries_path');
 
         foreach ($countries as $country) {
             $destinations = $country->getDestinations();
@@ -76,6 +81,9 @@ class DataCheckerCommand extends ContainerAwareCommand
                 $output->writeln("<error>PAYS '$name'  --  bons plans non saisis.</error>");
             }
 
+            if (!$this->assetExistsExtension->assetExist($imagePath . $country->getSlug() . '.jpg')) {
+                $output->writeln("<error>PAYS '$name'  --  n'a pas d'image.</error>");
+            }
         }
 
     }
@@ -93,6 +101,8 @@ class DataCheckerCommand extends ContainerAwareCommand
         $destinationRepository = $em->getRepository('AppBundle:Destination');
         /** @var Destination[] $destinations */
         $destinations = $destinationRepository->findAll();
+
+        $imagePath = $this->getContainer()->getParameter('image_banner_destinations_path');
 
         foreach ($destinations as $destination) {
             $name = $destination->getName();
@@ -137,6 +147,10 @@ class DataCheckerCommand extends ContainerAwareCommand
             $lat = $destination->getLatitude();
             if (empty($lat)) {
                 $output->writeln("<error>DESTINATION '$name'  --  latitude non saisis.</error>");
+            }
+
+            if (!$this->assetExistsExtension->assetExist($imagePath . $destination->getSlug() . '.jpg')) {
+                $output->writeln("<error>DESTINATION '$name'  --  n'a pas d'image.</error>");
             }
 
         }
