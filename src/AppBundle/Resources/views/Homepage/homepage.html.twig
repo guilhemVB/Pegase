@@ -14,7 +14,7 @@
 
     <div id="homepage">
 
-        {% include 'AppBundle:Default:homepageCarousel.html.twig' %}
+        {% include 'AppBundle:Homepage:homepageCarousel.html.twig' %}
 
         <div class="container-fluid containerPadding">
             <div id="homepagePresentation" class="container">
@@ -82,7 +82,7 @@
 
 {% block footer %}
     {{ parent() }}
-    {% include 'AppBundle:Default:listCountries.html.twig' %}
+    {% include 'AppBundle:Common:listCountries.html.twig' %}
 {% endblock %}
 
 

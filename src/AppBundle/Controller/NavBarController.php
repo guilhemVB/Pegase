@@ -38,7 +38,7 @@ class NavBarController extends Controller
                 $voyage = $voyages[0];
                 $stages = $voyage->getStages();
                 $stats = $voyageStats->calculate($stages, [new StatCalculatorNumberDays(), new StatCalculatorPrices()]);
-                $viewInfos = $this->renderView('AppBundle:Default:navBarInfos.html.twig', $stats);
+                $viewInfos = $this->renderView('AppBundle:Common:navBarInfos.html.twig', $stats);
             }
         }
 
