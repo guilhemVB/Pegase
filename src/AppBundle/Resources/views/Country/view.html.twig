@@ -26,9 +26,14 @@
         <div class="container-fluid containerMap">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 visible-md-block visible-lg-block">
-                        <div id="controls"></div>
-                    </div>
+                    {% if country.destinations|length > 1 %}
+                        <div class="col-md-4 visible-md-block visible-lg-block">
+                            <div id="controls"></div>
+                        </div>
+                    {% else %}
+                        {# To Center map #}
+                        <div class="col-md-2 visible-md-block visible-lg-block"></div>
+                    {% endif %}
                     <div class="col-md-8">
                         <div id="gmap"></div>
                     </div>
@@ -58,6 +63,7 @@
         <div class="container-fluid containerPadding">
             <div class="container">
                 <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
+
                 <div class="row">
                     {% for destination in country.destinations %}
                         {% include 'AppBundle:Vignette:destination.html.twig' %}
