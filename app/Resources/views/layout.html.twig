@@ -26,6 +26,12 @@
     {% endblock %}
 </main>
 
+<div id="footer-container">
+    {% block footer %}
+        {% include '::footer.html.twig' %}
+    {% endblock %}
+</div>
+
 {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -56,9 +62,6 @@
     </script>
 {% endblock %}
 
-{% block footer %}
-    {% include '::footer.html.twig' %}
-{% endblock %}
 </body>
 </html>
 

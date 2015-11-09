@@ -8,6 +8,12 @@
     height: 510px;
 }
 
+/*#footer-container {*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+/*}*/
+
 .footer {
     background-color: #222;
     border-color: #080808;
