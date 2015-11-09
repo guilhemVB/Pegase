@@ -3,6 +3,11 @@
         <div class="row">
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Belmopan', 'slug' : 'belmopan'},
+            'destinationPrices' : '0',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
             'destination' : {'name' : 'Boston', 'slug' : 'boston'},
             'destinationPrices' : '78',
             } %}
@@ -10,6 +15,16 @@
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
             'destination' : {'name' : 'Dublin', 'slug' : 'dublin'},
             'destinationPrices' : '67',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Ha Noi', 'slug' : 'ha-noi'},
+            'destinationPrices' : '0',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Lyon', 'slug' : 'lyon'},
+            'destinationPrices' : '0',
             } %}
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
