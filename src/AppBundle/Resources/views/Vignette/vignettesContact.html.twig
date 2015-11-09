@@ -1,6 +1,16 @@
-<div class="container-fluid">
+<div class="container-fluid containerPadding">
     <div class="container">
         <div class="row">
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Alger', 'slug' : 'alger'},
+            'destinationPrices' : '0',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Ankara', 'slug' : 'ankara'},
+            'destinationPrices' : '0',
+            } %}
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
             'destination' : {'name' : 'Bogota', 'slug' : 'bogota'},
@@ -13,17 +23,22 @@
             } %}
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
-            'destination' : {'name' : 'Doha', 'slug' : 'kuala-lumpur'},
+            'destination' : {'name' : 'Doha', 'slug' : 'doha'},
             'destinationPrices' : '62',
             } %}
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
-            'destination' : {'name' : 'Kuala Lumpur', 'slug' : 'doha'},
+            'destination' : {'name' : 'Kuala Lumpur', 'slug' : 'kuala-lumpur'},
             'destinationPrices' : '30',
             } %}
 
             {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
             'destination' : {'name' : 'Nagasaki', 'slug' : 'nagasaki'},
+            'destinationPrices' : '0',
+            } %}
+
+            {% include 'AppBundle:Vignette:destinationLarge.html.twig' with {
+            'destination' : {'name' : 'Naples', 'slug' : 'naples'},
             'destinationPrices' : '0',
             } %}
 
