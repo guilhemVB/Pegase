@@ -14,3 +14,11 @@
     font-size: 46px;
 }
 
+#countryView .containerMap .controls {
+    font-size: 18px;
+}
+
+#countryView .containerMap .controls .active {
+    font-weight: bold;
+    font-style: italic;
+}
