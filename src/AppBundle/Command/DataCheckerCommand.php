@@ -82,7 +82,7 @@ class DataCheckerCommand extends ContainerAwareCommand
             }
 
             if (!$this->assetExistsExtension->assetExist($imagePath . $country->getSlug() . '.jpg')) {
-                $output->writeln("<error>PAYS '$name'  --  n'a pas d'image.</error>");
+                $output->writeln("<error>PAYS '$name'  --  pas d'image.</error>");
             }
         }
 
@@ -150,7 +150,7 @@ class DataCheckerCommand extends ContainerAwareCommand
             }
 
             if (!$this->assetExistsExtension->assetExist($imagePath . $destination->getSlug() . '.jpg')) {
-                $output->writeln("<error>DESTINATION '$name'  --  n'a pas d'image.</error>");
+                $output->writeln("<error>DESTINATION '$name'  --  pas d'image.</error>");
             }
 
         }
