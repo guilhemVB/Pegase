@@ -72,8 +72,7 @@
 }
 
 .colorInherit {
-    color: inherit;
-!important;
+    color: inherit;  !important;
 }
 
 .img-responsive {

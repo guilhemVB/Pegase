@@ -17,16 +17,59 @@
         {% include 'AppBundle:Homepage:homepageCarousel.html.twig' %}
 
         <div class="container-fluid containerPadding">
-            <div id="homepagePresentation" class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-center">Ce site vous permet d'organiser au mieux vos voyage. Choisisez vos
-                            destinations, le temps que vous souhaitez y rester et vous saurez si vous y êtes aux bonnes
-                            périodes et combien votre voyage vous coûtera.</p>
+            <div id="homepagePresentation" class="container text-center">
 
-                        <p>Afin de choisir au mieux vos destinations, vous trouverez également ici des fiches
-                            détaillées de chaque pays et de chaque destinations. La liste s'enrichie au fur et à mesure
-                            des contributions des voyageurs.</p>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <p class="lead">
+                            Que vous souhaitez préparer un tour du monde, ou simplement en savoir plus sur un pays ou
+                            une destination, ce site est fait pour vous.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5 col-sm-6">
+                        <h2>Préparer un voyage</h2>
+
+                        <p class="text-center">
+                            Ce site vous permet d'organiser au mieux vos voyages. Choisissez vos destinations, le temps
+                            que vous souhaitez y rester et vous saurez si vous y êtes aux bonnes périodes et combien
+                            votre voyage vous coûtera.
+                        </p>
+                    </div>
+
+                    <div class="col-md-5 col-sm-6">
+                        <h2>Fiches pays et destinations</h2>
+
+                        <p class="text-center">
+                            Afin de choisir au mieux vos destinations, vous trouverez également ici des fiches
+                            détaillées de chaque pays et de chaque destination. La liste s'enrichie au fur et à mesure
+                            des contributions des voyageurs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5 col-sm-6">
+                        <h2>Pour les backpackers principalement</h2>
+
+                        <p class="text-center">
+                            Ce site s’adresse principalement aux backpackers et autre tourdumondistes. Les prix affichés
+                            sont basés sur les expériences des voyageurs. Ils prennent en compte l’hébergement dans les
+                            auberges de jeunesses et les dépenses quotidiennes moyenne.
+                        </p>
+                    </div>
+
+                    <div class="col-md-5 col-sm-6">
+                        <h2>Un site communautaire</h2>
+
+                        <p class="text-center">
+                            Afin d’enrichir le site nous avons besoins de vous. N’hésitez pas à nous donner vos bons
+                            plans et à nous envoyer les destinations que vous souhaitez voir apparaitre.
+                        </p>
+
+                        <a href="#" class="btn btn-default" role="button">Contact</a>
                     </div>
                 </div>
 
@@ -52,7 +95,7 @@
             <div class="container">
                 <div class="row" id="rowGmapText">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <h2 class="text-center">Liste des destinations</h2>
+                        <h3 class="text-center">Liste des destinations</h3>
 
                         <p class="text-center">Plus de 100 destinations sont référencées. La liste s'enrichie grâce à la
                             communauté des voyageurs. <a href="{{ path('contact') }}">Cliquez ici pour nous proposer vos

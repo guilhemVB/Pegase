@@ -1,6 +1,6 @@
-#homepage p {
-    font-size: 18px;
-}
+/*#homepage p {*/
+    /*font-size: 18px;*/
+/*}*/
 
 #carouselHomepage {
     height: 500px;
@@ -14,16 +14,6 @@
 
 #carouselHomepage h1 {
     font-size: 80px;
-}
-
-#homepageVignette {
-    padding-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#homepageVignette .col-lg-4 {
-    padding: 15px;
 }
 
 #connectionRow {
