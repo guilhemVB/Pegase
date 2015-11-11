@@ -14,8 +14,9 @@ class HerokuDatabase
 
         if ($url) {
             $url = parse_url($url);
-            putenv("DATABASE_DRIVER={pdo_pgsql}");
+            putenv("DATABASE_DRIVER=pdo_pgsql");
             putenv("DATABASE_HOST={$url['host']}");
+            putenv("DATABASE_PORT={$url['port']}");
             putenv("DATABASE_USER={$url['user']}");
             putenv("DATABASE_PASSWORD={$url['pass']}");
             $db = substr($url['path'],1);
