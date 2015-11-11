@@ -53,6 +53,7 @@
             "php app/console app:import:countries web/files/pays.csv",
             "php app/console app:import:destinations web/files/destinations.csv",
             "php app/console app:import:typicalVoyage web/files/voyages_types.csv",
+            "php app/console app:typicalVoyage:calculate-stats",
             "php app/console assetic:dump web --env=prod"
         ],
         "post-update-cmd": [
