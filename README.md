@@ -1,6 +1,10 @@
 Pegase
 ======
 
+```
+pegase-dev.herokuapp.com
+```
+
 Pour lancer les tests behat :
 
 Créer la table travel_test
@@ -25,7 +29,7 @@ php app/console security:check
 ```
 
 
-Deploy with Heroku
+Heroku tools
 
 ```
 heroku logs --tail
