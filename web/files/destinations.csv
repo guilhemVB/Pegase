@@ -1,7 +1,7 @@
 pays;nom;Capitale;description;bons plans;prix de l'hébergement;coût de la vie;janvier;février;mars;avril;mai;juin;juillet;août;septembre;octobre;novembre;décembre;latitude;longitude;;;;;
 Afrique du Sud;Johannesburg;;;;11;25;2;3;3;2;1;1;1;1;1;3;3;2;-26.1593862;28.0258656;;;;;
 Afrique du Sud;Le Cap;;;;11;26;3;3;3;3;1;1;1;1;1;3;3;3;-33.9753806;18.4553078;;;;;
-Algerie;Alger;oui;capitale de l'Algérie, est surnommée Alger la Joyeuse ou Alger la blanche.;"> Découvrir le Jardin d'Essai du Hamma.
+Algérie;Alger;oui;capitale de l'Algérie, est surnommée Alger la Joyeuse ou Alger la blanche.;"> Découvrir le Jardin d'Essai du Hamma.
  
  > Faire une balade au port de Sidi Fredj.
  
@@ -63,7 +63,7 @@ Bolivie;La Paz;;;"> Se rendre à la place Murillo où est érigé le palais lég
  > Parcourir les marchés artisanaux de la calle Sagarnaga ou le marché de la sorcellerie.
  
  > Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;-16.4955017;-68.134689;;;;;
-Bresil;Rio de Janeiro;;;;9;26;2;2;2;3;3;3;3;3;3;3;3;2;-22.922188;-43.168282;;;;;
+Brésil;Rio de Janeiro;;;;9;26;2;2;2;3;3;3;3;3;3;3;3;2;-22.922188;-43.168282;;;;;
 Bulgarie;Sofia;oui;;"> S'offrir une vodka dans l'un des petits bars de la ville
 > Déguster un assortiment de viandes et légumes grillés dans une mehana (restaurant traditionnel).
 > Aller voir l'église de Boyana, datant du 13ème siècle et classée au patrimoine mondial par l'UNESCO.
@@ -120,12 +120,12 @@ Danemark;Copenhague;oui;;"> Vivre l'ambiance joyeuse et débridée du quartier d
 > Admirer la collection d'oeuvre de Gaughin récolter par le fils du fondateur de la brasserie Carlsberg.
 > Visiter la ville utopique et alternative de Christiana, pleine de couleurs.
 > Aller saluer la Petite Sirène, seule sur son rocher";24;46;0;0;0;1;1;3;3;3;3;1;1;0;55.6813545;12.575494;;;;;
-Egypte;Caire;oui;;"> Se promener dans le quartier Khan El Khallili où l'on peut fumer la chicha.
+Égypte;Caire;oui;;"> Se promener dans le quartier Khan El Khallili où l'on peut fumer la chicha.
  
  > Longer les bords du Nil et y admirer les couchers de soleil.
  
  > Se mêler à la foule des souks et des bazars";7;17;1;1;3;3;3;2;1;2;3;3;3;2;30.0448978;31.215365;;;;;
-Emirats Arabes Unis;Abou Dabi;oui;;;36;41;3;3;3;3;2;1;0;0;1;2;3;3;25.0627184;55.1307613;;;;;
+Émirats Arabes Unis;Abou Dabi;oui;;;36;41;3;3;3;3;2;1;0;0;1;2;3;3;25.0627184;55.1307613;;;;;
 Espagne;Barcelone;;;"> S'attabler dans un bar à tapas au marché de la Boqueria
  
  > Profiter de l'animation du quartier des Ramblas
@@ -145,14 +145,14 @@ Espagne;Madrid;oui;;"> Savourer des tapas dans l'un des bars de la capitale.
  
  > Passer à la ""Casa del Pueblo"" célèbre pour le flamenco.";15;38;1;1;1;1;1;3;3;3;3;2;1;1;40.413888;-3.6930927;;;;;
 Espagne;Valence;;;;14;25;1;1;1;2;3;3;3;3;3;3;2;1;39.4563455;-0.3535052;;;;;
-Etats-Unis;Boston;;;> Se promener sur le campus de Harvard (à défaut d'y avoir fait ses études...);34;44;0;0;0;1;1;3;3;3;3;1;1;0;42.354411;-71.0667946;;;;;
-Etats-Unis;Las Vegas;;;;12;43;2;3;3;2;1;1;0;0;1;3;3;3;36.1122667;-115.1782286;;;;;
-Etats-Unis;Los Angeles;;;;28;39;1;1;1;1;3;3;3;3;3;3;1;1;34.0563901;-118.2499271;;;;;
-Etats-Unis;Miami;;;;25;46;3;3;3;3;2;2;2;2;0;0;3;3;25.7872534;-80.1958926;;;;;
-Etats-Unis;New York;;;;43;53;0;0;0;1;3;3;3;3;3;1;0;0;40.7590453;-73.9862683;;;;;
-Etats-Unis;Nouvelle Orleans;;;;22;33;1;2;2;2;2;2;2;2;2;3;3;1;29.9619947;-90.0623861;;;;;
-Etats-Unis;San Francisco;;;;45;46;1;1;1;1;3;3;3;3;3;3;3;1;37.7685303;-122.4753509;;;;;
-Etats-Unis;Washington;oui;;"> Laissez vous charmer par une représentation de l'orchestre symphonique national des États-Unis au centre Kennedy.
+États-Unis;Boston;;;> Se promener sur le campus de Harvard (à défaut d'y avoir fait ses études...);34;44;0;0;0;1;1;3;3;3;3;1;1;0;42.354411;-71.0667946;;;;;
+États-Unis;Las Vegas;;;;12;43;2;3;3;2;1;1;0;0;1;3;3;3;36.1122667;-115.1782286;;;;;
+États-Unis;Los Angeles;;;;28;39;1;1;1;1;3;3;3;3;3;3;1;1;34.0563901;-118.2499271;;;;;
+États-Unis;Miami;;;;25;46;3;3;3;3;2;2;2;2;0;0;3;3;25.7872534;-80.1958926;;;;;
+États-Unis;New York;;;;43;53;0;0;0;1;3;3;3;3;3;1;0;0;40.7590453;-73.9862683;;;;;
+États-Unis;Nouvelle Orleans;;;;22;33;1;2;2;2;2;2;2;2;2;3;3;1;29.9619947;-90.0623861;;;;;
+États-Unis;San Francisco;;;;45;46;1;1;1;1;3;3;3;3;3;3;3;1;37.7685303;-122.4753509;;;;;
+États-Unis;Washington;oui;;"> Laissez vous charmer par une représentation de l'orchestre symphonique national des États-Unis au centre Kennedy.
  
  > Visiter la fameuse maison blanche. Attention: arriver 15 minutes en avance, avoir sur soi son passeport et interdiction aux sacs, appareils photos, bouteille d'eau... 
  
@@ -199,7 +199,7 @@ Hongrie;Budapest;oui;;"> Parcourir le cimetière bucolique de Kerepesi.
  > Observer la ville depuis le Mont Gellért qui abrite la citadelle.
  
  > Faire du canoë et se détendre au parc Városliget";9;19;0;0;1;1;3;3;3;3;3;1;1;0;47.5028546;19.057073;;;;;
-Indonesie;Jakarta;oui;;;9;14;0;0;0;2;2;3;3;3;3;2;2;0;-6.1753871;106.8249641;;;;;
+Indonésie;Jakarta;oui;;;9;14;0;0;0;2;2;3;3;3;3;2;2;0;-6.1753871;106.8249641;;;;;
 Irlande;Dublin;oui;;"> Visiter la Guiness Storehouse pour déguster la fameuse bière et en découvrir les secrets de fabrication.
 > Flâner dans le campus du Trinity Collège et en profiter pour aller voir le précieux Book of Kells.
 > Découvrir le Dublin authentique en arpentant le quartier des liberties.";15;52;2;2;2;2;2;2;3;3;2;2;2;2;53.3484209;-6.2784541;;;;;
@@ -255,7 +255,7 @@ Maroc;Fes;;;;9;18;1;2;2;3;3;3;2;1;3;3;3;2;34.0292396;-5.0224494;;;;;
 Maroc;Marrakech;;;;7;18;1;1;1;3;3;3;0;0;3;3;1;1;31.6172084;-7.9917199;;;;;
 Mexique;Cancun;;;;11;19;3;3;3;3;2;2;2;2;2;2;3;3;21.1452425;-86.842383;;;;;
 Mongolie;Oulan Bator;oui;;;8;14;0;0;0;0;0;1;3;1;1;0;0;0;47.9148841;106.9177042;;;;;
-Nepal;Katmandou;oui;;;5;13;1;1;1;3;2;0;0;0;2;3;1;1;27.721414;85.3597323;;;;;
+Népal;Katmandou;oui;;;5;13;1;1;1;3;2;0;0;0;2;3;1;1;27.721414;85.3597323;;;;;
 Nicaragua;Managa;oui;;;12,5;14;3;3;3;3;3;0;2;2;2;0;3;3;12.1256538;-86.2788069;;;;;
 Norvège;Oslo;oui;;"> Monter sur le tremplin d'Holmenkollen pour profiter du panorama sur Oslo et son fjord.
  
@@ -282,7 +282,7 @@ Pays-Bas;Amsterdam;oui;;"> Faire des emplettes dans les multiples marchés d'Ams
  > Pique-niquer dans le Vondel Park.
  
  > Visiter la ville comme les habitants, à bicyclette";22;58;0;0;1;2;3;3;3;3;2;1;1;1;52.3579946;4.8686484;;;;;
-Perou;Lima;oui;;"> Se promener dans le vieux Lima et découvrir son passé colonial.
+Pérou;Lima;oui;;"> Se promener dans le vieux Lima et découvrir son passé colonial.
  
  > Siroter un verre de pisco sur la place St-Martin.
  
@@ -300,7 +300,7 @@ Portugal;Lisbonne;oui;;"> Goûter les pâtisseries de l'Antigua Confeitera de Be
  
  > Se rendre dans le quartier de Barrio Alto pour une de ses maisons de fado";11;35;1;1;2;3;3;3;3;3;3;3;3;1;-12.1206225;-77.0298484;;;;;
 Qatar;Doha;oui;;;32;30;2;3;3;3;2;1;0;0;1;2;3;3;25.3707148;51.5444467;;;;;
-Republique Tchèque;Prague;Oui;;"> Se balader sur la rue piétonne Celetna.
+République Tchèque;Prague;Oui;;"> Se balader sur la rue piétonne Celetna.
 > Boire un verre d'absynthe dans une taverne afin de se sentir l'âme d'un poète (Verlaine, Oscar Wild et Rimbaud en consommait).
 > S'étonner devant l'étrange architecture de la maison dansante.
  
@@ -342,3 +342,95 @@ Turquie;Ankara;oui;;;15;27;0;0;1;1;3;3;3;3;3;3;1;1;39.9167994;32.854689;;;;;
 Turquie;Istanbul;;;;10;23;1;1;1;1;3;3;3;3;3;3;1;1;41.0057974;28.9751509;;;;;
 Venezuela;Caracas;oui;;;15;20;3;3;3;3;3;3;3;3;3;3;3;3;10.4984039;-66.8994356;;;;;
 Vietnam;Ha Noi;oui;;;7;12;1;1;2;3;2;1;0;1;2;3;3;2;21.0376902;105.8312464;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
