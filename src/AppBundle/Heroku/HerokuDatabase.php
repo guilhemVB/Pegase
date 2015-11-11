@@ -2,6 +2,8 @@
 
 namespace AppBundle\Heroku;
 
+use Composer\Script\Event;
+
 class HerokuDatabase
 {
 
