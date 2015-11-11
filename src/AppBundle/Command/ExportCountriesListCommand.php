@@ -18,7 +18,7 @@ class ExportCountriesListCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('export:countries')
+            ->setName('app:export:countries')
             ->setDescription("Permet de générer la liste des pays qui seront affichage dans le footer");
     }
 

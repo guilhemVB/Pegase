@@ -28,7 +28,7 @@ class ImportTypicalVoyageCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('typicalVoyage:import')
+            ->setName('app:import:typicalVoyage')
             ->setDescription("Permet d'importer et de mettre à jour la liste des voyages types")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
     }

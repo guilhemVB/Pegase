@@ -20,7 +20,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('destinations:import')
+            ->setName('app:import:destinations')
             ->setDescription("Permet d'importer et mettre à jour la liste des destinations")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
     }

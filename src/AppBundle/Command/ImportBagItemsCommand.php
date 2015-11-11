@@ -17,7 +17,7 @@ class ImportBagItemsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('bagItems:import')
+            ->setName('app:import:bagItems')
             ->setDescription("Permet d'importer et mettre à jour la liste des objets d'un sac à dos")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
     }

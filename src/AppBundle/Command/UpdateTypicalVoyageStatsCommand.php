@@ -28,7 +28,7 @@ class UpdateTypicalVoyageStatsCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('typicalVoyage:calculate:stats')
+            ->setName('app:typicalVoyage:calculate-stats')
             ->setDescription("Permet de calculer les stats des voyages types");
     }
 

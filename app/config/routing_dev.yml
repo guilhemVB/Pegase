@@ -21,3 +21,6 @@ _assetic:
     resource: .
     type:     assetic
 
+_console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+    prefix: /

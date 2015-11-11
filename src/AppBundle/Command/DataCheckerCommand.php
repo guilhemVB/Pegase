@@ -21,7 +21,7 @@ class DataCheckerCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('data:checker')
+            ->setName('app:data-checker')
             ->setDescription("Permet de vérifier l'état des donénes en base");
     }
 
