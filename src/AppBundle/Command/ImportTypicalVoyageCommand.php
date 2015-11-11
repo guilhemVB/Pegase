@@ -133,7 +133,7 @@ class ImportTypicalVoyageCommand extends ContainerAwareCommand
                 $nbDays = trim($destinationNameAndNbDays[1]);
 
                 if (is_null($destination)) {
-                    $output->writeln("<error>Impossible de trouver ladestination '$startDestination' du voyage '$name' a l'étape '$destinationNameWithNbDays'.</error>");
+                    $output->writeln("<error>Impossible de trouver la destination '" . $destinationNameAndNbDays[0] . "' du voyage '$name' a l'étape '$destinationNameWithNbDays'.</error>");
                     continue;
                 }
 

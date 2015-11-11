@@ -49,7 +49,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $nbToFlush = 0;
         foreach ($dataCountries as $dataCountry) {
             $name = $dataCountry['nom'];
-            $description = $dataCountry['description'];
+            $description = $dataCountry['Les immanquables'];
 
             $country = $countryRepository->findOneByName($name);
             if (is_null($country)) {
@@ -58,7 +58,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $output->writeln("<info>Nouveau pays '$name'</info>");
             }
             $country->setDescription($description);
-            $country->setTips($dataCountry['bons plans']);
+            $country->setTips($dataCountry['Pensez-y']);
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
             $em->persist($country);
 
