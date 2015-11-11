@@ -57,8 +57,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "compile": [
-            "app/conosle doctrine:schema:update --force",
-            "app/console assetic:dump"
+            "php app/conosle doctrine:schema:update --force",
+            "php app/console assetic:dump"
         ]
     },
     "config": {
