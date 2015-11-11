@@ -36,7 +36,7 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "AppBundle\\Heroku\\Database::populateEnvironment"
+            "AppBundle\\Heroku\\HerokuDatabase::populateEnvironment"
         ],
         "post-root-package-install": [
             "SymfonyStandard\\Composer::hookRootPackageInstall"
