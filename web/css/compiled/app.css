@@ -1,0 +1,188 @@
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+#gmap {
+    height: 510px;
+}
+
+/*#footer-container {*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+/*}*/
+
+.footer {
+    background-color: #222;
+    border-color: #080808;
+    color: grey;
+}
+
+.footer a {
+    color: grey;
+}
+
+.footer .col-md-11,
+.footer .col-md-2,
+.footer .col-md-1 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.containerGrey {
+    background-color: #222222;
+    color: #C0C0C0;
+}
+
+.containerOrange {
+    background-color: chocolate;
+    color: white;
+}
+
+.containerBlue {
+    background-color: #4C84B2;
+    color: white;
+}
+
+.containerPadding {
+    padding: 30px;
+}
+
+.containerPadding15 {
+    padding: 15px;
+}
+
+.badgeStarsColorYellow .fa-star {
+    color: #FFD800;
+}
+
+.badgeStarsColorYellow .fa-star-o {
+    opacity: 0.6;
+}
+
+.navbar .liLabel {
+    padding: 15px;
+}
+
+.navbar .fa-spinner {
+    padding: 15px;
+    color: white;
+}
+
+.colorInherit {
+    color: inherit;  !important;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.containerMap {
+    margin-bottom: 30px;
+}
+
+#countryView .page-header,
+#destinationView .page-header {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid chocolate;
+}
+
+#countryView h1,
+#destinationView h1 {
+    font-size: 46px;
+}
+
+#countryView .containerMap .controls {
+    font-size: 18px;
+}
+
+#countryView .containerMap .controls .active {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#shareVoyage ul,
+#dashboard ul {
+    list-style: none;
+    padding: 0;
+}
+
+#shareVoyage li,
+#dashboard li {
+    background: #eee;
+    margin: 1px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.cursorMove {
+    cursor: move;
+}
+
+#dashboard .sortable-ghost {
+    opacity: .3;
+    background: #f60;
+}
+
+#addDestinationHeader {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#containerStats h3 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.containerTitleDashboard {
+    padding: 10px 30px 5px 30px;
+}
+
+#labelDestination {
+    padding-top: 5px;
+}
+
+/*#homepage p {*/
+    /*font-size: 18px;*/
+/*}*/
+
+#carouselHomepage {
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+#carouselHomepage img {
+    height: 500px;
+    width: 100%;
+}
+
+#carouselHomepage h1 {
+    font-size: 80px;
+}
+
+#connectionRow {
+    margin-top: 30px;
+}
+
+#rowGmapText a {
+    color: inherit;
+}
+
+.datepicker .datepicker-switch:hover,
+.datepicker .prev:hover,
+.datepicker .next:hover,
+.datepicker tfoot tr th:hover,
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused {
+    background: cadetblue;
+}
+
+
+.datepicker table tr td.today {
+    color: #000000;
+    background-color: cornsilk;
+    border-color: #ffb733;
+}
