@@ -20,6 +20,11 @@ class CountryController extends Controller
      */
     public function viewAction(Country $country)
     {
+        if ($country->isRedirectToDestination()) {
+            $destinations = $country->getDestinations();
+            return $this->redirectToRoute('destination', ['slug' => $destinations[0]->getSlug()], 301);
+        }
+
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($country->getDestinations());

@@ -19,10 +19,12 @@
             <div class="container page-header">
                 <h1>
                     {{ destination.name }}
-                    <small>
-                        -
-                        <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
-                    </small>
+                    {% if destination.country.redirectToDestination == false %}
+                        <small>
+                            -
+                            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+                        </small>
+                    {% endif %}
                 </h1>
             </div>
         </div>
@@ -61,17 +63,17 @@
                                 <blockquote>
                                     <h4>
                                         Coût moyen de la vie sur place<span
-                                            class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
+                                                class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
                                             €</span>
                                     </h4>
                                     <footer style="color: silver;">
                                         Prix moyen de l'hébergement<span
-                                            class="pull-right label label-primary">{{ destination.prices.accommodation }}
+                                                class="pull-right label label-primary">{{ destination.prices.accommodation }}
                                             €</span>
                                     </footer>
                                     <footer style="color: silver;">
                                         Dépenses quotidiennes moyenne<span
-                                            class="pull-right label label-primary">{{ destination.prices['life cost'] }}
+                                                class="pull-right label label-primary">{{ destination.prices['life cost'] }}
                                             €</span>
                                     </footer>
                                 </blockquote>

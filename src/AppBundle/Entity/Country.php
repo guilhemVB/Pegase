@@ -48,6 +48,12 @@ class Country
      */
     private $destinations;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     */
+    private $redirectToDestination = false;
+
     function __construct()
     {
         $this->destinations = new ArrayCollection();
@@ -152,5 +158,24 @@ class Country
     public function getTips()
     {
         return $this->tips;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isRedirectToDestination()
+    {
+        return $this->redirectToDestination;
+    }
+
+    /**
+     * @param boolean $redirectToDestination
+     * @return $this
+     */
+    public function setRedirectToDestination($redirectToDestination)
+    {
+        $this->redirectToDestination = $redirectToDestination;
+
+        return $this;
     }
 }

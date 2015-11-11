@@ -59,6 +59,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
             }
             $country->setDescription($description);
             $country->setTips($dataCountry['bons plans']);
+            $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
             $em->persist($country);
 
             $nbToFlush++;

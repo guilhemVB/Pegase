@@ -65,6 +65,10 @@ class DataCheckerCommand extends ContainerAwareCommand
                 $output->writeln("<error>PAYS '$name'  --  pas de destination.</error>");
             }
 
+            if ($country->isRedirectToDestination()) {
+                continue;
+            }
+
             $description = $country->getDescription();
 
             if (strlen($description) > 650) {
