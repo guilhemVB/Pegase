@@ -48,7 +48,13 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "php app/console cache:clear",
+            "php app/console doctrine:schema:update --force",
+            "php app/console app:import:countries web/files/pays.csv",
+            "php app/console app:import:destinations web/files/destinations.csv",
+            "php app/console app:import:typicalVoyage web/files/voyages_types.csv",
+            "php app/console assetic:dump web --env=prod"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
