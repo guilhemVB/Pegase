@@ -1,0 +1,66 @@
+{% set activeDestinations = true %}
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Liste des destinations - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div id="destinationsListView">
+
+        <div class="container-fluid containerOrange">
+            <div class="container page-header">
+                <h1>
+                    Liste des destinations
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="container-fluid containerPadding">
+            <div class="container">
+                <div class="row">
+
+                    {% for country in countries %}
+
+                        <div class="col-lg-3">
+
+                            <a href="{{ path('country', {'slug' : country.slug }) }}">
+                                <h4>{{ country.name }}</h4>
+                            </a>
+
+                            <ul class="list-unstyled">
+                                {% for destination in country.destinations %}
+                                    <li>
+                                        <a href="{{ path('destination', {'slug' : destination.slug }) }}">
+                                            <span class="label label-success pull-left" style="font-size: 12px;">
+                                                {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro;
+                                            </span>
+                                            <span class="destinationName">
+                                                {{ destination.name }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {#<script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>#}
+
+{% endblock %}
+
