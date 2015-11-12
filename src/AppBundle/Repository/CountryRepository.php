@@ -21,7 +21,7 @@ class CountryRepository extends EntityRepository
             ->join('c.destinations', 'd')
             ->addSelect('d')
             ->orderBy('c.name')
-            ->addGroupBy('d.name')
+            ->addGroupBy('d.id')
             ->addGroupBy('c.id');
 
         return $qb->getQuery()->getResult();
