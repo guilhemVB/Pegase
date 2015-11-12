@@ -35,13 +35,17 @@ class SiteMapController extends Controller
                    'changefreq' => 'weekly',
                    'priority'   => '0.9'];
 
+        $urls[] = ['loc'        => $this->get('router')->generate('destinationsList', [], true),
+                   'changefreq' => 'weekly',
+                   'priority'   => '0.9'];
+
         $urls[] = ['loc'        => $this->get('router')->generate('fos_user_registration_register', [], true),
                    'changefreq' => 'monthly',
-                   'priority'   => '0.8'];
+                   'priority'   => '0.7'];
 
         $urls[] = ['loc'        => $this->get('router')->generate('fos_user_security_login', [], true),
                    'changefreq' => 'monthly',
-                   'priority'   => '0.8'];
+                   'priority'   => '0.7'];
 
         $urls[] = ['loc'        => $this->get('router')->generate('contact', [], true),
                    'changefreq' => 'monthly',
