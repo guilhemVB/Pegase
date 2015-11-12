@@ -19,9 +19,9 @@
         {{ destination.name }}
         <span class="label label-success pull-right" style="font-size: 12px;">
                 {% if destinationPrices is defined %}
-                    {{ destinationPrices }} &euro;
+                    {{ destinationPrices }} &euro; / jour
                 {% else %}
-                    {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro;
+                    {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro; / jour
                 {% endif %}
             </span>
 
