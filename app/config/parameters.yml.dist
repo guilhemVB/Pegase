@@ -20,7 +20,7 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    allow_robots: true
+    allow_robots: false
 
     image_banner_destinations_path : images/banners/destinations/
     image_banner_countries_path : images/banners/countries/
