@@ -5,14 +5,57 @@
     Liste des destinations - {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/select2/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/select2/select2-bootstrap.css') }}">
+{% endblock %}
+
 {% block body %}
     <div id="destinationsListView">
 
         <div class="container-fluid containerOrange">
-            <div class="container page-header">
-                <h1>
-                    Liste des destinations
-                </h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 page-header">
+                        <h1>
+                            Liste des destinations
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid containerOrange containerPadding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+
+                        <form action="#" method="post">
+
+
+                            <div class="form-group">
+
+                                <div class="input-group input-group-lg select2-bootstrap-append">
+                                    {% include 'AppBundle:Destination:selectDestination.html.twig'
+                                    with {'classSelect' : 'input-lg',
+                                    'selectId' : 'searchDestination',
+                                    'addCountrySelected' : true} %}
+
+                                    <span class="input-group-btn">
+                                        <button id="btnSeeDestination" class="btn btn-primary" type="button">
+                                            Voir <i class="fa fa-chevron-right"></i>
+                                        </button>
+                                    </span>
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -60,7 +103,9 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {#<script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>#}
+    <script src="{{ asset('/js/select2/select2.js') }}"></script>
+    <script src="{{ asset('/js/select2/select2_locale_fr.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/destination/listDestinations.js') }}"></script>
 
 {% endblock %}
 

@@ -8,12 +8,17 @@
     <option></option>
     {% for country in countries %}
         <optgroup label="{{ country.name }}">
+
             {% if addCountrySelected is defined and addCountrySelected %}
+                {% if not country.redirectToDestination %}
                 <option data-href="{{ path('country', {'slug' : country.slug }) }}" value="{{ country.id }}">{{ country.name }} (pays)</option>
+                {% endif %}
             {% endif %}
+
             {% for destination in country.destinations %}
                 <option data-href="{{ path('destination', {'slug' : destination.slug }) }}" value="{{ destination.id }}">{{ destination.name }}</option>
             {% endfor %}
+
         </optgroup>
     {% endfor %}
 </select>
