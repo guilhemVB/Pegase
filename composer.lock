@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1ee11cb75a35adefd8030ea239fd45bf",
-    "content-hash": "276f0a430bb40e0dbaaddc08ec3bb48c",
+    "hash": "5b8a14259bfca78602fdb909659f2eef",
+    "content-hash": "5b24a51af755adc920eae0eaa5ea719f",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -559,7 +559,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/303a576e2124efb07ec215e34ea2480b841cf5e4",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/86d2b1c9c195c12175551d02a475067977c0afcf",
                 "reference": "238aaa5fa04b5755a9957715e269d542cd0f8e39",
                 "shasum": ""
             },
@@ -738,7 +738,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/3f6fa39bfed49cf4a50e64c3c692bdcb9e0fafd0",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/a2f372d75b3ff484c250daa95bebdbbfd28feae3",
                 "reference": "27edc388296a3cffc7c30942a7613abb4998701c",
                 "shasum": ""
             },
@@ -3188,7 +3188,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.9",
-        "ext-intl": "^1.1"
+        "ext-intl": "^1.1",
+        "ext-mbstring": "^0.0.0"
     },
     "platform-dev": []
 }
