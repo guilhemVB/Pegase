@@ -58,7 +58,7 @@
             "php app/console app:typicalVoyage:calculate-stats",
             "php app/console assets:install",
             "php app/console assetic:dump web",
-            "php app/console fos:user:create laura test@example.com cookie"
+            "php app/console fos:user:create laura test@example.com cookie --super-admin"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
