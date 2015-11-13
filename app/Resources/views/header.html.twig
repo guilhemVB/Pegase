@@ -18,7 +18,7 @@
                 <li {% if activeIdeasOfTravels is defined %}class="active"{% endif %}><a href="{{ path('ideasOfTravels') }}">Idées de voyage</a></li>
             </ul>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_USER') %}
                 <ul class="nav navbar-nav">
                     <li {% if activeDashboard is defined %}class="active"{% endif %}><a href="{{ path('dashboard') }}">Tableau de bord</a></li>
                 </ul>
