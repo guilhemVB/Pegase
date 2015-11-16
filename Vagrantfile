@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
     config.vm.synced_folder ".", "/vagrant", type: :nfs
     config.vm.provision "shell", inline: "touch /home/vagrant/.linux && chown vagrant:vagrant /home/vagrant/.linux"
     config.vm.provision "shell", path: "vagrant/provisionning.sh"
+    config.vm.provision "shell", path: "vagrant/postgres.sh"
     config.vm.provision "shell", inline: "cp -r /vagrant/vagrant/.home/. /home/vagrant"
   end
 
@@ -17,6 +18,7 @@ Vagrant.configure(2) do |config|
     config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=766"]
     config.vm.provision "shell", inline: "touch /home/vagrant/.windows && chown vagrant:vagrant /home/vagrant/.windows"
     config.vm.provision "shell", path: "vagrant/provisionning.sh"
+    config.vm.provision "shell", path: "vagrant/postgres.sh"
     config.vm.provision "shell", inline: "cp -r /vagrant/vagrant/.home/. /home/vagrant"
   end
 

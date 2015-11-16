@@ -6,7 +6,7 @@ dpkg-reconfigure --frontend noninteractive tzdata
 
 # PHP
 apt-get update && apt-get upgrade
-apt-get install -y php5 php5-curl php5-imagick php5-mysql php5-memcached libssh2-php php5-xdebug php5-mongo g++ apache2
+apt-get install -y php5 php5-curl php5-imagick php5-mysql php5-memcached libssh2-php php5-xdebug php5-mongo php5-pgsql g++ apache2
 
 # Git
 apt-get install -y git
