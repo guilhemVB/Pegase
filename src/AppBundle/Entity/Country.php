@@ -26,6 +26,12 @@ class Country
 
     /**
      * @var string
+     * @ORM\Column(type="string", length=16, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var string
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -175,6 +181,25 @@ class Country
     public function setRedirectToDestination($redirectToDestination)
     {
         $this->redirectToDestination = $redirectToDestination;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
 
         return $this;
     }
