@@ -7,7 +7,7 @@
 <select class="form-control destination {% if classSelect is defined %}{{ classSelect }}{% endif %}" required="required" id="{{ selectId }}">
     <option></option>
     {% for country in countries %}
-        <optgroup label="{{ country.name }}">
+        <optgroup label="{{ country.name }}" data-country-code="{{ country.code }}">
 
             {% if addCountrySelected is defined and addCountrySelected %}
                 {% if not country.redirectToDestination %}

@@ -14,7 +14,19 @@ $().ready(function () {
     var $numberDays = $('#numberDays'),
         $destination = $('#containerAddDestination #addDestination');
 
+    function format(country) {
+        if (country.id) {
+            return country.text;
+        }
+        var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;
+
+        return "<img class='flagSelectDestination' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
+    }
+
     $(".destination").select2({
+        formatResult: format,
+        formatSelection: format,
+        escapeMarkup: function(m) { return m; },
         placeholder: "",
         theme: "bootstrap"
     });

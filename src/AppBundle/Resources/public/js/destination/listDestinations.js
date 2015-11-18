@@ -4,7 +4,19 @@ $().ready(function () {
     var $btnSeeDestination = $("#btnSeeDestination");
     var $formGroupDestinations = $("#formGroupDestinations");
 
+    function format(country) {
+        if (country.id) {
+            return country.text;
+        }
+        var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;
+
+        return "<img class='flagSelectDestination' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
+    }
+
     $destinationSelect.select2({
+        formatResult: format,
+        formatSelection: format,
+        escapeMarkup: function(m) { return m; },
         placeholder: "Rechercher une destination",
         theme: "bootstrap"
     });

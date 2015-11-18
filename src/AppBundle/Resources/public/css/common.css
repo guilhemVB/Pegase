@@ -78,3 +78,13 @@
 .img-responsive {
     width: 100%;
 }
+
+.flagSelectDestination {
+    max-width: 18px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+}
+
+.select2-results li.select2-result-with-children > .select2-result-label {
+    background-color: #eee;
+}
