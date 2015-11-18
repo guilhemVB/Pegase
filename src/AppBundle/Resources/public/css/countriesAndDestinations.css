@@ -22,3 +22,8 @@
     font-weight: bold;
     font-style: italic;
 }
+
+#countryView .flagCountry {
+    margin-top: 10px;
+    max-width: 100px;
+}

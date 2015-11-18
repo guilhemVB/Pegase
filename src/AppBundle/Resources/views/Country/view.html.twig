@@ -18,9 +18,16 @@
 
         <div class="container-fluid">
             <div class="container page-header">
-                <h1>
-                    {{ country.name }}
-                </h1>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h1>
+                            {{ country.name }}
+                        </h1>
+                    </div>
+                    <div class="col-sm-2">
+                        <img src="http://www.geonames.org/flags/x/{{ country.code|lower }}.gif" class="img-responsive pull-right hidden-xs flagCountry" alt="drapeau {{ country.name }}">
+                    </div>
+                </div>
             </div>
         </div>
 
