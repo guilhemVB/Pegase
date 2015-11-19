@@ -88,6 +88,20 @@ class DataCheckerCommand extends ContainerAwareCommand
             if (!$this->assetExistsExtension->assetExist($imagePath . $country->getSlug() . '.jpg')) {
                 $output->writeln("<error>PAYS '$name'  --  pas d'image.</error>");
             }
+
+            $code = strtolower($country->getCode());
+            $url = "http://www.geonames.org/flags/x/$code.gif";
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            // don't download content
+            curl_setopt($ch, CURLOPT_NOBODY, 1);
+            curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            if (!(curl_exec($ch) !== FALSE)) {
+                $output->writeln("<error>PAYS '$name'  --  drapeau impossible à récupérer.</error>");
+            }
+
         }
 
     }
