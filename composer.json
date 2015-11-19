@@ -57,7 +57,8 @@
             "php app/console app:import:typicalVoyage web/files/voyages_types.csv",
             "php app/console app:typicalVoyage:calculate-stats",
             "php app/console assets:install",
-            "php app/console assetic:dump web"
+            "php app/console assetic:dump web",
+            "rm -rf app/cache/*"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
