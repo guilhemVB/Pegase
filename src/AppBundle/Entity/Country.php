@@ -28,7 +28,13 @@ class Country
      * @var string
      * @ORM\Column(type="string", length=16, nullable=true)
      */
-    private $code;
+    private $code2;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=16, nullable=true)
+     */
+    private $code3;
 
     /**
      * @var string
@@ -186,20 +192,39 @@ class Country
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCode()
+    public function getCode2()
     {
-        return $this->code;
+        return $this->code2;
     }
 
     /**
-     * @param mixed $code
+     * @param string $code2
      * @return $this
      */
-    public function setCode($code)
+    public function setCode2($code2)
     {
-        $this->code = $code;
+        $this->code2 = $code2;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode3()
+    {
+        return $this->code3;
+    }
+
+    /**
+     * @param string $code3
+     * @return $this
+     */
+    public function setCode3($code3)
+    {
+        $this->code3 = $code3;
 
         return $this;
     }

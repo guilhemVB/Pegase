@@ -22,7 +22,7 @@ class DataCheckerCommand extends ContainerAwareCommand
     {
         $this
             ->setName('app:data-checker')
-            ->setDescription("Permet de vérifier l'état des donénes en base");
+            ->setDescription("Permet de vérifier l'état des données en base");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -89,7 +89,7 @@ class DataCheckerCommand extends ContainerAwareCommand
                 $output->writeln("<error>PAYS '$name'  --  pas d'image.</error>");
             }
 
-            $code = strtolower($country->getCode());
+            $code = strtolower($country->getCode2());
             $url = "http://www.geonames.org/flags/x/$code.gif";
 
             $ch = curl_init();
