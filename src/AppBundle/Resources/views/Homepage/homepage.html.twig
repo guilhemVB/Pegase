@@ -12,13 +12,6 @@
 
 {% block body %}
 
-    {{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}
-
-    <br>
-    {{ app.request.getSchemeAndHttpHost ~ app.request.baseUrl ~ app.request.pathInfo }}
-    <br>
-
-
     <div id="homepage">
 
         {% include 'AppBundle:Homepage:homepageCarousel.html.twig' %}
