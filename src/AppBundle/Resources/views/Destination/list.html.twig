@@ -62,37 +62,48 @@
         <div class="container-fluid containerPadding">
             <div class="container">
                 <div class="row">
-
-                    {% for country in countries %}
-
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-
-                            <a href="{{ path('country', {'slug' : country.slug }) }}">
-                                <h4>{{ country.name }}</h4>
-                            </a>
-
-                            <ul class="list-unstyled">
-                                {% for destination in country.destinations %}
-                                    <li>
-                                        <a href="{{ path('destination', {'slug' : destination.slug }) }}">
-                                            <span class="label label-success pull-left" style="font-size: 12px;">
-                                                {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro;
-                                            </span>
-                                            <span class="destinationName">
-                                                {{ destination.name }}
-                                            </span>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-
-                        </div>
-
-                    {% endfor %}
-
+                    <div class="col-md-12">
+                        <div id="gmap"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        {#<div class="container-fluid containerPadding">#}
+            {#<div class="container">#}
+                {#<div class="row">#}
+
+                    {#{% for country in countries %}#}
+
+                        {#<div class="col-lg-3 col-md-4 col-sm-6">#}
+
+                            {#<a href="{{ path('country', {'slug' : country.slug }) }}">#}
+                                {#<h4>{{ country.name }}</h4>#}
+                            {#</a>#}
+
+                            {#<ul class="list-unstyled">#}
+                                {#{% for destination in country.destinations %}#}
+                                    {#<li>#}
+                                        {#<a href="{{ path('destination', {'slug' : destination.slug }) }}">#}
+                                            {#<span class="label label-success pull-left" style="font-size: 12px;">#}
+                                                {#{{ destination.prices.accommodation + destination.prices['life cost'] }} &euro; / jour#}
+                                            {#</span>#}
+                                            {#<span class="destinationName">#}
+                                                {#{{ destination.name }}#}
+                                            {#</span>#}
+                                        {#</a>#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+                            {#</ul>#}
+
+                        {#</div>#}
+
+                    {#{% endfor %}#}
+
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
 
 
     </div>
@@ -101,10 +112,16 @@
 
 
 {% block javascripts %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
     {{ parent() }}
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+        var maplaceData = {{ maplaceData|raw }};
+    </script>
     <script src="{{ asset('/js/select2/select2.js') }}"></script>
     <script src="{{ asset('/js/select2/select2_locale_fr.js') }}"></script>
     <script src="{{ asset('bundles/app/js/destination/listDestinations.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/destination/maplaceListDestinations.js') }}"></script>
 
 {% endblock %}
 

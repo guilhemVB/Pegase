@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\DestinationRepository;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
 use Doctrine\ORM\EntityManager;
@@ -32,9 +33,17 @@ class DestinationController extends Controller
 
         $countries = $countryRepository->findCountriesWithDestinations();
 
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
+
+        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
+        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
+
         return $this->render('AppBundle:Destination:list.html.twig',
             [
                 'countries'    => $countries,
+                'maplaceData' => json_encode($maplaceData),
             ]);
     }
 
