@@ -89,8 +89,16 @@ class DataCheckerCommand extends ContainerAwareCommand
                 $output->writeln("<error>PAYS '$name'  --  pas d'image.</error>");
             }
 
-            $code = strtolower($country->getCode2());
-            $url = "http://www.geonames.org/flags/x/$code.gif";
+            $codeAlpha2 = strtolower($country->getCodeAlpha2());
+            $codeAlpha3 = strtolower($country->getCodeAlpha3());
+            if (empty($codeAlpha2)) {
+                $output->writeln("<error>PAYS '$name'  --  pas de code alpha 2.</error>");
+            }
+            if (empty($codeAlpha3)) {
+                $output->writeln("<error>PAYS '$name'  --  pas de code alpha 3.</error>");
+            }
+
+            $url = "http://www.geonames.org/flags/x/$codeAlpha2.gif";
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);

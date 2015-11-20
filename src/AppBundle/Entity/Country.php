@@ -28,13 +28,13 @@ class Country
      * @var string
      * @ORM\Column(type="string", length=16, nullable=true)
      */
-    private $code2;
+    private $codeAlpha2;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=16, nullable=true)
      */
-    private $code3;
+    private $codeAlpha3;
 
     /**
      * @var string
@@ -194,18 +194,18 @@ class Country
     /**
      * @return string
      */
-    public function getCode2()
+    public function getCodeAlpha2()
     {
-        return $this->code2;
+        return $this->codeAlpha2;
     }
 
     /**
-     * @param string $code2
+     * @param string $codeAlpha2
      * @return $this
      */
-    public function setCode2($code2)
+    public function setCodeAlpha2($codeAlpha2)
     {
-        $this->code2 = $code2;
+        $this->codeAlpha2 = $codeAlpha2;
 
         return $this;
     }
@@ -213,18 +213,18 @@ class Country
     /**
      * @return string
      */
-    public function getCode3()
+    public function getCodeAlpha3()
     {
-        return $this->code3;
+        return $this->codeAlpha3;
     }
 
     /**
-     * @param string $code3
+     * @param string $codeAlpha3
      * @return $this
      */
-    public function setCode3($code3)
+    public function setCodeAlpha3($codeAlpha3)
     {
-        $this->code3 = $code3;
+        $this->codeAlpha3 = $codeAlpha3;
 
         return $this;
     }

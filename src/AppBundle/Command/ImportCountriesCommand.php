@@ -60,7 +60,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $country->setDescription($description);
             $country->setTips($dataCountry['Pensez-y']);
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
-            $country->setCode2($dataCountry['code']);
+            $country->setCodeAlpha2($dataCountry['code alpha 2']);
+            $country->setCodeAlpha3($dataCountry['code alpha 3']);
             $em->persist($country);
 
             $nbToFlush++;

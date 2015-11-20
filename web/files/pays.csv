@@ -1,87 +1,87 @@
-nom;code;doit être redirigé vers la destination;Capitale;Budget /jour;Situation géographique;Langue(s) officielle(s);Devise;Les immanquables;Pensez-y;;
-Afrique du Sud;ZA;;Pretoria;;Afrique;"Afrikaans
+nom;code alpha 2;code alpha 3;doit être redirigé vers la destination;Capitale;Budget /jour;Situation géographique;Langue(s) officielle(s);Devise;Les immanquables;Pensez-y;;
+Afrique du Sud;ZA;ZAF;;Pretoria;;Afrique;"Afrikaans
 Anglais";Rand;Le Parc Kruger;;;
-Algérie;DZ;;Alger;;Afrique;Arabe;Dinar algérien;;;;
-Allemagne;DE;;Berlin;;Europe;Allemand;Euro;;;;
-Argentine;AR;;Buenos Aires;;Amérique du Sud;Espagnol;Peso argentin;Le Perito Morenos;Le pays est grand et les bus (ou cama), très confortable sont chers. Pensez au South Pass pour les long trajets afin d'économiser..;;
-Australie;AU;;Canberra;;Océanie;Anglais;Dollar australien;;;;
-Autriche;AT;;Vienne;;Europe;Allemand;Euro;;;;
-Belgique;BE;;Bruxelle;;Europe;"Français
+Algérie;DZ;DZA;;Alger;;Afrique;Arabe;Dinar algérien;;;;
+Allemagne;DE;DEU;;Berlin;;Europe;Allemand;Euro;;;;
+Argentine;AR;ARG;;Buenos Aires;;Amérique du Sud;Espagnol;Peso argentin;Le Perito Morenos;Le pays est grand et les bus (ou cama), très confortable sont chers. Pensez au South Pass pour les long trajets afin d'économiser..;;
+Australie;AU;AUS;;Canberra;;Océanie;Anglais;Dollar australien;;;;
+Autriche;AT;AUT;;Vienne;;Europe;Allemand;Euro;;;;
+Belgique;BE;BEL;;Bruxelle;;Europe;"Français
 Néerlandais
 Allemand";Euro;;;;
-Belize;BZ;;Belmopan;;Amérique Centrale;"Anglais
+Belize;BZ;BLZ;;Belmopan;;Amérique Centrale;"Anglais
 Créole
 Espagnol";Dollar bélizien;;;;
-Birmanie;MM;;Mandalay;;Asie;Birman;Kyat;;;;
-Bolivie;BO;;Sucre;;Amérique du Sud;"Espagnol
+Birmanie;MM;MMR;;Mandalay;;Asie;Birman;Kyat;;;;
+Bolivie;BO;BOL;;Sucre;;Amérique du Sud;"Espagnol
 Quechua
 Aymara";Boliviano;;;;
-Brésil;BR;;Brasilia;;Amérique du Sud;Portuguais;Réal brésilien;;;;
-Bulgarie;BG;;Sofia;;Europe;Bulgare;Lev bulgare;;;;
-Cambodge;KH;;Phnom Phen;;Asie;Khmer;Riel;;;;
-Canada;CA;;Ottawa;;Amérique du Nord;"Anglais
+Brésil;BR;BRA;;Brasilia;;Amérique du Sud;Portuguais;Réal brésilien;;;;
+Bulgarie;BG;BGR;;Sofia;;Europe;Bulgare;Lev bulgare;;;;
+Cambodge;KH;KHM;;Phnom Phen;;Asie;Khmer;Riel;;;;
+Canada;CA;CDN;;Ottawa;;Amérique du Nord;"Anglais
 Français";Dollar canadien;;;;
-Chili;CL;;Santiago;;Amérique du Sud;Espagnol;Peso chilien;;;;
-Chine;CN;;Pekin;;Asie;Mandarin;Yuan;;;;
-Colombie;CO;;Bogota;;Amérique du Sud;Espagnol;Peso colombien;;;;
-Costa Rica;CR;;San Jose;;Amérique Centrale;Espagnol;Colón costaricien;;;;
-Croatie;HR;;Zagreb;;Europe;Croate;Kuna ou Euro;;;;
-Cuba;CU;;La Havanne;;Amérique Centrale;Espagnol;Peso cubain;;;;
-Danemark;DK;;Copenhague;;Europe;Danois;Euro;;;;
-Égypte;EG;;Le Caire;;Afrique;Arabe;Livre égyptienne;;;;
-Émirats Arabes Unis;AE;;Abu Dabi;;Afrique;Arabe;Dirham ;;;;
-Espagne;ES;;Madrid;;Europe;Espagnol;Euro;;;;
-États-Unis;US;;Washington;;Amérique du Nord;Anglais;Dollar américain;;;;
-Finlande;FI;;Helsinki;;Europe;Finnois;Euro;;;;
-France;FR;;Paris;;Europe;Français;Euro;;;;
-Grèce;GR;;Athènes;;Europe;Grec;Euro;;;;
-Guatemala;GT;;Guatemala city;;Amérique Centrale;Espagnol;Quetzal;;;;
-Hongrie;HU;;Budapest;;Europe;Hongrois;Forint;;;;
-Inde;IN;;New Delhi;;Asie;"Hindi
+Chili;CL;CHL;;Santiago;;Amérique du Sud;Espagnol;Peso chilien;;;;
+Chine;CN;CHN;;Pekin;;Asie;Mandarin;Yuan;;;;
+Colombie;CO;COL;;Bogota;;Amérique du Sud;Espagnol;Peso colombien;;;;
+Costa Rica;CR;CRI;;San Jose;;Amérique Centrale;Espagnol;Colón costaricien;;;;
+Croatie;HR;HRV;;Zagreb;;Europe;Croate;Kuna ou Euro;;;;
+Cuba;CU;CUB;;La Havanne;;Amérique Centrale;Espagnol;Peso cubain;;;;
+Danemark;DK;DNK;;Copenhague;;Europe;Danois;Euro;;;;
+Égypte;EG;EGY;;Le Caire;;Afrique;Arabe;Livre égyptienne;;;;
+Émirats Arabes Unis;AE;ARE;;Abu Dabi;;Afrique;Arabe;Dirham ;;;;
+Espagne;ES;ESP;;Madrid;;Europe;Espagnol;Euro;;;;
+États-Unis;US;USA;;Washington;;Amérique du Nord;Anglais;Dollar américain;;;;
+Finlande;FI;FIN;;Helsinki;;Europe;Finnois;Euro;;;;
+France;FR;FRA;;Paris;;Europe;Français;Euro;;;;
+Grèce;GR;GRC;;Athènes;;Europe;Grec;Euro;;;;
+Guatemala;GT;GCA;;Guatemala city;;Amérique Centrale;Espagnol;Quetzal;;;;
+Hongrie;HU;HUN;;Budapest;;Europe;Hongrois;Forint;;;;
+Inde;IN;IND;;New Delhi;;Asie;"Hindi
 Anglais";Roupie indienne;;;;
-Indonésie;ID;;Jakarta;;Asie;Indonésien;Roupie indonésienne;;;;
-Irlande;IE;;Dublin;;Europe;"Irlandais
+Indonésie;ID;IDN;;Jakarta;;Asie;Indonésien;Roupie indonésienne;;;;
+Irlande;IE;IRL;;Dublin;;Europe;"Irlandais
 Anglais";Euro;;;;
-Islande;IS;;Reykjavic;;Europe;Islandais;Couronne islandaise;;;;
-Israël;IL;;Jerusalem;;Moyen-Orient;"Hébreu
+Islande;IS;ISL;;Reykjavic;;Europe;Islandais;Couronne islandaise;;;;
+Israël;IL;ISR;;Jerusalem;;Moyen-Orient;"Hébreu
 Arabe";Shekel;;;;
-Italie;IT;;Rome;;Europe;Italien;Euro;;;;
-Japon;JP;;Tokyo;;Asie;Japonais;Yen;;Les trains au Japon sont ponctuels, propres et confortable. Malheureusement, ils peuvent vite faire monter la note. Pour économiser sur les transports, pensez à jeter un oeil au JR Pass.;;
-Jordanie;JO;;Amman;;Moyen-Orient;Arabe;Dinar jordanien;;;;
-Kenya;KE;;Nairobi;;Afrique;"Swahili
+Italie;IT;ITA;;Rome;;Europe;Italien;Euro;;;;
+Japon;JP;JPN;;Tokyo;;Asie;Japonais;Yen;;Les trains au Japon sont ponctuels, propres et confortable. Malheureusement, ils peuvent vite faire monter la note. Pour économiser sur les transports, pensez à jeter un oeil au JR Pass.;;
+Jordanie;JO;JOR;;Amman;;Moyen-Orient;Arabe;Dinar jordanien;;;;
+Kenya;KE;KEN;;Nairobi;;Afrique;"Swahili
 Anglais";Shilling kényan;;;;
-Laos;LA;;Vientiane;;Asie;Lao;Kip laotien;;;;
-Malaisie;MY;;Kuala Lumpur;;Asie;Malais;Ringgit;;;;
-Maroc;MA;;Casablanca;;Afrique;"Arabe
+Laos;LA;LAO;;Vientiane;;Asie;Lao;Kip laotien;;;;
+Malaisie;MY;MYS;;Kuala Lumpur;;Asie;Malais;Ringgit;;;;
+Maroc;MA;MAR;;Casablanca;;Afrique;"Arabe
 Français";Dirham marocain;;;;
-Mexique;MX;;Mexico;;Amérique du Nord;Espagnol;Peso mexicain;;;;
-Mongolie;MN;;Oulan Bator;;Asie;Mongole;Tugrik;;;;
-Népal;NP;;Katmandou;;Asie;Népalais;Roupie népalaise;;;;
-Nicaragua;NI;;Managua;;Amérique Centrale;Espagnol;Cordoba;;;;
-Norvège;NO;;Oslo;;Europe;Norvégien;Couronne norvégienne;;;;
-Nouvelle-Zélande;NZ;;Wellington;;Océanie;Anglais;Dollar néo-zélandais;;;;
-Pays-Bas;NL;;Amsterdam;;Europe;"Néerlandais
+Mexique;MX;MEX;;Mexico;;Amérique du Nord;Espagnol;Peso mexicain;;;;
+Mongolie;MN;MNG;;Oulan Bator;;Asie;Mongole;Tugrik;;;;
+Népal;NP;NPL;;Katmandou;;Asie;Népalais;Roupie népalaise;;;;
+Nicaragua;NI;NIC;;Managua;;Amérique Centrale;Espagnol;Cordoba;;;;
+Norvège;NO;NOR;;Oslo;;Europe;Norvégien;Couronne norvégienne;;;;
+Nouvelle-Zélande;NZ;NZL;;Wellington;;Océanie;Anglais;Dollar néo-zélandais;;;;
+Pays-Bas;NL;NLD;;Amsterdam;;Europe;"Néerlandais
 Frison
 Limbourgeois";Euro;;;;
-Pérou;PE;;Lima;;Amérique du Sud;"Espagnol
+Pérou;PE;PER;;Lima;;Amérique du Sud;"Espagnol
 Quechua
 Aymara";Sol;;;;
-Portugal;PT;;Lisbonne;;Europe;Portuguais;Euro;;;;
-Qatar;QA;;Doha;;Moyen-Orient;Arabe;Riyal qatarien;;;;
-République Tchèque;CZ;;Prague;;Europe;Tchèque;Couronne tchèque;;;;
-Roumanie;RO;;Bucarest;;Europe;Roumain;Leu roumain;;;;
-Royaume-Uni;GB;;Londres;;Europe;Anglais;Livre sterling;;;;
-Russie;RU;;Moscou;;Europe;Russe;Rouble russe;;;;
-Singapour;SG;oui;Singapour;;Asie;"Anglais
+Portugal;PT;PRT;;Lisbonne;;Europe;Portuguais;Euro;;;;
+Qatar;QA;QAT;;Doha;;Moyen-Orient;Arabe;Riyal qatarien;;;;
+République Tchèque;CZ;CZE;;Prague;;Europe;Tchèque;Couronne tchèque;;;;
+Roumanie;RO;ROU;;Bucarest;;Europe;Roumain;Leu roumain;;;;
+Royaume-Uni;GB;GBR;;Londres;;Europe;Anglais;Livre sterling;;;;
+Russie;RU;RUS;;Moscou;;Europe;Russe;Rouble russe;;;;
+Singapour;SG;SGP;oui;Singapour;;Asie;"Anglais
 Chinois
 Tamoul
 Malais";Dollar de Singapour;;;;
-Suède;SE;;Stockholm;;Europe;Suédois;Couronne suédoise;;;;
-Suisse;CH;;Berne;;Europe;"Allemand
+Suède;SE;SWE;;Stockholm;;Europe;Suédois;Couronne suédoise;;;;
+Suisse;CH;CHE;;Berne;;Europe;"Allemand
 Français
 Italien";Franc Suisse;;;;
-Thaïlande;TH;;Bangkok;;Asie;Thaï;Baht;;;;
-Tunisie;TN;;Tunis;;Afrique;Arabe;Dinar tunisien;;;;
-Turquie;TR;;Ankara;;Asie;Turc;Livre turque;;;;
-Venezuela;VE;;Caracas;;Amérique du Sud;Espagnol;Bolivar vénézuélien;;;;
-Vietnam;VN;;Hanoi;;Asie;Vietnamien;Dong;;;;
+Thaïlande;TH;THA;;Bangkok;;Asie;Thaï;Baht;;;;
+Tunisie;TN;TUN;;Tunis;;Afrique;Arabe;Dinar tunisien;;;;
+Turquie;TR;TUR;;Ankara;;Asie;Turc;Livre turque;;;;
+Venezuela;VE;VEN;;Caracas;;Amérique du Sud;Espagnol;Bolivar vénézuélien;;;;
+Vietnam;VN;VNM;;Hanoi;;Asie;Vietnamien;Dong;;;;
