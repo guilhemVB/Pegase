@@ -20,7 +20,7 @@ $().ready(function () {
         }
         var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;
 
-        return "<img class='flagSelectDestination' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
+        return "<img class='flagSelectDestination flagCountrySmall' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
     }
 
     $(".destination").select2({

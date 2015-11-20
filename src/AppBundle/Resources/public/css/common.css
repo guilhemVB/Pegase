@@ -80,9 +80,16 @@
 }
 
 .flagSelectDestination {
+    margin-bottom: 4px;
+}
+
+.flagCountryStage {
+    margin-bottom: 2px;
+}
+
+.flagCountrySmall {
     max-width: 18px;
     margin-right: 10px;
-    margin-bottom: 4px;
 }
 
 .select2-results li.select2-result-with-children > .select2-result-label {
