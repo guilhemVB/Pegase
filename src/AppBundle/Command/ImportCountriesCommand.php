@@ -62,15 +62,58 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
             $country->setCodeAlpha2($dataCountry['code alpha 2']);
             $country->setCodeAlpha3($dataCountry['code alpha 3']);
+
+            $country = $this->fetchLongAndLat($output, $country);
             $em->persist($country);
 
             $nbToFlush++;
-            if($nbToFlush % 50 == 0) {
+            if ($nbToFlush % 50 == 0) {
                 $em->flush();
                 $em->clear();
             }
         }
         $em->flush();
         $em->clear();
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @param Country $country
+     * @return Country
+     */
+    private function fetchLongAndLat(OutputInterface $output, Country $country)
+    {
+        $name = $country->getName();
+        $lat = $country->getLatitude();
+        $lon = $country->getLongitude();
+
+        if (!empty($lat) && !empty($lon)) {
+            return $country;
+        }
+
+        $code = $country->getCodeAlpha3();
+
+        $url = "http://restcountries.eu/rest/v1/alpha?codes=$code";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $countriesData = curl_exec($ch);
+        curl_close($ch);
+
+        $countriesData = json_decode($countriesData, true);
+
+        if (empty($countriesData) || is_null($countriesData[0])) {
+            $output->writeln("<error>Pays '$name'  --  Impossible de trouver le pays avec le code '$code'. URL : '$url'.</error>");
+            return $country;
+        }
+        $countryData = $countriesData[0];
+
+        $country->setLatitude($countryData['latlng'][0]);
+        $country->setLongitude($countryData['latlng'][1]);
+
+        $output->writeln("<info>Pays '$name'  --  Ajout des coordonnées géographiques.</info>");
+
+        return $country;
     }
 }

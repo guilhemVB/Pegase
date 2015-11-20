@@ -66,6 +66,18 @@ class Country
      */
     private $redirectToDestination = false;
 
+    /**
+     * @var float
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @var float
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
     function __construct()
     {
         $this->destinations = new ArrayCollection();
@@ -73,10 +85,11 @@ class Country
 
     public function getSluggableFields()
     {
-        return [ 'name' ];
+        return ['name'];
     }
 
-    public function getRegenerateSlugOnUpdate() {
+    public function getRegenerateSlugOnUpdate()
+    {
         return false;
     }
 
@@ -227,5 +240,43 @@ class Country
         $this->codeAlpha3 = $codeAlpha3;
 
         return $this;
+    }
+
+    /**
+     * @param float $longitude
+     * @return $this
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $latitude
+     * @return $this
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
     }
 }
