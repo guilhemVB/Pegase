@@ -8,6 +8,8 @@ dpkg-reconfigure --frontend noninteractive tzdata
 apt-get update && apt-get upgrade
 apt-get install -y php5 php5-curl php5-imagick php5-mysql php5-memcached libssh2-php php5-xdebug php5-mongo php5-pgsql g++ apache2
 
+echo "xdebug.max_nesting_level = 1000" >> /etc/php5/cli/php.ini
+
 # Git
 apt-get install -y git
 

@@ -2,9 +2,9 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\Stage;
-use AppBundle\Entity\Voyage;
 
 class MaplaceMarkerBuilder
 {
@@ -22,10 +22,25 @@ class MaplaceMarkerBuilder
     private function defaultOptions()
     {
         return [
-            'disableHtml'  => false,
-            'disableZoom'  => false,
+            'disableHtml' => false,
+            'disableZoom' => false,
             'ordereIcons' => false,
         ];
+    }
+
+    /**
+     * @param Country $country
+     * @param array $options
+     * @param null|int $number
+     * @return array
+     */
+    public function buildMarkerFromCountry(Country $country, $options = [], $number = null)
+    {
+        return $this->buildMaker($country->getLongitude(),
+            $country->getLatitude(),
+            $country->getName(),
+            null, $country,
+            $options, $number);
     }
 
     /**
@@ -36,21 +51,44 @@ class MaplaceMarkerBuilder
      */
     public function buildMarkerFromDestination(Destination $destination, $options = [], $number = null)
     {
+        return $this->buildMaker($destination->getLongitude(),
+            $destination->getLatitude(),
+            $destination->getName(),
+            $destination, null,
+            $options, $number);
+    }
+
+    /**
+     * @param float $longitude
+     * @param float $latitude
+     * @param string $name
+     * @param Destination|null $destination
+     * @param Country|null $country
+     * @param array $options
+     * @param null|int $number
+     * @return array
+     */
+    private function buildMaker($longitude, $latitude, $name, $destination = null, $country = null, $options = [], $number = null)
+    {
         $options = array_merge($this->defaultOptions(), $options);
         $dataMaplace = [
-            'lat'   => $destination->getLatitude(),
-            'lon'   => $destination->getLongitude(),
-            'title' => $destination->getName(),
+            'lon'   => $longitude,
+            'lat'   => $latitude,
+            'title' => $name,
         ];
 
         if (!$options['disableHtml']) {
-            $dataMaplace['html'] = $this->twig->render('AppBundle:Destination:googleMarker.html.twig', ['destination' => $destination]);
+            if (!is_null($destination)) {
+                $dataMaplace['html'] = $this->twig->render('AppBundle:Destination:googleMarkerDestination.html.twig', ['destination' => $destination]);
+            } elseif (!is_null($country)) {
+                $dataMaplace['html'] = $this->twig->render('AppBundle:Country:googleMarkerCountry.html.twig', ['country' => $country]);
+            }
         }
 
         if (!$options['disableZoom']) {
             $dataMaplace['zoom'] = 11;
         }
-        
+
         if ($options['ordereIcons'] && !is_null($number)) {
             $iconLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -58,6 +96,21 @@ class MaplaceMarkerBuilder
             $number = $number % 26;
 
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker' . $iconLetters[$number] . '.png';
+        }
+
+        return $dataMaplace;
+    }
+
+    /**
+     * @param Country[] $countries
+     * @param array $options
+     * @return array
+     */
+    public function buildMarkerFromCountries($countries, $options = [])
+    {
+        $dataMaplace = [];
+        foreach ($countries as $country) {
+            $dataMaplace[] = $this->buildMarkerFromCountry($country, $options);
         }
 
         return $dataMaplace;

@@ -7,7 +7,7 @@ pegase-dev.herokuapp.com
 
 Pour lancer les tests behat :
 
-Créer la table travel_test
+Créer la base travel_test
 
 lancer la commande
 
