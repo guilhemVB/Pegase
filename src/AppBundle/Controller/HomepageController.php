@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
 use Doctrine\ORM\EntityManager;
@@ -21,16 +20,12 @@ class HomepageController extends Controller
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
-//        /** @var $destinationRepository DestinationRepository */
-//        $destinationRepository = $em->getRepository('AppBundle:Destination');
-
-        /** @var $countryRepository CountryRepository */
-        $countryRepository = $em->getRepository('AppBundle:Country');
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
 
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-//        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromCountries($countryRepository->findAll(), ['disableZoom' => true]);
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
