@@ -1,9 +1,17 @@
 {% set activeIdeasOfTravels = true %}
 {% extends "::layout.html.twig" %}
 
+
 {% block title %}
     Idées de voyages - {{ parent() }}
 {% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">
+{% endblock %}
+
 
 {% block body %}
     <div id="voyagesView">
@@ -31,6 +39,8 @@
                 </div>
             </div>
         </div>
+
+        {% include 'AppBundle:TypicalVoyage:typicalVoyageShare.html.twig' %}
 
     </div>
 {% endblock %}
