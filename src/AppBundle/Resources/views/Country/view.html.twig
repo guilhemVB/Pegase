@@ -5,6 +5,13 @@
     {{ country.name }} - {{ parent() }}
 {% endblock %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">
+{% endblock %}
+
+
 {% block body %}
     <div id="countryView">
 
@@ -25,7 +32,8 @@
                         </h1>
                     </div>
                     <div class="col-sm-2">
-                        <img src="http://www.geonames.org/flags/x/{{ country.codeAlpha2|lower }}.gif" class="img-responsive pull-right hidden-xs flagCountry" alt="drapeau {{ country.name }}">
+                        <img src="http://www.geonames.org/flags/x/{{ country.codeAlpha2|lower }}.gif"
+                             class="img-responsive pull-right hidden-xs flagCountry" alt="drapeau {{ country.name }}">
                     </div>
                 </div>
             </div>
@@ -34,14 +42,15 @@
         <div class="container-fluid containerMap">
             <div class="container">
                 <div class="row">
-                    {% if country.destinations|length > 1 %}
-                        <div class="col-md-4 visible-md-block visible-lg-block">
-                            <div id="controls"></div>
+                    <div class="col-md-4 destinationsCountryList">
+                        <div class="row">
+                            {% for destination in country.destinations %}
+                                <div class="col-md-12 col-sm-6 col-xs-6 containerPadding15">
+                                    {% include 'AppBundle:Vignette:destinationContent.html.twig' %}
+                                </div>
+                            {% endfor %}
                         </div>
-                    {% else %}
-                        {# To Center map #}
-                        <div class="col-md-2 visible-md-block visible-lg-block"></div>
-                    {% endif %}
+                    </div>
                     <div class="col-md-8">
                         <div id="gmap"></div>
                     </div>
@@ -68,17 +77,7 @@
             </div>
         </div>
 
-        <div class="container-fluid containerPadding">
-            <div class="container">
-                <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
-
-                <div class="row">
-                    {% for destination in country.destinations %}
-                        {% include 'AppBundle:Vignette:destination.html.twig' %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        {% include 'AppBundle:Country:countryShare.html.twig' %}
 
     </div>
 {% endblock %}

@@ -27,7 +27,7 @@ class CountryController extends Controller
 
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($country->getDestinations());
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($country->getDestinations(), ['disableZoom' => true]);
 
         return $this->render('AppBundle:Country:view.html.twig',
             [

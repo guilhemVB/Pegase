@@ -27,3 +27,8 @@
     margin-top: 10px;
     max-width: 100px;
 }
+
+.destinationsCountryList {
+    height: 510px;
+    overflow: scroll;
+}
