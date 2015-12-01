@@ -5,6 +5,13 @@
     {{ destination.name }} - {{ parent() }}
 {% endblock %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">
+{% endblock %}
+
+
 {% block body %}
     <div id="destinationView">
 
@@ -162,7 +169,6 @@
             </div>
         </div>
 
-
         {% set countryDestinations = destination.country.destinations %}
         {% if countryDestinations|length > 1 %}
             <div class="container-fluid containerPadding">
@@ -187,6 +193,8 @@
                 </div>
             </div>
         {% endif %}
+
+        {% include 'AppBundle:Destination:destinationShare.html.twig' %}
 
         {% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}
 
