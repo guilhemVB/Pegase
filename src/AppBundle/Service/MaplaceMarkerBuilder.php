@@ -25,6 +25,7 @@ class MaplaceMarkerBuilder
             'disableHtml' => false,
             'disableZoom' => false,
             'ordereIcons' => false,
+            'addDefaultZoom' => false,
         ];
     }
 
@@ -87,6 +88,8 @@ class MaplaceMarkerBuilder
 
         if (!$options['disableZoom']) {
             $dataMaplace['zoom'] = 11;
+        } elseif ($options['addDefaultZoom']) {
+            $dataMaplace['zoom'] = 7;
         }
 
         if ($options['ordereIcons'] && !is_null($number)) {
