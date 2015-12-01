@@ -30,6 +30,12 @@ class Comment extends BaseComment implements VotableCommentInterface, SignedComm
     protected $thread;
 
     /**
+     * @var int
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    public $price;
+
+    /**
      * Author of the comment
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -93,5 +99,24 @@ class Comment extends BaseComment implements VotableCommentInterface, SignedComm
     public function incrementScore($by = 1)
     {
         $this->score += $by;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
     }
 }

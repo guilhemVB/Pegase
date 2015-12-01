@@ -72,17 +72,17 @@
                                 <blockquote>
                                     <h4>
                                         Coût moyen de la vie sur place<span
-                                            class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
+                                                class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
                                             €</span>
                                     </h4>
                                     <footer style="color: silver;">
                                         Prix moyen de l'hébergement<span
-                                            class="pull-right label label-primary">{{ destination.prices.accommodation }}
+                                                class="pull-right label label-primary">{{ destination.prices.accommodation }}
                                             €</span>
                                     </footer>
                                     <footer style="color: silver;">
                                         Dépenses quotidiennes moyenne<span
-                                            class="pull-right label label-primary">{{ destination.prices['life cost'] }}
+                                                class="pull-right label label-primary">{{ destination.prices['life cost'] }}
                                             €</span>
                                     </footer>
                                 </blockquote>
@@ -195,7 +195,11 @@
             </div>
         {% endif %}
 
-        {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'destination_' ~ destination.id} %}
+        <div class="container-fluid containerPadding">
+            <div class="container">
+                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'destination_' ~ destination.id} %}
+            </div>
+        </div>
 
         {% include 'AppBundle:Destination:destinationShareBtn.html.twig' %}
 
