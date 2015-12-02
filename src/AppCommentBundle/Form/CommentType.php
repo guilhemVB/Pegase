@@ -64,11 +64,6 @@ class CommentType extends AbstractType
 
     public function getName()
     {
-        return "app_comment_comment";
-    }
-
-    public function getParent()
-    {
-        return 'fos_comment_comment';
+        return "fos_comment_comment";
     }
 }

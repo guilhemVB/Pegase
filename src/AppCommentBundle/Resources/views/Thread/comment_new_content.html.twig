@@ -22,36 +22,51 @@
             {% if first %}
                 <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h3>
             {% elseif parent is not null %}
-                <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h3>
+                <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}
+                    fos_comment_comment_reply_reply_to{% endtrans %}</h3>
             {% else %}
                 <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h3>
             {% endif %}
         {% endblock %}
 
         {% block fos_comment_comment_new_form %}
-            <form class="fos_comment_comment_new_form" action="{{ url('fos_comment_post_thread_comments', url_parameters) }}" data-parent="{{ parent.id|default() }}" method="POST">
 
-                {% block fos_comment_form_fields %}
-                    <div class="fos_comment_form_errors">
-                    {{ form_errors(form) }}
-                    {{ form_errors(form.body) }}
-                    </div>
-                    {{ form_widget(form.body) }}
-                    {{ form_widget(form.price) }}
+            <div class="row">
+                <form class="fos_comment_comment_new_form form-horizontal"
+                      action="{{ url('fos_comment_post_thread_comments', url_parameters) }}"
+                      data-parent="{{ parent.id|default() }}" method="POST">
 
-                    {{ form_rest(form) }}
-                {% endblock %}
+                    {% block fos_comment_form_fields %}
+                        <div class="fos_comment_form_errors">
+                            {{ form_errors(form) }}
+                            {{ form_errors(form.body) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.body, "Message") }}
+                            {{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.price, "Votre prix") }}
+                            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                        </div>
 
-                <div class="fos_comment_submit">
-                    {% block fos_comment_form_submit %}
-                        {% if parent is not null %}
-                            <input type="button" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}" class="fos_comment_comment_reply_cancel" />
-                        {% endif %}
-                        <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" />
+                        {{ form_rest(form) }}
                     {% endblock %}
-                </div>
 
-            </form>
+                    <div class="fos_comment_submit col-sm-8">
+                        {% block fos_comment_form_submit %}
+                            {% if parent is not null %}
+                                <input type="button"
+                                       value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}"
+                                       class="fos_comment_comment_reply_cancel btn btn-primary"/>
+                            {% endif %}
+                            <input type="submit" class="btn btn-primary"
+                                   value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}"/>
+                        {% endblock %}
+                    </div>
+
+                </form>
+            </div>
         {% endblock fos_comment_comment_new_form %}
 
     </div>
