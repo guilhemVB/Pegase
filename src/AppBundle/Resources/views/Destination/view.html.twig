@@ -195,11 +195,11 @@
             </div>
         {% endif %}
 
-        <div class="container-fluid containerPadding">
-            <div class="container">
-                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'destination_' ~ destination.id} %}
-            </div>
-        </div>
+        {#<div class="container-fluid containerPadding">#}
+            {#<div class="container">#}
+                {#{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'destination_' ~ destination.id} %}#}
+            {#</div>#}
+        {#</div>#}
 
         {% include 'AppBundle:Destination:destinationShareBtn.html.twig' %}
 
