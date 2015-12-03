@@ -2,6 +2,7 @@
 
 namespace AppBundle\Features\Context;
 
+use AppBundle\Entity\Stage;
 use AppBundle\Repository\StageRepository;
 use AppBundle\Service\CRUD\CRUDStage;
 use AppKernel;
@@ -35,9 +36,9 @@ class StageContext extends CommonContext
     }
 
     /**
-     * @When je supprime l'étape :destinationName du voyage :voyageName
+     * @When je supprime l'étape :destinationName à la position :position du voyage :voyageName
      */
-    public function jeSupprimeLÉtapeDuVoyage($destinationName, $voyageName)
+    public function jeSupprimeLÉtapeALaPositionDuVoyage($destinationName, $position, $voyageName)
     {
         $destination = $this->findDestinationByName($destinationName);
         $voyage = $this->findVoyageByName($voyageName);
@@ -45,7 +46,16 @@ class StageContext extends CommonContext
         /** @var StageRepository $stageRepository */
         $stageRepository = $this->em->getRepository('AppBundle:Stage');
 
-        $this->CRUDStage->remove($stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage)[0]);
+        $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
+
+        foreach ($stages as $stage) {
+            if ($stage->getPosition() == $position) {
+                $this->CRUDStage->remove($stage);
+                return;
+            }
+        }
+
+        $this->fail("Stage '$destinationName' position $position not found");
     }
 
     /**
@@ -84,6 +94,13 @@ class StageContext extends CommonContext
 
         $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
 
-        $this->CRUDStage->changePosition($stages[0], $oldPosition, $newPosition);
+        foreach ($stages as $stage) {
+            if ($stage->getPosition() == $oldPosition) {
+                $this->CRUDStage->changePosition($stage, $oldPosition, $newPosition);
+                return;
+            }
+        }
+
+        $this->fail("Stage '$destinationName' position $oldPosition not found");
     }
 }
