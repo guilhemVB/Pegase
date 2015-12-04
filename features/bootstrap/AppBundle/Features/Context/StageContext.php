@@ -77,8 +77,6 @@ class StageContext extends CommonContext
                 $stageRepository->findOneBy(['voyage' => $voyage, 'destination' => $destination, 'position' => $stageRow['position']]),
                 "Can't find destination " . $destination->getName());
         }
-
-
     }
 
     /**

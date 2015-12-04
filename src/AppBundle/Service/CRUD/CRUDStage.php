@@ -65,7 +65,7 @@ class CRUDStage
             $this->em->persist($stageToChange);
             $this->em->flush();
             $position++;
-            $stageToChange = $this->stageRepository->findOneBy(['voyage' => $voyage, 'position' => $position]);
+            $stageToChange = $this->stageRepository->findOneBy(['voyage' => $voyage, 'position' => $position + 1]);
         }
 
         $this->em->remove($stage);

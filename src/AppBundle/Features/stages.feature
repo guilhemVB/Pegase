@@ -20,14 +20,24 @@ Feature: Stages
             | TDM | 01/01/2015     | Paris                 | 1                  |
         Given les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
-            | Lyon        | 7              |
-            | Marseille   | 3              |
-            | New-York    | 8              |
-        When je supprime l'étape "Marseille" à la position 2 du voyage "TDM"
+            | Lyon        | 1              |
+            | Marseille   | 2              |
+            | New-York    | 3              |
+            | Lyon        | 4              |
+            | Marseille   | 5              |
+            | New-York    | 6              |
+            | New-York    | 7              |
+            | Lyon        | 8              |
+        When je supprime l'étape "New-York" à la position 6 du voyage "TDM"
         Then la voyage "TDM" à les étapes suivantes :
             | destination | nombre de jour | position |
-            | Lyon        | 7              | 1        |
-            | New-York    | 8              | 2        |
+            | Lyon        | 1              | 1        |
+            | Marseille   | 2              | 2        |
+            | New-York    | 3              | 3        |
+            | Lyon        | 4              | 4        |
+            | Marseille   | 5              | 5        |
+            | New-York    | 7              | 6        |
+            | Lyon        | 8              | 7        |
 
 
     Scenario: Changer l'ordre des étapes -> de 2 à 3
