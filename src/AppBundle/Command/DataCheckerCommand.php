@@ -71,7 +71,7 @@ class DataCheckerCommand extends ContainerAwareCommand
 
             $description = $country->getDescription();
 
-            if (strlen($description) > 650) {
+            if (strlen($description) > 750) {
                 $output->writeln("<error>PAYS '$name'  --  description trop grande, 650 caractères maximum.</error>");
             }
 

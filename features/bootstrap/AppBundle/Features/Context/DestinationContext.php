@@ -24,7 +24,7 @@ class DestinationContext extends CommonContext
 
             $destination = new Destination();
             $destination->setName($destinationRow['nom']);
-            $destination->setDescription(isset($destinationRow['description']) ? $destinationRow['description'] : '');
+            $destination->setDescription(isset($destinationRow['description']) ? [$destinationRow['description']] : []);
             $destination->setTips(isset($destinationRow['bon plans']) ? $destinationRow['bon plans'] : '');
             $destination->setPeriods(isset($destinationRow['périodes']) ? (array)json_decode($destinationRow['périodes']) : ["january"=>"1","february"=>"1","march"=>"2","april"=>"2","may"=>"2","june"=>"3","july"=>"3","august"=>"3","september"=>"2","october"=>"1","november"=>"1","december"=>"1"]);
             $destination->setPrices(isset($destinationRow['prix']) ? (array)json_decode($destinationRow['prix']) : ["accommodation" =>"32","life cost" =>"24"]);

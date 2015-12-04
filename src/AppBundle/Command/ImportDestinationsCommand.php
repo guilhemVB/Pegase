@@ -58,7 +58,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
 
-            if (strlen($description) > 650) {
+            if (strlen($description) > 750) {
                 $output->writeln("<error>La description de la destination '$name' est trop grande, 650 caractères maximum. La destination n'a pas été importée.</error>");
                 continue;
             }
@@ -69,6 +69,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
                 continue;
             }
 
+
             $destination = $destinationRepository->findOneByName($name);
             if (is_null($destination)) {
                 $destination = new Destination();
@@ -76,7 +77,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
                 $output->writeln("<info>Nouvelle destination '$name'</info>");
             }
             $destination->setCountry($country);
-            $destination->setDescription($description);
+            $destination->setDescription(!empty($description) ? explode("\n", $description) : []);
             $destination->setTips($this->extractTips($dataDestination['bons plans']));
             $destination->setPeriods($this->extractPeriods($dataDestination));
             $destination->setPrices($this->extractPrices($dataDestination));

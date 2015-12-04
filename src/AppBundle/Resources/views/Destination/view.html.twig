@@ -51,7 +51,9 @@
 
                         <h2>Description</h2>
 
-                        <p class="text-justify">{{ destination.description }}</p>
+                        {% for description in destination.description %}
+                            <p class="text-justify">{{ description }}</p>
+                        {% endfor %}
 
                     </div>
                     <div class="col-md-8">

@@ -39,8 +39,8 @@ class Destination
     private $isTheCapital = false;
 
     /**
-     * @var string
-     * @ORM\Column(name="description", type="text")
+     * @var array
+     * @ORM\Column(name="description", type="array")
      */
     private $description;
 
@@ -157,7 +157,7 @@ class Destination
     }
 
     /**
-     * @param string $description
+     * @param array $description
      * @return Destination
      */
     public function setDescription($description)
@@ -168,7 +168,7 @@ class Destination
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getDescription()
     {
