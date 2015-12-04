@@ -38,11 +38,6 @@ class Destination
      */
     private $isTheCapital = false;
 
-    /**
-     * @var array
-     * @ORM\Column(name="description", type="array")
-     */
-    private $description;
 
     /**
      * @var array
