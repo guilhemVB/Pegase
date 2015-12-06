@@ -3,19 +3,21 @@
 <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
 
     <ol class="carousel-indicators">
-        <li data-target="#carouselHomepage" data-slide-to="0" class=""></li>
-        <li data-target="#carouselHomepage" data-slide-to="1" class="active"></li>
+        <li data-target="#carouselHomepage" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselHomepage" data-slide-to="1" class=""></li>
         <li data-target="#carouselHomepage" data-slide-to="2" class=""></li>
     </ol>
 
     <div class="carousel-inner" role="listbox">
-        <div class="item">
-            <img class="img-responsive first-slide" src="{{ asset('paris_500.jpg') }}" alt="First slide">
+        <div class="item active">
+            {% set bannerVienneUrl = image_banner_homepage_path ~ 'vienne.JPG' %}
+
+            <img class="img-responsive first-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
 
             <div class="container">
-                <div class="carousel-caption" style="height: 300px;">
-                    <h1>Pegase</h1>
-                    <p>
+                <div class="carousel-caption" style="height: 350px;">
+                    <h1>Le Monde en Sac</h1>
+                    <p class="lead">
                     <em>
                         <i class="fa fa-quote-left"></i>
                         Un voyage de mille lieues commence toujours par un premier pas.
@@ -27,17 +29,15 @@
                 </div>
             </div>
         </div>
-        <div class="item active">
-            <img class="img-responsive second-slide" src="{{ asset('taj_mahal_500.jpg') }}" alt="Second slide">
+        <div class="item">
+            {% set bannerVienneUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
+            <img class="img-responsive second-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Pekin">
 
             <div class="container">
-                <div class="carousel-caption">
-                    <h2>Conseils de voyageurs</h2>
+                <div class="carousel-caption" style="height: 300px;">
+                    <h2 style="font-size: 50px;">Sautez le pas !</h2>
 
-                    <p>Allez voir la rubrique des conseils, vous y trouverez des expériences de voyageurs, des
-                        bons plans et beaucoup d'informations pour préparer au mieux vos voyages.</p>
-
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire les conseils</a></p>
+                    <p class="lead">Savez-vous qu'un tour du monde d'un an coûte moins cher qu'une voiture ?</p>
                 </div>
             </div>
         </div>
@@ -45,12 +45,11 @@
             <img class="img-responsive third-slide" src="{{ asset('taj_mahal_500.jpg') }}" alt="Third slide">
 
             <div class="container">
-                <div class="carousel-caption">
-                    <h2>Sautez le pas !</h2>
+                <div class="carousel-caption" style="height: 300px;">
+                    <h2 style="font-size: 50px;">Conseils de voyageurs</h2>
 
-                    <p>Un tour du monde d'un ans coute moins chère qu'une voiture...</p>
-
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    <p class="lead">Des fiches recensant les expériences des voyageurs, des
+                        bons plans et des informations pour préparer au mieux vos voyages.</p>
                 </div>
             </div>
         </div>

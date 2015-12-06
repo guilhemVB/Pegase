@@ -17,16 +17,17 @@ class HomepageController extends Controller
      */
     public function homepageAction()
     {
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
+//        /** @var $em EntityManager $em */
+//        $em = $this->get('doctrine')->getManager();
+//
+//        /** @var $destinationRepository DestinationRepository */
+//        $destinationRepository = $em->getRepository('AppBundle:Destination');
+//
+//        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
+//        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
+//        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
 
-        /** @var $destinationRepository DestinationRepository */
-        $destinationRepository = $em->getRepository('AppBundle:Destination');
-
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
-
+        $maplaceData = [];
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
                 'maplaceData' => json_encode($maplaceData),
