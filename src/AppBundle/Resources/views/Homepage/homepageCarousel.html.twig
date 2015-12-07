@@ -15,41 +15,53 @@
             <img class="img-responsive first-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
 
             <div class="container">
-                <div class="carousel-caption" style="height: 350px;">
+                <div class="carousel-caption">
+                    {#style="height: 350px;"#}
                     <h1>Le Monde en Sac</h1>
-                    <p class="lead">
-                    <em>
-                        <i class="fa fa-quote-left"></i>
-                        Un voyage de mille lieues commence toujours par un premier pas.
-                        <i class="fa fa-quote-right"></i>
-                        &#8211;
-                        Lao-Tseu
-                    </em>
+
+                    <p>
+                        <em>
+                            <i class="fa fa-quote-left"></i>
+                            Un voyage de mille lieues commence toujours par un premier pas.
+                            <i class="fa fa-quote-right"></i>
+                            &#8211;
+                            Lao-Tseu
+                        </em>
                     </p>
                 </div>
             </div>
         </div>
+
         <div class="item">
             {% set bannerVienneUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
             <img class="img-responsive second-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Pekin">
 
             <div class="container">
-                <div class="carousel-caption" style="height: 300px;">
-                    <h2 style="font-size: 50px;">Sautez le pas !</h2>
+                <div class="carousel-caption carousel-caption-second">
+                    {#style="height: 300px;"#}
+                    <h2>Sautez le pas !</h2>
+                    {#style="font-size: 50px;"#}
 
-                    <p class="lead">Savez-vous qu'un tour du monde d'un an coûte moins cher qu'une voiture ?</p>
+                    <p>
+                        Savez-vous qu'un tour du monde d'un an coûte moins cher qu'une voiture ?
+                    </p>
                 </div>
             </div>
         </div>
+
         <div class="item">
-            <img class="img-responsive third-slide" src="{{ asset('taj_mahal_500.jpg') }}" alt="Third slide">
+            {% set bannerVienneUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
+            <img class="img-responsive third-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Pekin">
 
             <div class="container">
-                <div class="carousel-caption" style="height: 300px;">
-                    <h2 style="font-size: 50px;">Conseils de voyageurs</h2>
+                <div class="carousel-caption carousel-caption-second">
+                    {#style="height: 300px;"#}
+                    <h2>Conseils de voyageurs</h2>
+                    {#style="font-size: 50px;"#}
 
-                    <p class="lead">Des fiches recensant les expériences des voyageurs, des
-                        bons plans et des informations pour préparer au mieux vos voyages.</p>
+                    <p>
+                        Des fiches recensant des bons plans et des informations pour préparer au mieux vos voyages.
+                    </p>
                 </div>
             </div>
         </div>

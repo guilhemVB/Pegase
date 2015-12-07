@@ -1,20 +1,6 @@
-/*#homepage p {*/
-    /*font-size: 18px;*/
+/*#carouselHomepage h1 {*/
+/*font-size: 80px;*/
 /*}*/
-
-#carouselHomepage {
-    height: 500px;
-    margin-bottom: 20px;
-}
-
-#carouselHomepage img {
-    height: 500px;
-    width: 100%;
-}
-
-#carouselHomepage h1 {
-    font-size: 80px;
-}
 
 #connectionRow {
     margin-top: 30px;
@@ -22,4 +8,55 @@
 
 #rowGmapText a {
     color: inherit;
+}
+
+#carouselHomepage .carousel-caption {
+    height: 300px;
+}
+
+#carouselHomepage .carousel-caption-second {
+    height: 275px;
+}
+
+#carouselHomepage h1 {
+    font-size: 60px;
+}
+
+#carouselHomepage h2 {
+    font-size: 40px;
+}
+
+#carouselHomepage p {
+    font-size: 18px;
+}
+
+/* responsive text queries */
+@media screen and (max-width: 992px) {
+    #carouselHomepage .carousel-caption {
+        height: 230px;
+    }
+    #carouselHomepage h1 {
+        font-size: 45px;
+    }
+    #carouselHomepage h2 {
+        font-size: 35px;
+    }
+    #carouselHomepage p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #carouselHomepage .carousel-caption {
+        height: initial;
+    }
+    #carouselHomepage h1 {
+        font-size: 35px;
+    }
+    #carouselHomepage h2 {
+        font-size: 30px;
+    }
+    #carouselHomepage p {
+        font-size: 14px;
+    }
 }
