@@ -81,7 +81,7 @@ swiftmailer:
     password:  "%mailer_password%"
     password:  "%mailer_port%"
     auth_mode:  login
-    encryption: tls
+    encryption: ssl
 
 fos_user:
     db_driver: orm
