@@ -4,11 +4,11 @@ namespace AppBundle\Heroku;
 
 use Composer\Script\Event;
 
-class HerokuDatabase
+class Heroku
 {
 
 
-    public static function populateEnvironment(Event $event)
+    public static function populateEnvironmentDatabase(Event $event)
     {
         $url = getenv("DATABASE_URL");
 
@@ -19,12 +19,12 @@ class HerokuDatabase
             putenv("DATABASE_PORT={$url['port']}");
             putenv("DATABASE_USER={$url['user']}");
             putenv("DATABASE_PASSWORD={$url['pass']}");
-            $db = substr($url['path'],1);
+            $db = substr($url['path'], 1);
             putenv("DATABASE_NAME={$db}");
         }
 
         $io = $event->getIO();
 
-        $io->write("DATABASE_URL=".getenv("DATABASE_URL"));
+        $io->write("DATABASE_URL=" . getenv("DATABASE_URL"));
     }
 }

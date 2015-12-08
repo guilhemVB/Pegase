@@ -39,7 +39,7 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "AppBundle\\Heroku\\HerokuDatabase::populateEnvironment"
+            "AppBundle\\Heroku\\Heroku::populateEnvironmentDatabase"
         ],
         "post-root-package-install": [
             "SymfonyStandard\\Composer::hookRootPackageInstall"
@@ -86,7 +86,12 @@
                 "database_port": "DATABASE_PORT",
                 "database_name": "DATABASE_NAME",
                 "database_user": "DATABASE_USER",
-                "database_password": "DATABASE_PASSWORD"
+                "database_password": "DATABASE_PASSWORD",
+                "mailer_transport": "MAILER_TRANSPORT",
+                "mailer_host": "MAILER_HOST",
+                "mailer_user": "MAILER_USER",
+                "mailer_password": "MAILER_PASSWORD",
+                "mailer_port": "MAILER_PORT"
             }
         }
     }
