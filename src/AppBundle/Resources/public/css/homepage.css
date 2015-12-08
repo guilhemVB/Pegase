@@ -11,19 +11,17 @@
 }
 
 #carouselHomepage .carousel-caption {
-    height: 300px;
-}
-
-#carouselHomepage .carousel-caption-second {
-    height: 275px;
+    height: 65%;
 }
 
 #carouselHomepage h1 {
     font-size: 60px;
+    padding-bottom: 25px;
 }
 
 #carouselHomepage h2 {
     font-size: 40px;
+    padding-bottom: 25px;
 }
 
 #carouselHomepage p {
@@ -33,13 +31,15 @@
 /* responsive text queries */
 @media screen and (max-width: 992px) {
     #carouselHomepage .carousel-caption {
-        height: 230px;
+        height: 80%;
     }
     #carouselHomepage h1 {
         font-size: 45px;
+        padding-bottom: 15px;
     }
     #carouselHomepage h2 {
         font-size: 35px;
+        padding-bottom: 15px;
     }
     #carouselHomepage p {
         font-size: 16px;
@@ -52,9 +52,11 @@
     }
     #carouselHomepage h1 {
         font-size: 35px;
+        padding-bottom: 0;
     }
     #carouselHomepage h2 {
         font-size: 30px;
+        padding-bottom: 0;
     }
     #carouselHomepage p {
         font-size: 14px;
