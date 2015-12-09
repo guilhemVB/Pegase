@@ -10,9 +10,8 @@
 
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            {% set bannerVienneUrl = image_banner_homepage_path ~ 'vienne.JPG' %}
-
-            <img class="img-responsive first-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
+            {% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+            <img class="img-responsive first-slide" src="{{ asset(bannerMartiniqueUrl) }}" alt="Banière Martinique">
 
             <div class="container">
                 <div class="carousel-caption">
@@ -32,8 +31,8 @@
         </div>
 
         <div class="item">
-            {% set bannerVienneUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
-            <img class="img-responsive second-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Pekin">
+            {% set bannerPekinUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
+            <img class="img-responsive second-slide" src="{{ asset(bannerPekinUrl) }}" alt="Banière Pekin">
 
             <div class="container">
                 <div class="carousel-caption">
@@ -47,8 +46,8 @@
         </div>
 
         <div class="item">
-            {% set bannerVienneUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
-            <img class="img-responsive third-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Martinique">
+            {% set bannerVienneUrl = image_banner_homepage_path ~ 'vienne.JPG' %}
+            <img class="img-responsive third-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
 
             <div class="container">
                 <div class="carousel-caption">
@@ -60,6 +59,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
     <a class="left carousel-control" href="#carouselHomepage" role="button" data-slide="prev">
