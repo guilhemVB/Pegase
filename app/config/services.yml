@@ -10,10 +10,10 @@ services:
             - { name: twig.extension }
 
 
-    fos_comment.form_type.comment.default:
-        class: AppCommentBundle\Form\CommentType
-        arguments:
-            - %fos_comment.model.comment.class%
-        tags:
-            - { name: form.type, alias: fos_comment_comment }
+#    fos_comment.form_type.comment.default:
+#        class: AppCommentBundle\Form\CommentType
+#        arguments:
+#            - %fos_comment.model.comment.class%
+#        tags:
+#            - { name: form.type, alias: fos_comment_comment }
 

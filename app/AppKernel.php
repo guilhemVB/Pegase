@@ -18,14 +18,14 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+//            new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new AppUserBundle\AppUserBundle(),
+//            new AppUserBundle\AppUserBundle(),
             new Ricbra\Bundle\RobotsTxtBundle\RicbraRobotsTxtBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new FOS\CommentBundle\FOSCommentBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle($this),
-            new AppCommentBundle\AppCommentBundle(),
+//            new FOS\RestBundle\FOSRestBundle(),
+//            new FOS\CommentBundle\FOSCommentBundle(),
+//            new JMS\SerializerBundle\JMSSerializerBundle($this),
+//            new AppCommentBundle\AppCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

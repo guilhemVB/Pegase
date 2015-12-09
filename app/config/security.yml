@@ -10,30 +10,33 @@ security:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
-        fos_userbundle:
-            id: fos_user.user_provider.username_email
+        in_memory:
+            memory: ~
+#        fos_userbundle:
+#            id: fos_user.user_provider.username_email
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        default:
-            pattern: ^/
-            anonymous: true
-            http_basic:
-                realm: "Acces restricted"
-                provider: fos_userbundle
+#        default:
+#            pattern: ^/
+#            anonymous: true
+#            http_basic:
+#                realm: "Acces restricted"
+#                provider: fos_userbundle
         main:
-            pattern: ^/
-            form_login:
-                default_target_path: /voyage/dashboard
-                provider: fos_userbundle
-                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
-            logout:       true
-            anonymous:    true
+            anonymous: ~
+#            pattern: ^/
+#            form_login:
+#                default_target_path: /voyage/dashboard
+#                provider: fos_userbundle
+#                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+#            logout:       true
+#            anonymous:    true
 
     access_control:
-        - { path: ^/, role: ROLE_USER }
+#        - { path: ^/, role: ROLE_USER }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/navbar, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
