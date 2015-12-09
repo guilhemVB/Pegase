@@ -1,6 +1,12 @@
-Pegase
+Le Monde en sac
 ======
 
+Prod :
+```
+lemondensac.com
+```
+
+Dev :
 ```
 pegase-dev.herokuapp.com
 ```

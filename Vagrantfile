@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 3306, host: 2206, auto_correct: true
   config.vm.network "forwarded_port", guest: 27017, host: 2227, auto_correct: true
   config.vm.network "private_network", ip: "192.168.1.10"
-  config.vm.hostname = "pegase.local"
+  config.vm.hostname = "lemondeensac.local"
 
   config.ssh.forward_agent = true
 
