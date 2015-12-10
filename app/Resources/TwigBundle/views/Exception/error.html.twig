@@ -1,17 +1,48 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="{{ _charset }}" />
-        <title>An Error Occurred: {{ status_text }}</title>
-    </head>
-    <body>
-    <h1>404 de chez oim !!</h1>
-        <h1>Oops! An Error Occurred</h1>
-        <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+{% extends "::layout.html.twig" %}
 
-        <div>
-            Something is broken. Please let us know what you were doing when this error occurred.
-            We will fix it as soon as possible. Sorry for any inconvenience caused.
+{% block title %}
+    {{ parent() }} - Erreur {{ status_code }}
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+
+    <div id="error">
+
+        <div class="container-fluid containerPadding containerOrange">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        {% if status_code == 404 %}
+                            <h1>Cette page n'existe pas !</h1>
+                        {% else %}
+                            <h1>Erreur {{ status_code }}.</h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
-    </body>
-</html>
+
+
+        <div class="container-fluid containerPadding">
+            <div class="row">
+                <img class="img-responsive" src="/images/error/error.JPG"
+                     alt="Photo Martinique">
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+
