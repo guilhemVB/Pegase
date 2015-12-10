@@ -1,48 +1,5 @@
-{% extends "::layout.html.twig" %}
-
-{% block title %}
-    {{ parent() }} - Erreur {{ status_code }}
-{% endblock %}
-
-
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
-
-{% block body %}
-
-    <div id="error">
-
-        <div class="container-fluid containerPadding containerOrange">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2">
-                        {% if status_code == 404 %}
-                            <h1>Cette page n'existe pas !</h1>
-                        {% else %}
-                            <h1>Erreur {{ status_code }}.</h1>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container-fluid containerPadding">
-            <div class="row">
-                <img class="img-responsive" src="/images/error/error.JPG"
-                     alt="Photo Martinique">
-            </div>
-        </div>
-
-
-    </div>
-
-{% endblock %}
-
-
-{% block footer %}
-    {{ parent() }}
-{% endblock %}
-
+{% if status_code == 404 %}
+    <h1>Cette page n'existe pas !</h1>
+{% else %}
+    <h1>Erreur {{ status_code }}.</h1>
+{% endif %}
