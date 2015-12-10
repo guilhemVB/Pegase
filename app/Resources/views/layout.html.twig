@@ -5,6 +5,15 @@
     <meta name="viewport"
           content="user-scalable=no, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, width=device-width">
 
+    <meta name="description" content="
+        {% block metaDescription %}
+            Informez-vous sur les pays, planifiez votre itinéraire, évaluez votre budget et ... Partez !
+        {% endblock %}" />
+    <meta name="keywords" content="voyage, tour du monde, destination, pays, le monde en sac
+        {% block metaKeyword %}
+        {% endblock %}
+    " />
+
     <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
 
     <title>{% block title %}Le Monde en Sac{% endblock %}</title>
