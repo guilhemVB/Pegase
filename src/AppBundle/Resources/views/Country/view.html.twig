@@ -1,6 +1,10 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
+{% block metaDescription %}{% if country.description is not empty %}{{ country.description|slice(0, 100) }} ...{% else %}Pays - {{ country.name }}{% endif %}{% endblock %}
+{% block metaKeyword %}, pays, {{ country.name }}{% endblock %}
+
+
 {% block title %}
     {{ country.name }} - {{ parent() }}
 {% endblock %}
