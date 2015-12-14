@@ -43,7 +43,8 @@
 
                         <p class="text-center">
 
-                            Le Monde en Sac est basé sur des expériences d'explorateurs. N’hésitez pas à nous donner vos bons
+                            Le Monde en Sac est basé sur des expériences d'explorateurs. N’hésitez pas à nous donner vos
+                            bons
                             plans et à nous envoyer les destinations que vous souhaiteriez voir apparaitre.
                         </p>
                     </div>
@@ -90,14 +91,16 @@
 
         <div class="container-fluid containerPadding">
             <div class="container text-center">
+
                 <a href="https://twitter.com/LeMondeEnSac" class="twitter-follow-button" data-show-count="false"
                    data-size="large">Follow @LeMondeEnSac</a>
-                <div
-                    class="fb-like"
-                    data-share="false"
-                    data-width="450"
-                    data-show-faces="false">
-                </div>
+
+                    {#<div#}
+                            {#class="fb-like"#}
+                            {#data-share="false"#}
+                            {#data-width="450"#}
+                            {#data-show-faces="true">#}
+                    {#</div>#}
 
             </div>
         </div>
@@ -146,7 +149,7 @@
     {{ parent() }}
     {#<script src="{{ asset('/js/maplace.js') }}"></script>#}
     {#<script>#}
-        {#var maplaceData = {{ maplaceData|raw }};#}
+    {#var maplaceData = {{ maplaceData|raw }};#}
     {#</script>#}
     {#<script src="{{ asset('bundles/app/js/homepage/maplaceHomepage.js') }}"></script>#}
     <script src="{{ asset('bundles/app/js/homepage/homepage.js') }}"></script>
