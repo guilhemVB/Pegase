@@ -2,7 +2,6 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
@@ -16,6 +15,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportDestinationsCommand extends ContainerAwareCommand
 {
+
+    const MAX_SIZE_DESCRIPTION_LENGTH = 950;
 
     protected function configure()
     {
@@ -58,8 +59,10 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
 
-            if (strlen($description) > 750) {
-                $output->writeln("<error>La description de la destination '$name' est trop grande, 650 caractères maximum. La destination n'a pas été importée.</error>");
+            if (strlen($description) > self::MAX_SIZE_DESCRIPTION_LENGTH) {
+                $output->writeln("<error>La description de la destination '$name' est trop grande, " .
+                    strlen($description) . '/'. self::MAX_SIZE_DESCRIPTION_LENGTH .
+                    " caractères maximum. La destination n'a pas été importée.</error>");
                 continue;
             }
 
