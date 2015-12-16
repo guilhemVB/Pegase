@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d142f94b6a4163b6b7c4a64413639096",
-    "content-hash": "30e1f1d235801f9443647b444d6f40a2",
+    "hash": "13ade5c099fe65f180683058e9cb781c",
+    "content-hash": "0b5fcae0e2cda09427224ffe2eb1bc66",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -792,7 +792,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/b386d2a17634192fc406acc4090d58eb6e903ca5",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/80792f4e496659bb0f93488a2b4b7a8935b721cb",
                 "reference": "27edc388296a3cffc7c30942a7613abb4998701c",
                 "shasum": ""
             },
@@ -1848,7 +1848,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ricbra/robots-txt-bundle/zipball/4dfc77a403b0505e826f157387c8316825887d10",
+                "url": "https://api.github.com/repos/ricbra/robots-txt-bundle/zipball/80d122a708893a762041464890e59a76babd6c22",
                 "reference": "4dfc77a403b0505e826f157387c8316825887d10",
                 "shasum": ""
             },
@@ -2281,23 +2281,23 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.3",
+            "version": "v2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486"
+                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
-                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/66b2e9662c44d478b69e48278aa54079a006eb42",
+                "reference": "66b2e9662c44d478b69e48278aa54079a006eb42",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.3",
+                "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
-                "twig/twig": "~1.18"
+                "twig/twig": "~1.20|~2.0"
             },
             "replace": {
                 "symfony/asset": "self.version",
@@ -2347,14 +2347,13 @@
             },
             "require-dev": {
                 "doctrine/data-fixtures": "1.0.*",
-                "doctrine/dbal": "~2.2",
+                "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.2",
-                "doctrine/orm": "~2.2,>=2.2.3",
+                "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0",
-                "symfony/phpunit-bridge": "self.version"
+                "ocramius/proxy-manager": "~0.4|~1.0"
             },
             "type": "library",
             "extra": {
@@ -2399,7 +2398,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-07-31 13:24:45"
+            "time": "2015-10-27 19:07:24"
         },
         {
             "name": "twig/extensions",
