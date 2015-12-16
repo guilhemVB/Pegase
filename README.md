@@ -5,6 +5,8 @@ http://www.lemondeensac.com/
 
 Le Monde en Sac is a travels website. It allow you to get informations about destinations and plan your travels.
 
+Upgrade guide [UPGRADE.md](UPGRADE.md)
+file.
 
 ## Tests
 
