@@ -1,43 +1,12 @@
 Le Monde en sac
 ======
 
-Prod :
-```
-lemondensac.com
-```
+http://www.lemondeensac.com/
 
-Dev :
-```
-pegase-dev.herokuapp.com
-```
-
-Pour lancer les tests behat :
-
-Créer la base travel_test
-
-lancer la commande
-
-```
-bin/behat
-```
-
-Pour les langues en français :
-
-```
-sudo apt-get install php5-intl
-```
+Le Monde en Sac is a travels website. It allow you to get informations about destinations and plan your travels.
 
 
-Test de vulnérabilité des package :
+## Tests
 
-```
-php app/console security:check
-```
-
-
-Heroku tools
-
-```
-heroku logs --tail
-heroku run bash
-```
+You have to create the database travel_test.
+Then, launch the script `test.sh`
