@@ -8,5 +8,4 @@ Le Monde en Sac is a travels website. It allow you to get informations about des
 
 ## Tests
 
-You have to create the database travel_test.
-Then, launch the script `test.sh`
+You have to create the database `travel_test`, then, launch the script `test.sh`
