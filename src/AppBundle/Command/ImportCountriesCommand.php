@@ -49,7 +49,6 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $nbToFlush = 0;
         foreach ($dataCountries as $dataCountry) {
             $name = $dataCountry['nom'];
-            $description = $dataCountry['Les immanquables'];
 
             $country = $countryRepository->findOneByName($name);
             if (is_null($country)) {
@@ -57,13 +56,11 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $country->setName($name);
                 $output->writeln("<info>Nouveau pays '$name'</info>");
             }
-            $country->setDescription($description);
-            $country->setTips($dataCountry['Pensez-y']);
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
             $country->setCodeAlpha2($dataCountry['code alpha 2']);
             $country->setCodeAlpha3($dataCountry['code alpha 3']);
 
-            $country = $this->fetchLongAndLat($output, $country);
+            $country = $this->fetchAutomaticDataFromApi($output, $country);
             $em->persist($country);
 
             $nbToFlush++;
@@ -81,17 +78,24 @@ class ImportCountriesCommand extends ContainerAwareCommand
      * @param Country $country
      * @return Country
      */
-    private function fetchLongAndLat(OutputInterface $output, Country $country)
+    private function fetchAutomaticDataFromApi(OutputInterface $output, Country $country)
     {
         $name = $country->getName();
         $lat = $country->getLatitude();
         $lon = $country->getLongitude();
 
-        if (!empty($lat) && !empty($lon)) {
+        $population = $country->getPopulation();
+
+        if (!empty($lat) && !empty($lon) && !empty($population)) {
             return $country;
         }
 
         $code = $country->getCodeAlpha3();
+
+        if (empty($code)) {
+            $output->writeln("<error>Pays '$name'  --  Code Alpha3 inconnu.</error>");
+            return $country;
+        }
 
         $url = "http://restcountries.eu/rest/v1/alpha?codes=$code";
         $ch = curl_init($url);
@@ -111,8 +115,10 @@ class ImportCountriesCommand extends ContainerAwareCommand
 
         $country->setLatitude($countryData['latlng'][0]);
         $country->setLongitude($countryData['latlng'][1]);
+        $country->setPopulation($countryData['population']);
 
-        $output->writeln("<info>Pays '$name'  --  Ajout des coordonnées géographiques.</info>");
+
+        $output->writeln("<info>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</info>");
 
         return $country;
     }

@@ -42,17 +42,12 @@ class Country
      */
     private $name;
 
-    /**
-     * @var string
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
 
     /**
-     * @var string
-     * @ORM\Column(name="tips", type="text")
+     * @var integer
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $tips;
+    private $population;
 
     /**
      * @var ArrayCollection|Destination[]
@@ -121,25 +116,6 @@ class Country
     }
 
     /**
-     * @param string $description
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * @param Destination $destinations
      * @return Country
      */
@@ -164,25 +140,6 @@ class Country
     public function getDestinations()
     {
         return $this->destinations;
-    }
-
-    /**
-     * @param string $tips
-     * @return Country
-     */
-    public function setTips($tips)
-    {
-        $this->tips = $tips;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTips()
-    {
-        return $this->tips;
     }
 
     /**
@@ -278,5 +235,24 @@ class Country
     public function getLatitude()
     {
         return $this->latitude;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPopulation()
+    {
+        return $this->population;
+    }
+
+    /**
+     * @param integer $population
+     * @return $this
+     */
+    public function setPopulation($population)
+    {
+        $this->population = $population;
+
+        return $this;
     }
 }
