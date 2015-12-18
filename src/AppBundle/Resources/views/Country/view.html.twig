@@ -48,6 +48,7 @@
                 <div class="row">
                     <div class="col-md-4 destinationsCountryList">
                         <div class="row">
+                            <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
                             {% for destination in country.destinations %}
                                 <div class="col-md-12 col-sm-6 col-xs-6 containerPadding15">
                                     {% include 'AppBundle:Vignette:destinationContent.html.twig' %}
@@ -62,24 +63,54 @@
             </div>
         </div>
 
-        <div class="container-fluid containerGrey containerPadding">
+        <div id="tableCountryInformation" class="container-fluid containerOrange containerPadding">
             <div class="container">
-
                 <div class="row">
-                    <h2>Statistiques</h2>
 
-                    <div class="col-md-2">
-                        Population
+                    <div class="col-md-12">
+                        <h2>Informations utiles</h2>
                     </div>
-                    <div class="col-md-2">
-                        {{ country.population|number_format(0, ',', ' ') }} habitants
+
+                    <div class="col-md-6">
+                        <table class="table">
+                            <tr>
+                                <th>Devise</th>
+                                <td>{{ country.currency }}</td>
+                            </tr>
+                            <tr>
+                                <th>Visa</th>
+                                <td>{{ country.visaInformation }}</td>
+                            </tr>
+                            <tr>
+                                <th>Langues</th>
+                                <td>{{ country.languages|join(' - ') }}</td>
+                            </tr>
+                        </table>
                     </div>
+
+                    <div class="col-md-6">
+                        <table class="table">
+                            <tr>
+                                <th>Capitale</th>
+                                <td>{{ country.capitalName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vaccins recommandés</th>
+                                <td>{{ country.vaccines|join(' - ') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Population</th>
+                                <td>{{ country.population|number_format(0, ',', ' ') }} habitants</td>
+                            </tr>
+                        </table>
+                    </div>
+
                 </div>
 
             </div>
         </div>
 
-        {% include 'AppBundle:Country:countryShare.html.twig' %}
+        {#{% include 'AppBundle:Country:countryShare.html.twig' %}#}
 
     </div>
 {% endblock %}

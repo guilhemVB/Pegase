@@ -42,6 +42,35 @@ class Country
      */
     private $name;
 
+    /**
+     * @var string
+     * @ORM\Column(name="capital_name", type="string", length=255)
+     */
+    private $capitalName;
+
+    /**
+     * @var string
+     * @ORM\Column(name="currency", type="string", length=255)
+     */
+    private $currency;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=1024)
+     */
+    private $visaInformation;
+
+    /**
+     * @var array
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $vaccines;
+
+    /**
+     * @var array
+     * @ORM\Column(name="languages", type="array", nullable=true)
+     */
+    private $languages;
 
     /**
      * @var integer
@@ -252,6 +281,101 @@ class Country
     public function setPopulation($population)
     {
         $this->population = $population;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param array $languages
+     * @return $this
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCapitalName()
+    {
+        return $this->capitalName;
+    }
+
+    /**
+     * @param string $capitalName
+     * @return $this
+     */
+    public function setCapitalName($capitalName)
+    {
+        $this->capitalName = $capitalName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVisaInformation()
+    {
+        return $this->visaInformation;
+    }
+
+    /**
+     * @param string $visaInformation
+     * @return $this
+     */
+    public function setVisaInformation($visaInformation)
+    {
+        $this->visaInformation = $visaInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVaccines()
+    {
+        return $this->vaccines;
+    }
+
+    /**
+     * @param array $vaccines
+     * @return $this
+     */
+    public function setVaccines($vaccines)
+    {
+        $this->vaccines = $vaccines;
 
         return $this;
     }

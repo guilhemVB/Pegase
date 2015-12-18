@@ -49,6 +49,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $nbToFlush = 0;
         foreach ($dataCountries as $dataCountry) {
             $name = $dataCountry['nom'];
+            $languages = $dataCountry['langues'];
+            $vaccines = $dataCountry['vaccins'];
 
             $country = $countryRepository->findOneByName($name);
             if (is_null($country)) {
@@ -56,9 +58,14 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $country->setName($name);
                 $output->writeln("<info>Nouveau pays '$name'</info>");
             }
-            $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui');
-            $country->setCodeAlpha2($dataCountry['code alpha 2']);
-            $country->setCodeAlpha3($dataCountry['code alpha 3']);
+            $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui')
+                ->setCodeAlpha2($dataCountry['code alpha 2'])
+                ->setCodeAlpha3($dataCountry['code alpha 3'])
+                ->setCurrency($dataCountry['devise'])
+                ->setLanguages(!empty($languages) ? explode("\n", $languages) : [])
+                ->setCapitalName($dataCountry['capitale'])
+                ->setVaccines(!empty($vaccines) ? explode("\n", $vaccines) : [])
+                ->setVisaInformation($dataCountry['visa']);
 
             $country = $this->fetchAutomaticDataFromApi($output, $country);
             $em->persist($country);
@@ -81,9 +88,9 @@ class ImportCountriesCommand extends ContainerAwareCommand
     private function fetchAutomaticDataFromApi(OutputInterface $output, Country $country)
     {
         $name = $country->getName();
+
         $lat = $country->getLatitude();
         $lon = $country->getLongitude();
-
         $population = $country->getPopulation();
 
         if (!empty($lat) && !empty($lon) && !empty($population)) {
@@ -113,10 +120,9 @@ class ImportCountriesCommand extends ContainerAwareCommand
         }
         $countryData = $countriesData[0];
 
-        $country->setLatitude($countryData['latlng'][0]);
-        $country->setLongitude($countryData['latlng'][1]);
-        $country->setPopulation($countryData['population']);
-
+        $country->setLatitude($countryData['latlng'][0])
+            ->setLongitude($countryData['latlng'][1])
+            ->setPopulation($countryData['population']);
 
         $output->writeln("<info>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</info>");
 
