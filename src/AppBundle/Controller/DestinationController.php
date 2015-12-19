@@ -20,34 +20,6 @@ class DestinationController extends Controller
 {
 
     /**
-     * @Route("/list", name="destinationsList")
-     * @return Response
-     */
-    public function listAction()
-    {
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $countryRepository CountryRepository */
-        $countryRepository = $em->getRepository('AppBundle:Country');
-
-        $countries = $countryRepository->findCountriesWithDestinations();
-
-        /** @var $destinationRepository DestinationRepository */
-        $destinationRepository = $em->getRepository('AppBundle:Destination');
-
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
-
-        return $this->render('AppBundle:Destination:list.html.twig',
-            [
-                'countries'    => $countries,
-                'maplaceData' => json_encode($maplaceData),
-            ]);
-    }
-
-    /**
      * @Route("/{slug}", name="destination")
      * @param Destination $destination
      * @return Response
