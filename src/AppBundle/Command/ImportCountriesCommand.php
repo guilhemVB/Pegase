@@ -18,7 +18,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
     {
         $this
             ->setName('app:import:countries')
-            ->setDescription("Permet d'importer et mettre à jour la liste des pays")
+            ->setDescription("Permet d'importer et mettre à jour la liste des pays, utiliser l'option -f to force insert")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer')
             ->addOption('force', '-f');
     }
