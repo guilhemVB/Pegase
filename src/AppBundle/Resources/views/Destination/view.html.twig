@@ -1,7 +1,7 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}{% if destination.description is not empty %}{{ destination.description[0]|slice(0, 100) }} ...{% else %}{{ destination.name }} - {{ destination.country.name }}{% endif %}{% endblock %}
+{% block metaDescription %}{% if destination.description is not empty %}{{ destination.description[0] }}{% else %}{{ destination.name }} - {{ destination.country.name }}{% endif %}{% endblock %}
 {% block metaKeyword %}, destination, {{ destination.name }}, {{ destination.country.name }}{% endblock %}
 
 {% block title %}

@@ -1,8 +1,8 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}Pays - {{ country.name }}{% endblock %}
-{% block metaKeyword %}, pays, {{ country.name }}{% endblock %}
+{% block metaDescription %}Pays - {{ country.name }}. Vaccins recommandés : {{ country.vaccines|join(' - ') }}. Informations sur le Visa : {{ country.visaInformation }}{% endblock %}
+{% block metaKeyword %}, pays, {{ country.name }}, informations{% endblock %}
 
 
 {% block title %}
