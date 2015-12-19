@@ -7,6 +7,7 @@ use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\CSVParser;
 use AppBundle\Service\Tools\DestinationPeriods;
+use AppBundle\Twig\AssetExistsExtension;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -18,12 +19,19 @@ class ImportDestinationsCommand extends ContainerAwareCommand
 
     const MAX_SIZE_DESCRIPTION_LENGTH = 950;
 
+    /** @var  AssetExistsExtension */
+    private $assetExistsExtension;
+
+    /** @var  string */
+    private $imagePath;
+
     protected function configure()
     {
         $this
             ->setName('app:import:destinations')
-            ->setDescription("Permet d'importer et mettre à jour la liste des destinations")
-            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
+            ->setDescription("Permet d'importer et mettre à jour la liste des destinations, utiliser l'option -f pour forcer l'insert")
+            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer')
+            ->addOption('force', '-f');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -31,14 +39,23 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
 
-        $this->import($input, $output);
+        $forceInsert = $input->getOption('force');
+        $this->import($input, $output, $forceInsert);
 
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
     }
 
-    private function import(InputInterface $input, OutputInterface $output)
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param boolean $forceInsert
+     */
+    private function import(InputInterface $input, OutputInterface $output, $forceInsert)
     {
+        $this->assetExistsExtension = new AssetExistsExtension($this->getContainer()->get('kernel'));
+        $this->imagePath = $this->getContainer()->getParameter('image_banner_destinations_path');
+
         /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine')->getManager();
 
@@ -59,19 +76,11 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
 
-            if (strlen($description) > self::MAX_SIZE_DESCRIPTION_LENGTH) {
-                $output->writeln("<error>La description de la destination '$name' est trop grande, " .
-                    strlen($description) . '/'. self::MAX_SIZE_DESCRIPTION_LENGTH .
-                    " caractères maximum. La destination n'a pas été importée.</error>");
-                continue;
-            }
-
             $country = $countryRepository->findOneByName($countryName);
             if (is_null($country)) {
                 $output->writeln("<error>Le pays '$countryName' de la destination '$name' n'a pas été trouvé. La destination n'a pas été importée.</error>");
                 continue;
             }
-
 
             $destination = $destinationRepository->findOneByName($name);
             if (is_null($destination)) {
@@ -88,9 +97,18 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setLongitude($dataDestination['longitude']);
             $destination->setIsTheCapital($dataDestination['Capitale'] === 'oui');
 
-            $em->persist($destination);
+            if ($this->isComplete($output, $destination) || $forceInsert) {
+                $em->persist($destination);
+                $nbToFlush++;
 
-            $nbToFlush++;
+                $id = $destination->getId();
+                if (!empty($id)) {
+                    $output->writeln("<info>Modification de '$name'</info>");
+                } else {
+                    $output->writeln("<info>Nouvelle destination '$name'</info>");
+                }
+            }
+
             if ($nbToFlush % 50 == 0) {
                 $em->flush();
                 $em->clear();
@@ -152,5 +170,70 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         }
 
         return $tips;
+    }
+
+
+    /**
+     * @param OutputInterface $output
+     * @param Destination $destination
+     * @return bool
+     */
+    private function isComplete(OutputInterface $output, Destination $destination)
+    {
+        $name = $destination->getName();
+        $lat = $destination->getLatitude();
+        $lon = $destination->getLongitude();
+        $descriptions = $destination->getDescription();
+        $periods = $destination->getPeriods();
+        $prices = $destination->getPrices();
+        $tips = $destination->getTips();
+
+        $errors = [];
+        if (empty($lat)) {
+            $errors[] = 'Latitude inconnue';
+        }
+        if (empty($lon)) {
+            $errors[] = 'Longitude inconnue';
+        }
+        if (empty($descriptions)) {
+            $errors[] = 'Description inconnue';
+        } else {
+            $length = 0;
+            foreach ($descriptions as $description) {
+                $length += strlen($description);
+            }
+
+            if ($length > self::MAX_SIZE_DESCRIPTION_LENGTH) {
+                $errors[] = 'Description trop grande : ' . $length . '/' . self::MAX_SIZE_DESCRIPTION_LENGTH .
+                    " caractères maximum.";
+            } elseif ($length < 300) {
+                $errors[] = 'Description trop petite';
+            }
+        }
+        if (empty($periods)) {
+            $errors[] = 'Périodes inconnues';
+        }
+        if (empty($prices['accommodation'])) {
+            $errors[] = "Prix de l'hébergement inconnu";
+        }
+
+        if (empty($prices['life cost'])) {
+            $errors[] = "Prix du coût de la vie inconnu";
+        }
+
+        if (empty($tips)) {
+            $errors[] = 'Bons plans inconnus';
+        }
+        if (!$this->assetExistsExtension->assetExist($this->imagePath . $destination->getSlug() . '.jpg')) {
+            $errors[] = "Pas d'image";
+        }
+
+        if (!empty($errors)) {
+            $output->writeln("<error>Destination '$name'  --  ERREURS : " . join(' ; ', $errors) . ".</error>");
+
+            return false;
+        }
+
+        return true;
     }
 }

@@ -5,6 +5,7 @@ namespace AppBundle\Command;
 use AppBundle\Entity\Country;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Service\CSVParser;
+use AppBundle\Twig\AssetExistsExtension;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -14,11 +15,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ImportCountriesCommand extends ContainerAwareCommand
 {
 
+    /** @var  AssetExistsExtension */
+    private $assetExistsExtension;
+
+    /** @var  string */
+    private $imagePath;
+
     protected function configure()
     {
         $this
             ->setName('app:import:countries')
-            ->setDescription("Permet d'importer et mettre à jour la liste des pays, utiliser l'option -f to force insert")
+            ->setDescription("Permet d'importer et mettre à jour la liste des pays, utiliser l'option -f pour forcer l'insert")
             ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer')
             ->addOption('force', '-f');
     }
@@ -42,6 +49,9 @@ class ImportCountriesCommand extends ContainerAwareCommand
      */
     private function import(InputInterface $input, OutputInterface $output, $forceInsert)
     {
+        $this->assetExistsExtension = new AssetExistsExtension($this->getContainer()->get('kernel'));
+        $this->imagePath = $this->getContainer()->getParameter('image_banner_countries_path');
+
         /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine')->getManager();
 
@@ -152,6 +162,10 @@ class ImportCountriesCommand extends ContainerAwareCommand
      */
     private function isComplete(OutputInterface $output, Country $country)
     {
+        if ($country->isRedirectToDestination()) {
+            return true;
+        }
+
         $currency = $country->getCurrency();
         $capitalName = $country->getCapitalName();
         $codeAlpha2 = $country->getCodeAlpha2();
@@ -197,6 +211,20 @@ class ImportCountriesCommand extends ContainerAwareCommand
         }
         if (empty($visaInformation)) {
             $errors[] = 'informations sur les visa inconnues';
+        }
+        if (!$this->assetExistsExtension->assetExist($this->imagePath . $country->getSlug() . '.jpg')) {
+            $errors[] = "pas d'image";
+        }
+
+        $url = "http://www.geonames.org/flags/x/$codeAlpha2.gif";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        // don't download content
+        curl_setopt($ch, CURLOPT_NOBODY, 1);
+        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        if (!(curl_exec($ch) !== FALSE)) {
+            $errors[] = "drapeau impossible à récupérer";
         }
 
         if (!empty($errors)) {
