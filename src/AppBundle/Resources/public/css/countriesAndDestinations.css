@@ -33,6 +33,17 @@
     overflow: scroll;
 }
 
+@media screen and (max-width: 992px) {
+    .destinationsCountryList {
+        height: 300px;
+        overflow: scroll;
+    }
+
+    .destinationsGmap {
+        padding-top: 15px;
+    }
+}
+
 #tableCountryInformation th {
     width: 35%;
 }
