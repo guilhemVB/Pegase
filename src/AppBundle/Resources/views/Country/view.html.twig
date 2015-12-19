@@ -49,10 +49,15 @@
                     <div class="col-md-4 destinationsCountryList">
                         <div class="row">
                             <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
+
+                            {% set capitalDestination = null %}
                             {% for destination in country.destinations %}
                                 <div class="col-md-12 col-sm-6 col-xs-6 containerPadding15">
                                     {% include 'AppBundle:Vignette:destinationContent.html.twig' %}
                                 </div>
+                                {% if country.capitalName == destination.name %}
+                                    {% set capitalDestination = destination %}
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>
@@ -92,7 +97,13 @@
                         <table class="table">
                             <tr>
                                 <th>Capitale</th>
-                                <td>{{ country.capitalName }}</td>
+                                <td>
+                                    {% if capitalDestination is not null %}
+                                        <a href="{{ path('destination', {'slug' : capitalDestination.slug }) }}">{{ country.capitalName }}</a>
+                                    {% else %}
+                                        {{ country.capitalName }}
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th>Vaccins recommandés</th>

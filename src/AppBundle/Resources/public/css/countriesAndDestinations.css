@@ -36,3 +36,7 @@
 #tableCountryInformation th {
     width: 35%;
 }
+
+#tableCountryInformation a {
+    color: white;
+}
