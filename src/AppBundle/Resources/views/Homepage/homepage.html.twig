@@ -105,31 +105,25 @@
             </div>
         </div>
 
-        <div class="container-fluid containerPadding containerOrange">
-            <div class="container text-center">
-                <p style="font-size: 40px;">Coming soon ...</p>
+
+        <div id="homepageGmap" class="container-fluid containerOrange containerPadding">
+            <div class="container">
+                <div class="row" id="rowGmapText">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h3 class="text-center">Liste des destinations</h3>
+
+                        <p class="text-center">Plus de 100 destinations sont référencées. La liste s'enrichie grâce à la
+                            communauté des voyageurs. <a href="{{ path('contact') }}">Cliquez ici pour nous proposer vos
+                                destinations !</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="gmap"></div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-        {#<div id="homepageGmap" class="container-fluid containerOrange containerPadding">#}
-        {#<div class="container">#}
-        {#<div class="row" id="rowGmapText">#}
-        {#<div class="col-lg-8 col-lg-offset-2">#}
-        {#<h3 class="text-center">Liste des destinations</h3>#}
-
-        {#<p class="text-center">Plus de 100 destinations sont référencées. La liste s'enrichie grâce à la#}
-        {#communauté des voyageurs. <a href="{{ path('contact') }}">Cliquez ici pour nous proposer vos#}
-        {#destinations !</a></p>#}
-        {#</div>#}
-        {#</div>#}
-        {#<div class="row">#}
-        {#<div class="col-md-12">#}
-        {#<div id="gmap"></div>#}
-        {#</div>#}
-        {#</div>#}
-        {#</div>#}
-        {#</div>#}
 
         {#{% include 'AppBundle:Vignette:vignettesHomepage.html.twig' %}#}
 
@@ -145,13 +139,13 @@
 
 
 {% block javascripts %}
-    {#<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>#}
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
     {{ parent() }}
-    {#<script src="{{ asset('/js/maplace.js') }}"></script>#}
-    {#<script>#}
-    {#var maplaceData = {{ maplaceData|raw }};#}
-    {#</script>#}
-    {#<script src="{{ asset('bundles/app/js/homepage/maplaceHomepage.js') }}"></script>#}
+    <script src="{{ asset('/js/maplace.js') }}"></script>
+    <script>
+    var maplaceData = {{ maplaceData|raw }};
+    </script>
+    <script src="{{ asset('bundles/app/js/homepage/maplaceHomepage.js') }}"></script>
     <script src="{{ asset('bundles/app/js/homepage/homepage.js') }}"></script>
 {% endblock %}
 
