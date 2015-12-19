@@ -116,7 +116,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $code = $country->getCodeAlpha3();
 
         if (empty($code)) {
-            $output->writeln("<error>Pays '$name'  --  Code Alpha3 inconnu.</error>");
+            $output->writeln("<error>Pays '$name'  --  Code Alpha3 inconnu, impossible de récupérer les données de l'API.</error>");
             return $country;
         }
 
