@@ -19,7 +19,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $this
             ->setName('app:import:countries')
             ->setDescription("Permet d'importer et mettre à jour la liste des pays")
-            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
+            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer')
+            ->addOption('force', '-f');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -27,13 +28,19 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
 
-        $this->import($input, $output);
+        $forceInsert = $input->getOption('force');
+        $this->import($input, $output, $forceInsert);
 
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
     }
 
-    private function import(InputInterface $input, OutputInterface $output)
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @param boolean $forceInsert
+     */
+    private function import(InputInterface $input, OutputInterface $output, $forceInsert)
     {
         /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine')->getManager();
@@ -56,7 +63,6 @@ class ImportCountriesCommand extends ContainerAwareCommand
             if (is_null($country)) {
                 $country = new Country();
                 $country->setName($name);
-                $output->writeln("<info>Nouveau pays '$name'</info>");
             }
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui')
                 ->setCodeAlpha2($dataCountry['code alpha 2'])
@@ -68,9 +74,19 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 ->setVisaInformation($dataCountry['visa']);
 
             $country = $this->fetchAutomaticDataFromApi($output, $country);
-            $em->persist($country);
 
-            $nbToFlush++;
+            if ($this->isComplete($output, $country) || $forceInsert) {
+                $em->persist($country);
+                $nbToFlush++;
+
+                $id = $country->getId();
+                if (!empty($id)) {
+                    $output->writeln("<info>Modification de '$name'</info>");
+                } else {
+                    $output->writeln("<info>Nouveau pays '$name'</info>");
+                }
+            }
+
             if ($nbToFlush % 50 == 0) {
                 $em->flush();
                 $em->clear();
@@ -127,5 +143,68 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $output->writeln("<info>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</info>");
 
         return $country;
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @param Country $country
+     * @return bool
+     */
+    private function isComplete(OutputInterface $output, Country $country)
+    {
+        $currency = $country->getCurrency();
+        $capitalName = $country->getCapitalName();
+        $codeAlpha2 = $country->getCodeAlpha2();
+        $codeAlpha3 = $country->getCodeAlpha3();
+        $languages = $country->getLanguages();
+        $lat = $country->getLatitude();
+        $lon = $country->getLongitude();
+        $name = $country->getName();
+        $population = $country->getPopulation();
+        $vaccines = $country->getVaccines();
+        $visaInformation = $country->getVisaInformation();
+
+        $errors = [];
+        if (empty($currency)) {
+            $errors[] = 'Devise inconnue';
+        }
+        if (empty($capitalName)) {
+            $errors[] = 'Nom de la capitale inconnue';
+        }
+        if (empty($codeAlpha2)) {
+            $errors[] = 'code Alpha 2 inconnu';
+        }
+        if (empty($codeAlpha3)) {
+            $errors[] = 'code Alpha 3 inconnu';
+        }
+        if (empty($languages)) {
+            $errors[] = 'langages inconnus';
+        }
+        if (empty($lat)) {
+            $errors[] = 'latitude inconnue';
+        }
+        if (empty($lon)) {
+            $errors[] = 'longitude inconnue';
+        }
+        if (empty($name)) {
+            $errors[] = 'nom inconnue';
+        }
+        if (empty($population)) {
+            $errors[] = 'population inconnue';
+        }
+        if (empty($vaccines)) {
+            $errors[] = 'vaccins inconnue';
+        }
+        if (empty($visaInformation)) {
+            $errors[] = 'informations sur les visa inconnues';
+        }
+
+        if (!empty($errors)) {
+            $output->writeln("<error>Pays '$name'  --  ERREURS : " . join(' ; ', $errors) . ".</error>");
+
+            return false;
+        }
+
+        return true;
     }
 }
