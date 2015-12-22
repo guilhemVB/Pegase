@@ -86,7 +86,6 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             if (is_null($destination)) {
                 $destination = new Destination();
                 $destination->setName($name);
-                $output->writeln("<info>Nouvelle destination '$name'</info>");
             }
             $destination->setCountry($country);
             $destination->setDescription(!empty($description) ? explode("\n", $description) : []);
