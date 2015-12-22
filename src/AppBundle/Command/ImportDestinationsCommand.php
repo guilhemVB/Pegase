@@ -224,6 +224,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         if (empty($tips)) {
             $errors[] = 'Bons plans inconnus';
         }
+        $destination->generateSlug();
         if (!$this->assetExistsExtension->assetExist($this->imagePath . $destination->getSlug() . '.jpg')) {
             $errors[] = "Pas d'image";
         }

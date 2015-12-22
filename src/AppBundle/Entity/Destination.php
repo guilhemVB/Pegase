@@ -16,6 +16,7 @@ class Destination
 {
 
     use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer

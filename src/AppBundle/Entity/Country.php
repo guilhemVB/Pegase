@@ -14,6 +14,7 @@ class Country
 {
 
     use ORMBehaviors\Sluggable\Sluggable;
+    use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer

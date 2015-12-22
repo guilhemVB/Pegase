@@ -150,7 +150,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
             ->setLongitude($countryData['latlng'][1])
             ->setPopulation($countryData['population']);
 
-        $output->writeln("<info>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</info>");
+        $output->writeln("<comment>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</comment>");
 
         return $country;
     }
@@ -212,6 +212,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
         if (empty($visaInformation)) {
             $errors[] = 'informations sur les visa inconnues';
         }
+        $country->generateSlug();
         if (!$this->assetExistsExtension->assetExist($this->imagePath . $country->getSlug() . '.jpg')) {
             $errors[] = "pas d'image";
         }
