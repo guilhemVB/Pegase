@@ -77,17 +77,17 @@
                                 <blockquote>
                                     <h4>
                                         Coût moyen de la vie sur place<span
-                                                class="pull-right label label-danger">{{ destination.prices.accommodation + destination.prices['life cost'] }}
+                                                class="pull-right label label-danger">{{ destination.totalPrices }}
                                             €</span>
                                     </h4>
                                     <footer style="color: silver;">
                                         Prix moyen de l'hébergement<span
-                                                class="pull-right label label-primary">{{ destination.prices.accommodation }}
+                                                class="pull-right label label-primary">{{ destination.priceAccommodation }}
                                             €</span>
                                     </footer>
                                     <footer style="color: silver;">
                                         Dépenses quotidiennes moyenne<span
-                                                class="pull-right label label-primary">{{ destination.prices['life cost'] }}
+                                                class="pull-right label label-primary">{{ destination.priceLifeCost }}
                                             €</span>
                                     </footer>
                                 </blockquote>

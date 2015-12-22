@@ -91,7 +91,8 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setDescription(!empty($description) ? explode("\n", $description) : []);
             $destination->setTips($this->extractTips($dataDestination['bons plans']));
             $destination->setPeriods($this->extractPeriods($dataDestination));
-            $destination->setPrices($this->extractPrices($dataDestination));
+            $destination->setPriceAccommodation($dataDestination["prix de l'hébergement"]);
+            $destination->setPriceLifeCost($dataDestination['coût de la vie']);
             $destination->setLatitude($dataDestination['latitude']);
             $destination->setLongitude($dataDestination['longitude']);
             $destination->setIsTheCapital($dataDestination['Capitale'] === 'oui');
@@ -141,18 +142,6 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     }
 
     /**
-     * @param array $dataDestination
-     * @return array
-     */
-    private function extractPrices($dataDestination)
-    {
-        return [
-            'accommodation' => $dataDestination["prix de l'hébergement"],
-            'life cost'     => $dataDestination['coût de la vie'],
-        ];
-    }
-
-    /**
      * @param array $tipsStr
      * @return array
      */
@@ -184,7 +173,8 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $lon = $destination->getLongitude();
         $descriptions = $destination->getDescription();
         $periods = $destination->getPeriods();
-        $prices = $destination->getPrices();
+        $priceAccommodation = $destination->getPriceAccommodation();
+        $priceLifeCost = $destination->getPriceLifeCost();
         $tips = $destination->getTips();
 
         $errors = [];
@@ -212,11 +202,11 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         if (empty($periods)) {
             $errors[] = 'Périodes inconnues';
         }
-        if (empty($prices['accommodation'])) {
+        if (empty($priceAccommodation)) {
             $errors[] = "Prix de l'hébergement inconnu";
         }
 
-        if (empty($prices['life cost'])) {
+        if (empty($priceLifeCost)) {
             $errors[] = "Prix du coût de la vie inconnu";
         }
 

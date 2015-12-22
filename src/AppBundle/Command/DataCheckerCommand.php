@@ -156,13 +156,11 @@ class DataCheckerCommand extends ContainerAwareCommand
                 $output->writeln("<error>DESTINATION '$name'  --  bons plans non saisis.</error>");
             }
 
-            $prices = $destination->getPrices();
-
-            if ($prices['accommodation']) {
+            if ($destination->getPriceAccommodation()) {
                 $output->writeln("<error>DESTINATION '$name'  --  prix de l'hébergement non saisis.</error>");
             }
 
-            if ($prices['life cost']) {
+            if ($destination->getPriceLifeCost()) {
                 $output->writeln("<error>DESTINATION '$name'  --  coût de la vie non saisis.</error>");
             }
 

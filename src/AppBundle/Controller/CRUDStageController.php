@@ -169,8 +169,7 @@ class CRUDStageController extends Controller
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->changeNumberDays($stage, $nbDays);
 
-        $prices = $stage->getDestination()->getPrices();
-        $stagePrice = $nbDays * ($prices['accommodation'] + $prices['life cost']);
+        $stagePrice = $nbDays * $stage->getDestination()->getTotalPrices();
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');

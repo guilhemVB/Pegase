@@ -21,7 +21,7 @@
                 {% if destinationPrices is defined %}
                     {{ destinationPrices }} &euro; / jour
                 {% else %}
-                    {{ destination.prices.accommodation + destination.prices['life cost'] }} &euro; / jour
+                    {{ destination.totalPrices }} &euro; / jour
                 {% endif %}
             </span>
 

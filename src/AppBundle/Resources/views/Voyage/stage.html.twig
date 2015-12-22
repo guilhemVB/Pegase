@@ -17,7 +17,7 @@
             <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
         </div>
         <div class="col-sm-3">
-            <span class="stagePrice" data-stage-id="{{ stage.id }}">{{ ((destination.prices.accommodation + destination.prices['life cost']) * stage.nbDays)|number_format(0, ',', ' ') }} €</span>
+            <span class="stagePrice" data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €</span>
             <button type="button" class="btn btn-danger btn-xs pull-right btnDeleteStage"
                     data-loading-text="Suppression ..."
                     data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i> Supprimer</button>

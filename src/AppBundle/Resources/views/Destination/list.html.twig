@@ -87,7 +87,7 @@
                                     {#<li>#}
                                         {#<a href="{{ path('destination', {'slug' : destination.slug }) }}">#}
                                             {#<span class="label label-success pull-left" style="font-size: 12px;">#}
-                                                {#{{ destination.prices.accommodation + destination.prices['life cost'] }} &euro; / jour#}
+                                                {#{{ destination.totalPrices }} &euro; / jour#}
                                             {#</span>#}
                                             {#<span class="destinationName">#}
                                                 {#{{ destination.name }}#}

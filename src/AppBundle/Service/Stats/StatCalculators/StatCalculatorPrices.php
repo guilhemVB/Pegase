@@ -14,10 +14,11 @@ class StatCalculatorPrices implements StatCalculatorInterface
 
     public function addStage(Stage $stage)
     {
-        $prices = $stage->getDestination()->getPrices();
+        $priceAccommodation = $stage->getDestination()->getPriceAccommodation();
+        $priceLifeCost = $stage->getDestination()->getPriceLifeCost();
         $nbDays = $stage->getNbDays();
-        $this->totalCostAccommodation += $prices['accommodation'] * $nbDays;
-        $this->totalCostLifeCost += $prices['life cost'] * $nbDays;
+        $this->totalCostAccommodation += $priceAccommodation * $nbDays;
+        $this->totalCostLifeCost += $priceLifeCost * $nbDays;
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace AppBundle\Service\Stats;
 
 use AppBundle\Entity\Stage;
-use AppBundle\Entity\Voyage;
 use AppBundle\Service\Stats\StatCalculators\StatCalculatorCountries;
 use AppBundle\Service\Stats\StatCalculators\StatCalculatorCrowFliesDistance;
 use AppBundle\Service\Stats\StatCalculators\StatCalculatorDates;

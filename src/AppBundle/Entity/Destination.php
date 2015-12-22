@@ -17,6 +17,7 @@ class Destination
 
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
+    use PricesTrait;
 
     /**
      * @var integer
@@ -62,12 +63,6 @@ class Destination
      * @ORM\Column(name="periods", type="json_array", nullable=false)
      */
     private $periods;
-
-    /**
-     * @var array
-     * @ORM\Column(name="prices", type="json_array", nullable=false)
-     */
-    private $prices;
 
     /**
      * @var float
@@ -193,25 +188,6 @@ class Destination
     public function getPeriods()
     {
         return $this->periods;
-    }
-
-    /**
-     * @param array $prices
-     * @return Destination
-     */
-    public function setPrices($prices)
-    {
-        $this->prices = $prices;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPrices()
-    {
-        return $this->prices;
     }
 
     /**
