@@ -18,6 +18,7 @@ class Destination
     use ORMBehaviors\Sluggable\Sluggable;
     use ORMBehaviors\Timestampable\Timestampable;
     use PricesTrait;
+    use PeriodsTrait;
 
     /**
      * @var integer
@@ -57,12 +58,6 @@ class Destination
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="destinations")
      */
     private $country;
-
-    /**
-     * @var array
-     * @ORM\Column(name="periods", type="json_array", nullable=false)
-     */
-    private $periods;
 
     /**
      * @var float
@@ -169,25 +164,6 @@ class Destination
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * @param array $periods
-     * @return Destination
-     */
-    public function setPeriods($periods)
-    {
-        $this->periods = $periods;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPeriods()
-    {
-        return $this->periods;
     }
 
     /**

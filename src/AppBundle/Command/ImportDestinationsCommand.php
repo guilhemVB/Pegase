@@ -6,7 +6,6 @@ use AppBundle\Entity\Destination;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\CSVParser;
-use AppBundle\Service\Tools\DestinationPeriods;
 use AppBundle\Twig\AssetExistsExtension;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -90,7 +89,19 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setCountry($country);
             $destination->setDescription(!empty($description) ? explode("\n", $description) : []);
             $destination->setTips($this->extractTips($dataDestination['bons plans']));
-            $destination->setPeriods($this->extractPeriods($dataDestination));
+            $destination->setPeriodJanuary($dataDestination['janvier']);
+            $destination->setPeriodFebruary($dataDestination['février']);
+            $destination->setPeriodMarch($dataDestination['mars']);
+            $destination->setPeriodApril($dataDestination['avril']);
+            $destination->setPeriodMay($dataDestination['mai']);
+            $destination->setPeriodJune($dataDestination['juin']);
+            $destination->setPeriodJuly($dataDestination['juillet']);
+            $destination->setPeriodAugust($dataDestination['août']);
+            $destination->setPeriodSeptember($dataDestination['septembre']);
+            $destination->setPeriodOctober($dataDestination['octobre']);
+            $destination->setPeriodNovember($dataDestination['novembre']);
+            $destination->setPeriodDecember($dataDestination['décembre']);
+
             $destination->setPriceAccommodation($dataDestination["prix de l'hébergement"]);
             $destination->setPriceLifeCost($dataDestination['coût de la vie']);
             $destination->setLatitude($dataDestination['latitude']);
@@ -116,29 +127,6 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         }
         $em->flush();
         $em->clear();
-    }
-
-    /**
-     * @param array $dataDestination
-     * @return array
-     */
-    private function extractPeriods($dataDestination)
-    {
-        $periods = DestinationPeriods::getPeriods();
-        return [
-            $periods[1]  => $dataDestination['janvier'],
-            $periods[2]  => $dataDestination['février'],
-            $periods[3]  => $dataDestination['mars'],
-            $periods[4]  => $dataDestination['avril'],
-            $periods[5]  => $dataDestination['mai'],
-            $periods[6]  => $dataDestination['juin'],
-            $periods[7]  => $dataDestination['juillet'],
-            $periods[8]  => $dataDestination['août'],
-            $periods[9]  => $dataDestination['septembre'],
-            $periods[10] => $dataDestination['octobre'],
-            $periods[11] => $dataDestination['novembre'],
-            $periods[12] => $dataDestination['décembre'],
-        ];
     }
 
     /**
@@ -172,7 +160,18 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $lat = $destination->getLatitude();
         $lon = $destination->getLongitude();
         $descriptions = $destination->getDescription();
-        $periods = $destination->getPeriods();
+        $periodJanuary = $destination->getPeriodJanuary();
+        $periodFebruary = $destination->getPeriodFebruary();
+        $periodMarch = $destination->getPeriodMarch();
+        $periodApril = $destination->getPeriodApril();
+        $periodMay = $destination->getPeriodMay();
+        $periodJune = $destination->getPeriodJune();
+        $periodJuly = $destination->getPeriodJuly();
+        $periodAugust = $destination->getPeriodAugust();
+        $periodSeptember = $destination->getPeriodSeptember();
+        $periodOctober = $destination->getPeriodOctober();
+        $periodNovember = $destination->getPeriodNovember();
+        $periodDecember = $destination->getPeriodDecember();
         $priceAccommodation = $destination->getPriceAccommodation();
         $priceLifeCost = $destination->getPriceLifeCost();
         $tips = $destination->getTips();
@@ -199,8 +198,41 @@ class ImportDestinationsCommand extends ContainerAwareCommand
                 $errors[] = 'Description trop petite';
             }
         }
-        if (empty($periods)) {
-            $errors[] = 'Périodes inconnues';
+        if (is_null($periodJanuary)) {
+            $errors[] = 'Périodes Janvier inconnues';
+        }
+        if (is_null($periodFebruary)) {
+            $errors[] = 'Périodes Février inconnues';
+        }
+        if (is_null($periodMarch)) {
+            $errors[] = 'Périodes Mars inconnues';
+        }
+        if (is_null($periodApril)) {
+            $errors[] = 'Périodes Avril inconnues';
+        }
+        if (is_null($periodMay)) {
+            $errors[] = 'Périodes Mai inconnues';
+        }
+        if (is_null($periodJune)) {
+            $errors[] = 'Périodes Juin inconnues';
+        }
+        if (is_null($periodJuly)) {
+            $errors[] = 'Périodes Juillet inconnues';
+        }
+        if (is_null($periodAugust)) {
+            $errors[] = 'Périodes Aout inconnues';
+        }
+        if (is_null($periodSeptember)) {
+            $errors[] = 'Périodes Septembre inconnues';
+        }
+        if (is_null($periodOctober)) {
+            $errors[] = 'Périodes Octobre inconnues';
+        }
+        if (is_null($periodNovember)) {
+            $errors[] = 'Périodes Novembre inconnues';
+        }
+        if (is_null($periodDecember)) {
+            $errors[] = 'Périodes Décembre inconnues';
         }
         if (empty($priceAccommodation)) {
             $errors[] = "Prix de l'hébergement inconnu";

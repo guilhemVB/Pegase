@@ -2,23 +2,13 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\Country;
-use AppBundle\Entity\Destination;
-use AppBundle\Entity\Stage;
 use AppBundle\Entity\TypicalVoyage;
-use AppBundle\Entity\Voyage;
-use AppBundle\Repository\CountryRepository;
-use AppBundle\Repository\DestinationRepository;
 use AppBundle\Repository\TypicalVoyageRepository;
-use AppBundle\Repository\VoyageRepository;
-use AppBundle\Service\CSVParser;
 use AppBundle\Service\Stats\StatCalculators\StatCalculatorNumberDays;
 use AppBundle\Service\Stats\StatCalculators\StatCalculatorPrices;
 use AppBundle\Service\Stats\VoyageStats;
-use AppBundle\Service\Tools\DestinationPeriods;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

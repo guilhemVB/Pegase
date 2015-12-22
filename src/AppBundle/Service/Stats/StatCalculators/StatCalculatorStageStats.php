@@ -67,8 +67,34 @@ class StatCalculatorStageStats implements StatCalculatorInterface
     private function extractNbStart(\DateTime $dateFrom, \DateTime $dateTo, Destination $destination)
     {
         $month = $this->extractMonthFromDates($dateFrom, $dateTo);
-        $periods = $destination->getPeriods();
-        return $periods[$month];
+        switch ($month) {
+            case 'january' :
+                return $destination->getPeriodJanuary();
+            case 'february' :
+                return $destination->getPeriodFebruary();
+            case 'march' :
+                return $destination->getPeriodMarch();
+            case 'april' :
+                return $destination->getPeriodApril();
+            case 'may' :
+                return $destination->getPeriodMay();
+            case 'june' :
+                return $destination->getPeriodJune();
+            case 'july' :
+                return $destination->getPeriodJuly();
+            case 'august' :
+                return $destination->getPeriodAugust();
+            case 'september' :
+                return $destination->getPeriodSeptember();
+            case 'october' :
+                return $destination->getPeriodOctober();
+            case 'november' :
+                return $destination->getPeriodNovember();
+            case 'december' :
+                return $destination->getPeriodDecember();
+        }
+
+        return 0;
     }
 
     /**
