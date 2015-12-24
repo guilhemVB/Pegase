@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ImportDestinationsCommand extends ContainerAwareCommand
 {
 
-    const MAX_SIZE_DESCRIPTION_LENGTH = 950;
+    const MAX_SIZE_DESCRIPTION_LENGTH = 1020;
 
     /** @var  AssetExistsExtension */
     private $assetExistsExtension;
