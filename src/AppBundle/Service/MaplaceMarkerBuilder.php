@@ -99,6 +99,8 @@ class MaplaceMarkerBuilder
             $number = $number % 26;
 
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker' . $iconLetters[$number] . '.png';
+        } else {
+            $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker.png';
         }
 
         return $dataMaplace;

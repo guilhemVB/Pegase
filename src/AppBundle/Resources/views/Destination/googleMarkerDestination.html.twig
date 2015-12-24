@@ -1,3 +1,8 @@
-<a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
-
-
+<div class="text-center markerLabel">
+    <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
+</div>
+<div class="text-center">
+    <span class="label label-success" style="font-size: 12px;">
+        {{ destination.totalPrices }} &euro; / jour
+    </span>
+</div>>

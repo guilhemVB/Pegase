@@ -8,10 +8,14 @@
     height: 510px;
 }
 
+.markerLabel {
+    font-size: 16px;
+}
+
 /*#footer-container {*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    /*width: 100%;*/
+/*position: absolute;*/
+/*bottom: 0;*/
+/*width: 100%;*/
 /*}*/
 
 .footer {
@@ -72,7 +76,8 @@
 }
 
 .colorInherit {
-    color: inherit;  !important;
+    color: inherit;
+!important;
 }
 
 .img-responsive {
