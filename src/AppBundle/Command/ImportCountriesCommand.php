@@ -69,9 +69,12 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $languages = $dataCountry['langues'];
 
             $country = $countryRepository->findOneByName($name);
+
+            $isNew = false;
             if (is_null($country)) {
                 $country = new Country();
                 $country->setName($name);
+                $isNew = true;
             }
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui')
                 ->setCodeAlpha2($dataCountry['code alpha 2'])
@@ -88,11 +91,10 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $em->persist($country);
                 $nbToFlush++;
 
-                $id = $country->getId();
-                if (!empty($id)) {
-                    $output->writeln("<info>Modification de '$name'</info>");
-                } else {
+                if ($isNew) {
                     $output->writeln("<info>Nouveau pays '$name'</info>");
+                } else {
+                    $output->writeln("<info>Modification de '$name'</info>");
                 }
             }
 
@@ -212,7 +214,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
             $errors[] = 'informations sur les durées du visa inconnue';
         }
         $country->generateSlug();
-        if (!$this->assetExistsExtension->assetExist($this->imagePath . $country->getSlug() . '.jpg')) {
+        if (!$this->assetExistsExtension->assetExist($this->imagePath . $country->getSlug() . '.JPG')) {
             $errors[] = "pas d'image";
         }
 

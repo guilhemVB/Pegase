@@ -82,9 +82,12 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             }
 
             $destination = $destinationRepository->findOneByName($name);
+
+            $isNew = false;
             if (is_null($destination)) {
                 $destination = new Destination();
                 $destination->setName($name);
+                $isNew = true;
             }
             $destination->setCountry($country);
             $destination->setDescription(!empty($description) ? explode("\n", $description) : []);
@@ -112,11 +115,10 @@ class ImportDestinationsCommand extends ContainerAwareCommand
                 $em->persist($destination);
                 $nbToFlush++;
 
-                $id = $destination->getId();
-                if (!empty($id)) {
-                    $output->writeln("<info>Modification de '$name'</info>");
-                } else {
+                if ($isNew) {
                     $output->writeln("<info>Nouvelle destination '$name'</info>");
+                } else {
+                    $output->writeln("<info>Modification de '$name'</info>");
                 }
             }
 
@@ -246,7 +248,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $errors[] = 'Bons plans inconnus';
         }
         $destination->generateSlug();
-        if (!$this->assetExistsExtension->assetExist($this->imagePath . $destination->getSlug() . '.jpg')) {
+        if (!$this->assetExistsExtension->assetExist($this->imagePath . $destination->getSlug() . '.JPG')) {
             $errors[] = "Pas d'image";
         }
 
