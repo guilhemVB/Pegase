@@ -67,7 +67,6 @@ class ImportCountriesCommand extends ContainerAwareCommand
         foreach ($dataCountries as $dataCountry) {
             $name = $dataCountry['nom'];
             $languages = $dataCountry['langues'];
-            $vaccines = $dataCountry['vaccins'];
 
             $country = $countryRepository->findOneByName($name);
             if (is_null($country)) {
@@ -80,7 +79,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 ->setCurrency($dataCountry['devise'])
                 ->setLanguages(!empty($languages) ? explode("\n", $languages) : [])
                 ->setCapitalName($dataCountry['capitale'])
-                ->setVaccines(!empty($vaccines) ? explode("\n", $vaccines) : [])
+                ->setVisaDuration($dataCountry['Durée du visa'])
                 ->setVisaInformation($dataCountry['visa']);
 
             $country = $this->fetchAutomaticDataFromApi($output, $country);
@@ -175,8 +174,8 @@ class ImportCountriesCommand extends ContainerAwareCommand
         $lon = $country->getLongitude();
         $name = $country->getName();
         $population = $country->getPopulation();
-        $vaccines = $country->getVaccines();
         $visaInformation = $country->getVisaInformation();
+        $visaDuration = $country->getVisaDuration();
 
         $errors = [];
         if (empty($currency)) {
@@ -206,17 +205,18 @@ class ImportCountriesCommand extends ContainerAwareCommand
         if (empty($population)) {
             $errors[] = 'population inconnue';
         }
-        if (empty($vaccines)) {
-            $errors[] = 'vaccins inconnue';
-        }
         if (empty($visaInformation)) {
-            $errors[] = 'informations sur les visa inconnues';
+            $errors[] = 'informations sur les prix du visa inconnues';
+        }
+        if (empty($visaDuration)) {
+            $errors[] = 'informations sur les durées du visa inconnue';
         }
         $country->generateSlug();
         if (!$this->assetExistsExtension->assetExist($this->imagePath . $country->getSlug() . '.jpg')) {
             $errors[] = "pas d'image";
         }
 
+        $codeAlpha2 = strtolower($codeAlpha2);
         $url = "http://www.geonames.org/flags/x/$codeAlpha2.gif";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

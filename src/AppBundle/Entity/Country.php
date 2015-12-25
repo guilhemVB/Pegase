@@ -62,10 +62,10 @@ class Country
     private $visaInformation;
 
     /**
-     * @var array
-     * @ORM\Column(type="array", nullable=true)
+     * @var string
+     * @ORM\Column(type="string", length=1024)
      */
-    private $vaccines;
+    private $visaDuration;
 
     /**
      * @var array
@@ -363,21 +363,22 @@ class Country
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getVaccines()
+    public function getVisaDuration()
     {
-        return $this->vaccines;
+        return $this->visaDuration;
     }
 
     /**
-     * @param array $vaccines
+     * @param string $visaDuration
      * @return $this
      */
-    public function setVaccines($vaccines)
+    public function setVisaDuration($visaDuration)
     {
-        $this->vaccines = $vaccines;
+        $this->visaDuration = $visaDuration;
 
         return $this;
     }
+
 }

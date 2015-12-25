@@ -1,7 +1,7 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}Pays - {{ country.name }}. Vaccins recommandés : {{ country.vaccines|join(' - ') }}. Informations sur le Visa : {{ country.visaInformation }}{% endblock %}
+{% block metaDescription %}Pays - {{ country.name }}. Visa : {{ country.visaInformation }} - {{ country.visaDuration }}{% endblock %}
 {% block metaKeyword %}, pays, {{ country.name }}, informations{% endblock %}
 
 
@@ -87,8 +87,8 @@
                                 <td>{{ country.visaInformation }}</td>
                             </tr>
                             <tr>
-                                <th>Langues</th>
-                                <td>{{ country.languages|join(' - ') }}</td>
+                                <th>Durée du Visa</th>
+                                <td>{{ country.visaDuration }}</td>
                             </tr>
                         </table>
                     </div>
@@ -106,8 +106,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Vaccins recommandés</th>
-                                <td>{{ country.vaccines|join(' - ') }}</td>
+                                <th>Langues</th>
+                                <td>{{ country.languages|join(' - ') }}</td>
                             </tr>
                             <tr>
                                 <th>Population</th>
