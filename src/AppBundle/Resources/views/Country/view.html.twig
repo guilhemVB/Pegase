@@ -79,8 +79,14 @@
                     <div class="col-md-6">
                         <table class="table">
                             <tr>
-                                <th>Devise</th>
-                                <td>{{ country.currency }}</td>
+                                <th>Capitale</th>
+                                <td>
+                                    {% if capitalDestination is not null %}
+                                        <a href="{{ path('destination', {'slug' : capitalDestination.slug }) }}">{{ country.capitalName }}</a>
+                                    {% else %}
+                                        {{ country.capitalName }}
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th>Visa</th>
@@ -96,14 +102,8 @@
                     <div class="col-md-6">
                         <table class="table">
                             <tr>
-                                <th>Capitale</th>
-                                <td>
-                                    {% if capitalDestination is not null %}
-                                        <a href="{{ path('destination', {'slug' : capitalDestination.slug }) }}">{{ country.capitalName }}</a>
-                                    {% else %}
-                                        {{ country.capitalName }}
-                                    {% endif %}
-                                </td>
+                                <th>Devise</th>
+                                <td>{{ country.currency }}</td>
                             </tr>
                             <tr>
                                 <th>Langues</th>
