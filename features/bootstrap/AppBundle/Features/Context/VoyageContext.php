@@ -2,6 +2,7 @@
 
 namespace AppBundle\Features\Context;
 
+use AppBundle\Repository\UserRepository;
 use AppBundle\Service\CRUD\CRUDVoyage;
 use AppBundle\Service\Stats\VoyageStats;
 use AppKernel;
@@ -28,7 +29,13 @@ class VoyageContext extends CommonContext
      */
     public function lesVoyagesDeLUtilisateur($userName, TableNode $tableVoyages)
     {
-        $user = $this->findUserByName($userName);
+//        $user = $this->findUserByName($userName);
+
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em->getRepository('AppBundle:User');
+        $users = $userRepository->findAll();
+        $user = $users[0];
+
         foreach ($tableVoyages as $voyageRow) {
             $destination = $this->findDestinationByName($voyageRow['destination de départ']);
             $this->CRUDVoyage->add($user, $voyageRow['nom'], $voyageRow['date de départ'], $destination, $voyageRow['nombre de voyageur']);

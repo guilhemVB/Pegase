@@ -23,14 +23,14 @@ class DestinationContext extends CommonContext
             $country = $this->findCountryByName($destinationRow['pays']);
 
             $destination = new Destination();
-            $destination->setName($destinationRow['nom']);
-            $destination->setDescription(isset($destinationRow['description']) ? [$destinationRow['description']] : []);
-            $destination->setTips(isset($destinationRow['bon plans']) ? $destinationRow['bon plans'] : '');
-            $destination->setPeriods(isset($destinationRow['périodes']) ? (array)json_decode($destinationRow['périodes']) : ["january"=>"1","february"=>"1","march"=>"2","april"=>"2","may"=>"2","june"=>"3","july"=>"3","august"=>"3","september"=>"2","october"=>"1","november"=>"1","december"=>"1"]);
-            $destination->setPrices(isset($destinationRow['prix']) ? (array)json_decode($destinationRow['prix']) : ["accommodation" =>"32","life cost" =>"24"]);
-            $destination->setLongitude(isset($destinationRow['longitude']) ? $destinationRow['longitude'] : 2.336492);
-            $destination->setLatitude(isset($destinationRow['latitude']) ? $destinationRow['latitude'] : 48.864592);
-            $destination->setCountry($country);
+            $destination->setName($destinationRow['nom'])
+                ->setDescription(isset($destinationRow['description']) ? [$destinationRow['description']] : [])
+                ->setTips(isset($destinationRow['bon plans']) ? $destinationRow['bon plans'] : '')
+                ->setPriceAccommodation(isset($destinationRow["prix de l'hébergement"]) ? $destinationRow["prix de l'hébergement"] : 0)
+                ->setPriceLifeCost(isset($destinationRow["prix du cout de la vie"]) ? $destinationRow["prix du cout de la vie"] : 0)
+                ->setLongitude(isset($destinationRow['longitude']) ? $destinationRow['longitude'] : 2.336492)
+                ->setLatitude(isset($destinationRow['latitude']) ? $destinationRow['latitude'] : 48.864592)
+                ->setCountry($country);
 
             $this->em->persist($destination);
 

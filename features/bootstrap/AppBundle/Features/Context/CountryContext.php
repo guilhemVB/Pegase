@@ -21,9 +21,11 @@ class CountryContext extends CommonContext
     {
         foreach ($tableCountries as $countryRow) {
             $country = new Country();
-            $country->setName($countryRow['nom']);
-            $country->setDescription(isset($countryRow['description']) ? $countryRow['description'] : '');
-            $country->setTips(isset($countryRow['bon plans']) ? $countryRow['bon plans'] : '');
+            $country->setName($countryRow['nom'])
+                ->setCapitalName($countryRow['capitale'])
+                ->setCurrency($countryRow['monnaie'])
+                ->setVisaInformation("Visa gratuit")
+                ->setVisaDuration("3 mois");
 
             $this->em->persist($country);
         }
