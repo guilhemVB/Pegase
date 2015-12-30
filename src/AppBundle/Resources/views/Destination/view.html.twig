@@ -82,7 +82,8 @@
                                     </h4>
                                     <footer style="color: silver;">
                                         Prix moyen de l'hébergement<span
-                                                class="pull-right label label-primary">{{ destination.priceAccommodation }}
+                                                class="pull-right label label-primary"
+                                                data-toggle="tooltip" data-placement="bottom" title="En auberge de jeunesse">{{ destination.priceAccommodation }}
                                             €</span>
                                     </footer>
                                     <footer style="color: silver;">
@@ -225,8 +226,7 @@
         {#var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";#}
     </script>
     <script src="{{ asset('bundles/app/js/destination/maplaceDestination.js') }}"></script>
-    {#<script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>#}
-
+    <script src="{{ asset('bundles/app/js/destination/destination.js') }}"></script>
 {% endblock %}
 
 
