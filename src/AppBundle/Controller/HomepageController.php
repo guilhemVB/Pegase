@@ -36,7 +36,7 @@ class HomepageController extends Controller
 
         $countries = [];
         foreach ($allDestinations as $destination) {
-            $countries[] = $destination->getCountry();
+            $countries[$destination->getCountry()->getSlug()] = $destination->getCountry();
         }
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
