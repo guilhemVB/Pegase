@@ -76,20 +76,22 @@
                             <div class="col-md-12">
                                 <blockquote>
                                     <h4>
-                                        Coût moyen de la vie sur place<span
-                                                class="pull-right label label-danger">{{ destination.totalPrices }}
-                                            €</span>
+                                        Coût moyen de la vie sur place
+                                        <span class="pull-right label label-danger">{{ destination.totalPrices }} €</span>
                                     </h4>
                                     <footer style="color: silver;">
-                                        Prix moyen de l'hébergement<span
-                                                class="pull-right label label-primary"
-                                                data-toggle="tooltip" data-placement="bottom" title="En auberge de jeunesse">{{ destination.priceAccommodation }}
-                                            €</span>
+                                        Prix moyen de l'hébergement
+                                        <i class="fa fa-info-circle informationIcon"
+                                           data-toggle="tooltip" data-placement="top" title="Hébergement en dortoir
+                                           dans une bonne auberge de jeunesse."></i>
+                                        <span class="pull-right label label-primary">{{ destination.priceAccommodation }} €</span>
                                     </footer>
                                     <footer style="color: silver;">
-                                        Dépenses quotidiennes moyenne<span
-                                                class="pull-right label label-primary">{{ destination.priceLifeCost }}
-                                            €</span>
+                                        Dépenses quotidiennes moyenne
+                                        <i class="fa fa-info-circle informationIcon"
+                                           data-toggle="tooltip" data-placement="top" title="Transport en commun,
+                                           repas et visite d'une attraction."></i>
+                                        <span class="pull-right label label-primary">{{ destination.priceLifeCost }} €</span>
                                     </footer>
                                 </blockquote>
                             </div>

@@ -51,3 +51,8 @@
 #tableCountryInformation a {
     color: white;
 }
+
+.informationIcon {
+    font-size: 14px;
+    padding-left: 5px;
+}
