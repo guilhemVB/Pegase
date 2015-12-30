@@ -93,8 +93,9 @@
 }
 
 .flagCountrySmall {
-    max-width: 18px;
+    width: 18px; !important;
     margin-right: 10px;
+    padding-bottom: 5px;
 }
 
 .select2-results li.select2-result-with-children > .select2-result-label {
