@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Destination;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Service\MaplaceMarkerBuilder;
 use Doctrine\ORM\EntityManager;
@@ -25,14 +26,24 @@ class HomepageController extends Controller
 
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
+
+        /** @var Destination[] $allDestinations */
+        $allDestinations = $destinationRepository->findAll();
+
+        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($allDestinations, ['disableZoom' => true]);
 
         $lastDestinationsCreated = $destinationRepository->findBy([], ['createdAt' => 'DESC'], 3);
+
+        $countries = [];
+        foreach ($allDestinations as $destination) {
+            $countries[] = $destination->getCountry();
+        }
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
                 'maplaceData'             => json_encode($maplaceData),
                 'lastDestinationsCreated' => $lastDestinationsCreated,
+                'countries'               => $countries,
             ]);
     }
 }

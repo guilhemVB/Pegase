@@ -146,7 +146,7 @@
 
 {% block footer %}
     {{ parent() }}
-    {% include 'AppBundle:Common:listCountries.html.twig' %}
+    {% include 'AppBundle:Common:listCountries.html.twig' with {'addDestinations' : false} %}
 {% endblock %}
 
 

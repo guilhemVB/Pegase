@@ -1,7 +1,3 @@
-/*#carouselHomepage h1 {*/
-/*font-size: 80px;*/
-/*}*/
-
 #connectionRow {
     margin-top: 30px;
 }
@@ -72,3 +68,8 @@
     -moz-transform: scale(1.4);
 }
 
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
