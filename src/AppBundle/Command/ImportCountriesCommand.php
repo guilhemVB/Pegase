@@ -151,7 +151,7 @@ class ImportCountriesCommand extends ContainerAwareCommand
             ->setLongitude($countryData['latlng'][1])
             ->setPopulation($countryData['population']);
 
-        $output->writeln("<comment>Pays '$name'  --  Utilisation de l'API pour récuprer des infos sur le pays.</comment>");
+        $output->writeln("<comment>Pays '$name'  --  Utilisation de l'API pour récupérer des infos sur le pays.</comment>");
 
         return $country;
     }
