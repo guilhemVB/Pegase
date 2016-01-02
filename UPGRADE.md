@@ -17,3 +17,4 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 ## v0.1.1
 
 - Add webservice to import countries and destinations
+- Improve meta description and meta keyword

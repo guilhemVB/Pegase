@@ -1,8 +1,8 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}Pays - {{ country.name }}. Visa : {{ country.visaInformation }} - {{ country.visaDuration }}{% endblock %}
-{% block metaKeyword %}, pays, {{ country.name }}, informations{% endblock %}
+{% block metaDescription %}Pays - {{ country.name }}, capitale : {{ country.capitalName }}. Visa : {{ country.visaInformation }} - {{ country.visaDuration }}. Langue{% if country.languages|length > 1 %}s{% endif %} : {{ country.languages|join(' - ') }}.{% endblock %}
+{% block metaKeyword %}, pays, {{ country.name }}, informations, visa{% endblock %}
 
 
 {% block title %}
@@ -106,7 +106,7 @@
                                 <td>{{ country.currency }}</td>
                             </tr>
                             <tr>
-                                <th>Langues</th>
+                                <th>Langue{% if country.languages|length > 1 %}s{% endif %}</th>
                                 <td>{{ country.languages|join(' - ') }}</td>
                             </tr>
                             <tr>
