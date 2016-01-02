@@ -13,3 +13,7 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Add Google map with points in homepage and destinations view.
 - Add new pages in sitemap.xml
 - Add newest destinations in homepage
+
+## v0.1.1
+
+- Add webservice to import countries and destinations
