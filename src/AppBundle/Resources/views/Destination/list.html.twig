@@ -18,94 +18,88 @@
     <div id="destinationsListView">
 
         <div class="container-fluid containerOrange">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 page-header">
-                        <h1>
-                            Liste des destinations
-                        </h1>
-                    </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 page-header">
+                    <h1>
+                        Liste des destinations
+                    </h1>
                 </div>
             </div>
         </div>
 
         <div class="container-fluid containerOrange containerPadding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
 
-                        <form action="#" method="post">
+                    <form action="#" method="post">
 
-                            <div class="form-group" id="formGroupDestinations">
+                        <div class="form-group" id="formGroupDestinations">
 
-                                <div class="input-group input-group-lg select2-bootstrap-append">
-                                    {% include 'AppBundle:Destination:selectDestination.html.twig'
-                                    with {'classSelect' : 'input-lg',
-                                    'selectId' : 'searchDestination',
-                                    'addCountrySelected' : true} %}
+                            <div class="input-group input-group-lg select2-bootstrap-append">
+                                {% include 'AppBundle:Destination:selectDestination.html.twig'
+                                with {'classSelect' : 'input-lg',
+                                'selectId' : 'searchDestination',
+                                'addCountrySelected' : true} %}
 
-                                    <span class="input-group-btn">
+                                <span class="input-group-btn">
                                         <button id="btnSeeDestination" class="btn btn-primary" type="button">
                                             Voir <i class="fa fa-chevron-right"></i>
                                         </button>
                                     </span>
-                                </div>
-
-
                             </div>
 
-                        </form>
 
-                    </div>
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>
 
 
         <div class="container-fluid containerPadding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="gmap"></div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+                    <div id="gmap"></div>
                 </div>
             </div>
         </div>
 
 
         {#<div class="container-fluid containerPadding">#}
-            {#<div class="container">#}
-                {#<div class="row">#}
+        {#<div class="container">#}
+        {#<div class="row">#}
 
-                    {#{% for country in countries %}#}
+        {#{% for country in countries %}#}
 
-                        {#<div class="col-lg-3 col-md-4 col-sm-6">#}
+        {#<div class="col-lg-3 col-md-4 col-sm-6">#}
 
-                            {#<a href="{{ path('country', {'slug' : country.slug }) }}">#}
-                                {#<h4>{{ country.name }}</h4>#}
-                            {#</a>#}
+        {#<a href="{{ path('country', {'slug' : country.slug }) }}">#}
+        {#<h4>{{ country.name }}</h4>#}
+        {#</a>#}
 
-                            {#<ul class="list-unstyled">#}
-                                {#{% for destination in country.destinations %}#}
-                                    {#<li>#}
-                                        {#<a href="{{ path('destination', {'slug' : destination.slug }) }}">#}
-                                            {#<span class="label label-success pull-left" style="font-size: 12px;">#}
-                                                {#{{ destination.totalPrices }} &euro; / jour#}
-                                            {#</span>#}
-                                            {#<span class="destinationName">#}
-                                                {#{{ destination.name }}#}
-                                            {#</span>#}
-                                        {#</a>#}
-                                    {#</li>#}
-                                {#{% endfor %}#}
-                            {#</ul>#}
+        {#<ul class="list-unstyled">#}
+        {#{% for destination in country.destinations %}#}
+        {#<li>#}
+        {#<a href="{{ path('destination', {'slug' : destination.slug }) }}">#}
+        {#<span class="label label-success pull-left" style="font-size: 12px;">#}
+        {#{{ destination.totalPrices }} &euro; / jour#}
+        {#</span>#}
+        {#<span class="destinationName">#}
+        {#{{ destination.name }}#}
+        {#</span>#}
+        {#</a>#}
+        {#</li>#}
+        {#{% endfor %}#}
+        {#</ul>#}
 
-                        {#</div>#}
+        {#</div>#}
 
-                    {#{% endfor %}#}
+        {#{% endfor %}#}
 
-                {#</div>#}
-            {#</div>#}
+        {#</div>#}
+        {#</div>#}
         {#</div>#}
 
 
