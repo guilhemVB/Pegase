@@ -14,6 +14,12 @@
     font-size: 46px;
 }
 
+@media screen and (max-width: 500px) {
+    #destinationView blockquote {
+        padding: 5px 10px;
+    }
+}
+
 #countryView .containerMap .controls {
     font-size: 18px;
 }
