@@ -6,17 +6,32 @@
 
 #gmap {
     height: 510px;
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 @media screen and (max-width: 992px) {
     #gmap {
         height: 420px;
+        max-width: 1050px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
 @media screen and (max-width: 768px) {
     #gmap {
         height: 300px;
+        max-width: 1050px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
