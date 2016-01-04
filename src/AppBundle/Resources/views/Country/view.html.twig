@@ -28,14 +28,14 @@
         <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ country.name }}">
 
         <div class="container-fluid">
-            <div class="container page-header">
-                <div class="row">
-                    <div class="col-sm-10">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-xs-12 page-header">
+                    <div class="col-xs-9">
                         <h1>
                             {{ country.name }}
                         </h1>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-xs-3">
                         <img src="http://www.geonames.org/flags/x/{{ country.codeAlpha2|lower }}.gif"
                              class="img-responsive pull-right hidden-xs flagCountry" alt="drapeau {{ country.name }}">
                     </div>
@@ -43,82 +43,80 @@
             </div>
         </div>
 
-        <div class="container-fluid containerMap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 destinationsCountryList">
-                        <div class="row">
+        <div class="container-fluid containerMap containerPadding15">
+            <div class="row">
+                <div class="col-lg-3 col-lg-offset-1 col-md-4">
+                    <div class="row destinationsCountryList">
+                        <div class="col-sm-12">
                             <h2>Destination{% if country.destinations|length > 1 %}s{% endif %}</h2>
-
-                            {% set capitalDestination = null %}
-                            {% for destination in country.destinations %}
-                                <div class="col-md-12 col-sm-6 col-xs-6 containerPadding15">
-                                    {% include 'AppBundle:Vignette:destinationContent.html.twig' %}
-                                </div>
-                                {% if country.capitalName == destination.name %}
-                                    {% set capitalDestination = destination %}
-                                {% endif %}
-                            {% endfor %}
                         </div>
+
+                        {% set capitalDestination = null %}
+                        {% for destination in country.destinations %}
+                            <div class="col-md-12 col-sm-6 col-xs-6 containerPadding15">
+                                {% include 'AppBundle:Vignette:destinationContent.html.twig' %}
+                            </div>
+                            {% if country.capitalName == destination.name %}
+                                {% set capitalDestination = destination %}
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <div class="col-md-8 destinationsGmap">
-                        <div id="gmap"></div>
-                    </div>
+                </div>
+                <div class="col-lg-7 col-md-8 destinationsGmap">
+                    <div id="gmap"></div>
                 </div>
             </div>
         </div>
 
         <div id="tableCountryInformation" class="container-fluid containerOrange containerPadding">
-            <div class="container">
-                <div class="row">
+            <div class="row">
 
-                    <div class="col-md-12">
-                        <h2>Informations utiles</h2>
-                    </div>
+                <div class="col-lg-10 col-lg-offset-1 col-md-12">
+                    <h2>Informations utiles</h2>
+                </div>
 
-                    <div class="col-md-6">
-                        <table class="table">
-                            <tr>
-                                <th>Capitale</th>
-                                <td>
-                                    {% if capitalDestination is not null %}
-                                        <a href="{{ path('destination', {'slug' : capitalDestination.slug }) }}">{{ country.capitalName }}</a>
-                                    {% else %}
-                                        {{ country.capitalName }}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Visa</th>
-                                <td>{{ country.visaInformation }}</td>
-                            </tr>
-                            <tr>
-                                <th>Durée du Visa</th>
-                                <td>{{ country.visaDuration }}</td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="col-lg-5 col-lg-offset-1 col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Capitale</th>
+                            <td>
+                                {% if capitalDestination is not null %}
+                                    <a href="{{ path('destination', {'slug' : capitalDestination.slug }) }}">{{ country.capitalName }}</a>
+                                {% else %}
+                                    {{ country.capitalName }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Visa</th>
+                            <td>{{ country.visaInformation }}</td>
+                        </tr>
+                        <tr>
+                            <th>Durée du Visa</th>
+                            <td>{{ country.visaDuration }}</td>
+                        </tr>
+                    </table>
+                </div>
 
-                    <div class="col-md-6">
-                        <table class="table">
-                            <tr>
-                                <th>Devise</th>
-                                <td>{{ country.currency }}</td>
-                            </tr>
-                            <tr>
-                                <th>Langue{% if country.languages|length > 1 %}s{% endif %}</th>
-                                <td>{{ country.languages|join(' - ') }}</td>
-                            </tr>
-                            <tr>
-                                <th>Population</th>
-                                <td>{{ country.population|number_format(0, ',', ' ') }} habitants</td>
-                            </tr>
-                        </table>
-                    </div>
-
+                <div class="col-lg-5 col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>Devise</th>
+                            <td>{{ country.currency }}</td>
+                        </tr>
+                        <tr>
+                            <th>Langue{% if country.languages|length > 1 %}s{% endif %}</th>
+                            <td>{{ country.languages|join(' - ') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Population</th>
+                            <td>{{ country.population|number_format(0, ',', ' ') }} habitants</td>
+                        </tr>
+                    </table>
                 </div>
 
             </div>
+
         </div>
 
         {#{% include 'AppBundle:Country:countryShare.html.twig' %}#}
