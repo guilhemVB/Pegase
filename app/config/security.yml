@@ -18,7 +18,8 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         default:
-            pattern: ^/command/
+#            pattern: ^/command/
+            pattern: ^/
             anonymous: true
             http_basic:
                 realm: "Acces restricted"
@@ -34,7 +35,6 @@ security:
 #            anonymous:    true
 
     access_control:
-#        - { path: ^/, role: ROLE_USER }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/navbar, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -45,3 +45,4 @@ security:
         - { path: ^/crud, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/command/, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
