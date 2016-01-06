@@ -22,4 +22,6 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 ## v0.1.2
 
 - DOM simplification
+- Improve responsive
 - Protect command URLs with pwd access
+- Add flag to force not import destination
