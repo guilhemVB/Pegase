@@ -15,9 +15,9 @@
     <img class="img-responsive img-thumbnail" src="{{ asset(bannerUrl) }}"
          alt="{{ destination.name }}">
 
-    <h4 style="padding-left: 5px; padding-right: 5px;">
+    <h4 class="vignetteTitle">
         {{ destination.name }}
-        <span class="label label-success pull-right" style="font-size: 12px;">
+        <span class="label label-success pull-right vignetteFontSize">
                 {% if destinationPrices is defined %}
                     {{ destinationPrices }} &euro; / jour
                 {% else %}
