@@ -74,6 +74,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $countryName = $dataDestination['pays'];
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
+            $use = $dataDestination['Utiliser'] === "oui";
 
             $country = $countryRepository->findOneByName($countryName);
             if (is_null($country)) {
@@ -112,6 +113,11 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setIsTheCapital($dataDestination['Capitale'] === 'oui');
 
             if ($this->isComplete($output, $destination) || $forceInsert) {
+                if (!$use && !$forceInsert) {
+                    $output->writeln("<info>La destination '$name' est complète mais elle ne doit pas être utilisée -> non importé.</info>");
+                    continue;
+                }
+
                 $em->persist($destination);
                 $nbToFlush++;
 
