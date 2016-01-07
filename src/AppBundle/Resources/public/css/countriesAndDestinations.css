@@ -14,9 +14,16 @@
     font-size: 46px;
 }
 
+#destinationView blockquote {
+    margin-left: 25px;
+}
+
 @media screen and (max-width: 500px) {
     #destinationView blockquote {
         padding: 5px 10px;
+    }
+    #destinationView blockquote {
+        margin-left: 0;
     }
 }
 
