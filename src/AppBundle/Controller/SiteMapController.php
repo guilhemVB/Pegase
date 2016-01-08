@@ -3,12 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Country;
-use AppBundle\Entity\Destination;
-use AppBundle\Entity\TypicalVoyage;
+use CalculatorBundle\Entity\TypicalVoyage;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
-use AppBundle\Repository\TypicalVoyageRepository;
-use AppBundle\Service\MaplaceMarkerBuilder;
+use CalculatorBundle\Repository\TypicalVoyageRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -75,7 +73,7 @@ class SiteMapController extends Controller
 //
 //
 //        /** @var $typicalVoyageRepository TypicalVoyageRepository */
-//        $typicalVoyageRepository = $em->getRepository('AppBundle:TypicalVoyage');
+//        $typicalVoyageRepository = $em->getRepository('CalculatorBundle:TypicalVoyage');
 //        $typicalVoyages = $typicalVoyageRepository->findAll();
 //
 //        /** @var TypicalVoyage $typicalVoyage */

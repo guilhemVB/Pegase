@@ -4,11 +4,9 @@ default:
     suites:
         backend:
             type: symfony_bundle
-            bundle: 'AppBundle'
+            bundle: 'CalculatorBundle'
             contexts :
                 - AppBundle\Features\Context\FeatureContext
-                - AppBundle\Features\Context\BagItemContext:
-                    container: @service_container
                 - AppBundle\Features\Context\CountryContext:
                     container: @service_container
                 - AppBundle\Features\Context\DestinationContext:

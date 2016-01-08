@@ -30,3 +30,7 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 
 - Add title to budget destination part
 
+## v1.0.0
+
+- Create new Bundle for calculator
+

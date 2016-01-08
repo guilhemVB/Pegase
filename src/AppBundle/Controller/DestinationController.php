@@ -34,7 +34,7 @@ class DestinationController extends Controller
 //        $em = $this->get('doctrine')->getManager();
 //
 //        /** @var $stageRepository StageRepository */
-//        $stageRepository = $em->getRepository('AppBundle:Stage');
+//        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 //
 //        /** @var User $user */
 //        $user = $this->getUser();

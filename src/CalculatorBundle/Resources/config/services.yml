@@ -1,0 +1,21 @@
+services:
+    voyage_stats:
+        class : CalculatorBundle\Service\Stats\VoyageStats
+        arguments:
+            - @twig
+
+    crud_stage:
+        class : CalculatorBundle\Service\CRUD\CRUDStage
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    crud_voyage:
+        class : CalculatorBundle\Service\CRUD\CRUDVoyage
+        arguments:
+            - @doctrine.orm.entity_manager
+
+    voyage_service:
+        class : CalculatorBundle\Service\VoyageService
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @maplace_marker_builder

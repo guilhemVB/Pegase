@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use CalculatorBundle\Entity\Voyage;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -24,7 +25,7 @@ class User extends BaseUser
 
     /**
      * @var ArrayCollection|Voyage[]
-     * @ORM\OneToMany(targetEntity="Voyage", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="CalculatorBundle\Entity\Voyage", mappedBy="user")
      */
     private $voyages;
 

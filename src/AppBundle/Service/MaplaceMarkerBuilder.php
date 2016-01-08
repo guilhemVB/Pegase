@@ -4,7 +4,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
-use AppBundle\Entity\Stage;
+use CalculatorBundle\Entity\Stage;
 
 class MaplaceMarkerBuilder
 {

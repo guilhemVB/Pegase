@@ -2,7 +2,6 @@
 
 namespace AppBundle\Features\Context;
 
-
 use Behat\Behat\Context\Context;
 use AppKernel;
 use Behat\Behat\Context\SnippetAcceptingContext;

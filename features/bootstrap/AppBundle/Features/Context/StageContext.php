@@ -2,11 +2,9 @@
 
 namespace AppBundle\Features\Context;
 
-use AppBundle\Entity\Stage;
-use AppBundle\Repository\StageRepository;
-use AppBundle\Service\CRUD\CRUDStage;
+use CalculatorBundle\Repository\StageRepository;
+use CalculatorBundle\Service\CRUD\CRUDStage;
 use AppKernel;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -44,7 +42,7 @@ class StageContext extends CommonContext
         $voyage = $this->findVoyageByName($voyageName);
 
         /** @var StageRepository $stageRepository */
-        $stageRepository = $this->em->getRepository('AppBundle:Stage');
+        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
 
         $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
 
@@ -69,7 +67,7 @@ class StageContext extends CommonContext
         $this->assertSameSize($tableStages, $stages);
 
         /** @var StageRepository $stageRepository */
-        $stageRepository = $this->em->getRepository('AppBundle:Stage');
+        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
 
         foreach ($tableStages as $stageRow) {
             $destination = $this->findDestinationByName($stageRow['destination']);
@@ -88,7 +86,7 @@ class StageContext extends CommonContext
         $voyage = $this->findVoyageByName($voyageName);
 
         /** @var StageRepository $stageRepository */
-        $stageRepository = $this->em->getRepository('AppBundle:Stage');
+        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
 
         $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
 

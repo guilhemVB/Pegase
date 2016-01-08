@@ -3,8 +3,8 @@
 namespace AppBundle\Features\Context;
 
 use AppBundle\Repository\UserRepository;
-use AppBundle\Service\CRUD\CRUDVoyage;
-use AppBundle\Service\Stats\VoyageStats;
+use CalculatorBundle\Service\CRUD\CRUDVoyage;
+use CalculatorBundle\Service\Stats\VoyageStats;
 use AppKernel;
 use Behat\Gherkin\Node\TableNode;
 use Symfony\Component\DependencyInjection\ContainerInterface;

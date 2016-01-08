@@ -55,7 +55,7 @@ class Destination
 
     /**
      * @var Country
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="destinations")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Country", inversedBy="destinations")
      */
     private $country;
 

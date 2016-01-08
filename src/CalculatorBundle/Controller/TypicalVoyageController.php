@@ -1,0 +1,30 @@
+<?php
+
+namespace CalculatorBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use CalculatorBundle\Repository\TypicalVoyageRepository;
+use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class TypicalVoyageController extends Controller
+{
+
+    /**
+     * @Route("/idees-de-voyages", name="ideasOfTravels")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function voyagesAction()
+    {
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $typicalVoyageRepository TypicalVoyageRepository */
+        $typicalVoyageRepository = $em->getRepository('CalculatorBundle:TypicalVoyage');
+
+        $typicalsVoyage = $typicalVoyageRepository->findAllTypicalVoyages();
+
+        return $this->render('AppBundle:TypicalVoyage:view.html.twig',
+            ['typicalsVoyage' => $typicalsVoyage,]);
+    }
+}

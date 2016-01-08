@@ -81,7 +81,7 @@ class Country
 
     /**
      * @var ArrayCollection|Destination[]
-     * @ORM\OneToMany(targetEntity="Destination", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Destination", mappedBy="country")
      */
     private $destinations;
 

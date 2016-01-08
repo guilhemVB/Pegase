@@ -5,11 +5,11 @@ namespace AppBundle\Features\Context;
 use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
-use AppBundle\Entity\Voyage;
+use CalculatorBundle\Entity\Voyage;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Repository\UserRepository;
-use AppBundle\Repository\VoyageRepository;
+use CalculatorBundle\Repository\VoyageRepository;
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -68,7 +68,7 @@ class CommonContext extends \PHPUnit_Framework_TestCase implements Context
     protected function findVoyageByName($name)
     {
         /** @var VoyageRepository $voyageRepository */
-        $voyageRepository = $this->em->getRepository('AppBundle:Voyage');
+        $voyageRepository = $this->em->getRepository('CalculatorBundle:Voyage');
         return $voyageRepository->findOneByName($name);
     }
 
