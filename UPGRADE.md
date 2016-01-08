@@ -25,3 +25,8 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Improve responsive
 - Protect command URLs with pwd access
 - Add flag to force not import destination
+
+## v0.1.2
+
+- Add title to budget destination part
+
