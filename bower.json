@@ -1,0 +1,28 @@
+{
+  "name": "LMS",
+  "homepage": "https://github.com/guilhemVB/Pegase",
+  "authors": [
+    "Guilhem Bourgoin"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1",
+    "bootstrap": "~3.3.6",
+    "maplace-js": "maplace.js#~0.2.5",
+    "font-awesome": "~4.5.0",
+    "select2": "~3.5.0",
+    "select2-bootstrap-css": "~1.4.6",
+    "bootstrap-social": "~4.12.0"
+  }
+}
