@@ -11,3 +11,10 @@ file.
 ## Tests
 
 You have to create the database `travel_test`, then, launch the script `test.sh`
+
+## Grunt
+
+```
+sudo npm cache clean && sudo npm install --no-bin-links
+grunt
+```

@@ -33,7 +33,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vbox|
     vbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    vbox.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+    vbox.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/SHARED-FOLDER", "1"]
     vbox.memory = "2048"
     vbox.cpus = 2
   end
