@@ -5,11 +5,6 @@
 {% endblock %}
 
 
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
-
 {% block body %}
 
     <div id="homepage">
@@ -149,8 +144,7 @@
     <script>
         var maplaceData = {{ maplaceData|raw }};
     </script>
-    <script src="{{ asset('bundles/app/js/homepage/maplaceHomepage.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/homepage/homepage.js') }}"></script>
+    <script src="{{ asset('js/homepage.min.js') }}"></script>
 {% endblock %}
 
 
