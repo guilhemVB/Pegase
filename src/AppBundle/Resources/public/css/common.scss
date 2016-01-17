@@ -110,6 +110,12 @@
 
 .flagSelectDestination {
     margin-bottom: 4px;
+    margin-right: 10px;
+}
+
+.flagGmap {
+    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 .flagCountryStage {
@@ -117,9 +123,8 @@
 }
 
 .flagCountrySmall {
-    width: 18px !important;
-    margin-right: 10px;
-    padding-bottom: 5px;
+    max-width: 18px !important;
+    max-height: 12px !important;
 }
 
 .select2-results li.select2-result-with-children > .select2-result-label {
