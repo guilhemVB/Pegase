@@ -89,11 +89,11 @@
                         </tr>
                         <tr>
                             <th>Visa</th>
-                            <td>{{ country.visaInformation }}</td>
+                            <td>{{ country.visaInformation|replace({"\n":"<br>"})|raw }}</td>
                         </tr>
                         <tr>
                             <th>Durée du Visa</th>
-                            <td>{{ country.visaDuration }}</td>
+                            <td>{{ country.visaDuration|replace({"\n":"<br>"})|raw }}</td>
                         </tr>
                     </table>
                 </div>
