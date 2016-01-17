@@ -1,16 +1,16 @@
 nom;visa;Durée du visa;vaccins;code alpha 2;code alpha 3;doit être redirigé vers la destination;capitale;Situation géographique;langues;devise;Les immanquables;Pensez-y;;
-Afrique du Sud;Non nécessaire;"Majorité des pays: 90 jours
-France, Pays-Bas...: indéterminée";;ZA;ZAF;;Pretoria;Afrique;"Afrikaans
+Afrique du Sud;Non nécessaire;"Majorité des pays : 90 jours
+France, Pays-Bas... indéterminée";;ZA;ZAF;;Pretoria;Afrique;"Afrikaans
 Anglais";Rand;Le Parc Kruger;;;
-Algérie;"1 entrée: 85€
-Entrées multiples: 125€";"1 entrée: 30 jours
-Entrées multiples: 90 jours";;DZ;DZA;;Alger;Afrique;Arabe;Dinar algérien;;;;
+Algérie;"1 entrée : 85€
+Entrées multiples : 125€";"1 entrée : 30 jours
+Entrées multiples : 90 jours";;DZ;DZA;;Alger;Afrique;Arabe;Dinar algérien;;;;
 Allemagne;;;;DE;DEU;;Berlin;Europe;Allemand;Euro;;;;
 Argentine;Français, Belges, Canadiens, Suisses... exemptés;90 jours renouvelable 1 fois;;AR;ARG;;Buenos Aires;Amérique du Sud;Espagnol;Peso argentin;Le Perito Morenos;Le pays est grand et les bus (ou cama), très confortable sont chers. Pensez au South Pass pour les long trajets afin d'économiser..;;
-Australie;"EVisitor: gratuit
-ETA: $20AUD (émission)
-Visitor visa: 130 à 335 AUD";"EVisitor et ETA: 3 mois max d'affilé pendant 1 an
-Visitor visa: 3, 6 ou 12 mois";;AU;AUS;;Canberra;Océanie;Anglais;Dollar australien;;;;
+Australie;"EVisitor : gratuit
+ETA : $20AUD (émission)
+Visitor visa : 130 à 335 AUD";"EVisitor et ETA : 3 mois max d'affilé pendant 1 an
+Visitor visa : 3, 6 ou 12 mois";;AU;AUS;;Canberra;Océanie;Anglais;Dollar australien;;;;
 Autriche;Non nécessaire si membre UE ;90 jours;;AT;AUT;;Vienne;Europe;Allemand;Euro;;;;
 Belgique;;;;BE;BEL;;Bruxelles;Europe;"Français
 Néerlandais
@@ -23,7 +23,7 @@ Bolivie;Français, Belges, Canadiens, Suisses... exemptés;90 jours;;BO;BOL;;Suc
 Quechua
 Aymara";Boliviano;;;;
 Brésil;"Français, Belge, Suisse exemptés
-Canadien: environ 30€";90 jours;;BR;BRA;;Brasilia;Amérique du Sud;Portuguais;Réal brésilien;;;;
+Canadien : environ 30€";90 jours;;BR;BRA;;Brasilia;Amérique du Sud;Portuguais;Réal brésilien;;;;
 Bulgarie;;;;BG;BGR;;Sofia;Europe;Bulgare;Lev bulgare;;;;
 Cambodge;30€;30 jours;;KH;KHM;;Phnom Phen;Asie;Khmer;Riel;;;;
 Canada;Si français, belge, suisse... pas de visa mais un AVE à $7CAD;180 jours;;CA;CAN;;Ottawa;Amérique du Nord;"Anglais
@@ -38,7 +38,8 @@ Danemark;;;;DK;DNK;;Copenhague;Europe;Danois;Euro;;;;
 Égypte;;;;EG;EGY;;Le Caire;Afrique;Arabe;Livre égyptienne;;;;
 Émirats Arabes Unis;;;;AE;ARE;;Abu Dabi;Afrique;Arabe;Dirham ;;;;
 Espagne;Européens, américains du nord ... exemptés;90 jours si visa nécessaire;;ES;ESP;;Madrid;Europe;Espagnol;Euro;;;;
-États-Unis;Français, Belges, Canadiens, Suisses... exemptés. Autorisation électronique necessaire ($14).;90 jours sans visa.;;US;USA;;Washington;Amérique du Nord;Anglais;Dollar américain;;;;
+États-Unis;"Français, Belges, Canadiens, Suisses... exemptés.
+Autorisation électronique necessaire ($14).";90 jours sans visa.;;US;USA;;Washington;Amérique du Nord;Anglais;Dollar américain;;;;
 Finlande;;;;FI;FIN;;Helsinki;Europe;Finnois;Euro;;;;
 France;Européens, Amérique du nord, Suisse ... exemptés;90 jours sans visa;;FR;FRA;;Paris;Europe;Français;Euro;;;;
 Grèce;;;;GR;GRC;;Athènes;Europe;Grec;Euro;;;;
@@ -55,20 +56,23 @@ Arabe";Shekel;;;;
 Italie;;;;IT;ITA;;Rome;Europe;Italien;Euro;;;;
 Japon;Français, Belges, Canadiens, Suisses... exemptés;90 jours sans visa;;JP;JPN;;Tokyo;Asie;Japonais;Yen;;Les trains au Japon sont ponctuels, propres et confortable. Malheureusement, ils peuvent vite faire monter la note. Pour économiser sur les transports, pensez à jeter un oeil au JR Pass.;;
 Jordanie;;;;JO;JOR;;Amman;Moyen-Orient;Arabe;Dinar jordanien;;;;
-Kenya;;;;KE;KEN;;Nairobi;Afrique;"Swahili
+Kenya;"Français et Belge : 40€ entrée simple, 80€ entrées multiples.
+Canadien : 52$Ca.
+Suisse : 70 F simple, 140 F multiples.
+Visa disponible en ligne uniquement.";90 jours;;KE;KEN;;Nairobi;Afrique;"Swahili
 Anglais";Shilling kényan;;;;
-Laos;"Français: 35€
-Belge: 40€
-Canadien: 42$
+Laos;"Français : 35€
+Belge : 40€
+Canadien : 42$
 Suisse: exempté 15 jours";30 jours;;LA;LAO;;Vientiane;Asie;Lao;Kip laotien;;;;
 Malaisie;;;;MY;MYS;;Kuala Lumpur;Asie;Malais;Ringgit;;;;
 Maroc;;;;MA;MAR;;Casablanca;Afrique;"Arabe
 Français";Dirham marocain;;;;
 Mexique;;;;MX;MEX;;Mexico;Amérique du Nord;Espagnol;Peso mexicain;;;;
 Mongolie;;;;MN;MNG;;Oulan Bator;Asie;Mongole;Tugrik;;;;
-Népal;"France: 33/48/108€
-Belgique: 25/40/90€
-Suisse: 35/60/130F";15 jours /30 jours/ 90jours;;NP;NPL;;Katmandou;Asie;Népalais;Roupie népalaise;;;;
+Népal;"France : 33/48/108€
+Belgique : 25/40/90€
+Suisse : 35/60/130F";15 jours / 30 jours / 90 jours;;NP;NPL;;Katmandou;Asie;Népalais;Roupie népalaise;;;;
 Nicaragua;;;;NI;NIC;;Managua;Amérique Centrale;Espagnol;Cordoba;;;;
 Norvège;;;;NO;NOR;;Oslo;Europe;Norvégien;Couronne norvégienne;;;;
 Nouvelle-Zélande;;;;NZ;NZL;;Wellington;Océanie;Anglais;Dollar néo-zélandais;;;;
@@ -96,4 +100,9 @@ Thaïlande;;;;TH;THA;;Bangkok;Asie;Thaï;Baht;;;;
 Tunisie;;;;TN;TUN;;Tunis;Afrique;Arabe;Dinar tunisien;;;;
 Turquie;;;;TR;TUR;;Ankara;Asie;Turc;Livre turque;;;;
 Venezuela;;;;VE;VEN;;Caracas;Amérique du Sud;Espagnol;Bolivar vénézuélien;;;;
-Vietnam;;;;VN;VNM;;Hanoi;Asie;Vietnamien;Dong;;;;
+Vietnam;"Gratuit
+Entrée simple : 85€ / 115€ 
+Entrées multiples : 115 € / 165€ 
+(moins cher si pris à l'arrivée en Thaïlande, par voie aérienne uniquement) ";"15 premiers jours
+1 mois / 3 mois
+1 mois / 3 mois";;VN;VNM;;Hanoi;Asie;Vietnamien;Dong;;;;
