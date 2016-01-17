@@ -30,7 +30,8 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 
 - Add title to budget destination part
 
-## v1.0.0
+## v0.2.0
 
-- Create new Bundle for calculator
+- Create new Bundle for calculator -> not use for the moment
+- Use material design library
 
