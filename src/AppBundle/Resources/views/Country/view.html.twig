@@ -102,7 +102,30 @@
                     <table class="table">
                         <tr>
                             <th>Devise</th>
-                            <td>{{ country.currency.name }} ({{ country.currency.code }})</td>
+                            <td>
+                                <div>{{ country.currency.name }} ({{ country.currency.code }})</div>
+
+                                {% if country.currency.code != 'EUR' %}
+                                    {% if country.currency.eurRate >= 100 %}
+                                        {% set rate = country.currency.eurRate|round %}
+                                    {% elseif country.currency.eurRate >= 10 %}
+                                        {% set rate = country.currency.eurRate|round(1, 'floor') %}
+                                    {% elseif country.currency.eurRate >= 0 %}
+                                        {% set rate = country.currency.eurRate|round(2, 'floor') %}
+                                    {% elseif country.currency.eurRate >= 0.01 %}
+                                        {% set rate = country.currency.eurRate|round(3, 'floor') %}
+                                    {% else %}
+                                        {% set rate = country.currency.eurRate|round(4, 'floor') %}
+                                    {% endif %}
+
+                                    <div>
+                                        1€ = {{ rate }} {{ country.currency.code }}
+                                        <i class="fa fa-info-circle informationIcon"
+                                           data-toggle="tooltip" data-placement="right"
+                                           title="Dernière mise à jour : {{ country.currency.updatedAt|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}"></i>
+                                    </div>
+                                {% endif %}
+                            </td>
                         </tr>
                         <tr>
                             <th>Langue{% if country.languages|length > 1 %}s{% endif %}</th>

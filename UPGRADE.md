@@ -35,3 +35,8 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Create new Bundle for calculator -> not use for the moment
 - Use material design library
 
+
+## v0.2.1
+
+- Print rate EUR / local currency
+

@@ -130,3 +130,13 @@
 .select2-results li.select2-result-with-children > .select2-result-label {
     background-color: #eee;
 }
+
+.tooltip-inner {
+    background-color: #000;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.popover .arrow, .popover .tooltip-arrow, .tooltip .arrow, .tooltip .tooltip-arrow {
+    display: block;
+}
