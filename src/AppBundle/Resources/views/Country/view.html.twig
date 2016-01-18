@@ -102,7 +102,7 @@
                     <table class="table">
                         <tr>
                             <th>Devise</th>
-                            <td>{{ country.currency }}</td>
+                            <td>{{ country.currency.name }} ({{ country.currency.code }})</td>
                         </tr>
                         <tr>
                             <th>Langue{% if country.languages|length > 1 %}s{% endif %}</th>

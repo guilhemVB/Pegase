@@ -56,7 +56,7 @@ class Currency
 
     function __construct()
     {
-        $this->destinations = new ArrayCollection();
+        $this->countries = new ArrayCollection();
     }
 
     /**
@@ -141,22 +141,30 @@ class Currency
     }
 
     /**
-     * @return Destination[]|ArrayCollection
+     * @param Country $country
+     * @return Currency
+     */
+    public function addCountry(Country $country)
+    {
+        $this->countries[] = $country;
+
+        return $this;
+    }
+
+    /**
+     * @param Country $country
+     */
+    public function removeCountry(Country $country)
+    {
+        $this->countries->removeElement($country);
+    }
+
+    /**
+     * @return ArrayCollection|Country[]
      */
     public function getCountries()
     {
         return $this->countries;
-    }
-
-    /**
-     * @param Destination[]|ArrayCollection $countries
-     * @return $this
-     */
-    public function setCountries($countries)
-    {
-        $this->countries = $countries;
-
-        return $this;
     }
 
 }

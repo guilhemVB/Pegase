@@ -3,7 +3,9 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\Country;
+use AppBundle\Entity\Currency;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\CurrencyRepository;
 use AppBundle\Service\CSVParser;
 use AppBundle\Twig\AssetExistsExtension;
 use Doctrine\ORM\EntityManager;
@@ -76,10 +78,13 @@ class ImportCountriesCommand extends ContainerAwareCommand
                 $country->setName($name);
                 $isNew = true;
             }
+
+            $currency = $this->getCurrency($dataCountry['code devise']);
+
             $country->setRedirectToDestination($dataCountry['doit être redirigé vers la destination'] === 'oui')
                 ->setCodeAlpha2($dataCountry['code alpha 2'])
                 ->setCodeAlpha3($dataCountry['code alpha 3'])
-                ->setCurrency($dataCountry['devise'])
+                ->setCurrency($currency)
                 ->setLanguages(!empty($languages) ? explode("\n", $languages) : [])
                 ->setCapitalName($dataCountry['capitale'])
                 ->setVisaDuration($dataCountry['Durée du visa'])
@@ -237,5 +242,20 @@ class ImportCountriesCommand extends ContainerAwareCommand
         }
 
         return true;
+    }
+
+    /**
+     * @param string $currencyCode
+     * @return Currency|null
+     */
+    private function getCurrency($currencyCode)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getContainer()->get('doctrine')->getManager();
+
+        /** @var CurrencyRepository $currencyRepository */
+        $currencyRepository = $em->getRepository('AppBundle:Currency');
+
+        return $currencyRepository->findOneByCode($currencyCode);
     }
 }
