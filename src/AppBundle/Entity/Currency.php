@@ -1,0 +1,162 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+
+/**
+ * @ORM\Table(name="currency")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CurrencyRepository")
+ */
+class Currency
+{
+
+    use ORMBehaviors\Timestampable\Timestampable;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=16, nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var float
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $eurRate;
+
+    /**
+     * @var float
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $usdRate;
+
+    /**
+     * @var ArrayCollection|Destination[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Country", mappedBy="currency")
+     */
+    private $countries;
+
+    function __construct()
+    {
+        $this->destinations = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getEurRate()
+    {
+        return $this->eurRate;
+    }
+
+    /**
+     * @param float $eurRate
+     * @return $this
+     */
+    public function setEurRate($eurRate)
+    {
+        $this->eurRate = $eurRate;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getUsdRate()
+    {
+        return $this->usdRate;
+    }
+
+    /**
+     * @param float $usdRate
+     * @return $this
+     */
+    public function setUsdRate($usdRate)
+    {
+        $this->usdRate = $usdRate;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return Destination[]|ArrayCollection
+     */
+    public function getCountries()
+    {
+        return $this->countries;
+    }
+
+    /**
+     * @param Destination[]|ArrayCollection $countries
+     * @return $this
+     */
+    public function setCountries($countries)
+    {
+        $this->countries = $countries;
+
+        return $this;
+    }
+
+}

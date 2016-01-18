@@ -51,12 +51,6 @@ class Country
 
     /**
      * @var string
-     * @ORM\Column(name="currency", type="string", length=255)
-     */
-    private $currency;
-
-    /**
-     * @var string
      * @ORM\Column(type="string", length=1024)
      */
     private $visaInformation;
@@ -102,6 +96,12 @@ class Country
      * @ORM\Column(type="float", nullable=true)
      */
     private $latitude;
+
+    /**
+     * @var Currency
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Currency", inversedBy="countries")
+     */
+    private $currency;
 
     function __construct()
     {
@@ -287,25 +287,6 @@ class Country
     }
 
     /**
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @param string $currency
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getLanguages()
@@ -377,6 +358,25 @@ class Country
     public function setVisaDuration($visaDuration)
     {
         $this->visaDuration = $visaDuration;
+
+        return $this;
+    }
+
+    /**
+     * @return Currency
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param Currency $currency
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
 
         return $this;
     }
