@@ -39,4 +39,5 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 ## v0.2.1
 
 - Print rate EUR / local currency
+- Add cron to update rate every days
 
