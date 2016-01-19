@@ -27,6 +27,8 @@ parameters:
     image_banner_homepage_path : images/banners/homepage/
     image_banner_default : images/banners/default.JPG
 
+    api_rate_key: ~
+
 twig:
     globals:
         image_banner_destinations_path : %image_banner_destinations_path%
