@@ -41,3 +41,6 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Print rate EUR / local currency
 - Add cron to update rate every days
 
+## v0.2.1
+
+- externalisation of API rate key
