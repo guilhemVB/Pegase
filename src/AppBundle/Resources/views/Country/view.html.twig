@@ -105,7 +105,7 @@
                             <td>
                                 <div>{{ country.currency.name }} ({{ country.currency.code }})</div>
 
-                                {% if country.currency.code != 'EUR' %}
+                                {% if country.currency.code != 'EUR' and country.currency.eurRate is not empty %}
                                     {% if country.currency.eurRate >= 100 %}
                                         {% set rate = country.currency.eurRate|round %}
                                     {% elseif country.currency.eurRate >= 10 %}
