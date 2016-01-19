@@ -38,6 +38,7 @@ class UpdateCurrenciesRatesCommand extends ContainerAwareCommand
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
+     * @return bool
      */
     private function updateRates(InputInterface $input, OutputInterface $output)
     {
@@ -82,6 +83,8 @@ class UpdateCurrenciesRatesCommand extends ContainerAwareCommand
 
         $em->flush();
         $em->clear();
+
+        return true;
     }
 
     /**
