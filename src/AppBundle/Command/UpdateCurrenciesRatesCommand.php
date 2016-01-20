@@ -51,9 +51,15 @@ class UpdateCurrenciesRatesCommand extends ContainerAwareCommand
         /** @var Currency[] $currencies */
         $currencies = $currencyRepository->findAll();
 
-        $lastRatesData = $this->fetchLastRates();
+        $lastRatesData = $this->fetchLastRates($output);
 
         var_dump($lastRatesData);
+
+        if (is_null($lastRatesData)) {
+            $output->writeln("<error>Impossible de récupérer les données depuis l'API.</error>");
+
+            return false;
+        }
 
         $rates = $lastRatesData['quotes'];
 
@@ -88,11 +94,20 @@ class UpdateCurrenciesRatesCommand extends ContainerAwareCommand
     }
 
     /**
-     * @return array
+     * @param OutputInterface $output
+     * @return array|null
      */
-    private function fetchLastRates()
+    private function fetchLastRates(OutputInterface $output)
     {
-        $url = "http://www.apilayer.net/api/live?access_key=d55aa94071734e7bd9137d1c58fad441";
+        $key = $this->getContainer()->getParameter('api_rate_key');
+
+        if (is_null($key)) {
+            $output->writeln("<error>La clé API est inconnue. Voir parameter.yml</error>");
+
+            return null;
+        }
+
+        $url = 'http://www.apilayer.net/api/live?access_key=' . $key;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);

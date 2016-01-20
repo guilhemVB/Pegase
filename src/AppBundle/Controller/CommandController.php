@@ -25,10 +25,10 @@ class CommandController extends Controller
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
-        $input = new ArrayInput(array(
+        $input = new ArrayInput([
             'command' => 'app:import:countries',
-            'fileName' => '../web/files/pays.csv'
-        ));
+            'fileName' => '../web/files/pays.csv',
+        ]);
 
         $output = new BufferedOutput();
         $application->run($input, $output);
@@ -50,10 +50,32 @@ class CommandController extends Controller
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
-        $input = new ArrayInput(array(
+        $input = new ArrayInput([
             'command' => 'app:import:destinations',
-            'fileName' => '../web/files/destinations.csv'
-        ));
+            'fileName' => '../web/files/destinations.csv',
+        ]);
+
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+
+        $content = $output->fetch();
+
+        $content = str_replace("\n", '<br>', $content);
+
+        return new Response($content);
+    }
+
+    /**
+     * @Route("/updateRates", name="updateRates")
+     * @return Response
+     */
+    public function updateRatesAction()
+    {
+        $kernel = $this->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(['command' => 'app:update:rates']);
 
         $output = new BufferedOutput();
         $application->run($input, $output);
