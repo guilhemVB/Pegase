@@ -32,7 +32,7 @@ class HomepageController extends Controller
 
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($allDestinations, ['disableZoom' => true]);
 
-        $lastDestinationsCreated = $destinationRepository->findBy([], ['createdAt' => 'DESC'], 3);
+        $lastDestinationsCreated = $destinationRepository->findBy([], ['createdAt' => 'DESC', 'name' => 'ASC'], 3);
 
         $countries = [];
         foreach ($allDestinations as $destination) {

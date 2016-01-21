@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Repository\DestinationRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +22,19 @@ class ContactController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('AppBundle:Contact:contact.html.twig');
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
+
+        $destinations = [
+            $allDestinations = $destinationRepository->findOneByName('Ushuaia'),
+            $allDestinations = $destinationRepository->findOneByName('Phnom Penh'),
+            $allDestinations = $destinationRepository->findOneByName('San Jose'),
+        ];
+
+        return $this->render('AppBundle:Contact:contact.html.twig', ['destinations' => $destinations]);
     }
 
     /**
