@@ -64,8 +64,12 @@
 }
 
 .containerOrange {
-    background-color: $colorOrange;
-    color: white;
+  background-color: $colorOrange;
+  color: white;
+}
+
+.containerOrange a {
+  color: white;
 }
 
 .containerBlue {
