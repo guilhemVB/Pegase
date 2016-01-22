@@ -22,6 +22,12 @@
         <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
     {% endblock %}
 
+    {% block opengraph %}
+        <meta property="og:locale" content="fr_fr" />
+        <meta property="og:site_name" content="Le Monde en Sac" />
+        <meta property="og:url" content="{{ app.request.uri }}"/>
+    {% endblock %}
+
 </head>
 
 <body>

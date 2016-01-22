@@ -1,11 +1,29 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}{{ destination.name }} - {{ destination.country.name }}, {{ destination.totalPrices }} € par jour. A faire : {{ destination.tips[0] }}{% endblock %}
+{% set description = destination.name ~ " - " ~ destination.country.name ~ ", " ~ destination.totalPrices ~ " €  par jour. A faire : " ~ destination.tips[0] %}
+{% block metaDescription %}{{ description }}{% endblock %}
 {% block metaKeyword %}, destination, {{ destination.name }}, {{ destination.country.name }}{% endblock %}
 
 {% block title %}
     {{ destination.name }} - {{ parent() }}
+{% endblock %}
+
+
+{% set bannerAssetURL = image_banner_destinations_path ~ destination.slug ~ '.JPG' %}
+{% set bannerUrl = image_banner_default %}
+{% if bannerAssetURL|asset_exists %}
+    {% set bannerUrl = bannerAssetURL %}
+{% endif %}
+
+
+{% block opengraph %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ destination.name }} - {{ destination.country.name }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="{{ absolute_url(asset(bannerUrl)) }}"/>
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:description" content="{{ description }}"/>
 {% endblock %}
 
 
@@ -17,12 +35,6 @@
 
 {% block body %}
     <div id="destinationView">
-
-        {% set bannerAssetURL = image_banner_destinations_path ~ destination.slug ~ '.JPG' %}
-        {% set bannerUrl = image_banner_default %}
-        {% if bannerAssetURL|asset_exists %}
-            {% set bannerUrl = bannerAssetURL %}
-        {% endif %}
 
         <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ destination.name }}">
 

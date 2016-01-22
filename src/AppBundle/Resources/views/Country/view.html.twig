@@ -1,12 +1,37 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% block metaDescription %}Pays - {{ country.name }}, capitale : {{ country.capitalName }}. Visa : {{ country.visaInformation }} - {{ country.visaDuration }}. Langue{% if country.languages|length > 1 %}s{% endif %} : {{ country.languages|join(' - ') }}.{% endblock %}
+
+{% set description = "Pays - " ~ country.name ~ ", capitale : " ~ country.capitalName ~ ". Visa : " ~ country.visaInformation ~ " - " ~ country.visaDuration ~ ". Langue" %}
+{% if country.languages|length > 1 %}
+    {% set description = description ~ "s" %}
+{% endif %}
+{% set description = description ~ " : " ~ country.languages|join(' - ') ~ "." %}
+
+
+{% block metaDescription %}{{ description }}{% endblock %}
 {% block metaKeyword %}, pays, {{ country.name }}, informations, visa{% endblock %}
 
 
 {% block title %}
     {{ country.name }} - {{ parent() }}
+{% endblock %}
+
+
+{% set bannerAssetURL = image_banner_countries_path ~ country.slug ~ '.JPG' %}
+{% set bannerUrl = image_banner_default %}
+{% if bannerAssetURL|asset_exists %}
+    {% set bannerUrl = bannerAssetURL %}
+{% endif %}
+
+
+{% block opengraph %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ country.name }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="{{ absolute_url(asset(bannerUrl)) }}"/>
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:description" content="{{ description }}"/>
 {% endblock %}
 
 
@@ -19,11 +44,6 @@
 {% block body %}
     <div id="countryView">
 
-        {% set bannerAssetURL = image_banner_countries_path ~ country.slug ~ '.JPG' %}
-        {% set bannerUrl = image_banner_default %}
-        {% if bannerAssetURL|asset_exists %}
-            {% set bannerUrl = bannerAssetURL %}
-        {% endif %}
 
         <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ country.name }}">
 
