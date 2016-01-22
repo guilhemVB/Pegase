@@ -87,7 +87,7 @@ class MaplaceMarkerBuilder
         }
 
         if (!$options['disableZoom']) {
-            $dataMaplace['zoom'] = 11;
+            $dataMaplace['zoom'] = 12;
         } elseif ($options['addDefaultZoom']) {
             $dataMaplace['zoom'] = 7;
         }
