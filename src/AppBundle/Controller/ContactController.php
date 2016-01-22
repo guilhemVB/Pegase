@@ -29,9 +29,9 @@ class ContactController extends Controller
         $destinationRepository = $em->getRepository('AppBundle:Destination');
 
         $destinations = [
-            $allDestinations = $destinationRepository->findOneByName('Ushuaia'),
-            $allDestinations = $destinationRepository->findOneByName('Phnom Penh'),
-            $allDestinations = $destinationRepository->findOneByName('San Jose'),
+            $destinationRepository->findOneByName('Phnom Penh'),
+            $destinationRepository->findOneByName('San Jose'),
+            $destinationRepository->findOneByName('Ushuaia'),
         ];
 
         return $this->render('AppBundle:Contact:contact.html.twig', ['destinations' => $destinations]);
