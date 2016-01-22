@@ -5,6 +5,16 @@
 {% endblock %}
 
 
+{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+{% block opengraph %}
+    {{ parent() }}
+    <meta property="og:title" content="Le Monde en Sac"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
+    <meta property="og:image:width" content="1500" />
+{% endblock %}
+
+
 {% block body %}
 
     <div id="homepage">

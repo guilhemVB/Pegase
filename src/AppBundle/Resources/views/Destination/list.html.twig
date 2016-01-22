@@ -8,6 +8,16 @@
     Liste des destinations - {{ parent() }}
 {% endblock %}
 
+
+{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+{% block opengraph %}
+    {{ parent() }}
+    <meta property="og:title" content="Liste des destinations du Monde en Sac"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
+{% endblock %}
+
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.css') }}">
