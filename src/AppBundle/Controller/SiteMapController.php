@@ -60,13 +60,13 @@ class SiteMapController extends Controller
         /** @var Country $country */
         foreach ($countries as $country) {
             $urls[] = ['loc'        => $this->get('router')->generate('country', ['slug' => $country->getSlug()], true),
-                       'changefreq' => 'monthly',
+                       'changefreq' => 'daily',
                        'priority'   => '0.7'];
 
             $destinations = $country->getDestinations();
             foreach ($destinations as $destination) {
                 $urls[] = ['loc'        => $this->get('router')->generate('destination', ['slug' => $destination->getSlug()], true),
-                           'changefreq' => 'monthly',
+                           'changefreq' => 'weekly',
                            'priority'   => '0.7'];
             }
         }
