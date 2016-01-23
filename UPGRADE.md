@@ -49,3 +49,4 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 ## v0.2.2
 
 - Bug fix color destination in gmap
+- Sort list countries
