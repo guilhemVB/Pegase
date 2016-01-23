@@ -44,3 +44,4 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 ## v0.2.1
 
 - externalisation of API rate key
+- Use new logo and favicon
