@@ -45,3 +45,7 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 
 - externalisation of API rate key
 - Use new logo and favicon
+
+## v0.2.2
+
+- Bug fix color destination in gmap
