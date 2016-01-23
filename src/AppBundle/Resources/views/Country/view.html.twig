@@ -35,6 +35,14 @@
 {% endblock %}
 
 
+{% block tweeterCard %}
+    {{ parent() }}
+    <meta name="twitter:title" content="{{ country.name }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ absolute_url(asset(bannerUrl)) }}">
+{% endblock %}
+
+
 {% block stylesheets %}
     {{ parent() }}
     {#<link rel="stylesheet" href="{{ asset('assets/bootstrap-social/bootstrap-social.css') }}">#}
