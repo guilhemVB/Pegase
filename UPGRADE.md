@@ -50,3 +50,4 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 
 - Bug fix color destination in gmap
 - Sort list countries
+- Add open graph description in Homepage
