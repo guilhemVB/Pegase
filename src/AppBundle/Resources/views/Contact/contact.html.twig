@@ -70,9 +70,9 @@
     <div class="container-fluid containerPadding containerOrange containerLinkWhite">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 col-sm-12">
-                {% for destination in destinations %}
-                    {% include 'AppBundle:Vignette:destinationLarge.html.twig' %}
-                {% endfor %}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'phnom-penh' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'san-jose' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'ushuaia' })) }}
             </div>
         </div>
     </div>
