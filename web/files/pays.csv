@@ -6,7 +6,7 @@ Algérie;"1 entrée : 85€
 Entrées multiples : 125€";"1 entrée : 30 jours
 Entrées multiples : 90 jours";;DZ;DZA;;Alger;Afrique;Arabe;DZD;;;;
 Allemagne;;;;DE;DEU;;Berlin;Europe;Allemand;EUR;;;;
-Argentine;Français, Belges, Canadiens, Suisses... exemptés;90 jours renouvelable 1 fois;;AR;ARG;;Buenos Aires;Amérique du Sud;Espagnol;ARS;Le Perito Morenos;Le pays est grand et les bus (ou cama), très confortable sont chers. Pensez au South Pass pour les long trajets afin d'économiser..;;
+Argentine;Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps;90 jours renouvelable 1 fois;;AR;ARG;;Buenos Aires;Amérique du Sud;Espagnol;ARS;Le Perito Morenos;Le pays est grand et les bus (ou cama), très confortable sont chers. Pensez au South Pass pour les long trajets afin d'économiser..;;
 Australie;"EVisitor : gratuit
 ETA : $20AUD (émission)
 Visitor visa : 130 à 335 AUD";"EVisitor et ETA : 3 mois max d'affilé pendant 1 an
@@ -32,7 +32,7 @@ Français";CAD;;;;
 Chili;Français, Belges, Canadiens, Suisses... exemptés;90 jours;;CL;CHL;;Santiago;Amérique du Sud;Espagnol;CLP;;;;
 Chine;Entrée simple: 35€;90 jours;;CN;CHN;;Pekin;Asie;Mandarin;CNY;;;;
 Colombie;Français, Belges, Canadiens, Suisses... exemptés;;;CO;COL;;Bogota;Amérique du Sud;Espagnol;COP;;;;
-Costa Rica;Français, Belges, Canadiens, Suisses... exemptés;90 jours;;CR;CRI;;San Jose;Amérique Centrale;Espagnol;CRC;;;;
+Costa Rica;Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps;90 jours;;CR;CRI;;San Jose;Amérique Centrale;Espagnol;CRC;;;;
 Croatie;;;;HR;HRV;;Zagreb;Europe;Croate;HRK;;;;
 Cuba;22€;30 jours;;CU;CUB;;La Havanne;Amérique Centrale;Espagnol;CUP;;;;
 Danemark;;;;DK;DNK;;Copenhague;Europe;Danois;EUR;;;;
@@ -40,13 +40,13 @@ Danemark;;;;DK;DNK;;Copenhague;Europe;Danois;EUR;;;;
 Émirats Arabes Unis;Français, Belges, Canadiens, Suisses... exemptés;"90 jours sans visa pour les français
 30 jours pour les autres";;AE;ARE;;Abu Dabi;Afrique;Arabe;AED;;;;
 Espagne;Européens, américains du nord ... exemptés;90 jours si visa nécessaire;;ES;ESP;;Madrid;Europe;Espagnol;EUR;;;;
-États-Unis;"Français, Belges, Canadiens, Suisses... exemptés.
+États-Unis;"Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps.
 Autorisation électronique necessaire ($14).";90 jours sans visa.;;US;USA;;Washington;Amérique du Nord;Anglais;USD;;;;
 Finlande;;;;FI;FIN;;Helsinki;Europe;Finnois;EUR;;;;
-France;Européens, Amérique du nord, Suisse ... exemptés;90 jours sans visa;;FR;FRA;;Paris;Europe;Français;EUR;;;;
+France;Européens, Amérique du nord, Suisse ... exemptés pendant un laps de temps;90 jours sans visa;;FR;FRA;;Paris;Europe;Français;EUR;;;;
 Grèce;;;;GR;GRC;;Athènes;Europe;Grec;EUR;;;;
 Guatemala;;;;GT;GTM;;Guatemala city;Amérique Centrale;Espagnol;GTQ;;;;
-Hongrie;Membres espace schengen, canadiens ... exemptés;90 jours;;HU;HUN;;Budapest;Europe;Hongrois;HUF;;;;
+Hongrie;Membres espace schengen, canadiens ... exemptés ;90 jours;;HU;HUN;;Budapest;Europe;Hongrois;HUF;;;;
 Inde;;;;IN;IND;;New Delhi;Asie;"Hindi
 Anglais";INR;;;;
 Indonésie;35 USD pour 65 pays (dont France, Canada, Belgique..);"30 jours.
@@ -57,7 +57,7 @@ Islande;;;;IS;ISL;;Reykjavic;Europe;Islandais;ISK;;;;
 Israël;;;;IL;ISR;;Jerusalem;Moyen-Orient;"Hébreu
 Arabe";ILS;;;;
 Italie;;;;IT;ITA;;Rome;Europe;Italien;EUR;;;;
-Japon;Français, Belges, Canadiens, Suisses... exemptés;90 jours sans visa;;JP;JPN;;Tokyo;Asie;Japonais;JPY;;Les trains au Japon sont ponctuels, propres et confortable. Malheureusement, ils peuvent vite faire monter la note. Pour économiser sur les transports, pensez à jeter un oeil au JR Pass.;;
+Japon;Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps;90 jours sans visa;;JP;JPN;;Tokyo;Asie;Japonais;JPY;;Les trains au Japon sont ponctuels, propres et confortable. Malheureusement, ils peuvent vite faire monter la note. Pour économiser sur les transports, pensez à jeter un oeil au JR Pass.;;
 Jordanie;;;;JO;JOR;;Amman;Moyen-Orient;Arabe;JOD;;;;
 Kenya;"Français et Belge : 40€ entrée simple, 80€ entrées multiples.
 Canadien : 52$Ca.
@@ -82,7 +82,7 @@ Nouvelle-Zélande;;;;NZ;NZL;;Wellington;Océanie;Anglais;NZD;;;;
 Pays-Bas;;;;NL;NLD;;Amsterdam;Europe;"Néerlandais
 Frison
 Limbourgeois";EUR;;;;
-Pérou;;;;PE;PER;;Lima;Amérique du Sud;"Espagnol
+Pérou;Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps. ;180 jours sans visa.;;PE;PER;;Lima;Amérique du Sud;"Espagnol
 Quechua
 Aymara";PEN;;;;
 Portugal;;;;PT;PRT;;Lisbonne;Europe;Portuguais;EUR;;;;
@@ -100,7 +100,9 @@ Suède;;;;SE;SWE;;Stockholm;Europe;Suédois;SEK;;;;
 Suisse;;;;CH;CHE;;Berne;Europe;"Allemand
 Français
 Italien";CHF;;;;
-Thaïlande;;;;TH;THA;;Bangkok;Asie;Thaï;THB;;;;
+Thaïlande;Français, Belges, Canadiens, Suisses... exemptés pendant un laps de temps;"30 jours sans visa (entrée aérienne ou terrestre) si Français ou Canada.
+Voie aérienne: 30 jours sans visa pour les Belges et Suisses.
+Voie terrestre :15 jours sans visa pour les Belges et Suisses.";;TH;THA;;Bangkok;Asie;Thaï;THB;;;;
 Tunisie;;;;TN;TUN;;Tunis;Afrique;Arabe;TND;;;;
 Turquie;;;;TR;TUR;;Ankara;Asie;Turc;TRY;;;;
 Venezuela;;;;VE;VEN;;Caracas;Amérique du Sud;Espagnol;VEF;;;;
