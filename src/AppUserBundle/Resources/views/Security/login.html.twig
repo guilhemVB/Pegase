@@ -1,34 +1,52 @@
 {% extends "::layout.html.twig" %}
 
+{% block metaDescription %}S'identifier sur Le Monde en Sac.{% endblock %}
+{% block metaKeyword %}, connexion, email, utilisateur{% endblock %}
+
 {% block title %}
     Connexion - {{ parent() }}
 {% endblock %}
 
+{% set title = "Connexion Le Monde en Sac" %}
+
+{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+{% block opengraph %}
+    {{ parent() }}
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
+{% endblock %}
+
+
+{% block tweeterCard %}
+    {{ parent() }}
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="Connexion sur Le Monde en Sac">
+    <meta name="twitter:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}">
+{% endblock %}
+
+
 {% block body %}
 
-    <div class="container-fluid containerOrange containerPadding">
-        <div class="container">
-            <div class="row">
+    <div class="container-fluid containerPadding">
+        <div class="row">
 
-                <div class="col-sm-3 col-sm-offset-1">
-                    <h1>Connexion</h1>
-                </div>
+            <div class="col-sm-4 col-sm-offset-1 col-lg-4 col-lg-offset-1 page-header">
+                <h1>Connexion</h1>
+            </div>
 
-                <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-1 well">
 
-                    {% include 'AppUserBundle:Security:connectionForm.html.twig' %}
+                {% include 'AppUserBundle:Security:connectionForm.html.twig' %}
 
-                    {% if error %}
-                        <p class="text-center ">
-                            <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
-                        </p>
-                    {% endif %}
+                {% if error %}
+                    <p class="text-center ">
+                        <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
+                    </p>
+                {% endif %}
 
-                </div>
             </div>
         </div>
     </div>
-
-    {% include 'AppBundle:Vignette:vignettesLogin.html.twig' %}
 
 {% endblock %}
