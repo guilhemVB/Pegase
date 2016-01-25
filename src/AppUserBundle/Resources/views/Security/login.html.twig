@@ -49,4 +49,14 @@
         </div>
     </div>
 
+    <div class="container-fluid containerPadding containerOrange containerLinkWhite">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'bangkok' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'buenos-aires' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'san-francisco' })) }}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
