@@ -7,24 +7,34 @@
 
 {% block body %}
 
-    <div class="container-fluid containerOrange containerPadding">
-        <div class="container">
-            <div class="row">
+    <div class="container-fluid containerPadding">
+        <div class="row">
 
-                <div class="col-sm-3 col-sm-offset-1">
-                    <h1>Modifier votre profil</h1>
-                </div>
+            <div class="col-sm-4 col-sm-offset-1 col-lg-4 col-lg-offset-1 page-header">
+                <h1>Modifier votre profil</h1>
+            </div>
 
-                <div class="col-sm-4 col-sm-offset-1">
+            <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-1 well">
 
-                    {% include 'AppUserBundle:Profile:edit_content.html.twig' %}
+                {% include 'AppUserBundle:Profile:edit_content.html.twig' %}
 
-                </div>
             </div>
         </div>
     </div>
 
-    {% include 'AppBundle:Vignette:vignettesLogin.html.twig' %}
+    <div class="hidden-md hidden-sm hidden-xs">
+        <div style="height: 80px;"></div>
+    </div>
+
+    <div class="container-fluid containerPadding containerOrange containerLinkWhite">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'lima' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'prague' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'vientiane' })) }}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
