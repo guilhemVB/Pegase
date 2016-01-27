@@ -45,8 +45,10 @@
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" data-toggle="modal" data-target="#connectionModal">
-                            <i class="fa fa-sign-in"></i> Connexion</a></li>
+                    <li {% if activeConnection is defined %}class="active"{% endif %}>
+                        <a href="#" data-toggle="modal" data-target="#connectionModal">
+                            <i class="fa fa-sign-in"></i> Connexion</a>
+                    </li>
                     <li><a href="{{ path('fos_user_registration_register') }}">
                             <i class="fa fa-user"></i> Inscription</a></li>
                 </ul>
