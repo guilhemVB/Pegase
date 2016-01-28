@@ -1,3 +1,4 @@
+{% set activeConnection = true %}
 {% extends "::layout.html.twig" %}
 
 {% block metaDescription %}S'identifier sur Le Monde en Sac.{% endblock %}
@@ -45,6 +46,20 @@
                     </p>
                 {% endif %}
 
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-md hidden-sm hidden-xs">
+        <div style="height: 80px;"></div>
+    </div>
+
+    <div class="container-fluid containerPadding containerOrange containerLinkWhite">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'bangkok' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'buenos-aires' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'san-francisco' })) }}
             </div>
         </div>
     </div>
