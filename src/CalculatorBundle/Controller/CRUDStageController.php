@@ -143,7 +143,7 @@ class CRUDStageController extends Controller
 
         return new JsonResponse([
             'maplaceData' => $maplaceData,
-            'statsView'   => $this->renderView('AppBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
         ]);
     }
 
@@ -184,7 +184,7 @@ class CRUDStageController extends Controller
             'stageId'     => $stage->getId(),
             'stagePrice'  => $stagePrice,
             'voyageStats' => $voyageStatsCalculated,
-            'statsView'   => $this->renderView('AppBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated])
+            'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated])
         ]);
     }
 

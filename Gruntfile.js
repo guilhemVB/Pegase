@@ -8,7 +8,8 @@ module.exports = function (grunt) {
                     'web/js/common.js': 'src/AppBundle/Resources/public/js/common/*.js',
                     'web/js/contact.js': 'src/AppBundle/Resources/public/js/contact/*.js',
                     'web/js/destination.js': 'src/AppBundle/Resources/public/js/destination/*.js',
-                    'web/js/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js'
+                    'web/js/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js',
+                    'web/js/createVoyage.js': 'src/CalculatorBundle/Resources/public/js/voyage/*.js'
                 }
             }
         },
@@ -19,7 +20,8 @@ module.exports = function (grunt) {
                     'web/js/common.min.js': 'web/js/common.js',
                     'web/js/contact.min.js': 'web/js/contact.js',
                     'web/js/destination.min.js': 'web/js/destination.js',
-                    'web/js/destinationList.min.js': 'web/js/destinationList.js'
+                    'web/js/destinationList.min.js': 'web/js/destinationList.js',
+                    'web/js/createVoyage.min.js': 'web/js/createVoyage.js'
                 }
             }
         },
@@ -36,14 +38,14 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/AppBundle/Resources/public/js/*/*.js'],
+                files: ['src/*Bundle/Resources/public/js/*/*.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false
                 }
             },
             css: {
-                files: ['src/AppBundle/Resources/public/css/*.scss'],
+                files: ['src/*Bundle/Resources/public/css/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false
@@ -56,7 +58,8 @@ module.exports = function (grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'web/css/app.min.css': 'src/AppBundle/Resources/public/css/global.scss'
+                    'web/css/app.min.css': 'src/AppBundle/Resources/public/css/global.scss',
+                    'web/css/calculator.min.css': 'src/CalculatorBundle/Resources/public/css/global.scss'
                 }
             }
         }

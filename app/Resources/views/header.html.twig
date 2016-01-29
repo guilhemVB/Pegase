@@ -21,9 +21,11 @@
             </ul>
 
             {% if is_granted('ROLE_USER') %}
-                {#<ul class="nav navbar-nav">#}
-                    {#<li {% if activeDashboard is defined %}class="active"{% endif %}><a href="{{ path('dashboard') }}">Tableau de bord</a></li>#}
-                {#</ul>#}
+                <ul class="nav navbar-nav">
+                    <li {% if activeDashboard is defined %}class="active"{% endif %}>
+                        <a href="{{ path('dashboard') }}">Tableau de bord</a>
+                    </li>
+                </ul>
 
                 {#<span id="navBarInfos"></span>#}
 
@@ -49,7 +51,8 @@
                         <a href="#" data-toggle="modal" data-target="#connectionModal">
                             <i class="fa fa-sign-in"></i> Connexion</a>
                     </li>
-                    <li><a href="{{ path('fos_user_registration_register') }}">
+                    <li {% if activeRegister is defined %}class="active"{% endif %}>
+                        <a href="{{ path('fos_user_registration_register') }}">
                             <i class="fa fa-user"></i> Inscription</a></li>
                 </ul>
             {% endif %}

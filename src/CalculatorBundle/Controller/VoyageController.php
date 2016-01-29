@@ -53,7 +53,7 @@ class VoyageController extends Controller
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
-        return $this->render('AppBundle:Voyage:dashboard.html.twig',
+        return $this->render('CalculatorBundle:Voyage:dashboard.html.twig',
             [
                 'voyage'       => $voyage,
                 'stagesSorted' => $stagesSorted,
@@ -82,7 +82,7 @@ class VoyageController extends Controller
         $countryRepository = $em->getRepository('AppBundle:Country');
 
         $countries = $countryRepository->findCountriesWithDestinations();
-        return $this->render('AppBundle:Voyage:create.html.twig', ['countries' => $countries]);
+        return $this->render('CalculatorBundle:Voyage:create.html.twig', ['countries' => $countries]);
     }
 
 }
