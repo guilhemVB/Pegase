@@ -6,7 +6,7 @@
 
 #shareVoyage li,
 #dashboard li {
-    background: #eee;
+    background: gainsboro;
     margin: 1px;
     padding: 10px 15px;
     border-radius: 5px;
@@ -18,7 +18,7 @@
 
 #dashboard .sortable-ghost {
     opacity: .3;
-    background: #f60;
+    background: $colorOrange;
 }
 
 #addDestinationHeader {
@@ -42,4 +42,30 @@
 #labelNumberDays,
 #labelDestination {
     padding-top: 5px;
+}
+
+.cursorMove .form-group{
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+.cursorMove .editable-input .form-control {
+    margin: 0;
+}
+
+.cursorMove .editable-buttons button {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 3px 18px 2px 18px;
+}
+
+.selectEditable {
+    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 23px;
+}
+
+.stagePrice {
+    padding-right: 20px;
 }

@@ -6,31 +6,31 @@
     {% set allowModification = true %}
 {% endif %}
 
-<div class="container-fluid" style="padding-bottom: 30px">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                {% if stagesSorted|length > 0 %}
-                    <h2>Liste des destinations</h2>
-                {% else %}
-                    <h2>Aucune destination</h2>
-                {% endif %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <ul id="listDestinations">
-                    {% for stage in stagesSorted %}
-                        {% if hidePrices == false and allowModification == true %}
-                            {% include 'CalculatorBundle:Voyage:stage.html.twig' %}
-                        {% elseif hidePrices == false and allowModification == false %}
-                            {% include 'AppBundle:Share:stageWithPrices.html.twig' %}
-                         {% else %}
-                            {% include 'AppBundle:Share:stageWithoutPrices.html.twig' %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
+<div class="container-fluid containerPadding15">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10 col-md-12">
+            {% if stagesSorted|length > 0 %}
+                <h2>Liste des destinations</h2>
+            {% else %}
+                <h2>Aucune destination</h2>
+            {% endif %}
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10 col-md-12">
+            <ul id="listDestinations">
+                {% for stage in stagesSorted %}
+                    {% if hidePrices == false and allowModification == true %}
+                        {% include 'CalculatorBundle:Voyage:stage.html.twig' %}
+                    {% elseif hidePrices == false and allowModification == false %}
+                        {% include 'CalculatorBundle:Share:stageWithPrices.html.twig' %}
+                    {% else %}
+                        {% include 'CalculatorBundle:Share:stageWithoutPrices.html.twig' %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
 </div>

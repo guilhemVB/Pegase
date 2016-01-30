@@ -6,10 +6,11 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-4 {% if hidePrices == true %}col-lg-offset-1{% endif %}">
+            <div class="col-md-4 {% if hidePrices == true %}col-md-offset-1{% endif %}">
                 <h3 class="text-center">
-                            <span class="label label-warning">{{ voyageStats.nbDays }}
-                                jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
+                    <span class="label label-warning">
+                        <i class="fa fa-calendar" style="margin-right: 5px"></i> {{ voyageStats.nbDays }}
+                        jour{% if voyageStats.nbDays > 1 %}s{% endif %}</span>
                 </h3>
                 <blockquote class="col-lg-10 col-lg-offset-1">
                     <p>
@@ -25,9 +26,11 @@
             </div>
 
             {% if hidePrices == false %}
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <h3 class="text-center">
-                        <span class="label label-success">{{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+                        <span class="label label-success">
+                            <i class="fa fa-money" style="margin-right: 5px;"></i> {{ voyageStats.totalCost|number_format(0, ',', ' ') }} &euro;
+                        </span>
                     </h3>
                     <blockquote class="col-lg-8 col-lg-offset-2">
                         <p>
@@ -43,10 +46,11 @@
                 </div>
             {% endif %}
 
-            <div class="col-lg-4 {% if hidePrices == true %}col-lg-offset-2{% endif %}">
+            <div class="col-md-4 {% if hidePrices == true %}col-md-offset-2{% endif %}">
                 <h3 class="text-center">
-                            <span class="label label-danger">{{ voyageStats.nbStages }}
-                                étape{% if voyageStats.nbStages > 0 %}s{% endif %}</span>
+                    <span class="label label-danger">
+                        <i class="fa fa-map-marker" style="margin-right: 5px;"></i> {{ voyageStats.nbStages }}
+                        étape{% if voyageStats.nbStages > 1 %}s{% endif %}</span>
                 </h3>
                 <blockquote class="col-lg-10 col-lg-offset-1">
                     <p>

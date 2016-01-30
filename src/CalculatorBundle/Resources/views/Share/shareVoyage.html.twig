@@ -6,14 +6,15 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/calculator.min.css') }}">
+    {#<link rel="stylesheet" href="{{ asset('/css/bootstrap-social.css') }}">#}
 {% endblock %}
 
 
 {% block body %}
     <div id="shareVoyage">
 
-        {% include 'AppBundle:Share:shareVoyageHeader.html.twig' %}
+        {% include 'CalculatorBundle:Share:shareVoyageHeader.html.twig' %}
 
         <div class="container-fluid">
             <div class="container">
@@ -26,9 +27,9 @@
             </div>
         </div>
 
-        {% include 'AppBundle:Voyage:dashboardDestinationsList.html.twig' with {'hidePrices' : not voyage.showPricesInPublic, 'allowModification' : false} %}
+        {% include 'CalculatorBundle:Voyage:dashboardDestinationsList.html.twig' with {'hidePrices' : not voyage.showPricesInPublic, 'allowModification' : false} %}
 
-        {% include 'AppBundle:Voyage:dashboardStats.html.twig' with {'hidePrices' : not voyage.showPricesInPublic} %}
+        {% include 'CalculatorBundle:Voyage:dashboardStats.html.twig' with {'hidePrices' : not voyage.showPricesInPublic} %}
 
     </div>
 {% endblock %}
@@ -36,7 +37,7 @@
 
 {% block footer %}
     {{ parent() }}
-    {% include 'AppBundle:Common:listCountries.html.twig' %}
+    {#{% include 'AppBundle:Common:listCountries.html.twig' %}#}
 {% endblock %}
 
 
@@ -47,8 +48,5 @@
     <script>
         var maplaceData = {{ maplaceData|raw }};
     </script>
-    <script src="{{ asset('bundles/app/js/share/shareVoyage.js') }}"></script>
-
+    <script src="{{ asset('js/shareVoyage.min.js') }}"></script>
 {% endblock %}
-
-

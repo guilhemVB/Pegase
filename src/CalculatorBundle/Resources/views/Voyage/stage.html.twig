@@ -1,25 +1,34 @@
 {% set destination = stage.destination %}
+{% set stageStats = voyageStats.stagesStats[stage.id] %}
 <li class="cursorMove" data-stage-id="{{ stage.id }}">
     <div class="row">
-        <div class="col-sm-4">
-            <img class='flagCountrySmall flagCountryStage' src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <img class='flagCountrySmall flagCountryStage'
+                 src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
             <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a> -
             <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
         </div>
-        <div class="col-sm-1">
-            <span class="stageStars" data-stage-id="{{ stage.id }}">
-                {{ voyageStats.stagesStats[stage.id].starsView | raw }}
+        <div class="col-md-4 col-sm-3 col-xs-11">
+            {{ stageStats.dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
+            <span class="hidden-sm">
+                - {{ stageStats.dateTo|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM') }}
+            </span>
+            <span class="stageStars pull-right" data-stage-id="{{ stage.id }}">
+                {{ stageStats.starsView | raw }}
             </span>
         </div>
-        <div class="col-sm-2">
-            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}</a>
-        </div>
-        <div class="col-sm-3">
-            <span class="stagePrice" data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €</span>
+        <div class="col-md-4 col-sm-5 col-xs-12">
+            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }}
+                jour{% if stage.nbDays > 2 %}s{% endif %}</a>
+
             <button type="button" class="btn btn-danger btn-raised btn-xs pull-right btnDeleteStage"
                     data-loading-text="Suppression ..."
                     style="margin: 0;"
-                    data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i> Supprimer</button>
+                    data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i>
+            </button>
+            <span class="stagePrice pull-right"
+                  data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }}
+                €</span>
         </div>
     </div>
 </li>

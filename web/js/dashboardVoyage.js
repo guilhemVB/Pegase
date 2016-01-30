@@ -108,6 +108,13 @@ $().ready(function () {
     }
 
 
+    $.fn.editableform.buttons =
+        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">'+
+        '<i class="fa fa-check"></i>'+
+        '</button>'+
+        '<button type="button" class="btn btn-default btn-raised    btn-sm editable-cancel">'+
+        '<i class="fa fa-times"></i>'+
+        '</button>';
     $.fn.editable.defaults.mode = 'inline';
     $(document).ready(function () {
         $('.nbDaysStage').editable({
@@ -135,6 +142,7 @@ $().ready(function () {
 
                 $('[data-toggle="tooltip"]').tooltip();
             },
+            inputclass:'selectEditable',
             source: [
                 {value: 1, text: '1 jour'},
                 {value: 2, text: '2 jours'},
@@ -221,9 +229,38 @@ $().ready(function () {
         $('#deparatureDate #deparatureDateContainer').datepicker('setDate', currentStartDate);
     });
 
-    $("#updateVoyageModal form").submit(function (event) {
-        event.preventDefault();
+    $("#updateVoyageModal #_submitUpdateForm").on("click", function () {
 
+        $hasError = false;
+        if ($('#voyageName').val()) {
+            $("#errorBlockName").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockName").removeClass("hidden");
+        }
+
+        var date = $('#deparatureDate #deparatureDateContainer').datepicker('getDate');
+        if (date) {
+            $("#errorBlockDeparatureDate").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockDeparatureDate").removeClass("hidden");
+        }
+
+        if ($('#updateVoyageModal #updateDestination').val()) {
+            $("#errorBlockDestination").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockDestination").removeClass("hidden");
+        }
+
+        if (!$hasError) {
+            $(this).parent().children().addClass("disabled");
+            saveVoyage();
+        }
+    });
+
+    function saveVoyage() {
         var date = $('#deparatureDate #deparatureDateContainer').datepicker('getDate');
 
         var data = {
@@ -232,12 +269,8 @@ $().ready(function () {
             destinationId: $('#updateVoyageModal #updateDestination').val()
         };
 
-        $("#updateVoyageModal form button").button('loading');
-
         $.post(voyageCRUDUpdateUrl, data, function (response) {
             document.location.href = response.nextUri;
         }, "json");
-    });
-
-
+    }
 });

@@ -17,9 +17,38 @@ $().ready(function () {
         $('#deparatureDate #deparatureDateContainer').datepicker('setDate', currentStartDate);
     });
 
-    $("#updateVoyageModal form").submit(function (event) {
-        event.preventDefault();
+    $("#updateVoyageModal #_submitUpdateForm").on("click", function () {
 
+        $hasError = false;
+        if ($('#voyageName').val()) {
+            $("#errorBlockName").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockName").removeClass("hidden");
+        }
+
+        var date = $('#deparatureDate #deparatureDateContainer').datepicker('getDate');
+        if (date) {
+            $("#errorBlockDeparatureDate").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockDeparatureDate").removeClass("hidden");
+        }
+
+        if ($('#updateVoyageModal #updateDestination').val()) {
+            $("#errorBlockDestination").addClass("hidden");
+        } else {
+            $hasError = true;
+            $("#errorBlockDestination").removeClass("hidden");
+        }
+
+        if (!$hasError) {
+            $(this).parent().children().addClass("disabled");
+            saveVoyage();
+        }
+    });
+
+    function saveVoyage() {
         var date = $('#deparatureDate #deparatureDateContainer').datepicker('getDate');
 
         var data = {
@@ -28,12 +57,8 @@ $().ready(function () {
             destinationId: $('#updateVoyageModal #updateDestination').val()
         };
 
-        $("#updateVoyageModal form button").button('loading');
-
         $.post(voyageCRUDUpdateUrl, data, function (response) {
             document.location.href = response.nextUri;
         }, "json");
-    });
-
-
+    }
 });

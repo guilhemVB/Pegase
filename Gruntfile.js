@@ -10,7 +10,8 @@ module.exports = function (grunt) {
                     'web/js/destination.js': 'src/AppBundle/Resources/public/js/destination/*.js',
                     'web/js/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js',
                     'web/js/createVoyage.js': 'src/CalculatorBundle/Resources/public/js/voyage/*.js',
-                    'web/js/dashboardVoyage.js': 'src/CalculatorBundle/Resources/public/js/dashboard/*.js'
+                    'web/js/dashboardVoyage.js': 'src/CalculatorBundle/Resources/public/js/dashboard/*.js',
+                    'web/js/shareVoyage.js': 'src/CalculatorBundle/Resources/public/js/share/*.js'
                 }
             }
         },
@@ -23,7 +24,8 @@ module.exports = function (grunt) {
                     'web/js/destination.min.js': 'web/js/destination.js',
                     'web/js/destinationList.min.js': 'web/js/destinationList.js',
                     'web/js/createVoyage.min.js': 'web/js/createVoyage.js',
-                    'web/js/dashboardVoyage.min.js': 'web/js/dashboardVoyage.js'
+                    'web/js/dashboardVoyage.min.js': 'web/js/dashboardVoyage.js',
+                    'web/js/shareVoyage.min.js': 'web/js/shareVoyage.js'
                 }
             }
         },

@@ -108,6 +108,13 @@ $().ready(function () {
     }
 
 
+    $.fn.editableform.buttons =
+        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">'+
+        '<i class="fa fa-check"></i>'+
+        '</button>'+
+        '<button type="button" class="btn btn-default btn-raised    btn-sm editable-cancel">'+
+        '<i class="fa fa-times"></i>'+
+        '</button>';
     $.fn.editable.defaults.mode = 'inline';
     $(document).ready(function () {
         $('.nbDaysStage').editable({
@@ -135,6 +142,7 @@ $().ready(function () {
 
                 $('[data-toggle="tooltip"]').tooltip();
             },
+            inputclass:'selectEditable',
             source: [
                 {value: 1, text: '1 jour'},
                 {value: 2, text: '2 jours'},

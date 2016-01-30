@@ -50,7 +50,7 @@ class ShareController extends Controller
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
-        return $this->render('AppBundle:Share:shareVoyage.html.twig',
+        return $this->render('CalculatorBundle:Share:shareVoyage.html.twig',
             [
                 'voyage'       => $voyage,
                 'stagesSorted' => $stagesSorted,
