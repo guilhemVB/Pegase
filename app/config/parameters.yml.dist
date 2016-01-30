@@ -28,6 +28,7 @@ parameters:
     image_banner_default : images/banners/default.JPG
 
     api_rate_key: ~
+    api_google_key: ~
 
 twig:
     globals:

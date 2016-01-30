@@ -1,47 +1,47 @@
-{% set shareUrl = url('shareVoyage', {'token' : voyage.token}) %}
+{% if voyage.urlMinified is not null and voyage.urlMinified is not empty %}
+    {% set shareUrl = voyage.urlMinified %}
+{% else %}
+    {% set shareUrl = url('shareVoyage', {'token' : voyage.token}) %}
+{% endif %}
 
 <div class="container-fluid containerPadding">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
                 <h2>Partagez votre voyage</h2>
             </div>
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                <a href="{{ shareUrl }}"
+                   target="_blank"
+                   title="lien de partage">
+                    {{ shareUrl }}
+                </a>
+            </div>
         </div>
-        <div class="row containerPadding">
-            <div class="col-md-2 col-md-offset-3 text-center">
 
-                {#https://dev.twitter.com/web/tweet-button#}
+        <div class="row">
 
-                <a href="https://twitter.com/intent/tweet?text=Mon%20prochain%20voyage&amp;url={{ shareUrl }}"
+            <div class="col-xs-12">
+                <a href="https://twitter.com/intent/tweet?text=Mon%20prochain%20voyage%20avec%20@LeMondeEnSac&amp;url={{ shareUrl }}"
                    title="Share on Twitter" target="_blank"
-                   class="btn btn-block btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
-
+                   class="btn btn-block btn-social-icon btn-twitter centerIcon"><i class="fa fa-twitter"></i></a>
             </div>
-            <div class="col-md-2 text-center">
 
-                <a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook"
-                   target="_blank" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i>
-                    Facebook</a>
+            {#<div class="col-md-2 text-center">#}
 
-            </div>
-            <div class="col-md-2 text-center">
+            {#<a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook"#}
+            {#target="_blank" class="btn btn-block btn-facebook"><i class="fa fa-facebook"></i>#}
+            {#Facebook</a>#}
 
-                <a href="https://plus.google.com/share?url=" title="Share on Google+" target="_blank"
-                   class="btn btn-block btn-google"><i class="fa fa-google-plus"></i> Google+</a>
+            {#</div>#}
+            {#<div class="col-md-2 text-center">#}
 
-            </div>
+            {#<a href="https://plus.google.com/share?url=" title="Share on Google+" target="_blank"#}
+            {#class="btn btn-block btn-google"><i class="fa fa-google-plus"></i> Google+</a>#}
+
+            {#</div>#}
         </div>
-        <div class="row text-center">
-            <div class="col-md-12">
-                <p>
-                    <a href="{{ shareUrl }}"
-                       target="_blank"
-                       title="lien de partage">
-                        {{ shareUrl }}
-                    </a>
-                </p>
-            </div>
-        </div>
+
     </div>
 </div>
 

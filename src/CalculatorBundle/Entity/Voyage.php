@@ -39,6 +39,12 @@ class Voyage
     private $token;
 
     /**
+     * @var string
+     * @ORM\Column(name="url_minified", type="string", length=255, nullable=true)
+     */
+    private $urlMinified;
+
+    /**
      * @var boolean
      * @ORM\Column(type="boolean", nullable=false)
      */
@@ -221,6 +227,25 @@ class Voyage
     public function setShowPricesInPublic($showPricesInPublic)
     {
         $this->showPricesInPublic = $showPricesInPublic;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlMinified()
+    {
+        return $this->urlMinified;
+    }
+
+    /**
+     * @param string $urlMinified
+     * @return $this
+     */
+    public function setUrlMinified($urlMinified)
+    {
+        $this->urlMinified = $urlMinified;
 
         return $this;
     }

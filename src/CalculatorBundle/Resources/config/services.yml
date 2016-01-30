@@ -13,9 +13,16 @@ services:
         class : CalculatorBundle\Service\CRUD\CRUDVoyage
         arguments:
             - @doctrine.orm.entity_manager
+            - @google_url_shortener_api
 
     voyage_service:
         class : CalculatorBundle\Service\VoyageService
         arguments:
             - @doctrine.orm.entity_manager
             - @maplace_marker_builder
+
+    google_url_shortener_api:
+        class : CalculatorBundle\Service\GoogleUrlShortenerApi
+        arguments:
+            - %api_google_key%
+            - @router
