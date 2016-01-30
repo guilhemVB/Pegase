@@ -1,22 +1,27 @@
 {% set destination = stage.destination %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
-<li class="cursorMove" data-stage-id="{{ stage.id }}">
+
+<li class="stageMovable" data-stage-id="{{ stage.id }}">
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
+
+        <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
+            <span class="drag-handle"><i class="fa fa-lg fa-sort"></i></span>
             <img class='flagCountrySmall flagCountryStage'
                  src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
-            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a> -
+            <a class="hidden-sm" href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+        </div>
+
+        <div class="col-md-3 col-sm-2 col-xs-6 ellipsis">
             <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
         </div>
-        <div class="col-md-4 col-sm-3 col-xs-11">
+
+        <div class="col-md-3 col-sm-4 col-xs-11">
             {{ stageStats.dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
-            <span class="hidden-sm">
-                - {{ stageStats.dateTo|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM') }}
-            </span>
             <span class="stageStars pull-right" data-stage-id="{{ stage.id }}">
                 {{ stageStats.starsView | raw }}
             </span>
         </div>
+
         <div class="col-md-4 col-sm-5 col-xs-12">
             <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }}
                 jour{% if stage.nbDays > 2 %}s{% endif %}</a>
@@ -24,7 +29,12 @@
             <button type="button" class="btn btn-danger btn-raised btn-xs pull-right btnDeleteStage"
                     data-loading-text="Suppression ..."
                     style="margin: 0;"
-                    data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i>
+                    data-stage-id="{{ stage.id }}"
+                    data-toggle="confirmation" data-placement="left"
+                    data-title="Supprimer cette étape ?"
+                    data-btn-ok-class="btn btn-success btn-raised btn-sm" data-btn-ok-icon="fa fa-check" data-btn-ok-label="Oui"
+                    data-btn-cancel-class="btn btn-danger btn-raised btn-sm" data-btn-cancel-icon="fa fa-times" data-btn-cancel-label="Non"
+                    ><i class="fa fa-trash"></i>
             </button>
             <span class="stagePrice pull-right"
                   data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }}

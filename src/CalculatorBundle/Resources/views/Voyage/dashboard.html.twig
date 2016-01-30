@@ -58,6 +58,7 @@
     <script src="{{ asset('assets/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
     <script src="{{ asset('assets/maplace-js/dist/maplace.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap-confirmation2/bootstrap-confirmation.min.js') }}"></script>
     <script>
         var maplaceData = {{ maplaceData|raw }};
         var changePositionStageUrl = "{{ path('changePositionStage', {'id' : 0}) }}";
@@ -75,7 +76,7 @@
 
         var voyageCRUDUpdateUrl = "{{ path('voyageCRUDUpdate', {'id' : voyage.id}) }}";
     </script>
-    <script src="{{ asset('js/dashboardVoyage.js') }}"></script>
+    <script src="{{ asset('js/dashboardVoyage.min.js') }}"></script>
 {% endblock %}
 
 

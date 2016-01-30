@@ -12,8 +12,9 @@
     border-radius: 5px;
 }
 
-.cursorMove {
+.stageMovable .drag-handle {
     cursor: move;
+    padding-right: 10px;
 }
 
 #dashboard .sortable-ghost {
@@ -44,16 +45,16 @@
     padding-top: 5px;
 }
 
-.cursorMove .form-group{
+.stageMovable .form-group{
     margin-top: 0;
     padding-bottom: 0;
 }
 
-.cursorMove .editable-input .form-control {
+.stageMovable .editable-input .form-control {
     margin: 0;
 }
 
-.cursorMove .editable-buttons button {
+.stageMovable .editable-buttons button {
     margin-top: 0;
     margin-bottom: 0;
     padding: 3px 18px 2px 18px;
@@ -68,4 +69,13 @@
 
 .stagePrice {
     padding-right: 20px;
+}
+
+.stageMovable .popover-title {
+    font-size: 16px;
+    background-color: rgba(0,0,0,0);
+}
+
+.stageMovable .popover.left>.arrow:after {
+    border-left-color: rgba(0,0,0,0);
 }

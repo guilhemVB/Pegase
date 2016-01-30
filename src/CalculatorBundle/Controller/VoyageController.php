@@ -20,7 +20,7 @@ class VoyageController extends Controller
 {
 
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/tableau-de-bord", name="dashboard")
      */
     public function dashboardAction()
     {
@@ -64,7 +64,7 @@ class VoyageController extends Controller
     }
 
     /**
-     * @Route("/create", name="createVoyage")
+     * @Route("/nouveau", name="createVoyage")
      * @return Response
      */
     public function createVoyageAction()
