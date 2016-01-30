@@ -52,7 +52,6 @@
 {% block body %}
     <div id="countryView">
 
-
         <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ country.name }}">
 
         <div class="container-fluid">
@@ -183,6 +182,7 @@
     <script>
         var maplaceData = {{ maplaceData|raw }};
     </script>
+    <script src="{{ asset('js/country.min.js') }}"></script>
 {% endblock %}
 
 

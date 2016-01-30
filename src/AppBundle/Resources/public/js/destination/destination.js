@@ -1,5 +1,15 @@
 $().ready(function () {
 
+    $(document).ready(function () {
+        if (typeof(Maplace) !== 'undefined') {
+            new Maplace({
+                locations: maplaceData,
+                map_div: '#gmap',
+                controls_on_map: false
+            }).Load();
+        }
+    });
+
     //$('#addToVoyageModal').on('show.bs.modal', function (event) {
     //    var button = $(event.relatedTarget);
     //    var destinationName = button.data('destinationName');

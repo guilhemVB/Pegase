@@ -4,6 +4,16 @@ $().ready(function () {
     var $btnSeeDestination = $("#btnSeeDestination");
     var $formGroupDestinations = $("#formGroupDestinations");
 
+    $(document).ready(function () {
+        if (typeof(Maplace) !== 'undefined') {
+            new Maplace({
+                locations: maplaceData,
+                map_div: '#gmap',
+                controls_on_map: false
+            }).Load();
+        }
+    });
+
     function format(country) {
         if (country.id) {
             return country.text;
