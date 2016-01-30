@@ -4,27 +4,26 @@
 
             <div class="well">
                 <h3 id="addDestinationHeader">Ajouter une destination</h3>
+
                 <form class="form-inline">
                     <div class="row">
 
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-5 col-xs-12">
                             <label id="labelDestination" for="addDestination">Destination</label>
                             {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination'} %}
                             <span id="errorBlockDestination_addDestination" class="error-block hidden">Veuillez choisir une destination.</span>
                         </div>
 
-                        <div class="form-group col-sm-6">
-                            <div class="input-group" style="width: 100%">
-                                <label id="labelNumberDays" for="numberDays">Nombre de jours</label>
-                                {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-fab btn-fab-mini btn-success">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </span>
-                            </div>
+                        <div class="form-group col-sm-4 col-xs-7">
+                            <label id="labelNumberDays" for="numberDays">Nombre de jours</label>
+                            {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
                         </div>
 
+                        <div class="form-group col-sm-3 col-xs-5">
+                            <button type="submit" class="btn btn-raised btn-primary pull-right">
+                                <i class="fa fa-plus"></i><span class="hidden-xs"> Ajouter</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
 
