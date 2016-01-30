@@ -1,7 +1,11 @@
 .modal-backdrop {
-  background: rgba(0,0,0,.8);
+  background: rgba(0, 0, 0, .8);
 }
 
 .modal-backdrop.in {
   opacity: .6;
+}
+
+.hideAnimation {
+  background-size: 0 !important;
 }

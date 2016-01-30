@@ -1,10 +1,4 @@
-{#   DOC Select 2   #}
-{#https://github.com/select2/select2/releases/tag/3.5.3#}
-{#https://fk.github.io/select2-bootstrap-css/index.html#}
-{#http://select2.github.io/select2/#}
-
-
-<select class="form-control destination {% if classSelect is defined %}{{ classSelect }}{% endif %}" required="required" id="{{ selectId }}">
+<select class="form-control destination hideAnimation {% if classSelect is defined %}{{ classSelect }}{% endif %}" required="required" id="{{ selectId }}">
     <option></option>
     {% for country in countries %}
         <optgroup label="{{ country.name }}" data-country-code="{{ country.codeAlpha2 }}">

@@ -1,38 +1,34 @@
 <div class="container-fluid" id="containerAddDestination">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 id="addDestinationHeader">Ajouter une destination</h3>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 
-                        <form class="form-inline">
-                            <div class="row">
-                                <div class="form-group col-sm-5">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label id="labelDestination" for="addDestination">Destination</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination'} %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-3">
-                                    <label for="numberDays">Nombre de jours</label>
-                                    {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
-                                </div>
-                                <div class="col-sm-2">
-                                    <button type="submit" class="btn btn-default btn-success"
-                                            data-loading-text="Chargement ...">
-                                        <i class="fa fa-plus"></i> Ajouter
+            <div class="well">
+                <h3 id="addDestinationHeader">Ajouter une destination</h3>
+                <form class="form-inline">
+                    <div class="row">
+
+                        <div class="form-group col-sm-6">
+                            <label id="labelDestination" for="addDestination">Destination</label>
+                            {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination'} %}
+                            <span id="errorBlockDestination_addDestination" class="error-block hidden">Veuillez choisir une destination.</span>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <div class="input-group" style="width: 100%">
+                                <label id="labelNumberDays" for="numberDays">Nombre de jours</label>
+                                {% include 'AppBundle:Destination:selectNbDays.html.twig' %}
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-fab btn-fab-mini btn-success">
+                                        <i class="fa fa-plus"></i>
                                     </button>
-                                </div>
+                                </span>
                             </div>
-                        </form>
+                        </div>
 
                     </div>
-                </div>
+                </form>
+
+
             </div>
         </div>
     </div>

@@ -24,6 +24,7 @@
     "select2": "~3.5.0",
     "select2-bootstrap-css": "~1.4.6",
     "bootstrap-social": "~4.12.0",
-    "bootstrap-datepicker": "~1.5.1"
+    "bootstrap-datepicker": "~1.5.1",
+    "x-editable": "~1.5.1"
   }
 }

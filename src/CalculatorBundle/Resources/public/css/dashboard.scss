@@ -23,7 +23,11 @@
 
 #addDestinationHeader {
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+}
+
+#containerAddDestination .form-group {
+    margin-top: 5px;
 }
 
 #containerStats h3 {
@@ -35,6 +39,7 @@
     padding: 10px 30px 5px 30px;
 }
 
+#labelNumberDays,
 #labelDestination {
     padding-top: 5px;
 }

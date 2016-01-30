@@ -27,14 +27,20 @@ $().ready(function () {
         formatResult: format,
         formatSelection: format,
         escapeMarkup: function(m) { return m; },
-        placeholder: "",
+        placeholder: "Choisir une destination",
         theme: "bootstrap"
     });
 
 
+    $("#containerAddDestination button").on("click", function (event) {
+        $("#errorBlockDestination_addDestination").addClass("hidden");
+        if (!$destination.val()) {
+            $("#errorBlockDestination_addDestination").removeClass("hidden");
+        }
+    });
+
     $("#containerAddDestination form").submit(function (event) {
         event.preventDefault();
-        $(".select2").removeClass("has-error");
 
         var data = {
             nbDays: $numberDays.val(),
@@ -42,11 +48,10 @@ $().ready(function () {
         };
 
         if (data.destinationId === "") {
-            $(".select2").addClass("has-error");
             return;
         }
 
-        $("#containerAddDestination form button").button('loading');
+        //$("#containerAddDestination form button").button('loading');
         var url = addStageUrl.replace("0", data.destinationId);
         $.post(url, data, function (response) {
             window.location.reload();

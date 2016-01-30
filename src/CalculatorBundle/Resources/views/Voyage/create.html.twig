@@ -21,8 +21,10 @@
                 <h1>Création de votre voyage</h1>
             </div>
 
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 well">
-                {% include 'CalculatorBundle:Voyage:createForm.html.twig' with {'selectId' : 'selectDestination'} %}
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                <div class="well">
+                    {% include 'CalculatorBundle:Voyage:createForm.html.twig' with {'selectId' : 'selectDestination'} %}
+                </div>
             </div>
         </div>
     </div>
@@ -49,5 +51,5 @@
     <script>
         var voyageCRUDCreateUrl = "{{ path('voyageCRUDCreate') }}";
     </script>
-    <script src="{{ asset('js/createVoyage.js') }}"></script>
+    <script src="{{ asset('js/createVoyage.min.js') }}"></script>
 {% endblock %}

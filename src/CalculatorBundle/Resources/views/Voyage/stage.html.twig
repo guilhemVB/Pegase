@@ -1,12 +1,10 @@
 {% set destination = stage.destination %}
 <li class="cursorMove" data-stage-id="{{ stage.id }}">
     <div class="row">
-        <div class="col-sm-3">
-            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
-        </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <img class='flagCountrySmall flagCountryStage' src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
-            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+            <a href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a> -
+            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
         </div>
         <div class="col-sm-1">
             <span class="stageStars" data-stage-id="{{ stage.id }}">
@@ -18,8 +16,9 @@
         </div>
         <div class="col-sm-3">
             <span class="stagePrice" data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €</span>
-            <button type="button" class="btn btn-danger btn-xs pull-right btnDeleteStage"
+            <button type="button" class="btn btn-danger btn-raised btn-xs pull-right btnDeleteStage"
                     data-loading-text="Suppression ..."
+                    style="margin: 0;"
                     data-stage-id="{{ stage.id }}"><i class="fa fa-trash"></i> Supprimer</button>
         </div>
     </div>
