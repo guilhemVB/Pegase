@@ -28,7 +28,9 @@ $().ready(function () {
     $(".destination").select2({
         formatResult: format,
         formatSelection: format,
-        escapeMarkup: function(m) { return m; },
+        escapeMarkup: function (m) {
+            return m;
+        },
         placeholder: "Choisir une destination",
         theme: "bootstrap"
     });
@@ -54,6 +56,7 @@ $().ready(function () {
         }
 
         $("#containerAddDestination form button").button('loading');
+        disabledActions();
         var url = addStageUrl.replace("0", data.destinationId);
         $.post(url, data, function (response) {
             window.location.reload();
@@ -61,17 +64,29 @@ $().ready(function () {
     });
 
     $(".btnDeleteStage").on('click', function (e) {
-        $(this).button('loading');
+        $(this).html('<i class="fa fa-spinner fa-spin"></i>');
+        disabledActions();
         var url = removeStageUrl.replace("0", $(this).data('stageId'));
         $.post(url, function (response) {
             window.location.reload();
         }, "json");
     });
 
+    function disabledActions() {
+        $(".btnDeleteStage").addClass("disabled");
+        $("#addDestinationHeader button").addClass("disabled");
+        $.sortaleElement.option("disabled", true);
+    }
+
+    function enableActions() {
+        $(".btnDeleteStage").removeClass("disabled");
+        $("#addDestinationHeader button").removeClass("disabled");
+        $.sortaleElement.option("disabled", false);
+    }
 
     $(document).ready(function () {
 
-        Sortable.create(listDestinations, {
+        $.sortaleElement = Sortable.create(listDestinations, {
             animation: 200,
             handle: ".drag-handle",
             onUpdate: function (evt) {
@@ -85,8 +100,9 @@ $().ready(function () {
                     oldPosition: evt.oldIndex + 1
                 };
                 var url = changePositionStageUrl.replace(0, stageId);
+                disabledActions();
                 $.post(url, data, function (response) {
-
+                    enableActions();
                     maplace.Load({
                         locations: response.maplaceData,
                         map_div: '#gmap',
@@ -111,11 +127,11 @@ $().ready(function () {
 
 
     $.fn.editableform.buttons =
-        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">'+
-        '<i class="fa fa-check"></i>'+
-        '</button>'+
-        '<button type="button" class="btn btn-default btn-raised    btn-sm editable-cancel">'+
-        '<i class="fa fa-times"></i>'+
+        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
+        '<i class="fa fa-check"></i>' +
+        '</button>' +
+        '<button type="button" class="btn btn-default btn-raised    btn-sm editable-cancel">' +
+        '<i class="fa fa-times"></i>' +
         '</button>';
     $.fn.editable.defaults.mode = 'inline';
     $(document).ready(function () {
@@ -144,7 +160,7 @@ $().ready(function () {
 
                 $('[data-toggle="tooltip"]').tooltip();
             },
-            inputclass:'selectEditable',
+            inputclass: 'selectEditable',
             source: [
                 {value: 1, text: '1 jour'},
                 {value: 2, text: '2 jours'},
