@@ -36,9 +36,11 @@
                     data-btn-cancel-class="btn btn-danger btn-raised btn-sm" data-btn-cancel-icon="fa fa-times" data-btn-cancel-label="Non"
                     ><i class="fa fa-trash"></i>
             </button>
-            <span class="stagePrice pull-right"
-                  data-stage-id="{{ stage.id }}">{{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }}
-                €</span>
+            <span class="stagePrice pull-right" data-stage-id="{{ stage.id }}">
+                <span class="label label-success">
+                    {{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €
+                </span>
+            </span>
         </div>
     </div>
 </li>

@@ -20,8 +20,10 @@
             </span>
         </div>
 
-        <div class="col-md-2 col-sm-2 col-xs-3 text-right">
-            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
+        <div class="col-md-3 col-sm-2 col-xs-3 text-right">
+            <span class="label label-success">
+                {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
+            </span>
         </div>
     </div>
 </li>
