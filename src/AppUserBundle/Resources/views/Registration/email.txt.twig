@@ -3,11 +3,13 @@
     Bienvenu sur Le Monde en Sac {{ user.username }} !
     {% endautoescape %}
 {% endblock %}
+
 {% block body_text %}
 {% autoescape false %}
-Bonjour,
+Bonjour {{ user.username }},
 
-Merci de votre inscription sur Le Monde en Sac. Pour valider votre compte utilisateur, merci de cliquer sur le lien suivant {{ confirmationUrl }}
+Merci de votre inscription sur Le Monde en Sac. Pour valider votre compte utilisateur, merci de cliquer sur le lien suivant
+{{ confirmationUrl }}
 
 Bon voyage,
 Le Monde en Sac (Guilhem et Laura)
@@ -15,4 +17,6 @@ http://www.lemondeensac.com/
 
 {% endautoescape %}
 {% endblock %}
-{% block body_html %}{% endblock %}
+
+{% block body_html %}
+{% endblock %}
