@@ -12,13 +12,15 @@
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
     <meta property="og:image:width" content="1500"/>
-    <meta property="og:description" content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac"/>
+    <meta property="og:description"
+          content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac"/>
 {% endblock %}
 
 {% block tweeterCard %}
     {{ parent() }}
     <meta name="twitter:title" content="Le Monde en Sac">
-    <meta name="twitter:description" content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac.">
+    <meta name="twitter:description"
+          content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac.">
     <meta name="twitter:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}">
 {% endblock %}
 
@@ -41,7 +43,7 @@
             <div class="row">
 
                 <div class="col-md-offset-1 col-md-5 col-lg-offset-2 col-lg-4">
-                    <h2>Pour les voyageurs ...</h2>
+                    <h3>Pour les voyageurs ...</h3>
 
                     <p class="text-center">
                         Que vous soyez backpackers, tourdumondistes ou simples curieux, venez décourir de nouvelles
@@ -50,7 +52,7 @@
                 </div>
 
                 <div class="col-md-5 col-lg-4">
-                    <h2>... Par des voyageurs</h2>
+                    <h3>... Par des voyageurs</h3>
 
                     <p class="text-center">
 
@@ -63,7 +65,7 @@
 
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-                    <h2>Pays et destinations</h2>
+                    <h3>Pays et destinations</h3>
 
                     <p class="text-center">
                         Plus de 100 fiches contenant une courte description de la destination, le prix moyen d'une
@@ -110,6 +112,50 @@
             {#data-show-faces="true">#}
             {#</div>#}
 
+        </div>
+
+        <div class="container-fluid containerPadding containerGrey text-center">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2>Planificateur de voyage</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid containerPadding15 containerGrey text-justify">
+            <div class="row">
+                <div class="col-md-1 col-md-offset-3 col-sm-1 col-sm-offset-2 col-xs-2 col-lg-1 col-lg-offset-1">
+                    <i class="fa fa-map-marker fa-5x"></i>
+                </div>
+                <div class="col-md-5 col-sm-7 col-xs-10 col-lg-8">
+                    <p>Préparer un tour du monde prend beaucoup de temps. Nous nous en sommes aperçus en cherchant les
+                        nombreuses informations utiles pour le notre. Idées d'itinéraires, périodes favorables ou encore
+                        budget journalier par destinations sont autant de questions que l'on se posent.
+                        C'est pourquoi nous avons développé un planificateur qui permet facilement d'organiser
+                        son voyage.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid containerPadding15 containerGrey text-justify">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-5 col-sm-7 col-sm-offset-2 col-xs-10 col-lg-8 col-lg-offset-2">
+                    <p>En quelques clics, vous aurez un apercu des meilleures périodes pour visiter les destinations,
+                        une estimation du coût de chaque étape, et vous pourrez budgeter votre voyage en sac à dos.
+                        Que se soit pour préparer un tour du monde, planifier un tour d'europe, faire un road trip en
+                        Amérique ou un simple weekend en mode backpack, le planificateur de voyage vous sera utile.
+                    </p>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-2 col-lg-1 text-right">
+                    <i class="fa fa-map-signs fa-5x"></i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                    <a href="{{ path('fos_user_registration_register') }}"
+                       class="btn btn-raised btn-lg btn-block btn-primary">
+                        <i class="fa fa-globe"></i> Commencer votre voyage</a>
+                </div>
+            </div>
         </div>
 
 
