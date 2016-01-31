@@ -59,6 +59,40 @@
     }
 }
 
+@media screen and (max-width: 460px) {
+    #carouselHomepage .carousel-caption {
+        height: initial;
+    }
+    #carouselHomepage h1 {
+        font-size: 35px;
+        padding-bottom: 0;
+    }
+    #carouselHomepage h2 {
+        font-size: 30px;
+        padding-bottom: 0;
+    }
+    #carouselHomepage p {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    #carouselHomepage .carousel-caption {
+        height: initial;
+    }
+    #carouselHomepage h1 {
+        font-size: 25px;
+        padding-bottom: 0;
+    }
+    #carouselHomepage h2 {
+        font-size: 20px;
+        padding-bottom: 0;
+    }
+    #carouselHomepage p {
+        display: none;
+    }
+}
+
 
 .fb-like {
     transform: scale(1.4);
