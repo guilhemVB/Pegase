@@ -81,12 +81,14 @@ $().ready(function () {
         $(".btnDeleteStage").addClass("disabled");
         $("#addDestinationHeader button").addClass("disabled");
         $.sortaleElement.option("disabled", true);
+        $.editableElement.not(".editable-open").editable('disable');
     }
 
     function enableActions() {
         $(".btnDeleteStage").removeClass("disabled");
         $("#addDestinationHeader button").removeClass("disabled");
         $.sortaleElement.option("disabled", false);
+        $.editableElement.editable('enable');
     }
 
     $(document).ready(function () {
@@ -141,7 +143,7 @@ $().ready(function () {
     $.fn.editable.defaults.mode = 'inline';
     $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
     $(document).ready(function () {
-        $('.nbDaysStage').editable({
+        $.editableElement = $('.nbDaysStage').editable({
             type: 'select',
             url: changeNbDaysStageUrl,
             validate: function (value) {
@@ -151,8 +153,10 @@ $().ready(function () {
                 var stageId = $(this).data('pk');
                 var $stagePrice = $('.stagePrice[data-stage-id="' + stageId + '"]');
                 $stagePrice.html('<i class="fa fa-spinner fa-spin"></i>');
+                disabledActions();
             },
             success: function (response, newValue) {
+                enableActions();
                 $.updateNavBarInfos();
                 updateStats(response.statsView);
 
