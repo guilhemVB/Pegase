@@ -7,9 +7,14 @@ $().ready(function () {
         startDate: new Date()
     });
 
-
     function format(country) {
         if (country.id) {
+
+            var destinationName = country.element[0].attributes.getNamedItem("data-destination-name");
+            if(destinationName) {
+                return destinationName.value;
+            }
+
             return country.text;
         }
         var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;

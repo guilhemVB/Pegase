@@ -16,6 +16,11 @@ $().ready(function () {
 
     function format(country) {
         if (country.id) {
+            var destinationName = country.element[0].attributes.getNamedItem("data-destination-name");
+            if (destinationName) {
+                return destinationName.value;
+            }
+
             return country.text;
         }
         var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;
@@ -26,7 +31,9 @@ $().ready(function () {
     $destinationSelect.select2({
         formatResult: format,
         formatSelection: format,
-        escapeMarkup: function(m) { return m; },
+        escapeMarkup: function (m) {
+            return m;
+        },
         placeholder: "Rechercher une destination",
         theme: "bootstrap"
     });
