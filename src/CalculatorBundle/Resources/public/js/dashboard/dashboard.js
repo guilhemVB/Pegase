@@ -135,28 +135,30 @@ $().ready(function () {
         '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
         '<i class="fa fa-check"></i>' +
         '</button>' +
-        '<button type="button" class="btn btn-default btn-raised    btn-sm editable-cancel">' +
+        '<button type="button" class="btn btn-default btn-raised btn-sm editable-cancel">' +
         '<i class="fa fa-times"></i>' +
         '</button>';
     $.fn.editable.defaults.mode = 'inline';
+    $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
     $(document).ready(function () {
         $('.nbDaysStage').editable({
             type: 'select',
             url: changeNbDaysStageUrl,
             validate: function (value) {
+                if ($(this).data('value') == value) {
+                    return ;
+                }
                 var stageId = $(this).data('pk');
                 var $stagePrice = $('.stagePrice[data-stage-id="' + stageId + '"]');
-                $stagePrice.html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-                $stagePrice.addClass('editableform-loading');
+                $stagePrice.html('<i class="fa fa-spinner fa-spin"></i>');
             },
             success: function (response, newValue) {
                 $.updateNavBarInfos();
                 updateStats(response.statsView);
 
                 var $stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
-                $stagePrice.removeClass('editableform-loading');
                 var priceHtml = response.stagePrice + ' &euro;';
-                $stagePrice.html(priceHtml);
+                $stagePrice.html('<span class="label label-success">' + priceHtml + '</span>');
 
                 $.each(response.voyageStats.stagesStats, function (stageId, stats) {
                     var $stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
