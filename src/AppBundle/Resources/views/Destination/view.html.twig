@@ -60,6 +60,11 @@
                         {% endif %}
                     </h1>
                 </div>
+                <div class="col-lg-10 col-lg-offset-1 col-md-12" id="btnAddToVoyage">
+                    <div class="pull-right">
+                        {{ btnAddToVoyage | raw }}
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -67,11 +72,6 @@
         <div class="container-fluid containerMap">
             <div class="row">
                 <div class="col-lg-3 col-lg-offset-1 col-md-4">
-                    {#<div class="row">#}
-                    {#<div class="col-md-12" id="btnAddToVoyage">#}
-                    {#{{ btnAddToVoyage | raw }}#}
-                    {#</div>#}
-                    {#</div>#}
 
                     <h2>Description</h2>
 
@@ -244,7 +244,7 @@
 
         {#{% include 'AppBundle:Destination:destinationShareBtn.html.twig' %}#}
 
-        {#{% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}#}
+        {% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}
 
     </div>
 
@@ -257,8 +257,8 @@
     <script src="{{ asset('assets/maplace-js/dist/maplace.min.js') }}"></script>
     <script>
         var maplaceData = {{ maplaceData|raw }};
-        {#var addStageUrl = "{{ path('addStage', {'id' : destination.id}) }}";#}
-        {#var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";#}
+        var addStageUrl = "{{ path('addStage', {'id' : destination.id}) }}";
+        var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
     </script>
     <script src="{{ asset('js/destination.min.js') }}"></script>
 {% endblock %}

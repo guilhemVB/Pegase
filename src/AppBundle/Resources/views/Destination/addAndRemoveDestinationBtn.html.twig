@@ -1,34 +1,33 @@
 <div>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% if user is not null and user.voyages|length > 0 %}
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addToVoyageModal"
+            <button type="button" class="btn btn-success btn-sm btn-raised" data-toggle="modal" data-target="#addToVoyageModal"
                     data-destination-name="{{ destination.name }}">
                 <i class="fa fa-plus"></i> Ajouter
             </button>
+
+            {% for stage in stages %}
+                <button type="button" class="btn btn-danger btn-sm btn-raised"
+                        data-stage-id="{{ stage.id }}"
+                        data-stage-nb-days="{{ stage.nbDays }}"
+                        data-stage-position="{{ stage.position }}"
+                        data-destination-name="{{ destination.name }}"
+                        data-toggle="modal"
+                        data-target="#removeFromVoyageModal">
+                    <i class="fa fa-minus"></i> {{ stage.nbDays }} jour{% if stage.nbDays > 1 %}s{% endif %}
+                </button>
+            {% endfor %}
+
         {% else %}
-            <a href="{{ path('dashboard') }}" class="btn btn-success">
+            <a href="{{ path('dashboard') }}" class="btn btn-success btn-sm btn-raised">
                 <i class="fa fa-plus"></i> Ajouter
             </a>
         {% endif %}
     {% else %}
-        <a href="#" data-toggle="modal" class="btn btn-success" data-target="#connectionModal">
+        <a href="#" data-toggle="modal" class="btn btn-success btn-sm btn-raised" data-target="#connectionModal">
             <i class="fa fa-plus"></i> Ajouter à votre voyage
         </a>
     {% endif %}
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') and stages is defined %}
-
-        {% for stage in stages %}
-            <button type="button" class="btn btn-danger"
-                    data-stage-id="{{ stage.id }}"
-                    data-stage-nb-days="{{ stage.nbDays }}"
-                    data-stage-position="{{ stage.position }}"
-                    data-destination-name="{{ destination.name }}"
-                    data-toggle="modal"
-                    data-target="#removeFromVoyageModal">
-                <i class="fa fa-minus"></i> {{ stage.nbDays }} jour{% if stage.nbDays > 1 %}s{% endif %}
-            </button>
-        {% endfor %}
-    {% endif %}
 </div>
 

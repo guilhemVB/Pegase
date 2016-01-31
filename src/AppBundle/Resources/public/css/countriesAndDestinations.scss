@@ -12,6 +12,17 @@
     border-bottom: 1px solid $colorOrange;
 }
 
+#destinationView .page-header {
+    margin-top: 10px;
+    margin-bottom: 0;
+    border-bottom: 1px solid $colorOrange;
+}
+
+#destinationView #btnAddToVoyage button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 #countryView h1,
 #destinationView h1 {
     font-size: 46px;

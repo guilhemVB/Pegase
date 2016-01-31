@@ -7,11 +7,11 @@
             </div>
             <div class="modal-body">
                 <h5>Combien de jours souhaitez-vous rester sur place ?</h5>
-                {% include 'AppBundle:Destination:selectNbDays.html.twig' with { 'classNbSelect' : 'input-lg'} %}
+                {% include 'AppBundle:Destination:selectNbDays.html.twig' with { 'classNbSelect' : ''} %}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button id="addToVoyageBtn" type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
+                <button type="button" class="btn btn-danger btn-raised" data-dismiss="modal">Annuler</button>
+                <button id="addToVoyageBtn" type="button" class="btn btn-success btn-raised" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger btn-raised" data-dismiss="modal">Annuler</button>
                 <button id="removeFromVoyageBtn" type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
             </div>
         </div>
