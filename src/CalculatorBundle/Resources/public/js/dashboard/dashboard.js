@@ -53,7 +53,7 @@ $().ready(function () {
             return;
         }
 
-        //$("#containerAddDestination form button").button('loading');
+        $("#containerAddDestination form button").button('loading');
         var url = addStageUrl.replace("0", data.destinationId);
         $.post(url, data, function (response) {
             window.location.reload();
