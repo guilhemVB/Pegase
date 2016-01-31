@@ -42,7 +42,13 @@
 
                     {% if error %}
                         <p class="text-center ">
-                            <strong>Nom d'utilisateur ou mot de passe incorrect</strong>
+                            <strong>
+                                {% if error == 'User account is disabled.' %}
+                                    Vous n'avez pas encore validé votre email
+                                {% else %}
+                                    Nom d'utilisateur ou mot de passe incorrect
+                                {% endif %}
+                            </strong>
                         </p>
                     {% endif %}
                 </div>

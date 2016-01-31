@@ -1,0 +1,56 @@
+{% set activeProfile = true %}
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Inscription Validée - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid containerBlue containerPadding">
+
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+                <p class="text-center lead">
+                    {{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="text-center">
+                    <a class="btn btn-raised btn-success" href="{{ path('fos_user_security_login') }}" role="button">
+                        <i class="fa fa-sign-in"></i> Connexion
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-md hidden-sm hidden-xs">
+        <div style="height: 150px;"></div>
+    </div>
+
+    <div class="container-fluid containerPadding">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'barcelone' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'katmandou' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'phnom-penh' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'saint-petersbourg' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'san-jose' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'ushuaia' })) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-md hidden-sm hidden-xs">
+        <div style="height: 50px;"></div>
+    </div>
+
+{% endblock %}
