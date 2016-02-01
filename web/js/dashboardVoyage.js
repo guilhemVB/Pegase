@@ -151,22 +151,24 @@ $().ready(function () {
                     return ;
                 }
                 var stageId = $(this).data('pk');
-                var $stagePrice = $('.stagePrice[data-stage-id="' + stageId + '"]');
-                $stagePrice.html('<i class="fa fa-spinner fa-spin"></i>');
+                var stagePrice = $('.stagePrice[data-stage-id="' + stageId + '"]');
+                stagePrice.html('<i class="fa fa-spinner fa-spin"></i>');
                 disabledActions();
             },
             success: function (response, newValue) {
-                enableActions();
                 $.updateNavBarInfos();
+                enableActions();
                 updateStats(response.statsView);
 
-                var $stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
+                var stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
                 var priceHtml = response.stagePrice + ' &euro;';
-                $stagePrice.html('<span class="label label-success">' + priceHtml + '</span>');
+                stagePrice.html('<span class="label label-success">' + priceHtml + '</span>');
 
                 $.each(response.voyageStats.stagesStats, function (stageId, stats) {
-                    var $stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
-                    $stageStars.html(stats.starsView);
+                    var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
+                    var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
+                    stageStars.html(stats.starsView);
+                    stageStartDate.html(stats.dateFromFormated);
                 });
 
                 $('[data-toggle="tooltip"]').tooltip();

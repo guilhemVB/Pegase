@@ -43,10 +43,11 @@ class StatCalculatorStageStats implements StatCalculatorInterface
 
         $nbStars = $this->extractNbStart($this->dateFrom, $this->dateTo, $stage->getDestination());
         $this->stagesStats[$stage->getId()] = [
-            'dateFrom'  => $this->dateFrom,
-            'dateTo'    => $this->dateTo,
-            'nbStars'   => $nbStars,
-            'starsView' => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars, 'dateFrom' => $this->dateFrom, 'dateTo' => $this->dateTo]),
+            'dateFrom'         => $this->dateFrom,
+            'dateFromFormated' => $this->twig->render('AppBundle:Common:date.html.twig', ['date' => $this->dateFrom]),
+            'dateTo'           => $this->dateTo,
+            'nbStars'          => $nbStars,
+            'starsView'        => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars]),
         ];
     }
 

@@ -16,7 +16,9 @@
         </div>
 
         <div class="col-md-3 col-sm-4 col-xs-11">
-            {{ stageStats.dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
+            <span class="stageStartDate" data-stage-id="{{ stage.id }}">
+                {{ stageStats.dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
+            </span>
             <span class="stageStars pull-right" data-stage-id="{{ stage.id }}">
                 {{ stageStats.starsView | raw }}
             </span>
