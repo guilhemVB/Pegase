@@ -18,35 +18,67 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-offset-1 col-lg-10 col-md-12" style="height: 25px">
 
-            <div class="col-md-2 col-sm-1 col-xs-6">
+        {% if hidePrices == false and allowModification == true %}
+            <div class="col-lg-offset-1 col-lg-10 col-md-12" style="height: 25px">
+
+                <div class="col-md-2 col-sm-1 col-xs-6">
                     <span style="padding-left: 25px" class="hidden-sm">
                         <strong>Pays</strong>
                     </span>
-            </div>
+                </div>
 
-            <div class="col-md-3 col-sm-2 col-xs-6">
+                <div class="col-md-3 col-sm-2 col-xs-6">
                     <span>
                         <strong>Destination</strong>
                     </span>
-            </div>
+                </div>
 
-            <div class="col-md-3 col-sm-4 col-xs-11 hidden-xs">
-                <strong>Date d'arrivée</strong>
+                <div class="col-md-3 col-sm-4 col-xs-11 hidden-xs">
+                    <strong>Date d'arrivée</strong>
                     <span class="pull-right" style="padding-right: 5px;">
                         <strong>Période</strong>
                     </span>
-            </div>
+                </div>
 
-            <div class="col-md-4 col-sm-5 col-xs-12 hidden-xs">
-                <strong>Jours sur place</strong>
+                <div class="col-md-4 col-sm-5 col-xs-12 hidden-xs">
+                    <strong>Jours sur place</strong>
                     <span class="pull-right" style="padding-right: 60px">
                         <strong>Budget</strong>
                     </span>
+                </div>
+
+            </div>
+        {% else %}
+            <div class="col-lg-offset-1 col-lg-10 col-md-12" style="height: 25px">
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <span style="padding-left: 25px" class="hidden-sm">
+                        <strong>Pays</strong>
+                    </span>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <span>
+                        <strong>Destination</strong>
+                    </span>
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-xs-9">
+                    <strong>Date d'arrivée</strong>
+                    <span class="pull-right" style="padding-right: 5px;">
+                        <strong>Période</strong>
+                    </span>
+                </div>
+
+                <div class="col-md-3 col-sm-2 col-xs-3 text-right">
+                    <strong>Jours sur place</strong>
+                </div>
+
             </div>
 
-        </div>
+        {% endif %}
+
         <div class="col-lg-offset-1 col-lg-10 col-md-12">
             <ul id="listDestinations">
                 {% for stage in stagesSorted %}
