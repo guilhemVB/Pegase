@@ -1,52 +1,45 @@
 <div class="pull-right">
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        {% if user is not null and user.voyages|length > 0 %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') and  user is not null and user.voyages|length > 0 %}
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-success btn-sm btn-raised" data-toggle="modal"
-                        data-target="#addToVoyageModal"
-                        data-destination-name="{{ destination.name }}">
-                    <i class="fa fa-plus"></i> Ajouter
-                </button>
-
-                {% if stages|length > 0 %}
-                    <div class="btn-group">
-                        <button class="btn btn-danger btn-sm btn-raised dropdown-toggle" data-toggle="dropdown">
-                            Supprimer
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-
-
-                            {% for stage in stages %}
-                                <li>
-                                    <a href="#"
-                                       data-stage-id="{{ stage.id }}"
-                                       data-stage-nb-days="{{ stage.nbDays }}"
-                                       data-stage-position="{{ stage.position }}"
-                                       data-destination-name="{{ destination.name }}"
-                                       data-toggle="modal"
-                                       data-target="#removeFromVoyageModal">
-                                        {{ stage.nbDays }} jour{% if stage.nbDays > 1 %}s{% endif %}
-                                    </a>
-                                </li>
-                            {% endfor %}
-
-
-                        </ul>
-                    </div>
-                {% endif %}
-
-            </div>
-
-
-        {% else %}
-            <a href="{{ path('dashboard') }}" class="btn btn-success btn-sm btn-raised">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success btn-sm btn-raised" data-toggle="modal"
+                    data-target="#addToVoyageModal"
+                    data-destination-name="{{ destination.name }}">
                 <i class="fa fa-plus"></i> Ajouter
-            </a>
-        {% endif %}
+            </button>
+
+            {% if stages|length > 0 %}
+                <div class="btn-group">
+                    <button class="btn btn-danger btn-sm btn-raised dropdown-toggle" data-toggle="dropdown">
+                        Supprimer
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+
+
+                        {% for stage in stages %}
+                            <li>
+                                <a href="#"
+                                   data-stage-id="{{ stage.id }}"
+                                   data-stage-nb-days="{{ stage.nbDays }}"
+                                   data-stage-position="{{ stage.position }}"
+                                   data-destination-name="{{ destination.name }}"
+                                   data-toggle="modal"
+                                   data-target="#removeFromVoyageModal">
+                                    {{ stage.nbDays }} jour{% if stage.nbDays > 1 %}s{% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+
+
+                    </ul>
+                </div>
+            {% endif %}
+
+        </div>
+
     {% else %}
-        <a href="#" data-toggle="modal" class="btn btn-success btn-sm btn-raised" data-target="#connectionModal">
+        <a href="{{ path('dashboard') }}" class="btn btn-success btn-sm btn-raised">
             <i class="fa fa-plus"></i> Ajouter à votre voyage
         </a>
     {% endif %}
