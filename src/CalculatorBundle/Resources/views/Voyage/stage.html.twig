@@ -1,11 +1,11 @@
 {% set destination = stage.destination %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
 
-<li class="stageMovable" data-stage-id="{{ stage.id }}">
+<li class="stageMovable stageStyle" data-stage-id="{{ stage.id }}">
     <div class="row">
 
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
-            <span class="drag-handle"><i class="fa fa-lg fa-sort"></i></span>
+            <span class="drag-handle handle-fa-icon"><i class="fa fa-lg fa-sort"></i></span>
             <img class='flagCountrySmall flagCountryStage'
                  src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
             <a class="hidden-sm" href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>

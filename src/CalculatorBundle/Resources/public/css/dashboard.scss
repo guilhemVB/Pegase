@@ -4,8 +4,8 @@
     padding: 0;
 }
 
-#shareVoyage li,
-#dashboard li {
+#shareVoyage .stageStyle,
+#dashboard .stageStyle {
     background: gainsboro;
     margin: 1px;
     padding: 10px 15px;
@@ -14,6 +14,9 @@
 
 .stageMovable .drag-handle {
     cursor: n-resize;
+}
+
+.stageStyle .handle-fa-icon {
     padding-right: 10px;
 }
 
