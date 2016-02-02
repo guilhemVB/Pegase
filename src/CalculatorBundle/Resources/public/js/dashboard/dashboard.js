@@ -103,8 +103,8 @@ $().ready(function () {
                 }
                 var stageId = item.dataset.stageId;
                 var data = {
-                    newPosition: evt.newIndex + 1,
-                    oldPosition: evt.oldIndex + 1
+                    newPosition: evt.newIndex, // index start by 1, but start destination is in ul list.
+                    oldPosition: evt.oldIndex
                 };
                 var url = changePositionStageUrl.replace(0, stageId);
                 disabledActions();
