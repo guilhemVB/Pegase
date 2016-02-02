@@ -64,14 +64,14 @@
                     </span>
                 </div>
 
-                <div class="col-md-3 col-sm-4 col-xs-9">
+                <div class="col-md-3 col-sm-4 col-xs-9 hidden-xs">
                     <strong>Date d'arrivée</strong>
                     <span class="pull-right" style="padding-right: 5px;">
                         <strong>Période</strong>
                     </span>
                 </div>
 
-                <div class="col-md-3 col-sm-2 col-xs-3 text-right">
+                <div class="col-md-3 col-sm-2 col-xs-3 text-right hidden-xs">
                     <strong>Jours sur place</strong>
                 </div>
 
@@ -83,6 +83,7 @@
             <ul id="listDestinations">
 
 
+                {% if hidePrices == false and allowModification == true %}
                 <div class="stageStyle">
                     <div class="row">
 
@@ -103,6 +104,28 @@
                         </div>
                     </div>
                 </div>
+                {% else %}
+                    <div class="stageStyle">
+                        <div class="row">
+
+                            <div class="col-md-3 col-sm-3 col-xs-6 ellipsis">
+                                <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
+                                <img class='flagCountrySmall flagCountryStage'
+                                     src='http://www.geonames.org/flags/x/{{ voyage.startDestination.country.codeAlpha2|lower }}.gif'/>
+                                <a class="hidden-sm"
+                                   href="{{ path('country', {'slug' : voyage.startDestination.country.slug }) }}">{{ voyage.startDestination.country.name }}</a>
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-6 ellipsis">
+                                <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 col-xs-9">
+                                Début du voyage
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
 
 
 
