@@ -10,7 +10,7 @@
 
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            {% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+            {% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'USA.JPG' %}
             <img class="img-responsive first-slide" src="{{ asset(bannerMartiniqueUrl) }}" alt="Banière Martinique">
 
             <div class="container">
@@ -31,31 +31,34 @@
         </div>
 
         <div class="item">
-            {% set bannerPekinUrl = image_banner_homepage_path ~ 'pekin.JPG' %}
+            {% set bannerPekinUrl = image_banner_homepage_path ~ 'plage.JPG' %}
             <img class="img-responsive second-slide" src="{{ asset(bannerPekinUrl) }}" alt="Banière Pekin">
 
             <div class="container">
                 <div class="carousel-caption">
-                    <h2>Sautez le pas !</h2>
+                    <h2>Conseils aux voyageurs</h2>
 
                     <p>
-                        Savez-vous qu'un tour du monde d'un an coûte moins cher qu'une voiture ?
+                        Des fiches recensant des bons plans et des informations pour préparer au mieux vos voyages.
                     </p>
                 </div>
             </div>
         </div>
 
         <div class="item">
-            {% set bannerVienneUrl = image_banner_homepage_path ~ 'vienne.JPG' %}
+            {% set bannerVienneUrl = image_banner_homepage_path ~ 'temple.JPG' %}
             <img class="img-responsive third-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
 
             <div class="container">
                 <div class="carousel-caption">
-                    <h2>Conseils de voyageurs</h2>
+                    <h2>Sautez le pas !</h2>
 
                     <p>
-                        Des fiches recensant des bons plans et des informations pour préparer au mieux vos voyages.
+                        Calculez votre budget, planifiez votre voyage et partez !
                     </p>
+                    <a href="{{ path('dashboard') }}"
+                       class="btn btn-raised btn-lg btn-primary">
+                        <i class="fa fa-globe"></i> Commencer votre voyage</a>
                 </div>
             </div>
         </div>
