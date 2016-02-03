@@ -1,6 +1,18 @@
 <select class="form-control {% if classNbSelect is defined %}{{ classNbSelect }}{% endif %}" id="numberDays">
     <option value="1">1 jour</option>
-    {% for i in 2..60 %}
+
+    {% for i in 2..34 %}
         <option value="{{ i }}" {% if i == 7 %}selected{% endif %}>{{ i }} jours</option>
     {% endfor %}
+
+    {% for i in 5..8 %}
+        <option value="{{ i * 7 }}">{{ i }} semaines</option>
+    {% endfor %}
+
+    <option value="60">2 mois</option>
+    <option value="90">3 mois</option>
+    <option value="120">4 mois</option>
+    <option value="150">5 mois</option>
+    <option value="180">6 mois</option>
+
 </select>
