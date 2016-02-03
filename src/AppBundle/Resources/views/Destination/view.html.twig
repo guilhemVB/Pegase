@@ -1,7 +1,10 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-{% set description = destination.name ~ " - " ~ destination.country.name ~ ", " ~ destination.totalPrices ~ " €  par jour. A faire : " ~ destination.tips[0] %}
+{% set description = destination.name ~ " - " ~ destination.country.name ~ ", " ~ destination.totalPrices ~ " €  par jour. A faire : " %}
+{% if destination.tips|length > 0 %}
+    {% set description = description ~ destination.tips[0] %}
+{% endif %}
 {% block metaDescription %}{{ description }}{% endblock %}
 {% block metaKeyword %}, destination, {{ destination.name }}, {{ destination.country.name }}{% endblock %}
 

@@ -41,7 +41,7 @@ class MaplaceMarkerBuilder
             $country->getLatitude(),
             $country->getName(),
             null, $country,
-            $options, $number);
+            $options, $number, false);
     }
 
     /**
@@ -56,7 +56,7 @@ class MaplaceMarkerBuilder
             $destination->getLatitude(),
             $destination->getName(),
             $destination, null,
-            $options, $number);
+            $options, $number, $destination->isPartial());
     }
 
     /**
@@ -67,9 +67,10 @@ class MaplaceMarkerBuilder
      * @param Country|null $country
      * @param array $options
      * @param null|int $number
+     * @param bool $onlyPoint
      * @return array
      */
-    private function buildMaker($longitude, $latitude, $name, $destination = null, $country = null, $options = [], $number = null)
+    private function buildMaker($longitude, $latitude, $name, $destination = null, $country = null, $options = [], $number = null, $onlyPoint = false)
     {
         $options = array_merge($this->defaultOptions(), $options);
         $dataMaplace = [
@@ -99,6 +100,8 @@ class MaplaceMarkerBuilder
             $number = $number % 26;
 
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker' . $iconLetters[$number] . '.png';
+        } else if ($onlyPoint) {
+            $dataMaplace['icon'] = 'http://labs.google.com/ridefinder/images/mm_20_orange.png';
         } else {
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker.png';
         }

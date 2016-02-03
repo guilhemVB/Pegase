@@ -1,7 +1,11 @@
 <div class="text-center">
     <img src="http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif"
          class="flagCountrySmall flagGmap" alt="drapeau {{ destination.country.name }}">
-    <a href="{{ path('destination', {'slug' : destination.slug }) }}" class="markerLabel">{{ destination.name }}</a>
+    {% if destination.isPartial %}
+        <span class="googleMarkerPartial">{{ destination.name }}</span>
+    {% else %}
+        <a href="{{ path('destination', {'slug' : destination.slug }) }}" class="markerLabel">{{ destination.name }}</a>
+    {% endif %}
     <span class="label label-success" style="font-size: 9px;">
         {{ destination.totalPrices }} &euro; / jour
     </span>

@@ -28,9 +28,8 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     {
         $this
             ->setName('app:import:destinations')
-            ->setDescription("Permet d'importer et mettre à jour la liste des destinations, utiliser l'option -f pour forcer l'insert")
-            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer')
-            ->addOption('force', '-f');
+            ->setDescription("Permet d'importer et mettre à jour la liste des destinations")
+            ->addArgument('fileName', InputArgument::REQUIRED, 'Nom du fichier csv à importer');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -38,8 +37,7 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
 
-        $forceInsert = $input->getOption('force');
-        $this->import($input, $output, $forceInsert);
+        $this->import($input, $output);
 
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
@@ -48,9 +46,8 @@ class ImportDestinationsCommand extends ContainerAwareCommand
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @param boolean $forceInsert
      */
-    private function import(InputInterface $input, OutputInterface $output, $forceInsert)
+    private function import(InputInterface $input, OutputInterface $output)
     {
         $this->assetExistsExtension = new AssetExistsExtension($this->getContainer()->get('kernel'));
         $this->imagePath = $this->getContainer()->getParameter('image_banner_destinations_path');
@@ -74,7 +71,6 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $countryName = $dataDestination['pays'];
             $name = $dataDestination['nom'];
             $description = $dataDestination['description'];
-            $use = $dataDestination['Utiliser'] === "oui";
 
             $country = $countryRepository->findOneByName($countryName);
             if (is_null($country)) {
@@ -112,19 +108,26 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             $destination->setLongitude($dataDestination['longitude']);
             $destination->setIsTheCapital($dataDestination['Capitale'] === 'oui');
 
-            if ($this->isComplete($output, $destination) || $forceInsert) {
-                if (!$use && !$forceInsert) {
-                    $output->writeln("<info>La destination '$name' est complète mais elle ne doit pas être utilisée -> non importé.</info>");
-                    continue;
-                }
-
+            $canBeInsert = $this->isComplete($output, $destination);
+            if ($canBeInsert['complete']) {
+                $destination->setIsPartial(false);
                 $em->persist($destination);
                 $nbToFlush++;
 
                 if ($isNew) {
-                    $output->writeln("<info>Nouvelle destination '$name'</info>");
+                    $output->writeln("<info>Nouvelle destination (complète) '$name'</info>");
                 } else {
-                    $output->writeln("<info>Modification de '$name'</info>");
+                    $output->writeln("<info>Modification de '$name' (complète)</info>");
+                }
+            } elseif ($canBeInsert['partial']) {
+                $destination->setIsPartial(true);
+                $em->persist($destination);
+                $nbToFlush++;
+
+                if ($isNew) {
+                    $output->writeln("<info>Nouvelle destination (partielle) '$name'</info>");
+                } else {
+                    $output->writeln("<info>Modification de '$name' (partielle)</info>");
                 }
             }
 
@@ -184,11 +187,15 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         $priceLifeCost = $destination->getPriceLifeCost();
         $tips = $destination->getTips();
 
+        $cantBePartial = false;
+
         $errors = [];
         if (empty($lat)) {
+            $cantBePartial = true;
             $errors[] = 'Latitude inconnue';
         }
         if (empty($lon)) {
+            $cantBePartial = true;
             $errors[] = 'Longitude inconnue';
         }
         if (empty($descriptions)) {
@@ -207,46 +214,59 @@ class ImportDestinationsCommand extends ContainerAwareCommand
             }
         }
         if (is_null($periodJanuary)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Janvier inconnues';
         }
         if (is_null($periodFebruary)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Février inconnues';
         }
         if (is_null($periodMarch)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Mars inconnues';
         }
         if (is_null($periodApril)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Avril inconnues';
         }
         if (is_null($periodMay)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Mai inconnues';
         }
         if (is_null($periodJune)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Juin inconnues';
         }
         if (is_null($periodJuly)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Juillet inconnues';
         }
         if (is_null($periodAugust)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Aout inconnues';
         }
         if (is_null($periodSeptember)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Septembre inconnues';
         }
         if (is_null($periodOctober)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Octobre inconnues';
         }
         if (is_null($periodNovember)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Novembre inconnues';
         }
         if (is_null($periodDecember)) {
+            $cantBePartial = true;
             $errors[] = 'Périodes Décembre inconnues';
         }
         if (empty($priceAccommodation)) {
+            $cantBePartial = true;
             $errors[] = "Prix de l'hébergement inconnu";
         }
-
         if (empty($priceLifeCost)) {
+            $cantBePartial = true;
             $errors[] = "Prix du coût de la vie inconnu";
         }
 
@@ -255,15 +275,14 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         }
         $destination->generateSlug();
         if (!$this->assetExistsExtension->assetExist($this->imagePath . $destination->getSlug() . '.JPG')) {
+            $cantBePartial = true;
             $errors[] = "Pas d'image";
         }
 
         if (!empty($errors)) {
             $output->writeln("<error>Destination '$name'  --  ERREURS : " . join(' ; ', $errors) . ".</error>");
-
-            return false;
         }
 
-        return true;
+        return ['complete' => empty($errors), 'partial' => !$cantBePartial];
     }
 }

@@ -42,6 +42,12 @@ class Destination
     private $isTheCapital = false;
 
     /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     */
+    private $isPartial = true;
+
+    /**
      * @var array
      * @ORM\Column(name="description", type="array", nullable=true)
      */
@@ -221,5 +227,24 @@ class Destination
     public function getTips()
     {
         return $this->tips;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isPartial()
+    {
+        return $this->isPartial;
+    }
+
+    /**
+     * @param boolean $isPartial
+     * @return $this
+     */
+    public function setIsPartial($isPartial)
+    {
+        $this->isPartial = $isPartial;
+
+        return $this;
     }
 }

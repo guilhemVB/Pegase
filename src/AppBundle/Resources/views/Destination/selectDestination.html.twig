@@ -1,3 +1,6 @@
+{% if hidePartial is not defined %}
+    {% set hidePartial = false %}
+{% endif %}
 <select class="form-control destination hideAnimation {% if classSelect is defined %}{{ classSelect }}{% endif %}" required="required" id="{{ selectId }}">
     <option></option>
     {% for country in countries %}
@@ -10,7 +13,9 @@
             {% endif %}
 
             {% for destination in country.destinations %}
-                <option data-destination-name="{{ destination.name }}" data-href="{{ path('destination', {'slug' : destination.slug }) }}" value="{{ destination.id }}">{{ destination.name }} {{ country.name }}</option>
+                {% if not hidePartial or not destination.isPartial %}
+                    <option data-destination-name="{{ destination.name }}" data-href="{{ path('destination', {'slug' : destination.slug }) }}" value="{{ destination.id }}">{{ destination.name }} {{ country.name }}</option>
+                {% endif %}
             {% endfor %}
 
         </optgroup>

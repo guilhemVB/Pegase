@@ -58,7 +58,8 @@
                                 {% include 'AppBundle:Destination:selectDestination.html.twig'
                                 with {'classSelect' : 'input-lg',
                                 'selectId' : 'searchDestination',
-                                'addCountrySelected' : true} %}
+                                'addCountrySelected' : true,
+                                'hidePartial' : true} %}
 
                                 <span class="input-group-btn">
                                     <button id="btnSeeDestination" class="btn btn-raised btn-primary" type="button">
@@ -83,46 +84,12 @@
                     <div class="gmapPadding">
                         <div id="gmap"></div>
                     </div>
+                    <div class="col-sm-12 text-center">
+                        <p><img src="http://maps.google.com/mapfiles/marker.png"> : Fiche destination complète. <img src="http://labs.google.com/ridefinder/images/mm_20_orange.png"> : Fiche destination en cours d'écriture.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-        {#<div class="container-fluid containerPadding">#}
-        {#<div class="container">#}
-        {#<div class="row">#}
-
-        {#{% for country in countries %}#}
-
-        {#<div class="col-lg-3 col-md-4 col-sm-6">#}
-
-        {#<a href="{{ path('country', {'slug' : country.slug }) }}">#}
-        {#<h4>{{ country.name }}</h4>#}
-        {#</a>#}
-
-        {#<ul class="list-unstyled">#}
-        {#{% for destination in country.destinations %}#}
-        {#<li>#}
-        {#<a href="{{ path('destination', {'slug' : destination.slug }) }}">#}
-        {#<span class="label label-success pull-left" style="font-size: 12px;">#}
-        {#{{ destination.totalPrices }} &euro; / jour#}
-        {#</span>#}
-        {#<span class="destinationName">#}
-        {#{{ destination.name }}#}
-        {#</span>#}
-        {#</a>#}
-        {#</li>#}
-        {#{% endfor %}#}
-        {#</ul>#}
-
-        {#</div>#}
-
-        {#{% endfor %}#}
-
-        {#</div>#}
-        {#</div>#}
-        {#</div>#}
-
 
     </div>
 
@@ -145,6 +112,4 @@
     <script src="{{ asset('assets/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/select2/select2_locale_fr.js') }}"></script>
     <script src="{{ asset('js/destinationList.min.js') }}"></script>
-
 {% endblock %}
-

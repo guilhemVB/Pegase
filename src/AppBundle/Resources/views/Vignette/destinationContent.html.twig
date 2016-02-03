@@ -8,7 +8,7 @@
     {% set currentDestinationSlug = '' %}
 {% endif %}
 
-{% if currentDestinationSlug != destination.slug %}
+{% if currentDestinationSlug != destination.slug and not destination.isPartial %}
 <a href="{{ path('destination', {'slug' : destination.slug }) }}">
     {% endif %}
 
@@ -27,7 +27,7 @@
 
     </h4>
 
-    {% if currentDestinationSlug != destination.slug %}
+    {% if currentDestinationSlug != destination.slug and not destination.isPartial %}
 </a>
 {% endif %}
 
