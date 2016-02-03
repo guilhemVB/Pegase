@@ -28,11 +28,11 @@ class HomepageController extends Controller
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
 
         /** @var Destination[] $allDestinations */
-        $allDestinations = $destinationRepository->findAll();
+        $allDestinations = $destinationRepository->findBy([], ['latitude' => 'DESC']);
 
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($allDestinations, ['disableZoom' => true]);
 
-        $lastDestinationsCreated = $destinationRepository->findBy([], ['createdAt' => 'DESC'], 3);
+        $lastDestinationsCreated = $destinationRepository->findBy(['isPartial' => false], ['createdAt' => 'DESC'], 3);
 
         $countries = [];
         foreach ($allDestinations as $destination) {
