@@ -11,29 +11,13 @@
     text-shadow: 1px 1px 3px black;
 }
 
-
 #carouselHomepage em, #carouselHomepage  p {
-    font-style: italic;
-    font-weight: 300;
-//    font-size: 22px !important;
-//    margin-top: -20px;
-//    margin-bottom: 50px;
+    font-weight: 400;
 }
 
-//#carouselHomepage h2, #carouselHomepage h1 {
-//   font-size: 70px;
-//   padding-bottom: 25px;
-//   font-family: sans-serif;
-//}
-
-#carouselHomepage .carousel-caption {
-   height: 100%;
-   background: rgba(0, 0, 0, 0.3);
-   width: 100%;
-   right: 0;
-   left: 0;
-//   position: absolute;
-   top: 0;
+#carouselHomepage em, #carouselHomepage  h2,
+#carouselHomepage em, #carouselHomepage  h1 {
+    font-weight: 400;
 }
 
 #carouselHomepage h1 {
@@ -50,7 +34,6 @@
     font-size: 18px;
 }
 
-/* responsive text queries */
 @media screen and (max-width: 992px) {
     #carouselHomepage .carousel-caption {
         height: 80%;
@@ -82,6 +65,10 @@
     }
     #carouselHomepage p {
         font-size: 14px;
+    }
+
+    #carouselHomepage .btn {
+        display: none;
     }
 }
 
