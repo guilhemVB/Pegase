@@ -1,7 +1,9 @@
+{% set shareUrlLong = url('shareVoyage', {'token' : voyage.token}) %}
+
 {% if voyage.urlMinified is not null and voyage.urlMinified is not empty %}
     {% set shareUrl = voyage.urlMinified %}
 {% else %}
-    {% set shareUrl = url('shareVoyage', {'token' : voyage.token}) %}
+    {% set shareUrl = shareUrlLong %}
 {% endif %}
 
 <div class="container-fluid containerPadding">
@@ -25,6 +27,10 @@
                title="Share on Twitter" target="_blank"
                class="btn btn-block btn-raised btn-social-icon btn-twitter centerIcon"><i class="fa fa-twitter"></i></a>
         </div>
+
+        {#<form method="post" action="mailto:?subject=Mon futur voyage&body=Bonjour, voici mon futur voyage : {{ shareUrlLong }} !" >#}
+            {#<input type="submit" value="Send Email" />#}
+        {#</form>#}
 
         {#<div class="col-md-2 text-center">#}
 
