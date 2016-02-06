@@ -51,5 +51,6 @@ class GenerateFooterCommand extends ContainerAwareCommand
         $fh = fopen($footerFile, 'w') or die("ERROR : can't open file");
         fwrite($fh, $footerContent);
         fclose($fh);
+        $output->writeln("<info>--- Footer généré ---</info>");
     }
 }

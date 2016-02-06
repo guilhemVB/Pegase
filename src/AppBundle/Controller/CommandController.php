@@ -58,6 +58,11 @@ class CommandController extends Controller
         $output = new BufferedOutput();
         $application->run($input, $output);
 
+        $input = new ArrayInput([
+            'command' => 'app:footer',
+        ]);
+        $application->run($input, $output);
+
         $content = $output->fetch();
 
         $content = str_replace("\n", '<br>', $content);
