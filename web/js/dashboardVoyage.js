@@ -78,17 +78,17 @@ $().ready(function () {
     });
 
     function disabledActions() {
-        $(".btnDeleteStage").addClass("disabled");
-        $("#addDestinationHeader button").addClass("disabled");
+        $("#containerAddDestination button").prop('disabled', true);
         $.sortaleElement.option("disabled", true);
         $.editableElement.not(".editable-open").editable('disable');
+        $('[data-toggle=confirmation]').prop('disabled', true);
     }
 
     function enableActions() {
-        $(".btnDeleteStage").removeClass("disabled");
-        $("#addDestinationHeader button").removeClass("disabled");
+        $("#containerAddDestination button").prop('disabled', false);
         $.sortaleElement.option("disabled", false);
         $.editableElement.editable('enable');
+        $('[data-toggle=confirmation]').prop('disabled', false);
     }
 
     $(document).ready(function () {
