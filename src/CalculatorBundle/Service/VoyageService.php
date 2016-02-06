@@ -32,7 +32,7 @@ class VoyageService
         $maplaceData = $this->maplaceMarkerBuilder->buildMarkerFromStages($stagesSorted, ['disableZoom' => true, 'ordereIcons' => true]);
 
         return array_merge(
-            [$this->maplaceMarkerBuilder->buildMarkerFromDestination($voyage->getStartDestination())],
+            [$this->maplaceMarkerBuilder->buildMarkerFromDestination($voyage->getStartDestination(), ['forceMarkerIcon' => true])],
             $maplaceData);
     }
 }

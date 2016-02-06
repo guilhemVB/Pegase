@@ -26,6 +26,7 @@ class MaplaceMarkerBuilder
             'disableZoom' => false,
             'ordereIcons' => false,
             'addDefaultZoom' => false,
+            'forceMarkerIcon' => false
         ];
     }
 
@@ -93,14 +94,16 @@ class MaplaceMarkerBuilder
             $dataMaplace['zoom'] = 7;
         }
 
-        if ($options['ordereIcons'] && !is_null($number)) {
+        if ($options['forceMarkerIcon']) {
+            $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker.png';
+        } elseif ($options['ordereIcons'] && !is_null($number)) {
             $iconLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
             $number = $number % 26;
 
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker' . $iconLetters[$number] . '.png';
-        } else if ($onlyPoint) {
+        } elseif ($onlyPoint) {
             $dataMaplace['icon'] = 'http://labs.google.com/ridefinder/images/mm_20_orange.png';
         } else {
             $dataMaplace['icon'] = 'http://maps.google.com/mapfiles/marker.png';
