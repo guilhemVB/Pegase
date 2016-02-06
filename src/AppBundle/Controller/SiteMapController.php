@@ -37,21 +37,21 @@ class SiteMapController extends Controller
                    'changefreq' => 'weekly',
                    'priority'   => '0.9'];
 
-//        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_registration_register', [], true),
-//                   'changefreq' => 'monthly',
-//                   'priority'   => '0.7'];
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_registration_register', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.7'];
 //
-//        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_security_login', [], true),
-//                   'changefreq' => 'monthly',
-//                   'priority'   => '0.7'];
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_security_login', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.7'];
 
         $urls[] = ['loc'        => $this->get('router')->generate('contact', [], true),
                    'changefreq' => 'monthly',
                    'priority'   => '0.5'];
 
-//        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_resetting_request', [], true),
-//                   'changefreq' => 'monthly',
-//                   'priority'   => '0.2'];
+        $urls[] = ['loc'        => $this->get('router')->generate('fos_user_resetting_request', [], true),
+                   'changefreq' => 'monthly',
+                   'priority'   => '0.2'];
 
         /** @var $countryRepository CountryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
