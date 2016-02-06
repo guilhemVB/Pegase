@@ -1,6 +1,7 @@
 /app/bootstrap.php.cache
 /app/cache/*
 !app/cache/.gitkeep
+/app/Resources/views/footer.html.twig
 /app/config/parameters.yml
 /app/logs/*
 !app/logs/.gitkeep
@@ -13,3 +14,4 @@
 node_modules
 .sass-cache
 .vagrant
+

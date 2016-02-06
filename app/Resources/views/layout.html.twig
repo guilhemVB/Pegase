@@ -49,11 +49,9 @@
     {% endblock %}
 </main>
 
-<div id="footer-container">
-    {% block footer %}
-        {% include '::footer.html.twig' %}
-    {% endblock %}
-</div>
+{% block footer %}
+    {% include '::footer.html.twig' %}
+{% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('assets/jquery/dist/jquery.min.js') }}"></script>

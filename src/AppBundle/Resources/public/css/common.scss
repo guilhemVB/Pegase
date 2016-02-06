@@ -48,19 +48,24 @@
 }
 
 .footer {
-    background-color: #222;
+    background-color: $colorGrey;
     border-color: #080808;
-    color: grey;
+    color: silver;
 }
 
 .footer a {
-    color: grey;
+    color: silver;
 }
 
-.footer .countryFooter {
-  padding-right: 0;
-  padding-left: 0;
-  padding-left: 0;
+.footerDestination a {
+    color: grey !important;
+}
+
+.footer .smallPadding {
+    padding: 0 2px 0 2px;
+}
+.footer #listCountries {
+    margin-bottom: 30px;
 }
 
 .containerGrey {

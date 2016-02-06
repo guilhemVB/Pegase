@@ -34,17 +34,10 @@ class HomepageController extends Controller
 
         $lastDestinationsCreated = $destinationRepository->findBy(['isPartial' => false], ['createdAt' => 'DESC'], 3);
 
-        $countries = [];
-        foreach ($allDestinations as $destination) {
-            $countries[$destination->getCountry()->getSlug()] = $destination->getCountry();
-        }
-        sort($countries);
-
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
                 'maplaceData'             => json_encode($maplaceData),
                 'lastDestinationsCreated' => $lastDestinationsCreated,
-                'countries'               => $countries,
             ]);
     }
 }
