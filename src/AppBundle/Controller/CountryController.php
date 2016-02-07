@@ -20,10 +20,10 @@ class CountryController extends Controller
      */
     public function viewAction(Country $country)
     {
-        if ($country->isRedirectToDestination()) {
-            $destinations = $country->getDestinations();
-            return $this->redirectToRoute('destination', ['slug' => $destinations[0]->getSlug()], 301);
-        }
+//        if ($country->isRedirectToDestination()) {
+//            $destinations = $country->getDestinations();
+//            return $this->redirectToRoute('destination', ['slug' => $destinations[0]->getSlug()], 301);
+//        }
 
         $destinations = $country->getDestinations();
         $options = ['disableZoom' => true];
