@@ -143,6 +143,7 @@ class CRUDStageController extends Controller
 
         return new JsonResponse([
             'maplaceData' => $maplaceData,
+            'voyageStats' => $voyageStatsCalculated,
             'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
         ]);
     }

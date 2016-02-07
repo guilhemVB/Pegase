@@ -116,7 +116,7 @@ $().ready(function () {
                         controls_on_map: false,
                         type: 'polyline'
                     });
-
+                    updatListDatesAndPeriods(response.voyageStats.stagesStats);
                     updateStats(response.statsView);
 
                 }, "json");
@@ -130,6 +130,15 @@ $().ready(function () {
         var $dashboardStatsContainer = $("#dashboardStatsContainer");
         $dashboardStatsContainer.empty();
         $dashboardStatsContainer.append(statsView);
+    }
+
+    function updatListDatesAndPeriods(stagesStats) {
+        $.each(stagesStats, function (stageId, stats) {
+            var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
+            var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
+            stageStars.html(stats.starsView);
+            stageStartDate.html(stats.dateFromFormated);
+        });
     }
 
 
@@ -164,12 +173,7 @@ $().ready(function () {
                 var priceHtml = response.stagePrice + ' &euro;';
                 stagePrice.html('<span class="label label-success">' + priceHtml + '</span>');
 
-                $.each(response.voyageStats.stagesStats, function (stageId, stats) {
-                    var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
-                    var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
-                    stageStars.html(stats.starsView);
-                    stageStartDate.html(stats.dateFromFormated);
-                });
+                updatListDatesAndPeriods(response.voyageStats.stagesStats);
 
                 $('[data-toggle="tooltip"]').tooltip();
             },
