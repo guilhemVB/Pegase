@@ -6,23 +6,37 @@
 
 {% block body %}
 
-    <div class="container-fluid containerOrange containerPadding">
-        <div class="container">
-            <div class="row">
+    <div class="container-fluid containerPadding">
+        <div class="row">
 
-                <div class="col-sm-3 col-sm-offset-1">
-                    <h1>Réinitialisation du mot de passe</h1>
-                </div>
+            <div class="col-sm-4 col-sm-offset-1 col-lg-4 col-lg-offset-1 page-header">
+                <h1>Réinitialisation du mot de passe</h1>
+            </div>
 
-                <div class="col-sm-4 col-sm-offset-1">
-
+            <div class="col-sm-6 col-sm-offset-1 col-lg-4 col-lg-offset-1">
+                <div class="well">
                     {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-
                 </div>
             </div>
         </div>
     </div>
 
-    {% include 'AppBundle:Vignette:vignettesResetting.html.twig' %}
+    <div class="hidden-md hidden-sm hidden-xs">
+        <div style="height: 80px;"></div>
+    </div>
+
+    <div class="container-fluid containerPadding containerOrange containerLinkWhite">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'alger' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'kyoto' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'nouvelle-orleans' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'paris' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'phnom-penh' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'sydney' })) }}
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

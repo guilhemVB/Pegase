@@ -21,7 +21,7 @@ class VignetteController extends Controller
      */
     public function getAction(Destination $destination)
     {
-        return $this->render('AppBundle:Vignette:destinationLarge.html.twig',
+        return $this->render('AppBundle:Vignette:destination.html.twig',
             [
                 'destination'    => $destination,
             ]);

@@ -187,13 +187,11 @@
                 <div class="col-lg-10 col-lg-offset-1 col-sm-12">
                     <h3>Dernières destinations ajoutées</h3>
                     {% for destination in lastDestinationsCreated %}
-                        {% include 'AppBundle:Vignette:destinationLarge.html.twig' %}
+                        {% include 'AppBundle:Vignette:destination.html.twig' %}
                     {% endfor %}
                 </div>
             </div>
         </div>
-
-        {#{% include 'AppBundle:Vignette:vignettesHomepage.html.twig' %}#}
 
     </div>
 
