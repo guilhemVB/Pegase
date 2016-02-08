@@ -1,5 +1,3 @@
-{#new carousel : http://bootsnipp.com/snippets/featured/colourful-tabbed-slider-carousel#}
-
 <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
 
     <ol class="carousel-indicators">
@@ -8,10 +6,13 @@
         <li data-target="#carouselHomepage" data-slide-to="2" class=""></li>
     </ol>
 
+    {% set bannerUSAUrl = image_banner_homepage_path ~ 'USA.JPG' %}
+    {% set bannerPlageUrl = image_banner_homepage_path ~ 'plage.JPG' %}
+    {% set bannerBuddhaUrl = image_banner_homepage_path ~ 'temple.JPG' %}
+
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            {% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'USA.JPG' %}
-            <img class="img-responsive first-slide" src="{{ asset(bannerMartiniqueUrl) }}" alt="Banière Martinique">
+            <img class="img-responsive first-slide" src="{{ asset(bannerBuddhaUrl) }}" alt="Banière Buddha">
 
             <div class="container">
                 <div class="carousel-caption">
@@ -31,23 +32,7 @@
         </div>
 
         <div class="item">
-            {% set bannerPekinUrl = image_banner_homepage_path ~ 'plage.JPG' %}
-            <img class="img-responsive second-slide" src="{{ asset(bannerPekinUrl) }}" alt="Banière Pekin">
-
-            <div class="container">
-                <div class="carousel-caption">
-                    <h2>Conseils aux voyageurs</h2>
-
-                    <p>
-                        Des fiches recensant des bons plans et des informations pour préparer au mieux vos voyages.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="item">
-            {% set bannerVienneUrl = image_banner_homepage_path ~ 'temple.JPG' %}
-            <img class="img-responsive third-slide" src="{{ asset(bannerVienneUrl) }}" alt="Banière Vienne">
+            <img class="img-responsive second-slide" src="{{ asset(bannerUSAUrl) }}" alt="Banière USA">
 
             <div class="container">
                 <div class="carousel-caption">
@@ -56,9 +41,26 @@
                     <p>
                         Calculez votre budget, planifiez votre voyage et partez !
                     </p>
-                    <a href="{{ path('dashboard') }}"
-                       class="btn btn-raised btn-lg btn-primary">
-                        <i class="fa fa-globe"></i> Commencer votre voyage</a>
+
+                    <p>
+                        <a href="{{ path('dashboard') }}"
+                           class="btn btn-raised btn-lg btn-primary">
+                            <i class="fa fa-globe"></i> Commencez votre voyage</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <img class="img-responsive third-slide" src="{{ asset(bannerPlageUrl) }}" alt="Banière Plage">
+
+            <div class="container">
+                <div class="carousel-caption">
+                    <h2>Conseils aux voyageurs</h2>
+
+                    <p>
+                        Des fiches recensant des bons plans et des informations pour préparer au mieux vos voyages.
+                    </p>
                 </div>
             </div>
         </div>

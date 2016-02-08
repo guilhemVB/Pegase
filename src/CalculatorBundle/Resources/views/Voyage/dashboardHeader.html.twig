@@ -1,30 +1,20 @@
-<div class="container-fluid containerOrange containerTitleDashboard">
+<div class="container-fluid borderBotOrange backgroundWhite containerTitleDashboard">
     <div class="row">
-        <div class="col-lg-4 col-lg-offset-1 col-sm-5 page-header" style="margin-top: 0;">
-            <h1><em>{{ voyage.name }}</em></h1>
+        <div class="col-lg-5 col-lg-offset-1 col-sm-5">
+            <h1 id="headerDashboardTitle" class="titleOrange">{{ voyage.name }}</h1>
         </div>
-        <div class="col-lg-6 col-sm-7 ">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>Date et lieu de départ</h3>
-                </div>
-                <div class="col-xs-4">
-                    <p class="lead">
-                        {{ voyage.startDestination.name }}
-                    </p>
-                </div>
-                <div class="col-xs-5">
-                    <p class="lead">{{ voyage.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}</p>
-                </div>
-                {% block modifyBtn %}
-                    <div class="col-xs-3">
-                        <button type="button" class="btn btn-raised btn-primary btn-sm pull-right"
-                                data-toggle="modal" data-target="#updateVoyageModal">
-                            <i class="fa fa-pencil"></i><span class="hidden-sm hidden-xs"> Modifier</span>
-                        </button>
-                    </div>
-                {% endblock %}
-            </div>
+        <div class="col-lg-3 col-sm-5 col-xs-9">
+            <p id="headerDashboardInformations" class="lead">
+                {{ voyage.startDestination.name }} - {{ voyage.startDate|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
+            </p>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-3">
+            {% block modifyBtn %}
+                <button id="headerDashboardModifyBtn" type="button" class="btn btn-raised btn-primary btn-sm pull-right"
+                        data-toggle="modal" data-target="#updateVoyageModal">
+                    <i class="fa fa-pencil"></i><span class="hidden-xs"> Modifier</span>
+                </button>
+            {% endblock %}
         </div>
     </div>
 </div>

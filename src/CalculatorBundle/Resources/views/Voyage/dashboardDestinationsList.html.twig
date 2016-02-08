@@ -9,11 +9,13 @@
 <div class="container-fluid containerPadding15">
     <div class="row">
         <div class="col-lg-offset-1 col-lg-10 col-md-12">
-            {% if stagesSorted|length > 0 %}
-                <h2>Liste des destinations</h2>
-            {% else %}
-                <h2>Aucune destination</h2>
-            {% endif %}
+            <h2 class="titleOrange">
+                {% if stagesSorted|length > 0 %}
+                    Liste des destinations
+                {% else %}
+                    Aucune destination
+                {% endif %}
+            </h2>
         </div>
     </div>
 
@@ -84,30 +86,30 @@
 
 
                 {% if hidePrices == false and allowModification == true %}
-                <div class="stageStyle">
-                    <div class="row">
+                    <div class="stageStyle">
+                        <div class="row">
 
-                        <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
-                            <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
-                            <img class='flagCountrySmall flagCountryStage'
-                                 src='http://www.geonames.org/flags/x/{{ voyage.startDestination.country.codeAlpha2|lower }}.gif'/>
-                            <a class="hidden-sm"
-                               href="{{ path('country', {'slug' : voyage.startDestination.country.slug }) }}">{{ voyage.startDestination.country.name }}</a>
-                        </div>
+                            <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
+                                <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
+                                <img class='flagCountrySmall flagCountryStage'
+                                     src='http://www.geonames.org/flags/x/{{ voyage.startDestination.country.codeAlpha2|lower }}.gif'/>
+                                <a class="hidden-sm"
+                                   href="{{ path('country', {'slug' : voyage.startDestination.country.slug }) }}">{{ voyage.startDestination.country.name }}</a>
+                            </div>
 
-                        <div class="col-md-3 col-sm-2 col-xs-6 ellipsis">
-                            {% if voyage.startDestination.isPartial %}
-                                {{ voyage.startDestination.name }}
-                            {% else %}
-                                <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
-                            {% endif %}
-                        </div>
+                            <div class="col-md-3 col-sm-2 col-xs-6 ellipsis">
+                                {% if voyage.startDestination.isPartial %}
+                                    {{ voyage.startDestination.name }}
+                                {% else %}
+                                    <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
+                                {% endif %}
+                            </div>
 
-                        <div class="col-md-3 col-sm-4 col-xs-11">
-                            Début du voyage
+                            <div class="col-md-3 col-sm-4 col-xs-11">
+                                Début du voyage
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% else %}
                     <div class="stageStyle">
                         <div class="row">

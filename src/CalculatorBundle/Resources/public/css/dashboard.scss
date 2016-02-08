@@ -1,98 +1,121 @@
+#headerDashboardTitle {
+  margin-top: 15px;
+  font-weight: 400;
+}
+
+#headerDashboardInformations {
+  margin: 24px 0 0 0;
+}
+
+#headerDashboardModifyBtn {
+  margin: 21px 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  #headerDashboardInformations {
+    margin: 0;
+  }
+
+  #headerDashboardModifyBtn {
+    margin: 0;
+  }
+}
+
 #shareVoyage ul,
 #dashboard ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 #shareVoyage .stageStyle,
 #dashboard .stageStyle {
-    background: gainsboro;
-    margin: 1px;
-    padding: 10px 15px;
-    border-radius: 5px;
+  background: gainsboro;
+  margin: 1px;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
 
 .stageMovable .drag-handle {
-    cursor: n-resize;
+  cursor: n-resize;
 }
 
 .stageStyle .handle-fa-icon {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 #dashboard .sortable-ghost {
-    opacity: .3;
-    background: $colorOrange;
+  opacity: .3;
+  background: $colorOrange;
 }
 
 #addDestinationHeader {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #containerAddDestination .form-group {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 #containerAddDestination select {
-    width: 100%;
+  width: 100%;
 }
 
 #containerAddDestination button {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 #containerStats h3 {
-    margin-top: 10px;
-    margin-bottom: 25px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .containerTitleDashboard {
-    padding: 10px 30px 5px 30px;
+  padding: 10px 30px 5px 30px;
 }
 
 #labelNumberDays,
 #labelDestination {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
-.stageMovable .form-group{
-    margin-top: 0;
-    padding-bottom: 0;
+.stageMovable .form-group {
+  margin-top: 0;
+  padding-bottom: 0;
 }
 
 .stageMovable .editable-input .form-control {
-    margin: 0;
+  margin: 0;
 }
 
 .stageMovable .editable-buttons button {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 3px 18px 2px 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 3px 18px 2px 18px;
 }
 
 .selectEditable {
-    font-size: 14px;
-    padding-top: 0;
-    padding-bottom: 0;
-    height: 23px;
+  font-size: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 23px;
 }
 
 .stagePrice {
-    padding-top: 1px;
-    padding-right: 20px;
+  padding-top: 1px;
+  padding-right: 20px;
 }
 
 .stageMovable .popover-title {
-    font-size: 16px;
-    background-color: rgba(0,0,0,0);
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.stageMovable .popover.left>.arrow:after {
-    border-left-color: rgba(0,0,0,0);
+.stageMovable .popover.left > .arrow:after {
+  border-left-color: rgba(0, 0, 0, 0);
 }
 
 .centerIcon {
-    margin-right: auto;
-    margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
