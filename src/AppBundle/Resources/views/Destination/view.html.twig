@@ -50,10 +50,10 @@
 
         <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ destination.name }}">
 
-        <div class="container-fluid">
+        <div class="container-fluid borderBotOrange backgroundWhite containerPadding15">
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 col-md-12 page-header">
-                    <h1>
+                <div class="col-lg-6 col-lg-offset-1 col-sm-7">
+                    <h1 class="titleOrange">
                         {{ destination.name }}
                         {% if destination.country.redirectToDestination == false %}
                             <small>
@@ -63,7 +63,7 @@
                         {% endif %}
                     </h1>
                 </div>
-                <div class="col-lg-10 col-lg-offset-1 col-md-12" id="btnAddToVoyage">
+                <div class="col-lg-4 col-sm-5" id="btnAddToVoyage">
                     {{ btnAddToVoyage | raw }}
                 </div>
             </div>
@@ -218,7 +218,7 @@
 
                 <div class="row">
                     <div class="col-lg-10 col-lg-offset-1 col-md-12">
-                        <h3>{{ destination.country.name }} - les destinations du pays</h3>
+                        <h3 class="titleOrange">{{ destination.country.name }} - les destinations du pays</h3>
                     </div>
                 </div>
 
