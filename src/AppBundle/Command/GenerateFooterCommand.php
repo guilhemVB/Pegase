@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class GenerateFooterCommand extends ContainerAwareCommand
 {
@@ -23,17 +24,31 @@ class GenerateFooterCommand extends ContainerAwareCommand
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
 
-        $this->import($input, $output);
+        $footerView = __DIR__ . '/../../../app/Resources/views/footer.html.twig';
+
+        $this->removeCurrentFooter($output, $footerView);
+        $this->import($output, $footerView);
 
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
     }
 
     /**
-     * @param InputInterface $input
      * @param OutputInterface $output
+     * @param string $footerView
      */
-    private function import(InputInterface $input, OutputInterface $output)
+    private function removeCurrentFooter(OutputInterface $output, $footerView)
+    {
+        $fs = new Filesystem();
+        $fs->remove([$footerView]);
+        $output->writeln("<info>--- Footer actuel supprimé ---</info>");
+    }
+
+    /**
+     * @param OutputInterface $output
+     * @param string $footerView
+     */
+    private function import(OutputInterface $output, $footerView)
     {
         /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine')->getManager();
@@ -47,10 +62,9 @@ class GenerateFooterCommand extends ContainerAwareCommand
         $countries = $countryRepository->findCountriesWithDestinations();
         $footerContent = $twig->render('AppBundle:Common:footerTemplate.html.twig', ['countries' => $countries]);
 
-        $footerFile = __DIR__ . '/../../../app/Resources/views/footer.html.twig';
-        $fh = fopen($footerFile, 'w') or die("ERROR : can't open file");
+        $fh = fopen($footerView, 'w') or die("ERROR : can't open file");
         fwrite($fh, $footerContent);
         fclose($fh);
-        $output->writeln("<info>--- Footer généré ---</info>");
+        $output->writeln("<info>--- Footer regénéré ---</info>");
     }
 }
