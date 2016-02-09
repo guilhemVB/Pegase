@@ -1,6 +1,8 @@
 $().ready(function () {
 
-    $('[data-toggle=confirmation]').confirmation();
+    $('[data-toggle=confirmation]').confirmation({
+        'popout' : true
+    });
 
     var maplace = null;
     $(document).ready(function () {
