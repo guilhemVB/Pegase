@@ -226,6 +226,16 @@ $().ready(function () {
         });
     });
 
+    $(window).scroll(function(){
+        var pos = $(window).scrollTop();
+        if(pos > $("#siteHeader").height()) {
+            $("#headerDashboard").addClass("stickyHeader");
+        }
+        else {
+            $("#headerDashboard").removeClass("stickyHeader");
+        }
+    });
+
 });
 
 $().ready(function () {

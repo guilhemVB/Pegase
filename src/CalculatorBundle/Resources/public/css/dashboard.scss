@@ -1,3 +1,14 @@
+.stickyHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+}
+
+#headerDashboard {
+  padding-top: 0;
+}
+
 #headerDashboardTitle {
   margin-top: 15px;
   font-weight: 400;
