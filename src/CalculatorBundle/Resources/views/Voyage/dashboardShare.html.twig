@@ -6,26 +6,28 @@
     {% set shareUrl = shareUrlLong %}
 {% endif %}
 
-<div class="container-fluid containerPadding">
+<div class="container-fluid ">
     <div class="row">
-        <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+        <div class="col-lg-10 col-lg-offset-1 col-sm-12 text-center">
             <h2>Partagez votre voyage</h2>
         </div>
-        <div class="col-lg-10 col-lg-offset-1 col-sm-12">
-            <a href="{{ shareUrl }}"
-               target="_blank"
-               title="lien de partage">
-                {{ shareUrl }}
-            </a>
-        </div>
     </div>
+</div>
 
+<div class="container-fluid containerPadding">
     <div class="row">
 
         <div class="col-xs-12">
             <a href="https://twitter.com/intent/tweet?text=Mon%20prochain%20voyage%20planifié%20grâce%20à%20@LeMondeEnSac%20&amp;url={{ shareUrl }}"
                title="Share on Twitter" target="_blank"
                class="btn btn-block btn-raised btn-social-icon btn-twitter centerIcon"><i class="fa fa-twitter"></i></a>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 col-sm-12 text-center">
+            <a href="{{ shareUrl }}"
+               target="_blank"
+               title="lien de partage">
+                {{ shareUrl }}
+            </a>
         </div>
 
         {#<form method="post" action="mailto:?subject=Mon futur voyage&body=Bonjour, voici mon futur voyage : {{ shareUrlLong }} !" >#}
