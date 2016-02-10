@@ -43,6 +43,10 @@ class GenerateFooterCommand extends ContainerAwareCommand
             $fs = new Filesystem();
             $fs->remove([$footerView]);
             $output->writeln("<info>--- Footer actuel supprimé ---</info>");
+
+            if ($fs->exists($footerView)) {
+                $output->writeln("<error>--- Erreur pendant la suppression du footer, il n'a pas été supprimé---</error>");
+            }
         } catch (\Exception $e) {
             $output->writeln("<error>--- Erreur pendant la suppression du footer ---</error>");
             $output->writeln($e->getMessage());
