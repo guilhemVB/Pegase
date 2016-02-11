@@ -28,7 +28,8 @@
         "ricbra/robots-txt-bundle": "dev-master",
         "ext-intl": "^1.1",
         "ext-mbstring": "*",
-        "friendsofsymfony/comment-bundle": "^2.0"
+        "friendsofsymfony/comment-bundle": "^2.0",
+        "javiereguiluz/easyadmin-bundle": "^1.11"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
@@ -52,7 +53,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "rm -rf app/cache/*"
+            "rm -rf app/cache/*",
+            "php app/console assets:install"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -90,4 +92,3 @@
         }
     }
 }
-

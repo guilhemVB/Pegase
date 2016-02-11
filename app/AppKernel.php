@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new AppUserBundle\AppUserBundle(),
             new Ricbra\Bundle\RobotsTxtBundle\RicbraRobotsTxtBundle(),
+            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
 //            new FOS\RestBundle\FOSRestBundle(),
 //            new FOS\CommentBundle\FOSCommentBundle(),
 //            new JMS\SerializerBundle\JMSSerializerBundle($this),

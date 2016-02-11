@@ -34,3 +34,8 @@ fos_user_change_password:
 ricbra_robots_txt:
     resource: "@RicbraRobotsTxtBundle/Resources/config/routing.yml"
     prefix:   /
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin

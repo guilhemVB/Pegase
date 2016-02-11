@@ -101,3 +101,11 @@ fos_user:
 
 ricbra_robots_txt:
     allow_robots: %allow_robots%
+
+easy_admin:
+    entities:
+        - AppBundle\Entity\User
+        - CalculatorBundle\Entity\Voyage
+        - AppBundle\Entity\Currency
+        - AppBundle\Entity\Country
+        - AppBundle\Entity\Destination
