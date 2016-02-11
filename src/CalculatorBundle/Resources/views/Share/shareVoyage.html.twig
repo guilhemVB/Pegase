@@ -1,8 +1,10 @@
+{% set title = voyage.name %}
+{% set description = "Tableau de bord du futur voyage  : " ~ voyage.name %}
+{% set type = "article" %}
+{% set imageUrl = image_banner_homepage_path ~ 'USA_raw.JPG' %}
+
 {% extends "::layout.html.twig" %}
 
-{% block title %}
-    {{ voyage.name }} - {{ parent() }}
-{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}

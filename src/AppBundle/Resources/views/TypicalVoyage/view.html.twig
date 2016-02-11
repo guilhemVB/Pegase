@@ -1,10 +1,12 @@
+{% set title = "Idées de voyages" %}
+{% set titleMetaData = "Les meilleurs idées de voyage." %}
+{% set keywords = "idée, de voyage, tour du monde, tour d'europe, tour d'asie, tour d'amérique, backpack" %}
+{% set description = "Les meilleurs idées de voyage pour les backpackeurs. Tour du monde, tour d'Europe, tour d'Asie ou tour d'Amérique, tout y est !" %}
+{% set type = "article" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% set activeIdeasOfTravels = true %}
 {% extends "::layout.html.twig" %}
-
-
-{% block title %}
-    Idées de voyages - {{ parent() }}
-{% endblock %}
 
 
 {% block stylesheets %}

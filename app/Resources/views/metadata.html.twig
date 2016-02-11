@@ -1,0 +1,36 @@
+{% if title is not defined %}
+      {% set title = "Le Monde en Sac" %}
+{% else %}
+      {% set title = title ~ " | Le Monde en Sac" %}
+{% endif %}
+{% if titleMetaData is not defined %}
+      {% set titleMetaData = title %}
+{% endif %}
+{% if keywords is not defined %}
+      {% set keywords = "voyage, tour du monde, pays, le monde en sac" %}
+{% else %}
+      {% set keywords = "voyage, tour du monde, pays, le monde en sac, " ~ keywords %}
+{% endif %}
+
+<title>{{ title }}</title>
+
+<meta name="description" content="{{ description }}"/>
+<meta name="keywords" content="{{ keywords }}"/>
+
+<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+
+<meta property="og:locale" content="fr_fr" />
+<meta property="og:site_name" content="Le Monde en Sac" />
+<meta property="og:url" content="{{ app.request.uri }}"/>
+<meta property="og:title" content="{{ titleMetaData }}"/>
+<meta property="og:type" content="{{ type }}"/>
+<meta property="og:image" content="{{ absolute_url(asset(imageUrl)) }}"/>
+<meta property="og:image:width" content="1500"/>
+<meta property="og:description" content="{{ description }}"/>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@LeMondeEnSac">
+<meta name="twitter:creator" content="@LeMondeEnSac">
+<meta name="twitter:title" content="{{ titleMetaData   }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ absolute_url(asset(imageUrl)) }}">

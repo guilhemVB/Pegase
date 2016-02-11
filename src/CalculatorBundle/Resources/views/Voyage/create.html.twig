@@ -1,9 +1,11 @@
+{% set title = "Création de votre voyage" %}
+{% set description = "Création de votre voyage" %}
+{% set type = "website" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% set activeDashboard = true %}
 {% extends "::layout.html.twig" %}
 
-{% block title %}
-    Création de votre voyage - {{ parent() }}
-{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css') }}">
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/select2-bootstrap-css/select2-bootstrap.min.css') }}">
 {% endblock %}
+
 
 {% block body %}
 

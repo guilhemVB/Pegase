@@ -1,29 +1,11 @@
+{% set title = "Contact" %}
+{% set titleMetaData = "Contacter Le Monde en Sac" %}
+{% set keywords = "contact, proposer une destination" %}
+{% set description = "Envie de nous écrire ? Contacter Le Monde en Sac pour proposer ou demander une destination, ou simplement nous encourager." %}
+{% set type = "website" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% extends "::layout.html.twig" %}
-
-{% block metaDescription %}Contacter Le Monde en Sac pour proposer ou demander une destination, ou simplement nous encourager.{% endblock %}
-{% block metaKeyword %}, contact, proposer une destination{% endblock %}
-
-{% block title %}
-    Contact - {{ parent() }}
-{% endblock %}
-
-{% set title = "Contacter Le Monde en Sac" %}
-
-{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
-{% block opengraph %}
-    {{ parent() }}
-    <meta property="og:title" content="{{ title }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
-{% endblock %}
-
-
-{% block tweeterCard %}
-    {{ parent() }}
-    <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="Envie de nous écrire ? Contacter le Monde en Sac">
-    <meta name="twitter:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}">
-{% endblock %}
 
 
 {% block body %}

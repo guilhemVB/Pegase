@@ -9,14 +9,7 @@
     <meta name="p:domain_verify" content="b232678907f1fbdff8ffa2a7d3cde193"/>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
-    <meta name="description"
-          content="{% block metaDescription %}Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac{% endblock %}"/>
-    <meta name="keywords" content="voyage, tour du monde, pays, le monde en sac{% block metaKeyword %}{% endblock %}"/>
-
-    <link rel="canonical"
-          href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
-
-    <title>{% block title %}Le Monde en Sac{% endblock %}</title>
+    {% include '::metadata.html.twig' %}
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
@@ -24,18 +17,6 @@
         <link rel="stylesheet" href="{{ asset('assets/bootstrap-material-design/dist/css/bootstrap-material-design.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/bootstrap-material-design/dist/css/ripples.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
-    {% endblock %}
-
-    {% block opengraph %}
-        <meta property="og:locale" content="fr_fr" />
-        <meta property="og:site_name" content="Le Monde en Sac" />
-        <meta property="og:url" content="{{ app.request.uri }}"/>
-    {% endblock %}
-
-    {% block tweeterCard %}
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@LeMondeEnSac">
-        <meta name="twitter:creator" content="@LeMondeEnSac">
     {% endblock %}
 
 </head>

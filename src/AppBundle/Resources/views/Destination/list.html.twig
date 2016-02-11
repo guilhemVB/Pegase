@@ -1,30 +1,11 @@
+{% set title = "Liste des destinations" %}
+{% set keywords = "liste, liste des destinations" %}
+{% set description = "Liste des destinations référencées sur Le Monde en Sac. Japon, Etas-Unis, Vietnam, Argentine, Cambodge, Hongrie ..." %}
+{% set type = "website" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
-
-{% block metaDescription %}Liste des destinations référencées sur Le Monde en Sac. Japon, Etas-Unis, Vietnam, Argentine, Cambodge, Hongrie ...{% endblock %}
-{% block metaKeyword %}, liste, liste des destinations{% endblock %}
-
-{% block title %}
-    Liste des destinations - {{ parent() }}
-{% endblock %}
-
-{% set title = "Liste des destinations du Monde en Sac" %}
-
-{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
-{% block opengraph %}
-    {{ parent() }}
-    <meta property="og:title" content="{{ title }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
-{% endblock %}
-
-
-{% block tweeterCard %}
-    {{ parent() }}
-    <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="Liste de pays du Monde en Sac">
-    <meta name="twitter:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}">
-{% endblock %}
 
 
 {% block stylesheets %}
@@ -32,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/select2-bootstrap-css/select2-bootstrap.min.css') }}">
 {% endblock %}
+
 
 {% block body %}
     <div id="destinationsListView">

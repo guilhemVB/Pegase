@@ -1,10 +1,10 @@
+{% set title = voyage.name ~ " - tableau de bord" %}
+{% set description = "Le tableau de bord de votre voyage" %}
+{% set type = "article" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% set activeDashboard = true %}
 {% extends "::layout.html.twig" %}
-
-
-{% block title %}
-    {{ voyage.name }} - tableau de bord - {{ parent() }}
-{% endblock %}
 
 
 {% block stylesheets %}

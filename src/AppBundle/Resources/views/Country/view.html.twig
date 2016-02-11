@@ -1,58 +1,25 @@
-{% set activeDestinations = true %}
-{% extends "::layout.html.twig" %}
-
-
+{% set title = country.name %}
+{% set keywords = "pays, " ~ country.name ~ ", informations, visa" %}
 {% set description = "Pays - " ~ country.name ~ ", capitale : " ~ country.capitalName ~ ". Visa : " ~ country.visaInformation ~ " - " ~ country.visaDuration ~ ". Langue" %}
 {% if country.languages|length > 1 %}
     {% set description = description ~ "s" %}
 {% endif %}
 {% set description = description ~ " : " ~ country.languages|join(' - ') ~ "." %}
-
-
-{% block metaDescription %}{{ description }}{% endblock %}
-{% block metaKeyword %}, pays, {{ country.name }}, informations, visa{% endblock %}
-
-
-{% block title %}
-    {{ country.name }} - {{ parent() }}
-{% endblock %}
-
-
+{% set type = "article" %}
 {% set bannerAssetURL = image_banner_countries_path ~ country.slug ~ '.JPG' %}
-{% set bannerUrl = image_banner_default %}
+{% set imageUrl = image_banner_default %}
 {% if bannerAssetURL|asset_exists %}
-    {% set bannerUrl = bannerAssetURL %}
+    {% set imageUrl = bannerAssetURL %}
 {% endif %}
 
-
-{% block opengraph %}
-    {{ parent() }}
-    <meta property="og:title" content="{{ country.name }}"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:image" content="{{ absolute_url(asset(bannerUrl)) }}"/>
-    <meta property="og:image:width" content="1500"/>
-    <meta property="og:description" content="{{ description }}"/>
-{% endblock %}
-
-
-{% block tweeterCard %}
-    {{ parent() }}
-    <meta name="twitter:title" content="{{ country.name }}">
-    <meta name="twitter:description" content="{{ description }}">
-    <meta name="twitter:image" content="{{ absolute_url(asset(bannerUrl)) }}">
-{% endblock %}
-
-
-{% block stylesheets %}
-    {{ parent() }}
-    {#<link rel="stylesheet" href="{{ asset('assets/bootstrap-social/bootstrap-social.css') }}">#}
-{% endblock %}
+{% set activeDestinations = true %}
+{% extends "::layout.html.twig" %}
 
 
 {% block body %}
     <div id="countryView">
 
-        <img src="{{ asset(bannerUrl) }}" class="img-responsive" alt="{{ country.name }}">
+        <img src="{{ asset(imageUrl) }}" class="img-responsive" alt="{{ country.name }}">
 
         <div class="container-fluid borderBotOrange backgroundWhite containerPadding15">
             <div class="row">

@@ -1,29 +1,8 @@
+{% set description = "Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac" %}
+{% set type = "website" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
 {% extends "::layout.html.twig" %}
-
-{% block title %}
-    {{ parent() }}
-{% endblock %}
-
-
-{% set bannerMartiniqueUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
-{% block opengraph %}
-    {{ parent() }}
-    <meta property="og:title" content="Le Monde en Sac"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}"/>
-    <meta property="og:image:width" content="1500"/>
-    <meta property="og:description"
-          content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac"/>
-{% endblock %}
-
-{% block tweeterCard %}
-    {{ parent() }}
-    <meta name="twitter:title" content="Le Monde en Sac">
-    <meta name="twitter:description"
-          content="Informez-vous sur les pays, planifiez votre itinéraire de tour du monde, évaluez votre budget et partez en sac à dos ! Le Monde en Sac.">
-    <meta name="twitter:image" content="{{ absolute_url(asset(bannerMartiniqueUrl)) }}">
-{% endblock %}
-
 
 {% block body %}
 
