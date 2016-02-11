@@ -7,7 +7,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN]
 
     providers:
         fos_userbundle:
@@ -45,4 +45,4 @@ security:
         - { path: ^/voyage, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/crud, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/command/, role: ROLE_ADMIN }
+        - { path: ^/command/, role: ROLE_SUPER_ADMIN }
