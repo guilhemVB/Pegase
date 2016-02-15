@@ -6,6 +6,7 @@ $().ready(function () {
 
     var maplace = null;
     $(document).ready(function () {
+        enableActions();
         maplace = new Maplace({
             locations: maplaceData,
             map_div: '#gmap',
