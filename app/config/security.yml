@@ -17,9 +17,15 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        default:
-#            pattern: ^/command/
-            pattern: ^/
+        command:
+            pattern: ^/command/
+            anonymous: true
+            http_basic:
+                realm: "Acces restricted"
+                provider: fos_userbundle
+        admin:
+            pattern: ^/admin/
+#            pattern: ^/
             anonymous: true
             http_basic:
                 realm: "Acces restricted"
@@ -35,7 +41,7 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/, role: ROLE_USER }
+#        - { path: ^/, role: ROLE_USER }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/navbar, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
