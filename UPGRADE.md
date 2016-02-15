@@ -52,3 +52,9 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Sort list countries
 - Add open graph description in Homepage
 - Add Tweeter cards
+
+## v0.3.0
+
+- Add calculator
+- FOSUserBundle to manage user
+- footer is created after destinations importation
