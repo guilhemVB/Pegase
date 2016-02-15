@@ -46,6 +46,7 @@ class CountryRepository extends EntityRepository
             ->addGroupBy('d.updatedAt')
             ->addGroupBy('d.slug')
             ->addGroupBy('d.country')
+            ->addGroupBy('d.isPartial')
             ->addGroupBy('c.id')
             ->addGroupBy('c.codeAlpha2')
             ->addGroupBy('c.codeAlpha3')
