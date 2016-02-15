@@ -5,16 +5,6 @@ $().ready(function () {
     });
 
     var maplace = null;
-    $(document).ready(function () {
-        enableActions();
-        maplace = new Maplace({
-            locations: maplaceData,
-            map_div: '#gmap',
-            controls_on_map: false,
-            type: 'polyline'
-        }).Load();
-    });
-
 
     var $numberDays = $('#numberDays'),
         $destination = $('#containerAddDestination #addDestination');
@@ -94,7 +84,23 @@ $().ready(function () {
         $('[data-toggle=confirmation]').prop('disabled', false);
     }
 
+    $.fn.editableform.buttons =
+        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
+        '<i class="fa fa-check"></i>' +
+        '</button>' +
+        '<button type="button" class="btn btn-default btn-raised btn-sm editable-cancel">' +
+        '<i class="fa fa-times"></i>' +
+        '</button>';
+    $.fn.editable.defaults.mode = 'inline';
+    $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
+
     $(document).ready(function () {
+        maplace = new Maplace({
+            locations: maplaceData,
+            map_div: '#gmap',
+            controls_on_map: false,
+            type: 'polyline'
+        }).Load();
 
         $.sortaleElement = Sortable.create(listDestinations, {
             animation: 200,
@@ -126,35 +132,6 @@ $().ready(function () {
             }
         });
 
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-
-    function updateStats(statsView) {
-        var $dashboardStatsContainer = $("#dashboardStatsContainer");
-        $dashboardStatsContainer.empty();
-        $dashboardStatsContainer.append(statsView);
-    }
-
-    function updatListDatesAndPeriods(stagesStats) {
-        $.each(stagesStats, function (stageId, stats) {
-            var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
-            var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
-            stageStars.html(stats.starsView);
-            stageStartDate.html(stats.dateFromFormated);
-        });
-    }
-
-
-    $.fn.editableform.buttons =
-        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
-        '<i class="fa fa-check"></i>' +
-        '</button>' +
-        '<button type="button" class="btn btn-default btn-raised btn-sm editable-cancel">' +
-        '<i class="fa fa-times"></i>' +
-        '</button>';
-    $.fn.editable.defaults.mode = 'inline';
-    $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
-    $(document).ready(function () {
         $.editableElement = $('.nbDaysStage').editable({
             type: 'select',
             url: changeNbDaysStageUrl,
@@ -227,7 +204,26 @@ $().ready(function () {
                 {value: 180, text: '6 mois'}
             ]
         });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        enableActions();
     });
+
+    function updateStats(statsView) {
+        var $dashboardStatsContainer = $("#dashboardStatsContainer");
+        $dashboardStatsContainer.empty();
+        $dashboardStatsContainer.append(statsView);
+    }
+
+    function updatListDatesAndPeriods(stagesStats) {
+        $.each(stagesStats, function (stageId, stats) {
+            var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
+            var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
+            stageStars.html(stats.starsView);
+            stageStartDate.html(stats.dateFromFormated);
+        });
+    }
 
     $(window).scroll(function(){
         var pos = $(window).scrollTop();
