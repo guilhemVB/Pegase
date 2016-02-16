@@ -8,11 +8,9 @@
                 </div>
 
                 {% for destination in country.destinations %}
-                    {% if not destination.isPartial %}
-                        <div class="col-md-1 col-sm-2 col-xs-3 ellipsis smallPadding footerDestination">
-                            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
-                        </div>
-                    {% endif %}
+                    <div class="col-md-1 col-sm-2 col-xs-3 ellipsis smallPadding footerDestination">
+                        <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
+                    </div>
                 {% endfor %}
 
             {% endfor %}

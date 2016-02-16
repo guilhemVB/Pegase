@@ -1,7 +1,7 @@
 {% set title = destination.name ~ ", " ~ destination.country.name %}
 {% set titleMetaData = destination.name ~ " - " ~ destination.country.name %}
 {% set keywords = "destination, " ~ destination.name ~ ", " ~ destination.country.name %}
-{% set description = destination.name ~ " - " ~ destination.country.name ~ ", " ~ destination.totalPrices ~ " €  par jour. A faire : " %}
+{% set description = destination.name ~ " - " ~ destination.country.name ~ ", " ~ destination.totalPrices ~ " €  par jour. À faire : " %}
 {% if destination.tips|length > 0 %}
     {% set description = description ~ destination.tips[0] %}
 {% endif %}
@@ -50,15 +50,20 @@
 
         <div class="container-fluid containerMap">
             <div class="row">
+
                 <div class="col-lg-3 col-lg-offset-1 col-md-4">
-
                     <h2>Description</h2>
-
-                    {% for description in destination.description %}
-                        <p class="text-justify">{{ description }}</p>
-                    {% endfor %}
-
+                    {% if destination.isPartial %}
+                        <p class="text-justify">
+                            Cette fiche est en cours de rédaction, si vous souhaitez partarger vos bons plans et vos astuces, n'hésitez pas à <a href="{{ path('contact') }}">nous contacter</a>.
+                        </p>
+                    {% else %}
+                        {% for description in destination.description %}
+                            <p class="text-justify">{{ description }}</p>
+                        {% endfor %}
+                    {% endif %}
                 </div>
+
                 <div class="gmapPaddingTop15 col-lg-7 col-md-8">
                     <div id="gmap"></div>
                 </div>
@@ -103,19 +108,21 @@
                         </div>
                     </div>
 
-                    <div class="row text-justify">
-                        <div class="col-md-12">
-                            <h2>À faire</h2>
-                        </div>
+                    {% if not destination.isPartial %}
+                        <div class="row text-justify">
+                            <div class="col-md-12">
+                                <h2>À faire</h2>
+                            </div>
 
-                        <div class="col-md-12">
-                            <ul>
-                                {% for tip in destination.tips %}
-                                    <li>{{ tip }}</li>
-                                {% endfor %}
-                            </ul>
+                            <div class="col-md-12">
+                                <ul>
+                                    {% for tip in destination.tips %}
+                                        <li>{{ tip }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
 
                 </div>
 
