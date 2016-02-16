@@ -106,6 +106,7 @@ ricbra_robots_txt:
     allow_robots: %allow_robots%
 
 easy_admin:
+    disabled_actions: ['new', 'delete', 'edit']
     entities:
         - AppBundle\Entity\User
         - CalculatorBundle\Entity\Voyage
