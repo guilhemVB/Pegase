@@ -24,10 +24,6 @@ class DestinationController extends Controller
      */
     public function viewAction(Destination $destination)
     {
-        if ($destination->isPartial()) {
-            return $this->redirectToRoute('country', ['slug' => $destination->getCountry()->getSlug()]);
-        }
-
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestination($destination, ['disableHtml' => true]);

@@ -98,11 +98,7 @@
                             </div>
 
                             <div class="col-md-3 col-sm-2 col-xs-6 ellipsis">
-                                {% if voyage.startDestination.isPartial %}
-                                    {{ voyage.startDestination.name }}
-                                {% else %}
-                                    <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
-                                {% endif %}
+                                <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-xs-11">
@@ -123,11 +119,7 @@
                             </div>
 
                             <div class="col-md-3 col-sm-3 col-xs-6 ellipsis">
-                                {% if voyage.startDestination.isPartial %}
-                                    {{ voyage.startDestination.name }}
-                                {% else %}
-                                    <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
-                                {% endif %}
+                                <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
                             </div>
 
                             <div class="col-md-3 col-sm-4 col-xs-9">

@@ -10,11 +10,7 @@
         </div>
 
         <div class="col-md-3 col-sm-3 col-xs-6 ellipsis">
-            {% if destination.isPartial %}
-                {{ destination.name }}
-            {% else %}
-                <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
-            {% endif %}
+            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
         </div>
 
         <div class="col-md-3 col-sm-4 col-xs-9">
