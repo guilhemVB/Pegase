@@ -1,7 +1,24 @@
 {% set title = voyage.name %}
-{% set description = "Tableau de bord du futur voyage  : " ~ voyage.name %}
+{% set description = "Tableau de bord du voyage  : " ~ voyage.name ~ ". " %}
+{% if stagesSorted|length > 0 %}
+    {% for stage in stagesSorted|slice(0, 5) %}
+        {% set description = description ~ stage.destination.name %}
+
+        {% if loop.index0 < 5 and not loop.last %}
+            {% set description = description ~ ", " %}
+        {% endif %}
+    {% endfor %}
+
+    {% if stagesSorted|length > 5 %}
+        {% set description = description ~ " ..." %}
+    {% endif %}
+{% endif %}
+
 {% set type = "article" %}
 {% set imageUrl = image_banner_homepage_path ~ 'USA_raw.JPG' %}
+{% if voyageStats.mainDestination is not empty %}
+    {% set imageUrl = image_banner_destinations_path ~ voyageStats.mainDestination.slug ~ '.JPG' %}
+{% endif %}
 
 {% extends "::layout.html.twig" %}
 

@@ -2,6 +2,9 @@
 {% set description = "Le tableau de bord de votre voyage" %}
 {% set type = "article" %}
 {% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+{% if voyageStats.mainDestination is not empty %}
+    {% set imageUrl = image_banner_destinations_path ~ voyageStats.mainDestination.slug ~ '.JPG' %}
+{% endif %}
 
 {% set activeDashboard = true %}
 {% extends "::layout.html.twig" %}

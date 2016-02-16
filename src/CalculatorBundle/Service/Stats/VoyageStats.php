@@ -6,6 +6,7 @@ use CalculatorBundle\Entity\Stage;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorCountries;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorCrowFliesDistance;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorDates;
+use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorDestinations;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorInterface;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorNumberDays;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorPrices;
@@ -61,7 +62,9 @@ class VoyageStats
             new StatCalculatorNumberDays(),
             new StatCalculatorPrices(),
             new StatCalculatorStageStats($this->twig),
+            new StatCalculatorDestinations(),
         ];
+
         return $this->calculate($stagesSorted, $statCalculators);
     }
 
