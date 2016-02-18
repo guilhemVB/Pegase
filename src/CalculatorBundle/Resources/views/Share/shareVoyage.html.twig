@@ -32,7 +32,7 @@
 {% block body %}
     <div id="shareVoyage">
 
-        {% include 'CalculatorBundle:Share:shareVoyageHeader.html.twig' %}
+        {% include 'CalculatorBundle:Voyage:dashboardHeader.html.twig' with {'hideModifyBtn' : true} %}
 
         {% include 'CalculatorBundle:Voyage:dashboardGmap.html.twig' %}
 
