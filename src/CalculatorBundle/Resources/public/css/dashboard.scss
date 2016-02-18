@@ -130,3 +130,17 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+#formShowPricesInPublic {
+  margin-top: 5px;
+}
+
+#formShowPricesInPublic .help-block {
+  right: 0;
+  left: 0;
+}
+
+#formShowPricesInPublic label {
+  font-size: 14px;
+  color: rgb(51, 51, 51)
+}

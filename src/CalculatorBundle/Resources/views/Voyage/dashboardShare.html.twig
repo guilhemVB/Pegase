@@ -10,6 +10,33 @@
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 col-sm-12 text-center">
             <h2>Partagez votre voyage</h2>
+
+            <p>Envie de partager votre voyage ? Envoyez ce lien :
+                <a href="{{ shareUrl }}"
+                   target="_blank"
+                   title="lien de partage">
+                    {{ shareUrl }}
+                </a>
+            </p>
+
+            <div class="form-group" id="formShowPricesInPublic">
+                <div class="checkbox">
+                    <label>
+                        <input data-voyage-id="{{ voyage.id }}" type="checkbox" id="showPricesInPublic" {% if voyage.showPricesInPublic %}checked{% endif %}>
+                        <span class="checkBoxLabel">Afficher le budget</span>
+                    </label>
+                </div>
+                <p class="help-block">Si vous cochez cette case, les prix apparaitrons lors du partage.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-2">
+        </div>
+        <div class="col-lg-4 col-lg-offset-2">
+
+
         </div>
     </div>
 </div>
@@ -21,13 +48,6 @@
             <a href="https://twitter.com/intent/tweet?text=Mon%20prochain%20voyage%20planifié%20grâce%20à%20@LeMondeEnSac%20&amp;url={{ shareUrl }}"
                title="Share on Twitter" target="_blank"
                class="btn btn-block btn-raised btn-social-icon btn-twitter centerIcon"><i class="fa fa-twitter"></i></a>
-        </div>
-        <div class="col-lg-10 col-lg-offset-1 col-sm-12 text-center">
-            <a href="{{ shareUrl }}"
-               target="_blank"
-               title="lien de partage">
-                {{ shareUrl }}
-            </a>
         </div>
 
         {#<form method="post" action="mailto:?subject=Mon futur voyage&body=Bonjour, voici mon futur voyage : {{ shareUrlLong }} !" >#}

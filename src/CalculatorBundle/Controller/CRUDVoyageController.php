@@ -70,4 +70,28 @@ class CRUDVoyageController extends Controller
         return new JsonResponse(['nextUri' => $this->generateUrl('dashboard')]);
     }
 
+
+    /**
+     * @Route("{id}/updateShowPricesInPublic", name="voyageCRUDUpdateShowPricesInPublic")
+     * @param Voyage $voyage
+     * @param Request $request
+     * @return Response
+     */
+    public function updateShowPricesAction(Voyage $voyage, Request $request)
+    {
+        $showPricesInPublic = $request->get('showPricesInPublic') === 'true';
+
+        $voyage->setShowPricesInPublic($showPricesInPublic);
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+        $em->persist($voyage);
+        $em->flush();
+
+        return new JsonResponse([
+            'voyageId' => $voyage->getId(),
+            'showPricesInPublic' => $showPricesInPublic,
+        ]);
+    }
+
 }

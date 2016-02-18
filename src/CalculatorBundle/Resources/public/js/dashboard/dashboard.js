@@ -235,4 +235,15 @@ $().ready(function () {
         }
     });
 
+    $("#showPricesInPublic").on('change', function() {
+        var data = {
+            showPricesInPublic : this.checked
+        };
+        $("#showPricesInPublic").attr("disabled", true);
+
+        $.post(voyageCRUDUpdateShowPricesInPublicUrl, data, function (response) {
+            $("#showPricesInPublic").removeAttr("disabled");
+        }, "json");
+    });
+
 });
