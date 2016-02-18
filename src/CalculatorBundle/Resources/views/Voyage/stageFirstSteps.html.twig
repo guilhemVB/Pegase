@@ -1,0 +1,31 @@
+<div class="stageStyle">
+    <div class="row">
+
+        <div class="
+                {% if allowModification == true %}
+                    col-md-2 col-sm-1 col-xs-6
+                {% else %}
+                    col-md-3 col-sm-1 col-xs-6
+                {% endif %} ellipsis">
+            {% if allowModification %}
+                <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
+            {% endif %}
+            <img class='flagCountrySmall flagCountryStage'
+                 src='http://www.geonames.org/flags/x/{{ voyage.startDestination.country.codeAlpha2|lower }}.gif'/>
+            <a class="hidden-sm"
+               href="{{ path('country', {'slug' : voyage.startDestination.country.slug }) }}">{{ voyage.startDestination.country.name }}</a>
+        </div>
+
+        <div class="{% if allowModification == true %}
+                    col-md-3 col-sm-2 col-xs-6
+                {% else %}
+                    col-md-3 col-sm-3 col-xs-6
+                {% endif %} ellipsis">
+            <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
+        </div>
+
+        <div class="col-sm-6 col-xs-11">
+            Début du voyage
+        </div>
+    </div>
+</div>
