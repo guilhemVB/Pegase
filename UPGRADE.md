@@ -58,3 +58,4 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Add calculator
 - FOSUserBundle to manage user
 - footer is created after destinations importation
+- User can choose if he want to print prices in public
