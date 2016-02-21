@@ -5,6 +5,12 @@
   top: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .stickyHeader {
+    position: inherit;
+  }
+}
+
 #headerDashboard {
   padding-top: 0;
 }
