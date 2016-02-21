@@ -1,9 +1,13 @@
 Feature: Stats voyage
 
     Scenario: Calculer les stats
+        Given les monnaies :
+            | nom               | code |
+            | Euro              | EUR  |
+            | Dollard Américain | USD  |
         Given les pays :
             | nom       | capitale   | monnaie |
-            | France    | Paris      | Euro    |
+            | France    | Paris      | EUR     |
             | Etat-Unis | Washington | USD     |
         Given les destinations :
             | nom       | pays      | longitude | latitude   | prix de l'hébergement | prix du cout de la vie |
@@ -16,8 +20,8 @@ Feature: Stats voyage
             | nom     |
             | guilhem |
         Given les voyages de l'utilisateur "guilhem"
-            | nom | date de départ | destination de départ | nombre de voyageur |
-            | TDM | 01/01/2015     | Paris                 | 1                  |
+            | nom | date de départ | destination de départ |
+            | TDM | 01/01/2015     | Paris                 |
         Given les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Lyon        | 7              |
@@ -25,8 +29,8 @@ Feature: Stats voyage
             | New-York    | 8              |
             | Boston      | 2              |
         Then les statistiques du voyage "TDM" sont :
-            | nb étapes | cout moyen | durée | date départ | date retour | nb de pays | distance |
-            | 4         | 1235       | 20    | 01/01/2015  | 21/01/2015  | 2          | 13918    |
+            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
+            | 4         | 1235       | 20    | 01/01/2015  | 21/01/2015  | 2          | 13918    | New-York               |
 
 
 

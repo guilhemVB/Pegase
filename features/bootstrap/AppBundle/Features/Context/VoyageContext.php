@@ -38,7 +38,7 @@ class VoyageContext extends CommonContext
 
         foreach ($tableVoyages as $voyageRow) {
             $destination = $this->findDestinationByName($voyageRow['destination de départ']);
-            $this->CRUDVoyage->add($user, $voyageRow['nom'], $voyageRow['date de départ'], $destination, $voyageRow['nombre de voyageur']);
+            $this->CRUDVoyage->add($user, $voyageRow['nom'], $voyageRow['date de départ'], $destination);
         }
     }
 
@@ -52,12 +52,13 @@ class VoyageContext extends CommonContext
 
         foreach ($tableStats as $statsRow) {
             $this->assertEquals($statsRow['nb étapes'], $stats['nbStages']);
-            $this->assertEquals($statsRow['cout moyen'], $stats['totalCost']);
+            $this->assertEquals($statsRow['cout total'], $stats['totalCost']);
             $this->assertEquals($statsRow['durée'], $stats['nbDays']);
             $this->assertEquals($statsRow['date départ'], $stats['startDate']->format('d/m/Y'));
             $this->assertEquals($statsRow['date retour'], $stats['endDate']->format('d/m/Y'));
             $this->assertEquals($statsRow['nb de pays'], $stats['nbCountries']);
             $this->assertEquals($statsRow['distance'], round($stats['crowFliesDistance']));
+            $this->assertEquals($statsRow['destination principale'], $stats['mainDestination']['name']);
         }
     }
 }

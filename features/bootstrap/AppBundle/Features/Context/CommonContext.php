@@ -3,8 +3,10 @@
 namespace AppBundle\Features\Context;
 
 use AppBundle\Entity\Country;
+use AppBundle\Entity\Currency;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
+use AppBundle\Repository\CurrencyRepository;
 use CalculatorBundle\Entity\Voyage;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
@@ -37,6 +39,17 @@ class CommonContext extends \PHPUnit_Framework_TestCase implements Context
         /** @var CountryRepository $countryRepository */
         $countryRepository = $this->em->getRepository('AppBundle:Country');
         return $countryRepository->findOneByName($name);
+    }
+
+    /**
+     * @param string $code
+     * @return Currency|null
+     */
+    protected function findCurrencyByCode($code)
+    {
+        /** @var CurrencyRepository $currencyRepository */
+        $currencyRepository = $this->em->getRepository('AppBundle:Currency');
+        return $currencyRepository->findOneByCode($code);
     }
 
     /**

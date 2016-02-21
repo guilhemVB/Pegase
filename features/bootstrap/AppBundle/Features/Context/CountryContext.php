@@ -23,7 +23,7 @@ class CountryContext extends CommonContext
             $country = new Country();
             $country->setName($countryRow['nom'])
                 ->setCapitalName($countryRow['capitale'])
-                ->setCurrency($countryRow['monnaie'])
+                ->setCurrency($this->findCurrencyByCode($countryRow['monnaie']))
                 ->setVisaInformation("Visa gratuit")
                 ->setVisaDuration("3 mois");
 
