@@ -19,15 +19,4 @@ default:
                     container: @service_container
                 - AppBundle\Features\Context\CurrencyContext:
                     container: @service_container
-        backend_app:
-            type: symfony_bundle
-            bundle: 'AppBundle'
-            contexts :
-                - AppBundle\Features\Context\FeatureContext
-                - AppBundle\Features\Context\CurrencyContext:
-                    container: @service_container
-                - AppBundle\Features\Context\CountryContext:
-                    container: @service_container
-                - AppBundle\Features\Context\DestinationContext:
-                    container: @service_container
 

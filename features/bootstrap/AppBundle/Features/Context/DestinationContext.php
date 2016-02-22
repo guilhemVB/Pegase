@@ -28,26 +28,6 @@ class DestinationContext extends CommonContext
     }
 
     /**
-     * @Then les dernières destinations complètes ajoutées sont :
-     */
-    public function lesDernièresDestinationsCompletesAjoutéesSont(TableNode $tableLastDestinations)
-    {
-        /** @var DestinationRepository $destinationRepository */
-        $destinationRepository = $this->em->getRepository('AppBundle:Destination');
-
-        $lastDestinations = $destinationRepository->findLastCompleteDestinations();
-
-        $lastDestinationsNames = [];
-        foreach ($lastDestinations as $lastDestination) {
-            $lastDestinationsNames[] = $lastDestination->getName();
-        }
-
-        foreach ($tableLastDestinations as $lastDestinationRow) {
-            $this->assertContains($lastDestinationRow['nom'], $lastDestinationsNames);
-        }
-    }
-
-    /**
      * @When je modifie les destinations :
      */
     public function jeModifieLesDestinations(TableNode $tableDestinations)

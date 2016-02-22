@@ -45,7 +45,7 @@ class Destination
      * @var boolean
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $isPartial = true;
+    private $isPartial;
 
     /**
      * @var array
@@ -250,7 +250,7 @@ class Destination
      */
     public function setIsPartial($isPartial)
     {
-        if (false === $isPartial) {
+        if (false !== $this->isPartial && !$isPartial) {
             $this->completedAt = new \DateTime('now');
         }
 
