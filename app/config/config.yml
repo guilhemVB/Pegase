@@ -108,8 +108,21 @@ ricbra_robots_txt:
 easy_admin:
     disabled_actions: ['new', 'delete', 'edit']
     entities:
-        - AppBundle\Entity\User
-        - CalculatorBundle\Entity\Voyage
-        - AppBundle\Entity\Currency
-        - AppBundle\Entity\Country
-        - AppBundle\Entity\Destination
+        User:
+            class: AppBundle\Entity\User
+            list:
+                fields: ['id', 'username', 'email', 'roles', 'enabled', 'voyages']
+        Voyage:
+            class: CalculatorBundle\Entity\Voyage
+            list:
+                fields: ['id', 'name', 'urlMinified', 'user']
+        Currency:
+            class: AppBundle\Entity\Currency
+        Country:
+            class: AppBundle\Entity\Country
+            list:
+                fields: ['id', 'name', 'codeAlpha2', 'codeAlpha3', 'destinations', 'redirectToDestination', 'currency']
+        Destination:
+            class: AppBundle\Entity\Destination
+            list:
+                fields: ['id', 'name', 'country', 'isPartial']
