@@ -44,6 +44,7 @@ class CountryRepository extends EntityRepository
             ->addGroupBy('d.periodFebruary')
             ->addGroupBy('d.createdAt')
             ->addGroupBy('d.updatedAt')
+            ->addGroupBy('d.completedAt')
             ->addGroupBy('d.slug')
             ->addGroupBy('d.country')
             ->addGroupBy('d.isPartial')

@@ -77,6 +77,13 @@ class Destination
      */
     private $latitude;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    private $completedAt;
+
 
     public function getSluggableFields()
     {
@@ -243,18 +250,20 @@ class Destination
      */
     public function setIsPartial($isPartial)
     {
-        $changeIsPartial = false;
-
-        if ($isPartial != $this->isPartial) {
-            $changeIsPartial = true;
+        if (false === $isPartial) {
+            $this->completedAt = new \DateTime('now');
         }
 
         $this->isPartial = $isPartial;
 
-        if (!$isPartial && $changeIsPartial) {
-            $this->setCreatedAt(new \DateTime('now'));
-        }
-
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCompletedAt()
+    {
+        return $this->completedAt;
     }
 }

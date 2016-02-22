@@ -19,6 +19,6 @@ class DestinationRepository extends EntityRepository
      */
     public function findLastCompleteDestinations($nbDestination = 3)
     {
-        return $this->findBy(['isPartial' => false], ['createdAt' => 'DESC'], $nbDestination);
+        return $this->findBy(['isPartial' => false], ['completedAt' => 'DESC'], $nbDestination);
     }
 }
