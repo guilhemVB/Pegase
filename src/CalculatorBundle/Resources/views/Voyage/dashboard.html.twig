@@ -23,7 +23,6 @@
 
 {% block body %}
     <div id="dashboard">
-
         {% include 'CalculatorBundle:Voyage:dashboardHeader.html.twig' %}
 
         {% include 'CalculatorBundle:Voyage:dashboardGmap.html.twig' %}
@@ -62,7 +61,7 @@
         var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
         var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
 
-        var currentVoyageName = "{{ voyage.name }}";
+        var currentVoyageName = "{{ voyage.name|raw }}";
         var currentStartDestinationId = "{{ voyage.startDestination.id }}";
 
         var currentStartDate = new Date(
