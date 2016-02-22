@@ -32,7 +32,7 @@ class HomepageController extends Controller
 
         $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($allDestinations, ['disableZoom' => true]);
 
-        $lastDestinationsCreated = $destinationRepository->findBy(['isPartial' => false], ['createdAt' => 'DESC'], 3);
+        $lastDestinationsCreated = $destinationRepository->findLastCompleteDestinations();
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [

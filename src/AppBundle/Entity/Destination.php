@@ -243,7 +243,17 @@ class Destination
      */
     public function setIsPartial($isPartial)
     {
+        $changeIsPartial = false;
+
+        if ($isPartial != $this->isPartial) {
+            $changeIsPartial = true;
+        }
+
         $this->isPartial = $isPartial;
+
+        if (!$isPartial && $changeIsPartial) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
 
         return $this;
     }

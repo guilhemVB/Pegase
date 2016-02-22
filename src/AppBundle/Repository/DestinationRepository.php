@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class DestinationRepository extends EntityRepository
 {
+
+    /**
+     * @param int $nbDestination
+     * @return Destination[]
+     */
+    public function findLastCompleteDestinations($nbDestination = 3)
+    {
+        return $this->findBy(['isPartial' => false], ['createdAt' => 'DESC'], $nbDestination);
+    }
 }
