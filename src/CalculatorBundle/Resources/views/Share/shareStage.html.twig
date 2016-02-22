@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-3 col-sm-4 col-xs-12">
-            {{ stage.nbDays }} jour{% if stage.nbDays > 2 %}s{% endif %}
+            {% include 'AppBundle:Common:nbDays.html.twig' with {'nbDays' : stage.nbDays} %}
 
             <span class="stagePrice pull-right" data-stage-id="{{ stage.id }}">
                 {% if hidePrices %}

@@ -25,8 +25,9 @@
         </div>
 
         <div class="col-md-4 col-sm-5 col-xs-12">
-            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">{{ stage.nbDays }}
-                jour{% if stage.nbDays > 2 %}s{% endif %}</a>
+            <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">
+                {% include 'AppBundle:Common:nbDays.html.twig' with {'nbDays' : stage.nbDays} %}
+            </a>
 
             <button type="button" class="btn btn-danger btn-raised btn-xs pull-right btnDeleteStage"
                     style="margin: 0;"

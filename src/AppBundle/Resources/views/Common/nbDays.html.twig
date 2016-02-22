@@ -1,0 +1,23 @@
+{% if nbDays < 2 %}
+    {{ nbDays }} jour
+{% elseif nbDays < 31 %}
+    {{ nbDays }} jours
+{% elseif nbDays == 35 %}
+    5 semaines
+{% elseif nbDays == 42 %}
+    6 semaines
+{% elseif nbDays == 49 %}
+    7 semaines
+{% elseif nbDays == 60 %}
+    2 mois
+{% elseif nbDays == 90 %}
+    3 mois
+{% elseif nbDays == 120 %}
+    4 mois
+{% elseif nbDays == 150 %}
+    5 mois
+{% elseif nbDays == 180 %}
+    6 mois
+{% else %}
+    {{ nbDays }} jours
+{% endif %}
