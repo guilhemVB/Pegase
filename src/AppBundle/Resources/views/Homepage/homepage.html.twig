@@ -5,6 +5,22 @@
 
 {% extends "::layout.html.twig" %}
 
+{% block metaData %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name" : "Le Monde en Sac",
+        "url": "http://www.lemondeensac.com/",
+        "logo": "http://www.lemondeensac.com/avatar.png",
+        "sameAs" : [
+            "https://twitter.com/LeMondeEnSac",
+            "https://plus.google.com/+Lemondeensac"
+        ]
+    }
+    </script>
+{% endblock %}
+
 {% block body %}
 
     <div id="homepage">
