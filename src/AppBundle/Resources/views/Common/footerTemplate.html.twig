@@ -7,7 +7,7 @@
                 <li class=""><a href="{{ url('country', {'slug' : country.slug }) }}">{{ country.name }}</a></li>
 
                 {% for destination in country.destinations %}
-                    <li class=" footerDestination"><a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></li>
+                    <li class=" footerDestination"><a href="{{ url('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></li>
                 {% endfor %}
 
             {% endfor %}
