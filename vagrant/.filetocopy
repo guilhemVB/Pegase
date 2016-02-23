@@ -1,0 +1,11 @@
+#############################
+#        .filetocopy        #
+#############################
+#
+# Ajoutez les fichiers que vous voulez copier dans la home de la vagrant comme ci-après.
+# Le path correspond au chemin du fichier sur votre host et seras copier dans /home/vagrant
+# executez la commande 'git update-index --assume-unchanged vagrant/.filetocopy' pour que le fichier n'appairaisse pas comme modifié dans git
+
+#~/.bashrc
+#~/.gitconfig
+#~/.bash_aliases
