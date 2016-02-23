@@ -15,7 +15,7 @@ You have to create the database `travel_test`, then, launch the script `test.sh`
 ## Grunt
 
 ```
-sudo npm cache clean && sudo npm install --no-bin-links
+npm cache clean && npm install --no-bin-links && bower install --allow-root
 grunt
 ```
 

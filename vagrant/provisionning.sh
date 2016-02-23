@@ -6,7 +6,7 @@ dpkg-reconfigure --frontend noninteractive tzdata
 
 # PHP
 apt-get update && apt-get upgrade
-apt-get install -y php5 php5-curl php5-imagick php5-mysql php5-memcached libssh2-php php5-xdebug php5-intl php5-mongo php5-pgsql g++ apache2
+apt-get install -y php5 php5-curl php5-imagick php5-mysql php5-memcached libssh2-php php5-xdebug php5-intl php5-gd php5-mongo php5-pgsql g++ apache2
 
 echo "xdebug.max_nesting_level = 1000" >> /etc/php5/cli/php.ini
 
@@ -39,6 +39,9 @@ gem install bundler
 cd /vagrant
 bundle install --deployment
 
+# sass
+sudo su -c "gem install sass"
+
 # Accept MySql connections from outside
 sed -i 's/bind-address/#bind-address = 0.0.0.0 #/g' /etc/mysql/my.cnf
 echo "bind-address 0.0.0.0" >> /etc/mysql/my.cnf
@@ -55,9 +58,6 @@ echo -e "Host *\n    ForwardAgent yes" > /home/vagrant/.ssh/config
 # Set environment variables needed
 echo "SetEnv APPLICATION_ENV 'dev'" > /etc/apache2/conf-available/vagrant.conf
 ln -s /etc/apache2/conf-available/vagrant.conf /etc/apache2/conf-enabled/vagrant.conf
-
-## Set host for textgen api
-# echo "192.168.10.201 textdev.rvip.fr" >> /etc/hosts
 
 # Apache conf
 VM_VHOST="
@@ -89,8 +89,6 @@ libpath=$(find / -name 'xdebug.so' 2> /dev/null);
 hostip=$(netstat -r | grep default | cut -d ' ' -f 10);
 printf "zend_extension=\"$libpath\"\nxdebug.remote_enable=1\nxdebug.remote_handler=\"dbgp\"\nxdebug.remote_port=9001\nxdebug.remote_autostart=1\nxdebug.remote_mode=\"req\"\nxdebug.remote_host=\"$hostip\"\nxdebug.idekey=\"vagrant\"\nxdebug.remote_log=\"/var/log/xdebug/xdebug.log\"\n" > /etc/php5/mods-available/xdebug.ini
 service apache2 restart
-
-cd /vagrant && bash prepare.sh
 
 # We add gitlab to known hosts
 #ssh-keyscan -H gitlab.rvip.fr > /etc/ssh/ssh_known_hosts
