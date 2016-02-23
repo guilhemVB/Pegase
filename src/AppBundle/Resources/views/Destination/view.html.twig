@@ -16,10 +16,28 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
-
-{% block stylesheets %}
-    {{ parent() }}
-    {#<link rel="stylesheet" href="{{ asset('assets/bootstrap-social/bootstrap-social.css') }}">#}
+{% block metaData %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@id": "{{ url('country', {'slug' : destination.country.slug }) }}",
+                "name": "{{ destination.country.name }}"
+            }
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "{{ url('destination', {'slug' : destination.slug }) }}",
+                "name": "{{ destination.name }}"
+            }
+        }]
+    }
+</script>
 {% endblock %}
 
 

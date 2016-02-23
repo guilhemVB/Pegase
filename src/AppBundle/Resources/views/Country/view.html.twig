@@ -15,6 +15,22 @@
 {% set activeDestinations = true %}
 {% extends "::layout.html.twig" %}
 
+{% block metaData %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@id": "{{ url('country', {'slug' : country.slug }) }}",
+                "name": "{{ country.name }}"
+            }
+        }]
+    }
+</script>
+{% endblock %}
 
 {% block body %}
     <div id="countryView">
