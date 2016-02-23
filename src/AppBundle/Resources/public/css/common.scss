@@ -47,6 +47,10 @@
     font-size: 16px;
 }
 
+.markerPrice {
+    font-size: 9px;
+}
+
 .footer {
     background-color: $colorGrey;
     border-color: #080808;
@@ -148,6 +152,10 @@
 
 .colorInherit {
     color: inherit !important;
+}
+
+.passwordLostConnectionForm {
+    margin-top: 8px;
 }
 
 .img-responsive {
