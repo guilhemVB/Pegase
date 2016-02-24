@@ -1,10 +1,10 @@
 <?php
 
-namespace CalculatorBundle\Service;
+namespace CalculatorBundle\Service\GoogleUrlShortener;
 
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
-class GoogleUrlShortenerApi
+class GoogleUrlShortenerApi implements GoogleUrlShortenerApiInterface
 {
 
     /** @var string */

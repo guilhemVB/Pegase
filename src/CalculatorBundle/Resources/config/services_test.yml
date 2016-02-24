@@ -1,0 +1,6 @@
+imports:
+    - { resource: services.yml }
+
+services:
+    google_url_shortener_api:
+        class : CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApiMock

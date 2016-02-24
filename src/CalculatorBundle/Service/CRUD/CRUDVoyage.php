@@ -5,7 +5,7 @@ namespace CalculatorBundle\Service\CRUD;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
 use CalculatorBundle\Entity\Voyage;
-use CalculatorBundle\Service\GoogleUrlShortenerApi;
+use CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApiInterface;
 use Doctrine\ORM\EntityManager;
 
 class CRUDVoyage
@@ -14,10 +14,10 @@ class CRUDVoyage
     /** @var EntityManager */
     private $em;
 
-    /** @var GoogleUrlShortenerApi */
+    /** @var GoogleUrlShortenerApiInterface */
     private $googleUrlShortenerApi;
 
-    public function __construct(EntityManager $em, GoogleUrlShortenerApi $googleUrlShortenerApi)
+    public function __construct(EntityManager $em, GoogleUrlShortenerApiInterface $googleUrlShortenerApi)
     {
         $this->em = $em;
         $this->googleUrlShortenerApi = $googleUrlShortenerApi;

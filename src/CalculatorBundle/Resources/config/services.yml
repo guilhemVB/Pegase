@@ -22,7 +22,7 @@ services:
             - @maplace_marker_builder
 
     google_url_shortener_api:
-        class : CalculatorBundle\Service\GoogleUrlShortenerApi
+        class : CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApi
         arguments:
             - %api_google_key%
             - @router
