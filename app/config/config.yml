@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: version.yml }
     - { resource: security.yml }
     - { resource: services.yml }
 
@@ -40,6 +41,8 @@ twig:
 
 # Assetic Configuration
 assetic:
+    variables:
+        version: [%git_commit%]
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [  ] # "FOSCommentBundle"

@@ -10,6 +10,7 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/web/css/*
 .idea
 node_modules
 .sass-cache

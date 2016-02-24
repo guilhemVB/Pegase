@@ -64,8 +64,8 @@ module.exports = function (grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'web/css/app.min.css': 'src/AppBundle/Resources/public/css/global.scss',
-                    'web/css/calculator.min.css': 'src/CalculatorBundle/Resources/public/css/global.scss'
+                    'src/AppBundle/Resources/public/css/dist/app.min.css': 'src/AppBundle/Resources/public/css/global.scss',
+                    'src/CalculatorBundle/Resources/public/css/dist/calculator.min.css': 'src/CalculatorBundle/Resources/public/css/global.scss'
                 }
             }
         }
