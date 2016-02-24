@@ -25,7 +25,9 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/calculator.min.css') }}">
+    {% stylesheets output='css/calculator.{version}.min.css' '@CalculatorBundle/Resources/public/css/dist/*' vars=["version"] filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 
 

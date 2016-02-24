@@ -24,3 +24,10 @@ or
 ```
 grunt watch
 ```
+
+To Deploy :
+
+```
+bash updateVersion.sh
+php app/console assetic:dump
+```

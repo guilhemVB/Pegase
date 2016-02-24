@@ -45,7 +45,7 @@ assetic:
         version: [%git_commit%]
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [  ] # "FOSCommentBundle"
+    bundles:        [ "AppBundle", "CalculatorBundle" ] # "FOSCommentBundle"
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

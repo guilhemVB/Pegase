@@ -10,7 +10,9 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css') }}">
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/calculator.min.css') }}">
+    {% stylesheets output='css/calculator.{version}.min.css' '@CalculatorBundle/Resources/public/css/dist/*' vars=["version"] filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}>
     <link rel="stylesheet" href="{{ asset('assets/select2/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/select2-bootstrap-css/select2-bootstrap.min.css') }}">
 {% endblock %}
