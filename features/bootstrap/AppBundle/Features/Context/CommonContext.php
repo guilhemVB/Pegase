@@ -53,14 +53,13 @@ class CommonContext extends \PHPUnit_Framework_TestCase implements Context
     }
 
     /**
-     * @param string $userName
-     * @return null|User
+     * @return User[]
      */
-    protected function findUserByName($userName)
+    protected function findUsers()
     {
         /** @var UserRepository $userRepository */
         $userRepository = $this->em->getRepository('AppBundle:User');
-        return $userRepository->findOneBy(['username' => $userName]);
+        return $userRepository->findAll();
     }
 
     /**

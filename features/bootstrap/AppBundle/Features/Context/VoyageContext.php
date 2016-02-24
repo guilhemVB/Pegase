@@ -29,11 +29,7 @@ class VoyageContext extends CommonContext
      */
     public function lesVoyagesDeLUtilisateur($userName, TableNode $tableVoyages)
     {
-//        $user = $this->findUserByName($userName);
-
-        /** @var UserRepository $userRepository */
-        $userRepository = $this->em->getRepository('AppBundle:User');
-        $users = $userRepository->findAll();
+        $users = $this->findUsers($userName);
         $user = $users[0];
 
         foreach ($tableVoyages as $voyageRow) {
