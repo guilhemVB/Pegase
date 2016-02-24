@@ -1,8 +1,53 @@
 # Le Monde En Sac Upgrade guide
 
-## v0.0.0
+## v0.3.1
 
-First version of the project : Only Homepage and Contact Page. No data for the moments.
+- Use assetic to generate assets (js and css), use last commit hash to the names to be sure sources are reloaded by client
+
+## v0.3.0
+
+- Add calculator
+- FOSUserBundle to manage user
+- footer is created after destinations importation
+- User can choose if he want to print prices in public
+
+## v0.2.3
+
+- Bug fix color destination in gmap
+- Sort list countries
+- Add open graph description in Homepage
+- Add Tweeter cards
+
+## v0.2.2
+
+- externalisation of API rate key
+- Use new logo and favicon
+
+## v0.2.1
+
+- Print rate EUR / local currency
+- Add cron to update rate every days
+
+## v0.2.0
+
+- Create new Bundle for calculator -> not use for the moment
+- Use material design library
+
+## v0.1.2
+
+- Add title to budget destination part
+
+## v0.1.2
+
+- DOM simplification
+- Improve responsive
+- Protect command URLs with pwd access
+- Add flag to force not import destination
+
+## v0.1.1
+
+- Add webservice to import countries and destinations
+- Improve meta description and meta keyword
 
 ## v0.1.0
 
@@ -14,48 +59,6 @@ First version of the project : Only Homepage and Contact Page. No data for the m
 - Add new pages in sitemap.xml
 - Add newest destinations in homepage
 
-## v0.1.1
+## v0.0.0
 
-- Add webservice to import countries and destinations
-- Improve meta description and meta keyword
-
-## v0.1.2
-
-- DOM simplification
-- Improve responsive
-- Protect command URLs with pwd access
-- Add flag to force not import destination
-
-## v0.1.2
-
-- Add title to budget destination part
-
-## v0.2.0
-
-- Create new Bundle for calculator -> not use for the moment
-- Use material design library
-
-
-## v0.2.1
-
-- Print rate EUR / local currency
-- Add cron to update rate every days
-
-## v0.2.1
-
-- externalisation of API rate key
-- Use new logo and favicon
-
-## v0.2.2
-
-- Bug fix color destination in gmap
-- Sort list countries
-- Add open graph description in Homepage
-- Add Tweeter cards
-
-## v0.3.0
-
-- Add calculator
-- FOSUserBundle to manage user
-- footer is created after destinations importation
-- User can choose if he want to print prices in public
+First version of the project : Only Homepage and Contact Page. No data for the moments.

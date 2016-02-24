@@ -4,30 +4,30 @@ module.exports = function (grunt) {
         concat: {
             basic_and_extras: {
                 files: {
-                    'web/js/homepage.js': 'src/AppBundle/Resources/public/js/homepage/*.js',
-                    'web/js/common.js': 'src/AppBundle/Resources/public/js/common/*.js',
-                    'web/js/contact.js': 'src/AppBundle/Resources/public/js/contact/*.js',
-                    'web/js/destination.js': 'src/AppBundle/Resources/public/js/destination/*.js',
-                    'web/js/country.js': 'src/AppBundle/Resources/public/js/country/*.js',
-                    'web/js/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js',
-                    'web/js/createVoyage.js': 'src/CalculatorBundle/Resources/public/js/voyage/*.js',
-                    'web/js/dashboardVoyage.js': 'src/CalculatorBundle/Resources/public/js/dashboard/*.js',
-                    'web/js/shareVoyage.js': 'src/CalculatorBundle/Resources/public/js/share/*.js'
+                    'src/AppBundle/Resources/public/js/dist/homepage/homepage.js': 'src/AppBundle/Resources/public/js/homepage/*.js',
+                    'src/AppBundle/Resources/public/js/dist/common/common.js': 'src/AppBundle/Resources/public/js/common/*.js',
+                    'src/AppBundle/Resources/public/js/dist/contact/contact.js': 'src/AppBundle/Resources/public/js/contact/*.js',
+                    'src/AppBundle/Resources/public/js/dist/destination/destination.js': 'src/AppBundle/Resources/public/js/destination/*.js',
+                    'src/AppBundle/Resources/public/js/dist/country/country.js': 'src/AppBundle/Resources/public/js/country/*.js',
+                    'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.js': 'src/CalculatorBundle/Resources/public/js/voyage/*.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.js': 'src/CalculatorBundle/Resources/public/js/dashboard/*.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js': 'src/CalculatorBundle/Resources/public/js/share/*.js'
                 }
             }
         },
         uglify: {
             build: {
                 files: {
-                    'web/js/homepage.min.js': 'web/js/homepage.js',
-                    'web/js/common.min.js': 'web/js/common.js',
-                    'web/js/contact.min.js': 'web/js/contact.js',
-                    'web/js/destination.min.js': 'web/js/destination.js',
-                    'web/js/country.min.js': 'web/js/country.js',
-                    'web/js/destinationList.min.js': 'web/js/destinationList.js',
-                    'web/js/createVoyage.min.js': 'web/js/createVoyage.js',
-                    'web/js/dashboardVoyage.min.js': 'web/js/dashboardVoyage.js',
-                    'web/js/shareVoyage.min.js': 'web/js/shareVoyage.js'
+                    'src/AppBundle/Resources/public/js/dist/homepage/homepage.min.js': 'src/AppBundle/Resources/public/js/dist/homepage/homepage.js',
+                    'src/AppBundle/Resources/public/js/dist/common/common.min.js': 'src/AppBundle/Resources/public/js/dist/common/common.js',
+                    'src/AppBundle/Resources/public/js/dist/contact/contact.min.js': 'src/AppBundle/Resources/public/js/dist/contact/contact.js',
+                    'src/AppBundle/Resources/public/js/dist/destination/destination.min.js': 'src/AppBundle/Resources/public/js/dist/destination/destination.js',
+                    'src/AppBundle/Resources/public/js/dist/country/country.min.js': 'src/AppBundle/Resources/public/js/dist/country/country.js',
+                    'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.min.js': 'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js'
                 }
             }
         },

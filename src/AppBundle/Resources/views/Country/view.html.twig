@@ -164,7 +164,9 @@
     <script>
         var maplaceData = {{ maplaceData|raw }};
     </script>
-    <script src="{{ asset('js/country.min.js') }}"></script>
+    {% javascripts output='js/country/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/country/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 

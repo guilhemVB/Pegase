@@ -74,7 +74,9 @@
         var voyageCRUDUpdateUrl = "{{ path('voyageCRUDUpdate', {'id' : voyage.id}) }}";
         var voyageCRUDUpdateShowPricesInPublicUrl = "{{ path('voyageCRUDUpdateShowPricesInPublic', {'id' : voyage.id}) }}";
     </script>
-    <script src="{{ asset('js/dashboardVoyage.min.js') }}"></script>
+    {% javascripts output='js/dashboard/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/dashboard/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 

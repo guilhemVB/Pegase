@@ -101,5 +101,7 @@
     </script>
     <script src="{{ asset('assets/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/select2/select2_locale_fr.js') }}"></script>
-    <script src="{{ asset('js/destinationList.min.js') }}"></script>
+    {% javascripts output='js/destinationList/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/destinationList/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

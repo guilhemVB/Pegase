@@ -69,7 +69,9 @@
     <script>
         var sendEmailUrl = "{{ path('sendEmail') }}";
     </script>
-    <script src="{{ asset('js/contact.min.js') }}"></script>
+    {% javascripts output='js/contact/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/contact/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 

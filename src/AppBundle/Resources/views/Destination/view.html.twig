@@ -264,7 +264,9 @@
         var addStageUrl = "{{ path('addStage', {'id' : destination.id}) }}";
         var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
     </script>
-    <script src="{{ asset('js/destination.min.js') }}"></script>
+    {% javascripts output='js/destination/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/destination/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 

@@ -11,6 +11,7 @@
 /vendor/
 /web/bundles/
 /web/css/*
+/web/js/*
 .idea
 node_modules
 .sass-cache

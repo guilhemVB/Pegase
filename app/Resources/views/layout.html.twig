@@ -46,7 +46,11 @@
     <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap-material-design/dist/js/material.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap-material-design/dist/js/ripples.min.js') }}"></script>
-    <script src="{{ asset('js/common.min.js') }}"></script>
+
+    {% javascripts output='js/common/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/common/*.min.js' vars=["version"] %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     <script>
         var navbarInfosUrl = null;
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
