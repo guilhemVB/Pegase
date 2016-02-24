@@ -25,9 +25,9 @@ class VoyageContext extends CommonContext
     }
 
     /**
-     * @Given les voyages de l'utilisateur :userName
+     * @When l'utilisateur :userName crée les voyages suivants :
      */
-    public function lesVoyagesDeLUtilisateur($userName, TableNode $tableVoyages)
+    public function lUtilisateurCreeLesVoyagesSuivants($userName, TableNode $tableVoyages)
     {
         $users = $this->findUsers($userName);
         $user = $users[0];

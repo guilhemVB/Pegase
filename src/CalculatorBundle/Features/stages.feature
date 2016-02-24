@@ -19,10 +19,10 @@ Feature: Stages
         Given les utilisateurs :
             | nom     |
             | guilhem |
-        Given les voyages de l'utilisateur "guilhem"
+        When l'utilisateur "guilhem" crée les voyages suivants :
             | nom | date de départ | destination de départ |
             | TDM | 01/01/2015     | Paris                 |
-        Given les étapes suivantes au voyage "TDM" :
+        When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Lyon        | 1              |
             | Marseille   | 2              |
@@ -63,10 +63,10 @@ Feature: Stages
         Given les utilisateurs :
             | nom     |
             | guilhem |
-        Given les voyages de l'utilisateur "guilhem"
+        When l'utilisateur "guilhem" crée les voyages suivants :
             | nom | date de départ | destination de départ |
             | TDM | 01/01/2015     | Paris                 |
-        Given les étapes suivantes au voyage "TDM" :
+        When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Lyon        | 7              |
             | Marseille   | 3              |
@@ -100,10 +100,10 @@ Feature: Stages
         Given les utilisateurs :
             | nom     |
             | guilhem |
-        Given les voyages de l'utilisateur "guilhem"
+        When l'utilisateur "guilhem" crée les voyages suivants :
             | nom | date de départ | destination de départ |
             | TDM | 01/01/2015     | Paris                 |
-        Given les étapes suivantes au voyage "TDM" :
+        When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Lyon        | 7              |
             | Marseille   | 3              |
@@ -139,10 +139,10 @@ Feature: Stages
         Given les utilisateurs :
             | nom     |
             | guilhem |
-        Given les voyages de l'utilisateur "guilhem"
+        When l'utilisateur "guilhem" crée les voyages suivants :
             | nom | date de départ | destination de départ |
             | TDM | 01/01/2015     | Paris                 |
-        Given les étapes suivantes au voyage "TDM" :
+        When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Marseille   | 3              |
             | Marseille   | 13             |

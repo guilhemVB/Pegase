@@ -21,7 +21,6 @@ class StageContext extends CommonContext
     }
 
     /**
-     * @Given les étapes suivantes au voyage :voyageName :
      * @When j'ajoute les étapes suivantes au voyage :voyageName :
      */
     public function jAjouteLesÉtapesSuivantesAuVoyage($voyageName, TableNode $tableStages)
