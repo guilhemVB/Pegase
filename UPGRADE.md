@@ -7,6 +7,7 @@
 - Update behat tests.
 - Add metaData in pages : breadcrumbs, logo, social networks
 - Remove inline css
+- Custom error page
 
 ## v0.3.0
 
