@@ -3,6 +3,10 @@
 ## v0.3.1
 
 - Use assetic to generate assets (js and css), use last commit hash to the names to be sure sources are reloaded by client
+- Change GoogleMap icon
+- Update behat tests.
+- Add metaData in pages : breadcrumbs, logo, social networks
+- Remove inline css
 
 ## v0.3.0
 
