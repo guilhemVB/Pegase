@@ -201,4 +201,43 @@
     white-space: nowrap;
 }
 
+.imageErrorPage {
+    position: relative;
+    width: 100%;
+}
+
+.contentErrorPage {
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    width: 100%
+}
+
+.btnGoBackToHomepage {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 1125px) {
+    .contentErrorPage {
+        top: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contentErrorPage {
+        top: 15%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .contentErrorPage p {
+        display: none;
+    }
+
+    .contentErrorPage h1 {
+        font-size: 26px;
+    }
+}
 

@@ -1,5 +1,48 @@
-{% if status_code == 404 %}
-    <h1>Cette page n'existe pas !</h1>
-{% else %}
-    <h1>Erreur {{ status_code }}.</h1>
-{% endif %}
+{% set title = "Une erreur est survenue" %}
+{% set keywords = "error" %}
+{% set description = "Une erreur est survenue" %}
+{% set type = "website" %}
+{% set imageUrl = image_banner_homepage_path ~ 'martinique.JPG' %}
+
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <img src="{{ asset(image_banner_homepage_path ~ 'martinique.JPG') }}" class="img-responsive imageErrorPage">
+
+            <div class="container contentErrorPage">
+                <h1>Une erreur est survenue</h1>
+
+                <p class="lead">
+                    {% if status_code == 404 %}
+                        Mais que s'est-il passé ? Cette page n'existe pas !
+                    {% else %}
+                        Une erreur inconnue est survenue ! Mais qu'avez-vous fait ? :)
+                    {% endif %}
+                </p>
+
+                <p>
+                    <a href="{{ path('dashboard') }}"
+                       class="btn btn-raised btn-primary hidden-xs btnGoBackToHomepage">
+                        <i class="fa fa-globe"></i> Retour à l'accueil</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid containerPadding">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'chiang-mai ' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'copenhague ' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'ile-de-paques' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'la-paz' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'singapour' })) }}
+                {{ render(controller('AppBundle:Vignette:get', { 'slug': 'vancouver ' })) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -21,14 +21,16 @@
 <meta name="description" content="{{ description }}"/>
 <meta name="keywords" content="{{ keywords }}"/>
 
-<link rel="canonical"
-      href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+{% if app.request.attributes.get('_route') %} {# this value is empty for errors routes #}
+    <link rel="canonical"
+          href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+{% endif %}
 
 <meta property="og:locale" content="fr_fr"/>
 <meta property="og:site_name" content="Le Monde en Sac"/>
 <meta property="og:url" content="{{ app.request.uri }}"/>
 <meta property="og:title" content="{{ titleMetaData }}"/>
-<meta property="og:type" content="{{ type }}"/>
+<meta property="og:type" content="{{ type }}"/> {# article, profile, website  see http://ogp.me/ for more #}
 <meta property="og:image" content="{{ absolute_url(asset(imageUrl)) }}"/>
 <meta property="og:image:width" content="1500"/>
 <meta property="og:description" content="{{ description }}"/>
