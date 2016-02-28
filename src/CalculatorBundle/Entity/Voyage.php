@@ -48,7 +48,7 @@ class Voyage
      * @var boolean
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $showPricesInPublic = false;
+    private $showPricesInPublic = true;
 
     /**
      * @var \DateTime
