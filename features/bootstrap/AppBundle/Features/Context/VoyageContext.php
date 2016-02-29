@@ -44,7 +44,7 @@ class VoyageContext extends CommonContext
     public function lesStatistiquesDuVoyageSont($voyageName, TableNode $tableStats)
     {
         $voyage = $this->findVoyageByName($voyageName);
-        $stats = $this->voyageStats->calculateAllStats($voyage->getStages());
+        $stats = $this->voyageStats->calculateAllStats($voyage, $voyage->getStages());
 
         foreach ($tableStats as $statsRow) {
             $this->assertEquals($statsRow['nb étapes'], $stats['nbStages']);

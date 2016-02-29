@@ -3,6 +3,7 @@
 namespace CalculatorBundle\Service\Stats;
 
 use CalculatorBundle\Entity\Stage;
+use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorCountries;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorCrowFliesDistance;
 use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorDates;
@@ -26,20 +27,22 @@ class VoyageStats
     }
 
     /**
+     * @param Voyage $voyage
      * @param Stage[] $stagesSorted
      * @param StatCalculatorInterface[] $statCalculators
      * @return array
      */
-    public function calculate($stagesSorted, $statCalculators)
+    public function calculate(Voyage $voyage, $stagesSorted, $statCalculators)
     {
-        foreach ($stagesSorted as $stage) {
-            foreach ($statCalculators as $statCalculator) {
+        foreach ($statCalculators as $statCalculator) {
+            $statCalculator->addFirstStep($voyage);
+            foreach ($stagesSorted as $stage) {
                 $statCalculator->addStage($stage);
             }
         }
 
         $stats = [
-            'nbStages'  => count($stagesSorted)
+            'nbStages' => count($stagesSorted)
         ];
 
         foreach ($statCalculators as $statCalculator) {
@@ -50,10 +53,11 @@ class VoyageStats
     }
 
     /**
+     * @param Voyage $voyage
      * @param Stage[] $stagesSorted
      * @return array
      */
-    public function calculateAllStats($stagesSorted)
+    public function calculateAllStats(Voyage $voyage, $stagesSorted)
     {
         $statCalculators = [
             new StatCalculatorCountries(),
@@ -65,7 +69,7 @@ class VoyageStats
             new StatCalculatorDestinations(),
         ];
 
-        return $this->calculate($stagesSorted, $statCalculators);
+        return $this->calculate($voyage, $stagesSorted, $statCalculators);
     }
 
 }

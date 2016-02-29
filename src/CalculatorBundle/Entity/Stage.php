@@ -9,7 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="stage")
  * @ORM\Entity(repositoryClass="CalculatorBundle\Repository\StageRepository")
  */
-class Stage {
+class Stage
+{
+
+    use JourneyTrait;
 
     /**
      * @var integer

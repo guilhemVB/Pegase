@@ -139,7 +139,7 @@ class CRUDStageController extends Controller
         $voyageStats = $this->get('voyage_stats');
 
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
-        $voyageStatsCalculated = $voyageStats->calculateAllStats($stagesSorted);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
             'maplaceData' => $maplaceData,
@@ -178,7 +178,7 @@ class CRUDStageController extends Controller
         $voyage = $stage->getVoyage();
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
-        $voyageStatsCalculated = $voyageStats->calculateAllStats($stagesSorted);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
             'nbDays'      => $nbDays,

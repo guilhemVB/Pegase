@@ -17,6 +17,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Voyage
 {
 
+    use JourneyTrait;
+
     /**
      * @var integer
      *

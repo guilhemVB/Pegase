@@ -3,6 +3,7 @@
 namespace CalculatorBundle\Service\Stats\StatCalculators;
 
 use CalculatorBundle\Entity\Stage;
+use CalculatorBundle\Entity\Voyage;
 
 class StatCalculatorCountries implements StatCalculatorInterface
 {
@@ -17,6 +18,10 @@ class StatCalculatorCountries implements StatCalculatorInterface
             isset($this->countries[$country->getName()]) ?
                 $this->countries[$country->getName()] + 1 :
                 1;
+    }
+
+    public function addFirstStep(Voyage $voyage)
+    {
     }
 
     /**

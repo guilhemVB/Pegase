@@ -39,11 +39,7 @@ class StageContext extends CommonContext
     {
         $destination = $this->findDestinationByName($destinationName);
         $voyage = $this->findVoyageByName($voyageName);
-
-        /** @var StageRepository $stageRepository */
-        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
-
-        $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
+        $stages = $this->findStageByDestinationAndVoyage($destination, $voyage);
 
         foreach ($stages as $stage) {
             if ($stage->getPosition() == $position) {
@@ -83,11 +79,7 @@ class StageContext extends CommonContext
     {
         $destination = $this->findDestinationByName($destinationName);
         $voyage = $this->findVoyageByName($voyageName);
-
-        /** @var StageRepository $stageRepository */
-        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
-
-        $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
+        $stages = $this->findStageByDestinationAndVoyage($destination, $voyage);
 
         foreach ($stages as $stage) {
             if ($stage->getPosition() == $oldPosition) {

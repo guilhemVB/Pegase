@@ -35,7 +35,7 @@ class NavBarController extends Controller
             if (count($voyages) > 0) {
                 $voyage = $voyages[0];
                 $stages = $voyage->getStages();
-                $stats = $voyageStats->calculate($stages, [new StatCalculatorNumberDays(), new StatCalculatorPrices()]);
+                $stats = $voyageStats->calculate($voyage, $stages, [new StatCalculatorNumberDays(), new StatCalculatorPrices()]);
                 $viewInfos = $this->renderView('AppBundle:Common:navBarInfos.html.twig', $stats);
             }
         }

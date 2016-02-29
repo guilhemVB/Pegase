@@ -7,10 +7,12 @@ use AppBundle\Entity\Currency;
 use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CurrencyRepository;
+use CalculatorBundle\Entity\Stage;
 use CalculatorBundle\Entity\Voyage;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use AppBundle\Repository\UserRepository;
+use CalculatorBundle\Repository\StageRepository;
 use CalculatorBundle\Repository\VoyageRepository;
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManager;
@@ -82,6 +84,19 @@ class CommonContext extends \PHPUnit_Framework_TestCase implements Context
         /** @var VoyageRepository $voyageRepository */
         $voyageRepository = $this->em->getRepository('CalculatorBundle:Voyage');
         return $voyageRepository->findOneByName($name);
+    }
+
+    /**
+     * @param Destination $destination
+     * @param Voyage $voyage
+     * @return Stage[]
+     */
+    protected function findStageByDestinationAndVoyage(Destination $destination, Voyage $voyage)
+    {
+        /** @var StageRepository $stageRepository */
+        $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
+
+        return $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
     }
 
 }

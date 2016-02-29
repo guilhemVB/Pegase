@@ -5,6 +5,7 @@ namespace CalculatorBundle\Service\Stats\StatCalculators;
 use AppBundle\Entity\Destination;
 use CalculatorBundle\Entity\Stage;
 use AppBundle\Service\Tools\DestinationPeriods;
+use CalculatorBundle\Entity\Voyage;
 
 class StatCalculatorStageStats implements StatCalculatorInterface
 {
@@ -49,6 +50,10 @@ class StatCalculatorStageStats implements StatCalculatorInterface
             'nbStars'          => $nbStars,
             'starsView'        => $this->twig->render('AppBundle:Destination:stars.html.twig', ['nbStars' => $nbStars]),
         ];
+    }
+
+    public function addFirstStep(Voyage $voyage)
+    {
     }
 
     /**

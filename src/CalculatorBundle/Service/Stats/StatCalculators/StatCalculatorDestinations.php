@@ -2,8 +2,8 @@
 
 namespace CalculatorBundle\Service\Stats\StatCalculators;
 
-use AppBundle\Entity\Destination;
 use CalculatorBundle\Entity\Stage;
+use CalculatorBundle\Entity\Voyage;
 
 class StatCalculatorDestinations implements StatCalculatorInterface
 {
@@ -21,6 +21,10 @@ class StatCalculatorDestinations implements StatCalculatorInterface
             $this->maxNumberDays = $nbDays;
             $this->mainStage = $stage;
         }
+    }
+
+    public function addFirstStep(Voyage $voyage)
+    {
     }
 
     /**

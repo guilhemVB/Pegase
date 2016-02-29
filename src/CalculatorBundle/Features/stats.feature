@@ -10,12 +10,19 @@ Feature: Stats voyage
             | France    | Paris      | EUR     |
             | Etat-Unis | Washington | USD     |
         Given les destinations :
-            | nom       | pays      | longitude | latitude   | prix de l'hébergement | prix du cout de la vie |
-            | Paris     | France    | 2.336492  | 48.864592  | 30                    | 20                     |
-            | Lyon      | France    | 4.818846  | 45.756573  | 15                    | 10                     |
-            | Marseille | France    | 5.354511  | 43.288654  | 20                    | 20                     |
+            | nom       | pays      | latitude  | longitude  | prix de l'hébergement | prix du cout de la vie |
+            | Paris     | France    | 48.864592 | 2.336492   | 30                    | 20                     |
+            | Lyon      | France    | 45.756573 | 4.818846   | 15                    | 10                     |
+            | Marseille | France    | 43.288654 | 5.354511   | 20                    | 20                     |
             | New-York  | Etat-Unis | 40.732977 | -73.993414 | 60                    | 35                     |
             | Boston    | Etat-Unis | 42.359370 | -71.059168 | 50                    | 40                     |
+        Given les possibilitées de transports :
+            | depuis    | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Paris     | Lyon      | 52         | 0:56        | 50         | 2:00        | 5        | 6:30      |
+            | Lyon      | Marseille | 207        | 3:31        | 66         | 2:34        | 24       | 4:18      |
+            | Marseille | New-York  | 599        | 14:19       |            |             |          |           |
+            | New-York  | Boston    |            |             | 195        | 4:39        |          |           |
+            | Boston    | Paris     |            |             |            |             | 612      | 14:39     |
         Given les utilisateurs :
             | nom     |
             | guilhem |
@@ -28,9 +35,28 @@ Feature: Stats voyage
             | Marseille   | 3              |
             | New-York    | 8              |
             | Boston      | 2              |
+            | Paris       | 1              |
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à   | type de transport |
+            | Paris     | Lyon      | BUS               |
+            | Lyon      | Marseille | BUS               |
+            | Marseille | New-York  | FLY               |
+            | New-York  | Boston    | TRAIN             |
+            | Boston    | Paris     | BUS               |
         Then les statistiques du voyage "TDM" sont :
             | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
-            | 4         | 1235       | 20    | 01/01/2015  | 21/01/2015  | 2          | 13918    | New-York               |
+            | 5         | 2720       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
+        When je change le mode de transport à "FLY" pour le trajet de "Lyon" à "Marseille" du voyage "TDM"
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à   | type de transport |
+            | Paris     | Lyon      | BUS               |
+            | Lyon      | Marseille | FLY               |
+            | Marseille | New-York  | FLY               |
+            | New-York  | Boston    | TRAIN             |
+            | Boston    | Paris     | BUS               |
+        Then les statistiques du voyage "TDM" sont :
+            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
+            | 4         | 2903       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
 
 
 

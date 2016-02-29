@@ -55,7 +55,7 @@ class ShareController extends Controller
                 'voyage'       => $voyage,
                 'stagesSorted' => $stagesSorted,
                 'maplaceData'  => json_encode($maplaceData),
-                'voyageStats'  => $voyageStats->calculateAllStats($stagesSorted),
+                'voyageStats'  => $voyageStats->calculateAllStats($voyage, $stagesSorted),
             ]);
     }
 

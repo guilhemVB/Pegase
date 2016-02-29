@@ -4,6 +4,7 @@ namespace CalculatorBundle\Service\Stats\StatCalculators;
 
 use AppBundle\Entity\Destination;
 use CalculatorBundle\Entity\Stage;
+use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Service\Stats\CrowFliesCalculator;
 
 class StatCalculatorCrowFliesDistance implements StatCalculatorInterface
@@ -17,16 +18,28 @@ class StatCalculatorCrowFliesDistance implements StatCalculatorInterface
     /** @var int */
     private $crowFliesDistance = 0;
 
+    public function addFirstStep(Voyage $voyage)
+    {
+        $this->calculateCrowDistance($voyage->getStartDestination());
+    }
+
     public function addStage(Stage $stage)
     {
-        $destination = $stage->getDestination();
+        $this->calculateCrowDistance($stage->getDestination());
+    }
 
+    /**
+     * @param Destination $destination
+     */
+    private function calculateCrowDistance(Destination $destination)
+    {
         $this->destinationFrom = $this->destinationTo;
         $this->destinationTo = $destination;
 
         if (!is_null($this->destinationFrom) && !is_null($this->destinationTo)) {
             $this->crowFliesDistance += CrowFliesCalculator::calculate($this->destinationFrom, $this->destinationTo);
         }
+
     }
 
     /**

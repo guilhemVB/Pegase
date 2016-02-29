@@ -3,6 +3,7 @@
 namespace CalculatorBundle\Service\Stats\StatCalculators;
 
 use CalculatorBundle\Entity\Stage;
+use CalculatorBundle\Entity\Voyage;
 
 class StatCalculatorDates implements StatCalculatorInterface
 {
@@ -18,6 +19,10 @@ class StatCalculatorDates implements StatCalculatorInterface
             $this->startDate = $stage->getVoyage()->getStartDate();
         }
         $this->nbDays += $stage->getNbDays();
+    }
+
+    public function addFirstStep(Voyage $voyage)
+    {
     }
 
     /**
