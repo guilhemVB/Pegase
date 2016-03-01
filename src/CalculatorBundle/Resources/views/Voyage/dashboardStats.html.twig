@@ -36,6 +36,10 @@
                     </h3>
                     <blockquote class="col-lg-8 col-lg-offset-2">
                         <p>
+                            Transport <span
+                                    class="pull-right">{{ voyageStats.totalCostTransport|number_format(0, ',', ' ') }} &euro;</span>
+                        </p>
+                        <p>
                             Logement <span
                                     class="pull-right">{{ voyageStats.totalCostAccommodation|number_format(0, ',', ' ') }} &euro;</span>
                         </p>
