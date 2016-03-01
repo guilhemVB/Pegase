@@ -35,6 +35,7 @@ services:
         class: CalculatorBundle\Service\Journey\JourneyFetcher
         arguments:
             - %available_journey_api%
+            - @logger
 
     fetch_available_journey_worker:
         class: CalculatorBundle\Worker\FetchAvailableJourney

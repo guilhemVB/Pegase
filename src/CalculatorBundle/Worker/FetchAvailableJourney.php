@@ -37,6 +37,7 @@ class FetchAvailableJourney
 
     /**
      * @return AvailableJourney
+     * @throws \Exception
      */
     public function fetchAll()
     {
@@ -50,40 +51,51 @@ class FetchAvailableJourney
 
         $nbAvailableJourneyExtracted = 0;
 
-        foreach ($fromDestinations as $fromDestination) {
-            foreach ($toDestinations as $toDestination) {
-                if ($fromDestination->getId() == $toDestination->getId()) {
-                    continue;
+        try {
+            foreach ($fromDestinations as $fromDestination) {
+                foreach ($toDestinations as $toDestination) {
+                    if ($fromDestination->getId() == $toDestination->getId()) {
+                        continue;
+                    }
+
+                    $currentAvailableJourney = $this->availableJourneyRepository->findOneBy(['fromDestination' => $fromDestination, 'toDestination' => $toDestination]);
+                    if (!is_null($currentAvailableJourney)) {
+                        continue;
+                    }
+
+                    $this->logger->info("Fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                    $data = $this->journeyFetcher->fetch($fromDestination, $toDestination);
+
+                    if (!$data) {
+                        $this->logger->error("Can't fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                        continue;
+                    }
+
+                    $availableJourney = $this->extractAvailableJourney($data);
+
+                    if (is_null($availableJourney->getFlyPrices()) && is_null($availableJourney->getBusPrices()) && is_null($availableJourney->getTrainPrices())) {
+                        $this->logger->error("No prices extracted from data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                        continue;
+                    }
+
+                    $availableJourney->setFromDestination($fromDestination);
+                    $availableJourney->setToDestination($toDestination);
+
+                    $nbAvailableJourneyExtracted++;
+
+                    $this->em->persist($availableJourney);
+
+                    if ($nbAvailableJourneyExtracted % 50 == 0) {
+                        $this->em->flush();
+                    }
+
+                    sleep(12);
                 }
-
-                $currentAvailableJourney = $this->availableJourneyRepository->findOneBy(['fromDestination' => $fromDestination, 'toDestination' => $toDestination]);
-                if (!is_null($currentAvailableJourney)) {
-                    continue;
-                }
-
-                $this->logger->info("Fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
-                $data = $this->journeyFetcher->fetch($fromDestination, $toDestination);
-
-                if (!$data) {
-                    $this->logger->error("Can't fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
-                    continue;
-                }
-
-                $availableJourney = $this->extractAvailableJourney($data);
-
-                $availableJourney->setFromDestination($fromDestination);
-                $availableJourney->setToDestination($toDestination);
-
-                $nbAvailableJourneyExtracted ++;
-
-                $this->em->persist($availableJourney);
-
-                if ($nbAvailableJourneyExtracted % 50 == 0) {
-                    $this->em->flush();
-                }
-
-                sleep(12);
             }
+        } catch (\Exception $e) {
+            $this->em->flush();
+            $this->logger->error($e->getMessage());
+            throw $e;
         }
 
         $this->em->flush();
@@ -92,27 +104,39 @@ class FetchAvailableJourney
     /**
      * @param array $data
      * @return AvailableJourney
+     * @throws \Exception
      */
     private function extractAvailableJourney($data)
     {
-        $routes = $data['routes'];
+        try {
+            $routes = $data['routes'];
 
-        $availableRoutes = [];
+            $availableRoutes = [];
 
-        foreach ($routes as $route) {
-            $price = $route['indicativePrice']['price'];
-            $duration = $route['duration'];
+            foreach ($routes as $route) {
+                $indicativePrice = $route['indicativePrice'];
 
-            $mainType = $this->findMainType($route['segments']);
+                if (empty($indicativePrice)) {
+                    continue;
+                }
 
-            if (is_null($mainType)) {
-                continue;
+                $price = $indicativePrice['price'];
+                $duration = $route['duration'];
+
+                $mainType = $this->findMainType($route['segments']);
+
+                if (is_null($mainType)) {
+                    continue;
+                }
+
+                $availableRoutes[$mainType][] = ['price' => $price, 'duration' => $duration];
             }
 
-            $availableRoutes[$mainType][] = ['price' => $price, 'duration' => $duration];
+            return $this->createAvailableJourney($availableRoutes);
+        } catch (\Exception $e) {
+            $this->logger->error(serialize($data));
+            throw $e;
         }
-
-        return $this->createAvailableJourney($availableRoutes);
     }
 
     /**
