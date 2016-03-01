@@ -42,8 +42,8 @@ class AvailableJourney
     private $flyPrices;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="time", nullable=true)
+     * @var int
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $flyTime;
 
@@ -54,8 +54,8 @@ class AvailableJourney
     private $busPrices;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="time", nullable=true)
+     * @var int
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $busTime;
 
@@ -66,8 +66,8 @@ class AvailableJourney
     private $trainPrices;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="time", nullable=true)
+     * @var int
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $trainTime;
 
@@ -138,7 +138,7 @@ class AvailableJourney
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getFlyTime()
     {
@@ -146,7 +146,7 @@ class AvailableJourney
     }
 
     /**
-     * @param mixed $flyTime
+     * @param int $flyTime
      * @return $this
      */
     public function setFlyTime($flyTime)
@@ -176,7 +176,7 @@ class AvailableJourney
     }
 
     /**
-     * @return \DateTime
+     * @return int
      */
     public function getBusTime()
     {
@@ -184,7 +184,7 @@ class AvailableJourney
     }
 
     /**
-     * @param \DateTime $busTime
+     * @param int $busTime
      * @return $this
      */
     public function setBusTime($busTime)
@@ -214,7 +214,7 @@ class AvailableJourney
     }
 
     /**
-     * @return \DateTime
+     * @return int
      */
     public function getTrainTime()
     {
@@ -222,7 +222,7 @@ class AvailableJourney
     }
 
     /**
-     * @param \DateTime $trainTime
+     * @param int $trainTime
      * @return $this
      */
     public function setTrainTime($trainTime)

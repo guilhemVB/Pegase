@@ -30,3 +30,15 @@ services:
         arguments:
             - %api_google_key%
             - @router
+
+    journey_fetcher:
+        class: CalculatorBundle\Service\Journey\JourneyFetcher
+        arguments:
+            - %available_journey_api%
+
+    fetch_available_journey_worker:
+        class: CalculatorBundle\Worker\FetchAvailableJourney
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @journey_fetcher
+            - @logger

@@ -18,11 +18,11 @@ Feature: Stats voyage
             | Boston    | Etat-Unis | 42.359370 | -71.059168 | 50                    | 40                     |
         Given les possibilitées de transports :
             | depuis    | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
-            | Paris     | Lyon      | 52         | 0:56        | 50         | 2:00        | 5        | 6:30      |
-            | Lyon      | Marseille | 207        | 3:31        | 66         | 2:34        | 24       | 4:18      |
-            | Marseille | New-York  | 599        | 14:19       |            |             |          |           |
-            | New-York  | Boston    |            |             | 195        | 4:39        |          |           |
-            | Boston    | Paris     |            |             |            |             | 612      | 14:39     |
+            | Paris     | Lyon      | 52         | 56          | 50         | 120         | 5        | 6:30      |
+            | Lyon      | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
+            | Marseille | New-York  | 599        | 859         |            |             |          |           |
+            | New-York  | Boston    |            |             | 195        | 279         |          |           |
+            | Boston    | Paris     |            |             |            |             | 612      | 876       |
         Given les utilisateurs :
             | nom     |
             | guilhem |

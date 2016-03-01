@@ -4,3 +4,7 @@ imports:
 services:
     google_url_shortener_api:
         class : CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApiMock
+
+    journey_fetcher:
+        class: CalculatorBundle\Service\Journey\JourneyFetcherMock
+

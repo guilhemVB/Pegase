@@ -30,6 +30,8 @@ parameters:
     api_rate_key: ~
     api_google_key: ~
 
+    available_journey_api: ~
+
 twig:
     globals:
         image_banner_destinations_path : %image_banner_destinations_path%

@@ -7,17 +7,18 @@ use AppKernel;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use CalculatorBundle\Entity\AvailableJourney;
-use CalculatorBundle\Entity\Journey;
-use CalculatorBundle\Repository\JourneyRepository;
-use CalculatorBundle\Repository\StageRepository;
+use CalculatorBundle\Worker\FetchAvailableJourney;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class JourneyContext extends CommonContext
 {
+    /** @var FetchAvailableJourney */
+    private $fetchAvailableJourney;
 
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
+        $this->fetchAvailableJourney = $container->get('fetch_available_journey_worker');
     }
 
     /**
@@ -32,15 +33,15 @@ class JourneyContext extends CommonContext
 
             if ($availableJourneyRow['prix avion']) {
                 $availableJourney->setFlyPrices($availableJourneyRow['prix avion'])
-                    ->setFlyTime(\DateTime::createFromFormat("G:i", $availableJourneyRow['temps avion']));
+                    ->setFlyTime($availableJourneyRow['temps avion']);
             }
             if ($availableJourneyRow['prix bus']) {
                 $availableJourney->setBusPrices($availableJourneyRow['prix bus'])
-                    ->setBusTime(\DateTime::createFromFormat("G:i", $availableJourneyRow['temps bus']));
+                    ->setBusTime($availableJourneyRow['temps bus']);
             }
             if ($availableJourneyRow['prix train']) {
                 $availableJourney->setTrainPrices($availableJourneyRow['prix train'])
-                    ->setTrainTime(\DateTime::createFromFormat("G:i", $availableJourneyRow['temps train']));
+                    ->setTrainTime($availableJourneyRow['temps train']);
             }
 
             $this->em->persist($availableJourney);
@@ -92,6 +93,40 @@ class JourneyContext extends CommonContext
             }
 
             $this->assertEquals($transportTypeExpected, $transportType);
+        }
+
+    }
+
+    /**
+     * @When je lance la récupération des transports possibles
+     */
+    public function jeLanceLaRécupérationDesTransportsPossibles()
+    {
+        $this->fetchAvailableJourney->fetchAll();
+    }
+
+    /**
+     * @Then les possibilitées de transports sont :
+     */
+    public function lesPossibilitéesDeTransportsSont(TableNode $tableAvailableJourney)
+    {
+        $availableJourneyRepository = $this->em->getRepository('CalculatorBundle:AvailableJourney');
+
+        foreach ($tableAvailableJourney as $availableJourneyRow) {
+            $fromDestination = $this->findDestinationByName($availableJourneyRow['depuis']);
+            $toDestination = $this->findDestinationByName($availableJourneyRow["jusqu'à"]);
+
+            /** @var AvailableJourney $availableJourney */
+            $availableJourney = $availableJourneyRepository->findOneBy(['fromDestination' => $fromDestination, 'toDestination' => $toDestination]);
+
+            $this->assertNotNull($availableJourney, $fromDestination->getName() . " - " . $toDestination->getName());
+
+            $this->assertEquals($availableJourneyRow['prix avion'], $availableJourney->getFlyPrices(), $fromDestination->getName() . " - " . $toDestination->getName());
+            $this->assertEquals($availableJourneyRow['temps avion'], $availableJourney->getFlyTime(), $fromDestination->getName() . " - " . $toDestination->getName());
+            $this->assertEquals($availableJourneyRow['prix bus'], $availableJourney->getBusPrices(), $fromDestination->getName() . " - " . $toDestination->getName());
+            $this->assertEquals($availableJourneyRow['temps bus'], $availableJourney->getBusTime(), $fromDestination->getName() . " - " . $toDestination->getName());
+            $this->assertEquals($availableJourneyRow['prix train'], $availableJourney->getTrainPrices(), $fromDestination->getName() . " - " . $toDestination->getName());
+            $this->assertEquals($availableJourneyRow['temps train'], $availableJourney->getTrainTime(), $fromDestination->getName() . " - " . $toDestination->getName());
         }
 
     }
