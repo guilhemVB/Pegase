@@ -66,6 +66,10 @@ trait JourneyTrait
         $availableJourney = $this->getAvailableJourney();
         $transportType = $this->getTransportType();
 
+        if (empty($transportType)) {
+            return null;
+        }
+
         $price = null;
         $time = null;
 
@@ -90,7 +94,7 @@ trait JourneyTrait
                 throw new \Exception("Unknow transportType '$transportType''");
         }
 
-        return ['price' => $price, 'time' => $time];
+        return ['price' => $price, 'time' => $time, 'transportType' => $transportType];
     }
 
 }

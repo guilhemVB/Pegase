@@ -44,12 +44,14 @@
   padding: 0;
 }
 
-#shareVoyage .stageStyle,
-#dashboard .stageStyle {
+.stageStyle {
   background: gainsboro;
   margin: 1px;
-  padding: 10px 15px;
   border-radius: 5px;
+}
+
+.stageStylePadding {
+  padding: 10px 15px;
 }
 
 .stageMovable .drag-handle {
@@ -171,5 +173,9 @@
 }
 
 .iconStatsVoyage {
+  margin-right: 5px;
+}
+
+.iconPriceJourney {
   margin-right: 5px;
 }

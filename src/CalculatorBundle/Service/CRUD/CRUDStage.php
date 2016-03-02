@@ -90,7 +90,7 @@ class CRUDStage
         $availableJourney = $availableJourneyRepository->findOneBy(['fromDestination' => $fromDestination, 'toDestination' => $currentStage->getDestination()]);
 
         if (is_null($availableJourney)) {
-            throw new \Exception("Can't find availableJourney with : " . $fromDestination->getName() . " and " . $currentStage->getDestination()->getName());
+            return ;
         }
 
         $transportType = $this->bestJourneyFinder->chooseBestTransportType($availableJourney);

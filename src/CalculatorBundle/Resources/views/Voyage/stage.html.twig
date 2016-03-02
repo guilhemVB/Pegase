@@ -1,9 +1,8 @@
 {% set destination = stage.destination %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
 
-<li class="stageMovable stageStyle" data-stage-id="{{ stage.id }}">
+<li class="stageMovable stageStyle stageStylePadding" data-stage-id="{{ stage.id }}">
     <div class="row">
-
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             <span class="drag-handle handle-fa-icon"><i class="fa fa-lg fa-sort"></i></span>
             <img class='flagCountrySmall flagCountryStage'
@@ -38,11 +37,38 @@
                     data-btn-cancel-class="btn btn-danger btn-raised btn-sm" data-btn-cancel-icon="fa fa-times" data-btn-cancel-label="Non"
                     ><i class="fa fa-trash"></i>
             </button>
+
             <span class="stagePrice pull-right" data-stage-id="{{ stage.id }}">
                 <span class="label label-success">
                     {{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €
                 </span>
             </span>
+
+            <span class="stagePrice pull-right" data-stage-id="{{ stage.id }}">
+                {% set priceAndTimeTransport = stage.priceAndTimeTransport %}
+                {% if priceAndTimeTransport is null %}
+                    <span class="label label-warning" data-toggle="tooltip" data-placement="top"
+                          title="Prix non disponibles pour le moment">
+                        <i class="fa fa-lg fa-lock"></i>
+                    </span>
+                {% else %}
+
+                <span class="label label-warning">
+
+                    {% if priceAndTimeTransport.transportType == "FLY" %}
+                        <i class="fa fa-plane iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "BUS" %}
+                        <i class="fa fa-road iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
+                        <i class="fa fa-train iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                    {% endif %}
+
+                        {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                    </span>
+                {% endif %}
+            </span>
+
         </div>
     </div>
 </li>
