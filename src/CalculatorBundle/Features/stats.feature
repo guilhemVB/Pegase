@@ -56,7 +56,7 @@ Feature: Stats voyage
             | Boston    | Paris     | BUS               |
         Then les statistiques du voyage "TDM" sont :
             | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
-            | 4         | 2903       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
+            | 5         | 2903       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
 
 
 
