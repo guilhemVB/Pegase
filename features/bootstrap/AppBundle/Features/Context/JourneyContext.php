@@ -4,10 +4,10 @@ namespace AppBundle\Features\Context;
 
 use AppBundle\Entity\Destination;
 use AppKernel;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use CalculatorBundle\Entity\AvailableJourney;
 use CalculatorBundle\Worker\FetchAvailableJourney;
+use CalculatorBundle\Worker\UpdateVoyageWorker;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class JourneyContext extends CommonContext
@@ -15,10 +15,14 @@ class JourneyContext extends CommonContext
     /** @var FetchAvailableJourney */
     private $fetchAvailableJourney;
 
+    /** @var UpdateVoyageWorker */
+    private $updateVoyageWorker;
+
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
         $this->fetchAvailableJourney = $container->get('fetch_available_journey_worker');
+        $this->updateVoyageWorker = $container->get('update_voyages_worker');
     }
 
     /**
@@ -129,5 +133,13 @@ class JourneyContext extends CommonContext
             $this->assertEquals($availableJourneyRow['temps train'], $availableJourney->getTrainTime(), $fromDestination->getName() . " - " . $toDestination->getName());
         }
 
+    }
+
+    /**
+     * @When je met à jour les voyages avec les trajets disponibles
+     */
+    public function jeMetÀJourLesVoyagesAvecLesTrajetsDisponibles()
+    {
+        $this->updateVoyageWorker->run();
     }
 }

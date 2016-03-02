@@ -43,3 +43,10 @@ services:
             - @doctrine.orm.entity_manager
             - @journey_fetcher
             - @logger
+
+    update_voyages_worker:
+        class: CalculatorBundle\Worker\UpdateVoyageWorker
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @best_journey_finder
+            - @logger

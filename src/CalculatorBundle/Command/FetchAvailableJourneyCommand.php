@@ -2,13 +2,8 @@
 
 namespace CalculatorBundle\Command;
 
-use CalculatorBundle\Entity\TypicalVoyage;
-use CalculatorBundle\Repository\TypicalVoyageRepository;
-use AppBundle\Service\Stats\StatCalculators\StatCalculatorNumberDays;
-use AppBundle\Service\Stats\StatCalculators\StatCalculatorPrices;
-use AppBundle\Service\Stats\VoyageStats;
 use CalculatorBundle\Worker\FetchAvailableJourney;
-use Doctrine\ORM\EntityManager;
+use CalculatorBundle\Worker\UpdateVoyageWorker;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,8 +25,11 @@ class FetchAvailableJourneyCommand extends ContainerAwareCommand
 
         /** @var FetchAvailableJourney $fetchAvailableJourney */
         $fetchAvailableJourney = $this->getContainer()->get('fetch_available_journey_worker');
-
         $fetchAvailableJourney->fetchAll();
+
+        /** @var UpdateVoyageWorker $updateVoyageWorker */
+        $updateVoyageWorker = $this->getContainer()->get('update_voyages_worker');
+        $updateVoyageWorker->run();
 
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');

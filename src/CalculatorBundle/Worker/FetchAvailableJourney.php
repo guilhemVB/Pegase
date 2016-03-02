@@ -36,7 +36,6 @@ class FetchAvailableJourney
     }
 
     /**
-     * @return AvailableJourney
      * @throws \Exception
      */
     public function fetchAll()

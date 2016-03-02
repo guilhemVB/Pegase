@@ -100,7 +100,7 @@ class AvailableJourney
     }
 
     /**
-     * @return mixed
+     * @return Destination
      */
     public function getToDestination()
     {
@@ -108,7 +108,7 @@ class AvailableJourney
     }
 
     /**
-     * @param mixed $toDestination
+     * @param Destination $toDestination
      * @return $this
      */
     public function setToDestination($toDestination)

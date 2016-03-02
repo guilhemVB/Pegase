@@ -33,3 +33,45 @@ Feature: Available Journey calculator
             | New-York | Lyon     | 483        | 778         |            |             |          |           |
             | New-York | Londres  | 493        | 638         |            |             |          |           |
 
+
+    Scenario: Mettre à jour les voyages après l'ajout d'un trajets
+        Given les monnaies :
+            | nom  | code |
+            | Euro | EUR  |
+        Given les pays :
+            | nom    | capitale | monnaie |
+            | France | Paris    | EUR     |
+        Given les destinations :
+            | nom       | pays   |
+            | Paris     | France |
+            | Lyon      | France |
+            | Marseille | France |
+            | Dijon     | France |
+        Given les possibilitées de transports :
+            | depuis | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Lyon   | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
+        Given les utilisateurs :
+            | nom     |
+            | guilhem |
+        When l'utilisateur "guilhem" crée les voyages suivants :
+            | nom | date de départ | destination de départ |
+            | TDM | 01/01/2015     | Paris                 |
+        When j'ajoute les étapes suivantes au voyage "TDM" :
+            | destination | nombre de jour |
+            | Lyon        | 1              |
+            | Marseille   | 1              |
+            | Dijon       | 1              |
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis | jusqu'à  | type de transport |
+            | Lyon   | Mrseille | BUS               |
+        Given les possibilitées de transports :
+            | depuis    | jusqu'à | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Paris     | Lyon    | 52         | 56          | 50         | 120         | 5        | 630       |
+            | Marseille | Dijon   | 52         | 56          | 50         | 120         | 5        | 630       |
+        When je met à jour les voyages avec les trajets disponibles
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à   | type de transport |
+            | Paris     | Lyon      | BUS               |
+            | Lyon      | Marseille | BUS               |
+            | Marseille | Dijon     | BUS               |
+
