@@ -27,5 +27,30 @@
         <div class="col-sm-6 col-xs-11">
             Début du voyage
         </div>
+
+        <span class="pull-right">
+            {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
+            {% if priceAndTimeTransport is null %}
+                <span class="label label-warning" data-toggle="tooltip" data-placement="top"
+                      title="Prix non disponibles pour le moment">
+                        <i class="fa fa-lg fa-lock"></i>
+                    </span>
+                {% else %}
+
+                <span class="label label-warning">
+
+                    {% if priceAndTimeTransport.transportType == "FLY" %}
+                        <i class="fa fa-plane iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "BUS" %}
+                        <i class="fa fa-road iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
+                        <i class="fa fa-train iconPriceJourney"></i>
+                    {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                    {% endif %}
+
+                    {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                    </span>
+            {% endif %}
+            </span>
     </div>
 </div>
