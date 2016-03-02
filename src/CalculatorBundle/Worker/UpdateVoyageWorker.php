@@ -50,20 +50,22 @@ class UpdateVoyageWorker
         $voyages = $this->voyageRepository->findAll();
 
         foreach ($voyages as $voyage) {
-            $this->checkVoyage($voyage);
+            $this->updateAvailableJourneys($voyage);
+            $this->em->flush();
         }
     }
 
     /**
      * @param Voyage $voyage
      */
-    private function checkVoyage(Voyage $voyage)
+    private function updateAvailableJourneys(Voyage $voyage)
     {
         /** @var Stage[] $stages */
         $stages = $this->stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
         if (empty($stages)) {
             $this->resetVoyageOrStage($voyage);
+
             return;
         } else {
             $firstStage = $stages[0];
@@ -79,7 +81,6 @@ class UpdateVoyageWorker
 
             $this->updateAvailableJourneyIfNeeded($stageA, $stageA->getDestination(), $stageB->getDestination());
         }
-
     }
 
     /**
