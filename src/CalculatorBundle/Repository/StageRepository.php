@@ -38,17 +38,17 @@ class StageRepository extends EntityRepository
 
     /**
      * @param Voyage $voyage
-     * @param Stage $currentStage
+     * @param string $position
      * @return Stage|null
      */
-    public function findStageBefore(Voyage $voyage, Stage $currentStage)
+    public function findStageByPosition(Voyage $voyage, $position)
     {
         $qb = $this->createQueryBuilder('stage')
             ->select('stage')
             ->leftJoin('stage.voyage', 'voyage')
             ->where('stage.position = :position')
             ->andWhere('voyage = :voyage')
-            ->setParameter('position', $currentStage->getPosition() - 1)
+            ->setParameter('position', $position)
             ->setParameter('voyage', $voyage);
 
         return $qb->getQuery()->getOneOrNullResult();

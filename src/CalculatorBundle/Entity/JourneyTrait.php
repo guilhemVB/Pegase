@@ -44,7 +44,7 @@ trait JourneyTrait
      */
     public function setTransportType($transportType)
     {
-        if (CRUDStage::BUS === $transportType || CRUDStage::TRAIN === $transportType || CRUDStage::FLY === $transportType || CRUDStage::NONE === $transportType) {
+        if (is_null($transportType) || CRUDStage::BUS === $transportType || CRUDStage::TRAIN === $transportType || CRUDStage::FLY === $transportType || CRUDStage::NONE === $transportType) {
             $this->transportType = $transportType;
         } else {
             throw new \Exception("Unknow transportType '$transportType''");

@@ -16,6 +16,11 @@ Feature: Stages
             | Marseille | France    |
             | New-York  | Etat-Unis |
             | Boston    | Etat-Unis |
+        Given les possibilitées de transports :
+            | depuis    | jusqu'à  | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Marseille | New-York | 599        | 859         |            |             |          |           |
+            | New-York  | Lyon     | 710        | 529         |            |             |          |           |
+            | Marseille | Lyon     | 207        | 211         | 66         | 212         | 24       | 280       |
         Given les utilisateurs :
             | nom     |
             | guilhem |
@@ -24,24 +29,29 @@ Feature: Stages
             | TDM | 01/01/2015     | Paris                 |
         When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
-            | Lyon        | 1              |
-            | Marseille   | 2              |
-            | New-York    | 3              |
+            | Boston      | 1              |
+            | Paris       | 2              |
+            | Boston      | 3              |
             | Lyon        | 4              |
             | Marseille   | 5              |
             | New-York    | 6              |
-            | New-York    | 7              |
-            | Lyon        | 8              |
+            | Lyon        | 7              |
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à  | type de transport |
+            | Marseille | New-York | FLY               |
+            | New-York  | Lyon     | FLY               |
         When je supprime l'étape "New-York" à la position 6 du voyage "TDM"
         Then la voyage "TDM" à les étapes suivantes :
             | destination | nombre de jour | position |
-            | Lyon        | 1              | 1        |
-            | Marseille   | 2              | 2        |
-            | New-York    | 3              | 3        |
+            | Boston      | 1              | 1        |
+            | Paris       | 2              | 2        |
+            | Boston      | 3              | 3        |
             | Lyon        | 4              | 4        |
             | Marseille   | 5              | 5        |
-            | New-York    | 7              | 6        |
-            | Lyon        | 8              | 7        |
+            | Lyon        | 7              | 6        |
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à | type de transport |
+            | Marseille | Lyon    | BUS               |
 
 
     Scenario: Changer l'ordre des étapes -> de 2 à 3
@@ -60,6 +70,12 @@ Feature: Stages
             | Marseille | France    |
             | New-York  | Etat-Unis |
             | Boston    | Etat-Unis |
+        Given les possibilitées de transports :
+            | depuis   | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Paris    | Lyon      | 1          | 10          |            |             |          |           |
+            | Lyon     | Marseille | 1          | 10          |            |             |          |           |
+            | New-York | Marseille |            |             |            |             | 1        | 10        |
+            | New-York | Boston    | 1          | 10          |            |             |          |           |
         Given les utilisateurs :
             | nom     |
             | guilhem |
@@ -79,7 +95,10 @@ Feature: Stages
             | New-York    | 8              | 2        |
             | Marseille   | 3              | 3        |
             | Boston      | 2              | 4        |
-
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis   | jusqu'à   | type de transport |
+            | Paris    | Lyon      | FLY               |
+            | New-York | Marseille | BUS               |
 
     Scenario: Changer l'ordre des étapes -> de 4 à 1
         Given les monnaies :
@@ -95,8 +114,14 @@ Feature: Stages
             | Paris     | France    |
             | Lyon      | France    |
             | Marseille | France    |
+            | Dijon     | France    |
             | New-York  | Etat-Unis |
             | Boston    | Etat-Unis |
+        Given les possibilitées de transports :
+            | depuis    | jusqu'à  | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Paris     | New-York | 1          | 10          |            |             |          |           |
+            | Lyon      | Dijon    |            |             | 10         | 1           |          |           |
+            | Marseille | Boston   |            |             |            |             | 1        | 10        |
         Given les utilisateurs :
             | nom     |
             | guilhem |
@@ -106,7 +131,7 @@ Feature: Stages
         When j'ajoute les étapes suivantes au voyage "TDM" :
             | destination | nombre de jour |
             | Lyon        | 7              |
-            | Marseille   | 3              |
+            | Dijon       | 3              |
             | Marseille   | 13             |
             | New-York    | 8              |
             | Boston      | 2              |
@@ -115,48 +140,12 @@ Feature: Stages
             | destination | nombre de jour | position |
             | New-York    | 8              | 1        |
             | Lyon        | 7              | 2        |
-            | Marseille   | 3              | 3        |
+            | Dijon       | 3              | 3        |
             | Marseille   | 13             | 4        |
             | Boston      | 2              | 5        |
-
-
-    Scenario: Changer l'ordre des étapes avec des doublons de destinations
-        Given les monnaies :
-            | nom               | code |
-            | Euro              | EUR  |
-            | Dollard Américain | USD  |
-        Given les pays :
-            | nom       | capitale   | monnaie |
-            | France    | Paris      | EUR     |
-            | Etat-Unis | Washington | USD     |
-        Given les destinations :
-            | nom       | pays      |
-            | Paris     | France    |
-            | Lyon      | France    |
-            | Marseille | France    |
-            | New-York  | Etat-Unis |
-            | Boston    | Etat-Unis |
-        Given les utilisateurs :
-            | nom     |
-            | guilhem |
-        When l'utilisateur "guilhem" crée les voyages suivants :
-            | nom | date de départ | destination de départ |
-            | TDM | 01/01/2015     | Paris                 |
-        When j'ajoute les étapes suivantes au voyage "TDM" :
-            | destination | nombre de jour |
-            | Marseille   | 3              |
-            | Marseille   | 13             |
-            | Lyon        | 7              |
-            | New-York    | 8              |
-            | New-York    | 18             |
-            | Boston      | 2              |
-        When je change l'étape "New-York" du voyage "TDM" de la position 5 à la position 2
-        Then la voyage "TDM" à les étapes suivantes :
-            | destination | nombre de jour | position |
-            | Marseille   | 3              | 1        |
-            | New-York    | 18             | 2        |
-            | Marseille   | 13             | 3        |
-            | Lyon        | 7              | 4        |
-            | New-York    | 8              | 5        |
-            | Boston      | 2              | 6        |
+        Then il existe les transports suivants au voyage "TDM" :
+            | depuis    | jusqu'à  | type de transport |
+            | Paris     | New-York | FLY               |
+            | Lyon      | Dijon    | TRAIN             |
+            | Marseille | Boston   | BUS             |
 

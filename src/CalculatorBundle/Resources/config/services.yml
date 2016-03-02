@@ -7,11 +7,17 @@ services:
     best_journey_finder:
         class: CalculatorBundle\Service\Journey\BestJourneyFinder
 
+    journey_service:
+        class: CalculatorBundle\Service\Journey\JourneyService
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @best_journey_finder
+
     crud_stage:
         class : CalculatorBundle\Service\CRUD\CRUDStage
         arguments:
             - @doctrine.orm.entity_manager
-            - @best_journey_finder
+            - @journey_service
 
     crud_voyage:
         class : CalculatorBundle\Service\CRUD\CRUDVoyage

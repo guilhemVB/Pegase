@@ -73,8 +73,21 @@ class JourneyContext extends CommonContext
     {
         $voyage = $this->findVoyageByName($voyageName);
 
-        /** @var Destination $nextDestination */
-        $nextDestination = null;
+        $nbJourney = 0;
+
+        if (!is_null($voyage->getAvailableJourney())) {
+            $nbJourney++;
+        }
+
+        $stages = $voyage->getStages();
+        foreach ($stages as $stage) {
+            if (!is_null($stage->getAvailableJourney())) {
+                $nbJourney++;
+            }
+        }
+
+        $this->assertEquals(count($tableJourney->getHash()), $nbJourney);
+
         foreach ($tableJourney as $journeyRow) {
             $fromDestinationName = $journeyRow['depuis'];
             $toDestinationName = $journeyRow["jusqu'à"];
@@ -82,21 +95,21 @@ class JourneyContext extends CommonContext
 
             $destinationFrom = $this->findDestinationByName($fromDestinationName);
 
-            if (!is_null($nextDestination)) {
-                $this->assertEquals($nextDestination->getName(), $fromDestinationName);
-            }
-
-            $nextDestination = $this->findDestinationByName($toDestinationName);
-
             $transportType = null;
+            $availableJourney = null;
+
             if ($destinationFrom->getId() === $voyage->getStartDestination()->getId()) {
                 $transportType = $voyage->getTransportType();
+                $availableJourney = $voyage->getAvailableJourney();
             } else {
                 $stages = $this->findStageByDestinationAndVoyage($destinationFrom, $voyage);
                 $transportType = $stages[0]->getTransportType();
+                $availableJourney = $stages[0]->getAvailableJourney();
             }
 
             $this->assertEquals($transportTypeExpected, $transportType);
+            $this->assertEquals($fromDestinationName, $availableJourney->getFromDestination()->getName());
+            $this->assertEquals($toDestinationName, $availableJourney->getToDestination()->getName());
         }
 
     }

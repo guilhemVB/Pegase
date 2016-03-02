@@ -8,6 +8,7 @@ use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Repository\AvailableJourneyRepository;
 use CalculatorBundle\Repository\StageRepository;
 use CalculatorBundle\Service\Journey\BestJourneyFinder;
+use CalculatorBundle\Service\Journey\JourneyService;
 use Doctrine\ORM\EntityManager;
 
 class CRUDStage
@@ -26,14 +27,14 @@ class CRUDStage
     /** @var StageRepository */
     private $stageRepository;
 
-    /** @var BestJourneyFinder */
-    private $bestJourneyFinder;
+    /** @var JourneyService */
+    private $journeyService;
 
-    public function __construct(EntityManager $em, BestJourneyFinder $bestJourneyFinder)
+    public function __construct(EntityManager $em, JourneyService $journeyService)
     {
         $this->em = $em;
+        $this->journeyService = $journeyService;
         $this->stageRepository = $em->getRepository('CalculatorBundle:Stage');
-        $this->bestJourneyFinder = $bestJourneyFinder;
     }
 
 
@@ -45,10 +46,11 @@ class CRUDStage
      */
     public function add(Destination $destination, Voyage $voyage, $nbDays)
     {
+        $nbStages = count($voyage->getStages());
         $stage = new Stage();
         $stage->setDestination($destination);
         $stage->setNbDays($nbDays);
-        $stage->setPosition(count($voyage->getStages()) + 1);
+        $stage->setPosition($nbStages + 1);
         $stage->setVoyage($voyage);
         $this->em->persist($stage);
 
@@ -57,50 +59,15 @@ class CRUDStage
 
         $this->em->flush();
 
-        $this->addJourneyInPreviewStage($voyage, $stage);
+        if ($nbStages == 0) {
+            $this->journeyService->updateJourneyByVoyage($voyage);
+        } else {
+            $stageBefore = $this->stageRepository->findStageByPosition($voyage, $nbStages);
+            $this->journeyService->updateJourneyByStage($stageBefore);
+        }
 
         return $stage;
     }
-
-    /**
-     * @param Voyage $voyage
-     * @param Stage $currentStage
-     * @throws \Exception
-     */
-    private function addJourneyInPreviewStage(Voyage $voyage, Stage $currentStage)
-    {
-        $stageBefore = $this->stageRepository->findStageBefore($voyage, $currentStage);
-
-        /** @var Voyage|Stage $from */
-        $from = null;
-        /** @var Destination $fromDestination */
-        $fromDestination = null;
-
-        if (is_null($stageBefore)) {
-            $fromDestination = $voyage->getStartDestination();
-            $from = $voyage;
-        } else {
-            $fromDestination = $stageBefore->getDestination();
-            $from = $stageBefore;
-        }
-
-
-        /** @var AvailableJourneyRepository $availableJourneyRepository */
-        $availableJourneyRepository = $this->em->getRepository('CalculatorBundle:AvailableJourney');
-        $availableJourney = $availableJourneyRepository->findOneBy(['fromDestination' => $fromDestination, 'toDestination' => $currentStage->getDestination()]);
-
-        if (is_null($availableJourney)) {
-            return ;
-        }
-
-        $transportType = $this->bestJourneyFinder->chooseBestTransportType($availableJourney);
-        $from->setAvailableJourney($availableJourney);
-        $from->setTransportType($transportType);
-
-        $this->em->persist($from);
-        $this->em->flush();
-    }
-
 
     /**
      * @param Stage $stage
@@ -109,6 +76,8 @@ class CRUDStage
     {
         $voyage = $stage->getVoyage();
         $position = $stage->getPosition();
+
+        $originalPosition = $position;
 
         /** @var Stage $stageToChange */
         $stageToChange = $this->stageRepository->findOneBy(['voyage' => $voyage, 'position' => $position + 1]);
@@ -122,6 +91,8 @@ class CRUDStage
 
         $this->em->remove($stage);
         $this->em->flush();
+
+        $this->updateJourney($voyage, $originalPosition - 1);
     }
 
 
@@ -158,6 +129,15 @@ class CRUDStage
         $this->em->persist($stage);
         $this->em->flush();
 
+        $this->journeyService->updateJourneyByStage($stage);
+
+        if ($newPosition < $oldPosition) {
+            $this->updateJourney($voyage, $oldPosition);
+        } elseif ($newPosition > $oldPosition) {
+            $this->updateJourney($voyage, $oldPosition - 1);
+        }
+        $this->updateJourney($voyage, $newPosition - 1);
+
         return $stage;
     }
 
@@ -170,5 +150,19 @@ class CRUDStage
         $stage->setNbDays($nbDays);
         $this->em->persist($stage);
         $this->em->flush();
+    }
+
+    /**
+     * @param Voyage $voyage
+     * @param $position
+     */
+    private function updateJourney(Voyage $voyage, $position)
+    {
+        $stageBefore = $this->stageRepository->findStageByPosition($voyage, $position);
+        if (is_null($stageBefore)) {
+            $this->journeyService->updateJourneyByVoyage($voyage);
+        } else {
+            $this->journeyService->updateJourneyByStage($stageBefore);
+        }
     }
 }
