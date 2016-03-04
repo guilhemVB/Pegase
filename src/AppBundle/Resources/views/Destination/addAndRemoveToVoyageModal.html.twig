@@ -10,8 +10,21 @@
                 {% include 'AppBundle:Destination:selectNbDays.html.twig' with { 'classNbSelect' : ''} %}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-raised" data-dismiss="modal">Annuler</button>
-                <button id="addToVoyageBtn" type="button" class="btn btn-success btn-raised" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-justified btn-group-raised">
+
+                            <a href="javascript:void(0)" type="submit" id="addToVoyageBtn" class="btn btn-primary"
+                               data-dismiss="modal"
+                               name="_submit">
+                                <i class="fa fa-floppy-o"></i> Ajouter
+                            </a>
+                            <a href="javascript:void(0)" type="button" class="btn btn-danger" data-dismiss="modal">
+                                Annuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,8 +46,22 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-raised" data-dismiss="modal">Annuler</button>
-                <button id="removeFromVoyageBtn" type="button" class="btn btn-success btn-raised" data-dismiss="modal"><i class="fa fa-check"></i> Valider</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-justified btn-group-raised">
+
+                            <a href="javascript:void(0)" type="submit" id="removeFromVoyageBtn"
+                               class="btn btn-primary"
+                               data-dismiss="modal"
+                               name="_submit">
+                                Valider
+                            </a>
+                            <a href="javascript:void(0)" type="button" class="btn btn-danger" data-dismiss="modal">
+                                Annuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
