@@ -1,28 +1,26 @@
 $().ready(function () {
 
-    $('[data-toggle=confirmation]').confirmation({
-        'popout' : true
-    });
-
-    var maplace = null;
+    /*********************************************************
+     *                   ADD DESTINATION                     *
+     *********************************************************/
 
     var $numberDays = $('#numberDays'),
         $destination = $('#containerAddDestination #addDestination');
 
+
     function format(country) {
         if (country.id) {
             var destinationName = country.element[0].attributes.getNamedItem("data-destination-name");
-            if(destinationName) {
+            if (destinationName) {
                 return destinationName.value;
             }
-
             return country.text;
+
         }
         var countryCode = country.element[0].attributes.getNamedItem("data-country-code").value;
-
         return "<img class='flagSelectDestination flagCountrySmall' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
-    }
 
+    }
     $(".destination").select2({
         formatResult: format,
         formatSelection: format,
@@ -33,13 +31,13 @@ $().ready(function () {
         theme: "bootstrap"
     });
 
-
     $("#containerAddDestination button").on("click", function (event) {
         $("#errorBlockDestination_addDestination").addClass("hidden");
         if (!$destination.val()) {
             $("#errorBlockDestination_addDestination").removeClass("hidden");
         }
     });
+
 
     $("#containerAddDestination form").submit(function (event) {
         event.preventDefault();
@@ -61,6 +59,15 @@ $().ready(function () {
         }, "json");
     });
 
+
+
+    /*********************************************************
+     *                   DESTINATIONS LIST                   *
+     *********************************************************/
+
+
+    var maplace = null;
+
     $(".btnDeleteStage").on('click', function (e) {
         $(this).html('<i class="fa fa-spinner fa-spin"></i>');
         disabledActions();
@@ -69,7 +76,6 @@ $().ready(function () {
             window.location.reload();
         }, "json");
     });
-
     function disabledActions() {
         $("#containerAddDestination button").prop('disabled', true);
         $.sortaleElement.option("disabled", true);
@@ -84,15 +90,6 @@ $().ready(function () {
         $('[data-toggle=confirmation]').prop('disabled', false);
     }
 
-    $.fn.editableform.buttons =
-        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
-        '<i class="fa fa-check"></i>' +
-        '</button>' +
-        '<button type="button" class="btn btn-default btn-raised btn-sm editable-cancel">' +
-        '<i class="fa fa-times"></i>' +
-        '</button>';
-    $.fn.editable.defaults.mode = 'inline';
-    $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
 
     $(document).ready(function () {
         maplace = new Maplace({
@@ -102,6 +99,25 @@ $().ready(function () {
             type: 'polyline'
         }).Load();
 
+        initConfirmation();
+        initSortable();
+        initEditable();
+        initTooltip();
+
+        enableActions();
+    });
+
+    function initConfirmation() {
+        $('[data-toggle=confirmation]').confirmation({
+            'popout': true
+        });
+    }
+
+    function initTooltip() {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    function initSortable() {
         $.sortaleElement = Sortable.create(listDestinations, {
             animation: 200,
             handle: ".drag-handle",
@@ -118,26 +134,43 @@ $().ready(function () {
                 var url = changePositionStageUrl.replace(0, stageId);
                 disabledActions();
                 $.post(url, data, function (response) {
-                    enableActions();
                     maplace.Load({
                         locations: response.maplaceData,
                         map_div: '#gmap',
                         controls_on_map: false,
                         type: 'polyline'
                     });
-                    updatListDatesAndPeriods(response.voyageStats.stagesStats);
                     updateStats(response.statsView);
+                    updateListDestinations(response.destinationListView);
+
+                    initConfirmation();
+                    initSortable();
+                    initEditable();
+                    initTooltip();
+
+                    enableActions();
 
                 }, "json");
             }
         });
+    }
 
+    $.fn.editableform.buttons =
+        '<button type="submit" class="btn btn-primary btn-raised btn-sm editable-submit">' +
+        '<i class="fa fa-check"></i>' +
+        '</button>' +
+        '<button type="button" class="btn btn-default btn-raised btn-sm editable-cancel">' +
+        '<i class="fa fa-times"></i>' +
+        '</button>';
+    $.fn.editable.defaults.mode = 'inline';
+    $.fn.editableform.loading = '<div><i class="fa fa-spinner fa-spin"></i></div>';
+    function initEditable() {
         $.editableElement = $('.nbDaysStage').editable({
             type: 'select',
             url: changeNbDaysStageUrl,
             validate: function (value) {
                 if ($(this).data('value') == value) {
-                    return ;
+                    return;
                 }
                 var stageId = $(this).data('pk');
                 var stagePrice = $('.stagePrice[data-stage-id="' + stageId + '"]');
@@ -146,16 +179,15 @@ $().ready(function () {
             },
             success: function (response, newValue) {
                 $.updateNavBarInfos();
-                enableActions();
                 updateStats(response.statsView);
+                updateListDestinations(response.destinationListView);
 
-                var stagePrice = $('.stagePrice[data-stage-id="' + response.stageId + '"]');
-                var priceHtml = response.stagePrice + ' &euro;';
-                stagePrice.html('<span class="label label-success">' + priceHtml + '</span>');
+                initConfirmation();
+                initSortable();
+                initEditable();
+                initTooltip();
 
-                updatListDatesAndPeriods(response.voyageStats.stagesStats);
-
-                $('[data-toggle="tooltip"]').tooltip();
+                enableActions();
             },
             inputclass: 'selectEditable',
             source: [
@@ -199,11 +231,7 @@ $().ready(function () {
                 {value: 180, text: '6 mois'}
             ]
         });
-
-        $('[data-toggle="tooltip"]').tooltip();
-
-        enableActions();
-    });
+    }
 
     function updateStats(statsView) {
         var $dashboardStatsContainer = $("#dashboardStatsContainer");
@@ -211,18 +239,15 @@ $().ready(function () {
         $dashboardStatsContainer.append(statsView);
     }
 
-    function updatListDatesAndPeriods(stagesStats) {
-        $.each(stagesStats, function (stageId, stats) {
-            var stageStars = $('.stageStars[data-stage-id="' + stageId + '"]');
-            var stageStartDate = $('.stageStartDate[data-stage-id="' + stageId + '"]');
-            stageStars.html(stats.starsView);
-            stageStartDate.html(stats.dateFromFormated);
-        });
+    function updateListDestinations(listDestinationsView) {
+        var $dashboardDestinationsListContainer = $("#dashboardDestinationsListContainer");
+        $dashboardDestinationsListContainer.empty();
+        $dashboardDestinationsListContainer.append(listDestinationsView);
     }
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         var pos = $(window).scrollTop();
-        if(pos > $("#siteHeader").height()) {
+        if (pos > $("#siteHeader").height()) {
             $("#headerDashboard").addClass("stickyHeader");
         }
         else {
@@ -230,9 +255,9 @@ $().ready(function () {
         }
     });
 
-    $("#showPricesInPublic").on('change', function() {
+    $("#showPricesInPublic").on('change', function () {
         var data = {
-            showPricesInPublic : this.checked
+            showPricesInPublic: this.checked
         };
         $("#showPricesInPublic").attr("disabled", true);
 

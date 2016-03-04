@@ -142,9 +142,11 @@ class CRUDStageController extends Controller
         $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
-            'maplaceData' => $maplaceData,
-            'voyageStats' => $voyageStatsCalculated,
-            'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'maplaceData'         => $maplaceData,
+            'voyageStats'         => $voyageStatsCalculated,
+            'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
         ]);
     }
 
@@ -185,7 +187,9 @@ class CRUDStageController extends Controller
             'stageId'     => $stage->getId(),
             'stagePrice'  => $stagePrice,
             'voyageStats' => $voyageStatsCalculated,
-            'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated])
+            'statsView'   => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
         ]);
     }
 

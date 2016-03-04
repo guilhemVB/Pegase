@@ -31,7 +31,9 @@
 
         {% include 'CalculatorBundle:Voyage:dashboardAddDestination.html.twig' %}
 
-        {% include 'CalculatorBundle:Voyage:dashboardDestinationsList.html.twig' %}
+        <span id="dashboardDestinationsListContainer">
+            {% include 'CalculatorBundle:Voyage:dashboardDestinationsList.html.twig' %}
+        </span>
 
         <span id="dashboardStatsContainer">
             {% include 'CalculatorBundle:Voyage:dashboardStats.html.twig' %}
