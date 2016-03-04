@@ -24,6 +24,7 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - @google_url_shortener_api
+            - @journey_service
 
     voyage_service:
         class : CalculatorBundle\Service\VoyageService

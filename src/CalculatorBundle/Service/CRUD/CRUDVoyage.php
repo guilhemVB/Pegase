@@ -6,6 +6,7 @@ use AppBundle\Entity\Destination;
 use AppBundle\Entity\User;
 use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApiInterface;
+use CalculatorBundle\Service\Journey\JourneyService;
 use Doctrine\ORM\EntityManager;
 
 class CRUDVoyage
@@ -17,10 +18,14 @@ class CRUDVoyage
     /** @var GoogleUrlShortenerApiInterface */
     private $googleUrlShortenerApi;
 
-    public function __construct(EntityManager $em, GoogleUrlShortenerApiInterface $googleUrlShortenerApi)
+    /** @var JourneyService */
+    private $journeyService;
+
+    public function __construct(EntityManager $em, GoogleUrlShortenerApiInterface $googleUrlShortenerApi, JourneyService $journeyService)
     {
         $this->em = $em;
         $this->googleUrlShortenerApi = $googleUrlShortenerApi;
+        $this->journeyService = $journeyService;
     }
 
 
@@ -64,6 +69,8 @@ class CRUDVoyage
 
         $this->em->persist($voyage);
         $this->em->flush();
+
+        $this->journeyService->updateJourneyByVoyage($voyage);
 
         return $voyage;
     }
