@@ -3,18 +3,20 @@
 
 <li class="stageMovable stageStyle stageStylePadding" data-stage-id="{{ stage.id }}">
     <div class="row">
+
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             <span class="drag-handle handle-fa-icon"><i class="fa fa-lg fa-sort"></i></span>
             <img class='flagCountrySmall flagCountryStage'
                  src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
-            <a class="hidden-sm" href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+            <a class="hidden-sm"
+               href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
         </div>
 
-        <div class="col-md-3 col-sm-2 col-xs-6 ellipsis">
+        <div class="col-md-2 col-sm-2 col-xs-6 ellipsis">
             <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
         </div>
 
-        <div class="col-md-3 col-sm-4 col-xs-11">
+        <div class="col-md-3 col-sm-4 col-xs-11 hidden-xs">
             <span class="stageStartDate" data-stage-id="{{ stage.id }}">
                 {{ stageStats.dateFrom|localizeddate('none', 'none', 'fr_FR', null, 'd MMMM Y') }}
             </span>
@@ -23,50 +25,64 @@
             </span>
         </div>
 
-        <div class="col-md-4 col-sm-5 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-6 colNbDays">
             <a href="#" class="nbDaysStage" data-pk="{{ stage.id }}" data-value="{{ stage.nbDays }}">
                 {% include 'AppBundle:Common:nbDays.html.twig' with {'nbDays' : stage.nbDays} %}
             </a>
 
+            {% if not loop.last %}
+                <span class="pull-right spanPrices" data-stage-id="{{ stage.id }}">
+                    {% set priceAndTimeTransport = stage.priceAndTimeTransport %}
+                    {% if priceAndTimeTransport is null %}
+                        <span class="label label-warning" data-toggle="tooltip" data-placement="left"
+                              title="Prix non disponibles pour le moment">
+                            ?
+                        </span>
+                    {% else %}
+
+                        {% set hours = (priceAndTimeTransport.time / 60)|round(0, 'floor') %}
+                        {% set minutes = priceAndTimeTransport.time % 60 %}
+                        {% if minutes == 0 %}
+                            {% set minutes = "00" %}
+                        {% elseif minutes < 10 %}
+                            {% set minutes = "0" ~ minutes %}
+                        {% endif %}
+                        <span class="label label-warning" data-toggle="tooltip" data-placement="left"
+                              title="{% if hours > 0 %}{{ hours }}{% endif %}h{{ minutes }}">
+
+                            {% if priceAndTimeTransport.transportType == "FLY" %}
+                                <i class="fa fa-plane iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "BUS" %}
+                                <i class="fa fa-road iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
+                                <i class="fa fa-train iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                            {% endif %}
+
+                            {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                            </span>
+                    {% endif %}
+                </span>
+            {% endif %}
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-6 colDeleteStage">
             <button type="button" class="btn btn-danger btn-raised btn-xs pull-right btnDeleteStage"
                     style="margin: 0;"
                     data-stage-id="{{ stage.id }}"
                     data-toggle="confirmation" data-placement="left"
                     data-title="Supprimer cette étape ?"
-                    data-btn-ok-class="btn btn-success btn-raised btn-sm" data-btn-ok-icon="fa fa-check" data-btn-ok-label="Oui"
-                    data-btn-cancel-class="btn btn-danger btn-raised btn-sm" data-btn-cancel-icon="fa fa-times" data-btn-cancel-label="Non"
+                    data-btn-ok-class="btn btn-success btn-raised btn-sm" data-btn-ok-icon="fa fa-check"
+                    data-btn-ok-label="Oui"
+                    data-btn-cancel-class="btn btn-danger btn-raised btn-sm" data-btn-cancel-icon="fa fa-times"
+                    data-btn-cancel-label="Non"
                     ><i class="fa fa-trash"></i>
             </button>
 
-            <span class="stagePrice pull-right" data-stage-id="{{ stage.id }}">
+            <span class="stagePrice spanPrices" data-stage-id="{{ stage.id }}">
                 <span class="label label-success">
                     {{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €
                 </span>
-            </span>
-
-            <span class="pull-right" data-stage-id="{{ stage.id }}">
-                {% set priceAndTimeTransport = stage.priceAndTimeTransport %}
-                {% if priceAndTimeTransport is null %}
-                    <span class="label label-warning" data-toggle="tooltip" data-placement="top"
-                          title="Prix non disponibles pour le moment">
-                        <i class="fa fa-lg fa-lock"></i>
-                    </span>
-                {% else %}
-
-                <span class="label label-warning">
-
-                    {% if priceAndTimeTransport.transportType == "FLY" %}
-                        <i class="fa fa-plane iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "BUS" %}
-                        <i class="fa fa-road iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
-                        <i class="fa fa-train iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "NONE" %}
-                    {% endif %}
-
-                        {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
-                    </span>
-                {% endif %}
             </span>
 
         </div>

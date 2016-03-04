@@ -1,12 +1,7 @@
 <div class="stageStyle stageStylePadding">
     <div class="row">
 
-        <div class="
-                {% if allowModification == true %}
-                    col-md-2 col-sm-1 col-xs-6
-                {% else %}
-                    col-md-3 col-sm-1 col-xs-6
-                {% endif %} ellipsis">
+        <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             {% if allowModification %}
                 <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
             {% endif %}
@@ -16,41 +11,49 @@
                href="{{ path('country', {'slug' : voyage.startDestination.country.slug }) }}">{{ voyage.startDestination.country.name }}</a>
         </div>
 
-        <div class="{% if allowModification == true %}
-                    col-md-3 col-sm-2 col-xs-6
-                {% else %}
-                    col-md-3 col-sm-3 col-xs-6
-                {% endif %} ellipsis">
+        <div class="col-md-2 col-sm-2 col-xs-6 ellipsis">
             <a href="{{ path('destination', {'slug' : voyage.startDestination.slug }) }}">{{ voyage.startDestination.name }}</a>
         </div>
 
-        <div class="col-sm-6 col-xs-11">
+        <div class="col-md-3 col-sm-4 col-xs-11">
             Début du voyage
         </div>
 
-        <span class="pull-right">
-            {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
-            {% if priceAndTimeTransport is null %}
-                <span class="label label-warning" data-toggle="tooltip" data-placement="top"
-                      title="Prix non disponibles pour le moment">
+        <div class="col-md-3 col-sm-3 col-xs-6 colNbDays">
+
+            <span class="pull-right spanPrices">
+                {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
+                {% if priceAndTimeTransport is null %}
+                    <span class="label label-warning" data-toggle="tooltip" data-placement="top"
+                          title="Prix non disponibles pour le moment">
                         <i class="fa fa-lg fa-lock"></i>
                     </span>
                 {% else %}
 
-                <span class="label label-warning">
-
-                    {% if priceAndTimeTransport.transportType == "FLY" %}
-                        <i class="fa fa-plane iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "BUS" %}
-                        <i class="fa fa-road iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
-                        <i class="fa fa-train iconPriceJourney"></i>
-                    {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                    {% set hours = (priceAndTimeTransport.time / 60)|round(0, 'floor') %}
+                    {% set minutes = priceAndTimeTransport.time % 60 %}
+                    {% if minutes == 0 %}
+                        {% set minutes = "00" %}
+                    {% elseif minutes < 10 %}
+                        {% set minutes = "0" ~ minutes %}
                     {% endif %}
+                    <span class="label label-warning" data-toggle="tooltip" data-placement="left"
+                          title="{% if hours > 0 %}{{ hours }}{% endif %}h{{ minutes }}">
 
-                    {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
-                    </span>
-            {% endif %}
+                        {% if priceAndTimeTransport.transportType == "FLY" %}
+                            <i class="fa fa-plane iconPriceJourney"></i>
+                        {% elseif priceAndTimeTransport.transportType == "BUS" %}
+                            <i class="fa fa-road iconPriceJourney"></i>
+                        {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
+                            <i class="fa fa-train iconPriceJourney"></i>
+                        {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                        {% endif %}
+
+                        {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                        </span>
+                {% endif %}
             </span>
+        </div>
+
     </div>
 </div>

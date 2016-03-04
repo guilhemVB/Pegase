@@ -267,6 +267,20 @@ $().ready(function () {
                 {value: 180, text: '6 mois'}
             ]
         });
+
+        $('.editable-click').on('click', function(e) {
+            var stageId = $(this).data('pk');
+            var spansPrices = $('.spanPrices[data-stage-id="' + stageId + '"]');
+            spansPrices.addClass("hidden");
+        });
+
+
+        $('.editable').on('hidden', function(e) {
+            var stageId = $(this).data('pk');
+            var spansPrices = $('.spanPrices[data-stage-id="' + stageId + '"]');
+            spansPrices.removeClass("hidden");
+        });
+
     }
 
     function updateStats(statsView) {

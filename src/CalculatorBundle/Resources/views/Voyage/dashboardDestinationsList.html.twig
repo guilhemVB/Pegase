@@ -23,25 +23,13 @@
 
         <div class="col-lg-offset-1 col-lg-10 col-md-12 headerListDestination">
 
-            <div class="
-                {% if allowModification == true %}
-                    col-md-2 col-sm-1 col-xs-6
-                {% else %}
-                    col-md-3 col-sm-1 col-xs-6
-                {% endif %}
-                ">
+            <div class="col-md-2 col-sm-1 col-xs-6">
                 <span class="hidden-sm labelCountryHeader">
                     <strong>Pays</strong>
                 </span>
             </div>
 
-            <div class="
-                {% if allowModification == true %}
-                    col-md-3 col-sm-2 col-xs-6
-                {% else %}
-                    col-md-3 col-sm-3 col-xs-6
-                {% endif %}
-                ">
+            <div class="col-md-2 col-sm-2 col-xs-6">
                 <span>
                     <strong>Destination</strong>
                 </span>
@@ -54,18 +42,24 @@
                 </span>
             </div>
 
-            <div class="
-                {% if allowModification == true %}
-                    col-md-4 col-sm-5 col-xs-12
-                {% else %}
-                    col-md-3 col-sm-4 col-xs-12
-                {% endif %}
-                hidden-xs">
+            <div class="col-md-3 col-sm-3 col-xs-6 colNbDays hidden-xs">
                 <strong>Jours sur place</strong>
-                <span class="pull-right {% if allowModification == true %}labelBudgetHeader{% endif %}">
-                    <strong>Budget</strong>
+                <span class="pull-right">
+                    {% if allowModification == true %}
+                        <strong>Budgets</strong>
+                    {% else %}
+                        <strong>Transport</strong>
+                    {% endif %}
                 </span>
             </div>
+
+            {% if allowModification == false %}
+                <div class="col-md-2 col-sm-2 col-xs-6 colDeleteStage hidden-xs">
+                    <span class="pull-right">
+                        <strong>Budget</strong>
+                    </span>
+                </div>
+            {% endif %}
 
         </div>
 

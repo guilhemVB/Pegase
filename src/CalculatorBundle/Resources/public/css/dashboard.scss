@@ -125,7 +125,15 @@
 }
 
 .btnDeleteStage {
-  margin-left: 20px !important;
+  margin-left: 10px !important;
+}
+
+.colNbDays {
+  padding-right: 5px;
+}
+
+.colDeleteStage {
+  padding-left: 5px;
 }
 
 .stageMovable .popover-title {
@@ -158,10 +166,6 @@
 
 .headerListDestination {
   height: 25px;
-}
-
-.headerListDestination .labelBudgetHeader {
-  padding-right: 60px;
 }
 
 .headerListDestination .labelPeriodsHeader {
