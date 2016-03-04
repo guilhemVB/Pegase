@@ -55,7 +55,29 @@ $().ready(function () {
         disabledActions();
         var url = addStageUrl.replace("0", data.destinationId);
         $.post(url, data, function (response) {
-            window.location.reload();
+            maplace.Load({
+                locations: response.maplaceData,
+                map_div: '#gmap',
+                controls_on_map: false,
+                type: 'polyline'
+            });
+            updateStats(response.statsView);
+            updateListDestinations(response.destinationListView);
+
+            initConfirmation();
+            initSortable();
+            initEditable();
+            initTooltip();
+
+            enableActions();
+
+            $numberDays.val(7);
+            $destination.val("");
+
+            $("#containerAddDestination form button").button('reset');
+            $destination.val(null).trigger("change");
+            $("#containerAddDestination form").find(".form-group").removeClass('has-error');
+
         }, "json");
     });
 
@@ -73,7 +95,21 @@ $().ready(function () {
         disabledActions();
         var url = removeStageUrl.replace("0", $(this).data('stageId'));
         $.post(url, function (response) {
-            window.location.reload();
+            maplace.Load({
+                locations: response.maplaceData,
+                map_div: '#gmap',
+                controls_on_map: false,
+                type: 'polyline'
+            });
+            updateStats(response.statsView);
+            updateListDestinations(response.destinationListView);
+
+            initConfirmation();
+            initSortable();
+            initEditable();
+            initTooltip();
+
+            enableActions();
         }, "json");
     });
     function disabledActions() {
