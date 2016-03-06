@@ -87,7 +87,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="journeyStage{{ stage.id }}" value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
+                            <input type="radio" data-stage-id="{{ stage.id }}" name="journeyStage{{ stage.id }}" value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
                             Avion {{ stage.availableJourney.flyPrices }} € - {{ stage.availableJourney.flyTime|journeyTime }} <i class="fa fa-plane"></i>
                         </label>
                     </div>
@@ -98,7 +98,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="journeyStage{{ stage.id }}" value="TRAIN" {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
+                            <input type="radio" data-stage-id="{{ stage.id }}" name="journeyStage{{ stage.id }}" value="TRAIN" {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
                             Train {{ stage.availableJourney.trainPrices }} € - {{ stage.availableJourney.trainTime|journeyTime }} <i class="fa fa-train"></i>
                         </label>
                     </div>
@@ -109,7 +109,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="journeyStage{{ stage.id }}" value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
+                            <input type="radio" data-stage-id="{{ stage.id }}" name="journeyStage{{ stage.id }}" value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
                             Bus {{ stage.availableJourney.busPrices }} € - {{ stage.availableJourney.busTime|journeyTime }} <i class="fa fa-road"></i>
                         </label>
                     </div>
@@ -119,7 +119,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="journeyStage{{ stage.id }}" value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
+                        <input type="radio" data-stage-id="{{ stage.id }}" name="journeyStage{{ stage.id }}" value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
                         Rien 0 €
                     </label>
                 </div>

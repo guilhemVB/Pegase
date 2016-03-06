@@ -4,7 +4,10 @@ namespace CalculatorBundle\Controller;
 
 use CalculatorBundle\Entity\Voyage;
 use AppBundle\Repository\DestinationRepository;
+use CalculatorBundle\Repository\StageRepository;
 use CalculatorBundle\Service\CRUD\CRUDVoyage;
+use CalculatorBundle\Service\Stats\VoyageStats;
+use CalculatorBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -91,6 +94,44 @@ class CRUDVoyageController extends Controller
         return new JsonResponse([
             'voyageId' => $voyage->getId(),
             'showPricesInPublic' => $showPricesInPublic,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/change-transport-type", name="changeTransportTypeVoyage")
+     * @param Voyage $voyage
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function changeTransportTypeVoyageAction(Voyage $voyage, Request $request)
+    {
+        $transportType = $request->get('transportType');
+
+        /** @var CRUDVoyage $CRUDVoyage */
+        $CRUDVoyage = $this->get('crud_voyage');
+        $CRUDVoyage->changeTransportType($voyage, $transportType);
+
+        /** @var VoyageService $voyageService */
+        $voyageService = $this->get('voyage_service');
+        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
+
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
+
+        return new JsonResponse([
+            'maplaceData'         => $maplaceData,
+            'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
         ]);
     }
 

@@ -75,6 +75,9 @@
 
         var voyageCRUDUpdateUrl = "{{ path('voyageCRUDUpdate', {'id' : voyage.id}) }}";
         var voyageCRUDUpdateShowPricesInPublicUrl = "{{ path('voyageCRUDUpdateShowPricesInPublic', {'id' : voyage.id}) }}";
+
+        var changeTransportTypeVoyageUrl = "{{ path('changeTransportTypeVoyage', {'id' : 0}) }}";
+        var changeTransportTypeStageUrl = "{{ path('changeTransportTypeStage', {'id' : 0}) }}";
     </script>
     {% javascripts output='js/dashboard/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/dashboard/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

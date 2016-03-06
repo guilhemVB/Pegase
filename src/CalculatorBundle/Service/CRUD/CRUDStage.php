@@ -153,6 +153,17 @@ class CRUDStage
     }
 
     /**
+     * @param Stage $stage
+     * @param string $transportType
+     */
+    public function changeTransportType(Stage $stage, $transportType)
+    {
+        $stage->setTransportType($transportType);
+        $this->em->persist($stage);
+        $this->em->flush();
+    }
+
+    /**
      * @param Voyage $voyage
      * @param $position
      */

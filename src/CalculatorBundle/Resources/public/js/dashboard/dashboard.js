@@ -21,6 +21,7 @@ $().ready(function () {
         return "<img class='flagSelectDestination flagCountrySmall' src='http://www.geonames.org/flags/x/" + countryCode.toLowerCase() + ".gif'/>" + country.text;
 
     }
+
     $(".destination").select2({
         formatResult: format,
         formatSelection: format,
@@ -83,7 +84,6 @@ $().ready(function () {
     });
 
 
-
     /*********************************************************
      *                   DESTINATIONS LIST                   *
      *********************************************************/
@@ -120,6 +120,7 @@ $().ready(function () {
         $.sortaleElement.option("disabled", true);
         $.editableElement.not(".editable-open").editable('disable');
         $('[data-toggle=confirmation]').prop('disabled', true);
+        $(".radio input").attr("disabled", true);
     }
 
     function enableActions() {
@@ -127,6 +128,7 @@ $().ready(function () {
         $.sortaleElement.option("disabled", false);
         $.editableElement.editable('enable');
         $('[data-toggle=confirmation]').prop('disabled', false);
+        $(".radio input").removeAttr("disabled");
     }
 
 
@@ -162,21 +164,61 @@ $().ready(function () {
 
         $(".priceJourney").on('click', function (e) {
             var stageId = $(this).data('stageId');
-            console.log(stageId);
             var $row = $('.stageStyleJourneyRow[data-stage-id="' + stageId + '"]');
 
             if (0 == $row.size()) {
                 var voyageId = $(this).data('voyageId');
-                console.log(voyageId);
                 $row = $('.stageStyleJourneyRow[data-voyage-id="' + voyageId + '"]');
             }
 
             if (0 != $row.size()) {
                 if ($row.hasClass('rowHidden')) {
+                    $('.stageStyleJourneyRow').addClass('rowHidden');
                     $row.removeClass('rowHidden');
                 } else {
+                    $('.stageStyleJourneyRow').addClass('rowHidden');
                     $row.addClass('rowHidden');
                 }
+            }
+        });
+
+        $(".stageStyleJourneyRow .radio input").on('change', function (e) {
+            if ($(this).is(':checked')) {
+                var data = {
+                    transportType: $(this).val()
+                };
+
+                var stageId = $(this).data('stageId');
+
+                var url = '';
+                if (stageId) {
+                    url = changeTransportTypeStageUrl.replace(0, stageId);
+                } else {
+                    var voyageId = $(this).data('voyageId');
+                    url = changeTransportTypeVoyageUrl.replace(0, voyageId);
+                }
+
+                disabledActions();
+                $.post(url, data, function (response) {
+                    maplace.Load({
+                        locations: response.maplaceData,
+                        map_div: '#gmap',
+                        controls_on_map: false,
+                        type: 'polyline'
+                    });
+                    updateStats(response.statsView);
+                    updateListDestinations(response.destinationListView);
+
+                    initConfirmation();
+                    initSortable();
+                    initEditable();
+                    initTooltip();
+                    initJourneyPrices();
+
+                    enableActions();
+
+                }, "json");
+
             }
         });
     }
@@ -298,14 +340,14 @@ $().ready(function () {
             ]
         });
 
-        $('.editable-click').on('click', function(e) {
+        $('.editable-click').on('click', function (e) {
             var stageId = $(this).data('pk');
             var spansPrices = $('.spanPrices[data-stage-id="' + stageId + '"]');
             spansPrices.addClass("hidden");
         });
 
 
-        $('.editable').on('hidden', function(e) {
+        $('.editable').on('hidden', function (e) {
             var stageId = $(this).data('pk');
             var spansPrices = $('.spanPrices[data-stage-id="' + stageId + '"]');
             spansPrices.removeClass("hidden");
@@ -345,7 +387,6 @@ $().ready(function () {
             $("#showPricesInPublic").removeAttr("disabled");
         }, "json");
     });
-
 
 
 });

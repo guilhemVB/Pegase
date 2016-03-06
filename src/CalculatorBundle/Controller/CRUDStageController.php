@@ -86,6 +86,46 @@ class CRUDStageController extends Controller
         return new JsonResponse($response);
     }
 
+    /**
+     * @Route("/{id}/change-transport-type", name="changeTransportTypeStage")
+     * @param Stage $stage
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function changeTransportTypeStageAction(Stage $stage, Request $request)
+    {
+        $transportType = $request->get('transportType');
+
+        $voyage = $stage->getVoyage();
+
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->changeTransportType($stage, $transportType);
+
+        /** @var VoyageService $voyageService */
+        $voyageService = $this->get('voyage_service');
+        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
+
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
+
+        return new JsonResponse([
+            'maplaceData'         => $maplaceData,
+            'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
+            'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
+        ]);
+    }
+
 
     /**
      * @Route("/{id}/remove", name="removeStage")

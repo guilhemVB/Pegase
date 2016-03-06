@@ -75,4 +75,15 @@ class CRUDVoyage
         return $voyage;
     }
 
+    /**
+     * @param Voyage $voyage
+     * @param string $transportType
+     */
+    public function changeTransportType(Voyage $voyage, $transportType)
+    {
+        $voyage->setTransportType($transportType);
+        $this->em->persist($voyage);
+        $this->em->flush();
+    }
+
 }
