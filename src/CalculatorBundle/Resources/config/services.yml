@@ -1,9 +1,4 @@
 services:
-    app.twig_extension:
-        class: CalculatorBundle\Twig\AppExtension
-        public: false
-        tags:
-            - { name: twig.extension }
 
     voyage_stats:
         class : CalculatorBundle\Service\Stats\VoyageStats
