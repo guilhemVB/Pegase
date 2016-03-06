@@ -1,8 +1,8 @@
 {% set destination = stage.destination %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
 
-<li class="stageMovable stageStyle stageStylePadding" data-stage-id="{{ stage.id }}">
-    <div class="row">
+<li class="stageMovable" data-stage-id="{{ stage.id }}">
+    <div class="row stageStylePadding stageStyle">
 
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             <span class="drag-handle handle-fa-icon"><i class="fa fa-lg fa-sort"></i></span>
@@ -31,24 +31,16 @@
             </a>
 
             {% if not loop.last %}
-                <span class="pull-right spanPrices" data-stage-id="{{ stage.id }}">
-                    {% set priceAndTimeTransport = stage.priceAndTimeTransport %}
+                {% set priceAndTimeTransport = stage.priceAndTimeTransport %}
+
+                <span class="pull-right spanPrices {% if priceAndTimeTransport is not null %}priceJourney{% endif %}" data-stage-id="{{ stage.id }}">
                     {% if priceAndTimeTransport is null %}
                         <span class="label label-warning" data-toggle="tooltip" data-placement="left"
                               title="Prix non disponibles pour le moment">
                             ?
                         </span>
                     {% else %}
-
-                        {% set hours = (priceAndTimeTransport.time / 60)|round(0, 'floor') %}
-                        {% set minutes = priceAndTimeTransport.time % 60 %}
-                        {% if minutes == 0 %}
-                            {% set minutes = "00" %}
-                        {% elseif minutes < 10 %}
-                            {% set minutes = "0" ~ minutes %}
-                        {% endif %}
-                        <span class="label label-warning" data-toggle="tooltip" data-placement="left"
-                              title="{% if hours > 0 %}{{ hours }}{% endif %}h{{ minutes }}">
+                        <span class="label label-warning">
 
                             {% if priceAndTimeTransport.transportType == "FLY" %}
                                 <i class="fa fa-plane iconPriceJourney"></i>
@@ -87,4 +79,52 @@
 
         </div>
     </div>
+
+    {% if stage.availableJourney is not null and not loop.last %}
+        <div class="row stageStylePadding stageStyle stageStyleJourneyRow rowHidden" data-stage-id="{{ stage.id }}">
+
+            {% if stage.availableJourney.flyPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyStage{{ stage.id }}" value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
+                            Avion {{ stage.availableJourney.flyPrices }} € - {{ stage.availableJourney.flyTime|journeyTime }} <i class="fa fa-plane"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if stage.availableJourney.trainPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyStage{{ stage.id }}" value="TRAIN" {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
+                            Train {{ stage.availableJourney.trainPrices }} € - {{ stage.availableJourney.trainTime|journeyTime }} <i class="fa fa-train"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if stage.availableJourney.busPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyStage{{ stage.id }}" value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
+                            Bus {{ stage.availableJourney.busPrices }} € - {{ stage.availableJourney.busTime|journeyTime }} <i class="fa fa-road"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col-md-3 col-sm-6">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="journeyStage{{ stage.id }}" value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
+                        Rien 0 €
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
 </li>

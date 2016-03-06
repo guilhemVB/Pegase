@@ -68,6 +68,7 @@ $().ready(function () {
             initSortable();
             initEditable();
             initTooltip();
+            initJourneyPrices();
 
             enableActions();
 
@@ -108,10 +109,12 @@ $().ready(function () {
             initSortable();
             initEditable();
             initTooltip();
+            initJourneyPrices();
 
             enableActions();
         }, "json");
     });
+
     function disabledActions() {
         $("#containerAddDestination button").prop('disabled', true);
         $.sortaleElement.option("disabled", true);
@@ -139,6 +142,7 @@ $().ready(function () {
         initSortable();
         initEditable();
         initTooltip();
+        initJourneyPrices();
 
         enableActions();
     });
@@ -151,6 +155,30 @@ $().ready(function () {
 
     function initTooltip() {
         $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    function initJourneyPrices() {
+        $.material.radio($(".radio > label > input[type=radio]"));
+
+        $(".priceJourney").on('click', function (e) {
+            var stageId = $(this).data('stageId');
+            console.log(stageId);
+            var $row = $('.stageStyleJourneyRow[data-stage-id="' + stageId + '"]');
+
+            if (0 == $row.size()) {
+                var voyageId = $(this).data('voyageId');
+                console.log(voyageId);
+                $row = $('.stageStyleJourneyRow[data-voyage-id="' + voyageId + '"]');
+            }
+
+            if (0 != $row.size()) {
+                if ($row.hasClass('rowHidden')) {
+                    $row.removeClass('rowHidden');
+                } else {
+                    $row.addClass('rowHidden');
+                }
+            }
+        });
     }
 
     function initSortable() {
@@ -183,6 +211,7 @@ $().ready(function () {
                     initSortable();
                     initEditable();
                     initTooltip();
+                    initJourneyPrices();
 
                     enableActions();
 
@@ -222,6 +251,7 @@ $().ready(function () {
                 initSortable();
                 initEditable();
                 initTooltip();
+                initJourneyPrices();
 
                 enableActions();
             },
@@ -315,5 +345,7 @@ $().ready(function () {
             $("#showPricesInPublic").removeAttr("disabled");
         }, "json");
     });
+
+
 
 });

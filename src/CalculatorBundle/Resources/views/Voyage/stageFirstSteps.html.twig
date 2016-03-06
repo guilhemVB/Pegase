@@ -1,5 +1,5 @@
-<div class="stageStyle stageStylePadding">
-    <div class="row">
+<div>
+    <div class="row stageStylePadding stageStyle">
 
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             {% if allowModification %}
@@ -21,39 +21,81 @@
 
         <div class="col-md-3 col-sm-3 col-xs-6 colNbDays">
 
-            <span class="pull-right spanPrices">
+            {% if voyage.stages|length > 0 %}
                 {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
-                {% if priceAndTimeTransport is null %}
-                    <span class="label label-warning" data-toggle="tooltip" data-placement="top"
-                          title="Prix non disponibles pour le moment">
-                        <i class="fa fa-lg fa-lock"></i>
-                    </span>
-                {% else %}
-
-                    {% set hours = (priceAndTimeTransport.time / 60)|round(0, 'floor') %}
-                    {% set minutes = priceAndTimeTransport.time % 60 %}
-                    {% if minutes == 0 %}
-                        {% set minutes = "00" %}
-                    {% elseif minutes < 10 %}
-                        {% set minutes = "0" ~ minutes %}
-                    {% endif %}
-                    <span class="label label-warning" data-toggle="tooltip" data-placement="left"
-                          title="{% if hours > 0 %}{{ hours }}{% endif %}h{{ minutes }}">
-
-                        {% if priceAndTimeTransport.transportType == "FLY" %}
-                            <i class="fa fa-plane iconPriceJourney"></i>
-                        {% elseif priceAndTimeTransport.transportType == "BUS" %}
-                            <i class="fa fa-road iconPriceJourney"></i>
-                        {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
-                            <i class="fa fa-train iconPriceJourney"></i>
-                        {% elseif priceAndTimeTransport.transportType == "NONE" %}
-                        {% endif %}
-
-                        {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                <span class="pull-right spanPrices {% if priceAndTimeTransport is not null %}priceJourney{% endif %}" data-voyage-id="{{ voyage.id }}">
+                    {% if priceAndTimeTransport is null %}
+                        <span class="label label-warning" data-toggle="tooltip" data-placement="top"
+                              title="Prix non disponibles pour le moment">
+                            <i class="fa fa-lg fa-lock"></i>
                         </span>
-                {% endif %}
-            </span>
+                    {% else %}
+                        <span class="label label-warning">
+
+                            {% if priceAndTimeTransport.transportType == "FLY" %}
+                                <i class="fa fa-plane iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "BUS" %}
+                                <i class="fa fa-road iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "TRAIN" %}
+                                <i class="fa fa-train iconPriceJourney"></i>
+                            {% elseif priceAndTimeTransport.transportType == "NONE" %}
+                            {% endif %}
+
+                            {{ priceAndTimeTransport.price|number_format(0, ',', ' ') }} €
+                            </span>
+                    {% endif %}
+                </span>
+            {% endif %}
         </div>
 
     </div>
+
+
+    {% if voyage.availableJourney is not null and voyage.stages|length > 0 %}
+        <div class="row stageStylePadding stageStyle stageStyleJourneyRow rowHidden" data-voyage-id="{{ voyage.id }}">
+
+            {% if voyage.availableJourney.flyPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyVoyage{{ voyage.id }}" value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
+                            Avion {{ voyage.availableJourney.flyPrices }} € - {{ voyage.availableJourney.flyTime|journeyTime }} <i class="fa fa-plane"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if voyage.availableJourney.trainPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyVoyage{{ voyage.id }}" value="TRAIN" {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
+                            Train {{ voyage.availableJourney.trainPrices }} € - {{ voyage.availableJourney.trainTime|journeyTime }} <i class="fa fa-train"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if voyage.availableJourney.busPrices is not null %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="journeyVoyage{{ voyage.id }}" value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
+                            Bus {{ voyage.availableJourney.busPrices }} € - {{ voyage.availableJourney.busTime|journeyTime }} <i class="fa fa-road"></i>
+                        </label>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="col-md-3 col-sm-6">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="journeyVoyage{{ voyage.id }}" value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
+                        Rien 0 €
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
 </div>
