@@ -91,30 +91,6 @@ $().ready(function () {
 
     var maplace = null;
 
-    $(".btnDeleteStage").on('click', function (e) {
-        $(this).html('<i class="fa fa-spinner fa-spin"></i>');
-        disabledActions();
-        var url = removeStageUrl.replace("0", $(this).data('stageId'));
-        $.post(url, function (response) {
-            maplace.Load({
-                locations: response.maplaceData,
-                map_div: '#gmap',
-                controls_on_map: false,
-                type: 'polyline'
-            });
-            updateStats(response.statsView);
-            updateListDestinations(response.destinationListView);
-
-            initConfirmation();
-            initSortable();
-            initEditable();
-            initTooltip();
-            initJourneyPrices();
-
-            enableActions();
-        }, "json");
-    });
-
     function disabledActions() {
         $("#containerAddDestination button").prop('disabled', true);
         $.sortaleElement.option("disabled", true);
@@ -152,6 +128,30 @@ $().ready(function () {
     function initConfirmation() {
         $('[data-toggle=confirmation]').confirmation({
             'popout': true
+        });
+
+        $(".btnDeleteStage").on('click', function (e) {
+            $(this).html('<i class="fa fa-spinner fa-spin"></i>');
+            disabledActions();
+            var url = removeStageUrl.replace("0", $(this).data('stageId'));
+            $.post(url, function (response) {
+                maplace.Load({
+                    locations: response.maplaceData,
+                    map_div: '#gmap',
+                    controls_on_map: false,
+                    type: 'polyline'
+                });
+                updateStats(response.statsView);
+                updateListDestinations(response.destinationListView);
+
+                initConfirmation();
+                initSortable();
+                initEditable();
+                initTooltip();
+                initJourneyPrices();
+
+                enableActions();
+            }, "json");
         });
     }
 
