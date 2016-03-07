@@ -92,4 +92,26 @@ class CommandController extends Controller
         return new Response($content);
     }
 
+    /**
+     * @Route("/calculateJourney", name="calculateJourney")
+     * @return Response
+     */
+    public function calculateJourneyAction()
+    {
+        $kernel = $this->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput(['command' => 'app:journey']);
+
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+
+        $content = $output->fetch();
+
+        $content = str_replace("\n", '<br>', $content);
+
+        return new Response($content);
+    }
+
 }
