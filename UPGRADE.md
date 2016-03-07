@@ -1,5 +1,10 @@
 # Le Monde En Sac Upgrade guide
 
+## v0.3.2
+
+- Add transport cost
+
+
 ## v0.3.1
 
 - Use assetic to generate assets (js and css), use last commit hash to the names to be sure sources are reloaded by client
