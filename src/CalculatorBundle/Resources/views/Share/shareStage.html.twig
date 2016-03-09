@@ -1,8 +1,8 @@
 {% set destination = stage.destination %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
 
-<li class="stageStyle stageStylePadding" data-stage-id="{{ stage.id }}">
-    <div class="row">
+<li data-stage-id="{{ stage.id }}">
+    <div class="row stageStyle stageStylePadding">
 
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             <img class='flagCountrySmall flagCountryStage'
@@ -35,17 +35,10 @@
                         {% if priceAndTimeTransport is null %}
                         {% else %}
 
-                            {% set hours = (priceAndTimeTransport.time / 60)|round(0, 'floor') %}
-                            {% set minutes = priceAndTimeTransport.time % 60 %}
-                            {% if minutes == 0 %}
-                                {% set minutes = "00" %}
-                            {% elseif hours > 0 and minutes < 10 %}
-                                {% set minutes = "0" ~ minutes %}
-                            {% endif %}
                             <span class="label label-warning"
-                                {% if hours > 0 and minutes > 0 %}
+                                {% if priceAndTimeTransport.time %}
                                     data-toggle="tooltip" data-placement="left"
-                                    title="{% if hours > 0 %}{{ hours }}{% endif %}h{{ minutes }}{% if hours == 0 %}min{% endif %}"
+                                    title="{{ priceAndTimeTransport.time|journeyTime }}"
                                 {% endif %}>
 
                                 {% if priceAndTimeTransport.transportType == "FLY" %}

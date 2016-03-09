@@ -23,14 +23,18 @@
 
             {% if voyage.stages|length > 0 %}
                 {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
-                <span class="pull-right spanPrices {% if priceAndTimeTransport is not null %}priceJourney{% endif %}" data-voyage-id="{{ voyage.id }}">
+                <span class="pull-right spanPrices {% if priceAndTimeTransport is not null and allowModification %}priceJourney{% endif %}" data-voyage-id="{{ voyage.id }}">
                     {% if priceAndTimeTransport is null %}
                         <span class="label label-warning" data-toggle="tooltip" data-placement="top"
                               title="Prix non disponibles pour le moment">
                             <i class="fa fa-lg fa-lock"></i>
                         </span>
                     {% else %}
-                        <span class="label label-warning">
+                        <span class="label label-warning"
+                            {% if not allowModification %}
+                                data-toggle="tooltip" data-placement="left"
+                                title="{{ priceAndTimeTransport.time|journeyTime }}"
+                            {% endif %}>
 
                             {% if priceAndTimeTransport.transportType == "FLY" %}
                                 <i class="fa fa-plane iconPriceJourney"></i>
