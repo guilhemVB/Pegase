@@ -21,9 +21,14 @@
 
         <div class="col-md-3 col-sm-3 col-xs-6 colNbDays">
 
-            {% if voyage.stages|length > 0 %}
-                {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
-                <span class="pull-right spanPrices {% if priceAndTimeTransport is not null and allowModification %}priceJourney{% endif %}" data-voyage-id="{{ voyage.id }}">
+            {% if hidePrices %}
+                <span class="handle-fa-icon pull-right"><i class="fa fa-lg fa-lock"></i></span>
+            {% else %}
+
+                {% if voyage.stages|length > 0 %}
+                    {% set priceAndTimeTransport = voyage.priceAndTimeTransport %}
+                    <span class="pull-right spanPrices {% if priceAndTimeTransport is not null and allowModification %}priceJourney{% endif %}"
+                          data-voyage-id="{{ voyage.id }}">
                     {% if priceAndTimeTransport is null %}
                         <span class="label label-warning" data-toggle="tooltip" data-placement="top"
                               title="Prix non disponibles pour le moment">
@@ -31,10 +36,10 @@
                         </span>
                     {% else %}
                         <span class="label label-warning"
-                            {% if not allowModification %}
-                                data-toggle="tooltip" data-placement="left"
-                                title="{{ priceAndTimeTransport.time|journeyTime }}"
-                            {% endif %}>
+                                {% if not allowModification %}
+                            data-toggle="tooltip" data-placement="left"
+                            title="{{ priceAndTimeTransport.time|journeyTime }}"
+                                {% endif %}>
 
                             {% if priceAndTimeTransport.transportType == "FLY" %}
                                 <i class="fa fa-plane iconPriceJourney"></i>
@@ -49,21 +54,24 @@
                             </span>
                     {% endif %}
                 </span>
+                {% endif %}
             {% endif %}
         </div>
 
     </div>
 
 
-    {% if voyage.availableJourney is not null and voyage.stages|length > 0 %}
+    {% if voyage.availableJourney is not null and voyage.stages|length > 0 and not hidePrices %}
         <div class="row stageStylePadding stageStyle stageStyleJourneyRow rowHidden" data-voyage-id="{{ voyage.id }}">
 
             {% if voyage.availableJourney.flyPrices is not null %}
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}" value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
-                            Avion {{ voyage.availableJourney.flyPrices }} € - {{ voyage.availableJourney.flyTime|journeyTime }} <i class="fa fa-plane"></i>
+                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}"
+                                   value="FLY" {% if priceAndTimeTransport.transportType == "FLY" %}checked{% endif %}>
+                            Avion {{ voyage.availableJourney.flyPrices }} €
+                            - {{ voyage.availableJourney.flyTime|journeyTime }} <i class="fa fa-plane"></i>
                         </label>
                     </div>
                 </div>
@@ -73,8 +81,11 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}" value="TRAIN" {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
-                            Train {{ voyage.availableJourney.trainPrices }} € - {{ voyage.availableJourney.trainTime|journeyTime }} <i class="fa fa-train"></i>
+                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}"
+                                   value="TRAIN"
+                                   {% if priceAndTimeTransport.transportType == "TRAIN" %}checked{% endif %}>
+                            Train {{ voyage.availableJourney.trainPrices }} €
+                            - {{ voyage.availableJourney.trainTime|journeyTime }} <i class="fa fa-train"></i>
                         </label>
                     </div>
                 </div>
@@ -84,8 +95,10 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="radio">
                         <label>
-                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}" value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
-                            Bus {{ voyage.availableJourney.busPrices }} € - {{ voyage.availableJourney.busTime|journeyTime }} <i class="fa fa-road"></i>
+                            <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}"
+                                   value="BUS" {% if priceAndTimeTransport.transportType == "BUS" %}checked{% endif %}>
+                            Bus {{ voyage.availableJourney.busPrices }} €
+                            - {{ voyage.availableJourney.busTime|journeyTime }} <i class="fa fa-road"></i>
                         </label>
                     </div>
                 </div>
@@ -94,7 +107,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}" value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
+                        <input type="radio" data-voyage-id="{{ voyage.id }}" name="journeyVoyage{{ voyage.id }}"
+                               value="NONE" {% if priceAndTimeTransport.transportType == "NONE" %}checked{% endif %}>
                         Rien 0 €
                     </label>
                 </div>

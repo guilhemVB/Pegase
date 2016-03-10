@@ -27,7 +27,7 @@
             {% include 'AppBundle:Common:nbDays.html.twig' with {'nbDays' : stage.nbDays} %}
 
             {% if hidePrices %}
-            <span class="handle-fa-icon"><i class="fa fa-lg fa-lock"></i></span>
+            <span class="handle-fa-icon pull-right"><i class="fa fa-lg fa-lock"></i></span>
             {% else %}
                 {% if not loop.last %}
                     <span class="pull-right spanPrices" data-stage-id="{{ stage.id }}">
