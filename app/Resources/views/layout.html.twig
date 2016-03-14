@@ -52,7 +52,7 @@
 
     <script>
         var navbarInfosUrl = null;
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
         navbarInfosUrl = "{{ path('navbarInfos') }}";
         {% endif %}
     </script>
