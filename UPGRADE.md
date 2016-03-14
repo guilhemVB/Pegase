@@ -3,7 +3,7 @@
 ## v0.3.2
 
 - Add transport cost
-
+- Multiple bugfix
 
 ## v0.3.1
 
