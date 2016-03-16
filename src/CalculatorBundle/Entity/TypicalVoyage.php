@@ -12,6 +12,14 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 class TypicalVoyage
 {
 
+    use ORMBehaviors\Timestampable\Timestampable;
+
+    const CART_MAIN = "MAIN";
+    const CART_EUROPE = "EUROPE";
+    const CART_ASIA = "ASIA";
+    const CART_AMERICA = "AMERICA";
+    const CART_WORLD_TOUR = "WORLD_TOUR";
+
     /**
      * @var integer
      *
@@ -38,6 +46,8 @@ class TypicalVoyage
      * @ORM\Column(type="integer", nullable=true)
      */
     private $price = 0;
+
+    private $category;
 
 
     public function __construct()
@@ -105,6 +115,30 @@ class TypicalVoyage
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string $category
+     * @return $this
+     */
+    public function setCategory($category)
+    {
+        if ($category !== self::CART_MAIN && $category !== self::CART_AMERICA && $category !== self::CART_ASIA
+            && $category !== self::CART_EUROPE && $category !== self::CART_WORLD_TOUR) {
+            throw new \InvalidArgumentException("Category $category doesn't exist.");
+        }
+
+        $this->category = $category;
 
         return $this;
     }
