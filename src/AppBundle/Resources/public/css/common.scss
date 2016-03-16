@@ -51,43 +51,6 @@
     font-size: 9px;
 }
 
-.footer {
-    background-color: $colorGrey;
-    border-color: #080808;
-    color: silver;
-}
-
-.footer a {
-    color: silver;
-}
-
-.footerDestination a {
-    color: grey !important;
-}
-
-.footer #listCountries {
-    margin-bottom: 30px;
-}
-
-.footer .columnsFooter
-{
-    -moz-column-width: 10em; /* Firefox */
-    -webkit-column-width: 10em; /* webkit, Safari, Chrome */
-    column-width: 10em;
-}
-
-.footer .columnsFooter ul
-{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-/* correct webkit/chrome uneven margin on the first column*/
-.footer .columnsFooter ul li:first-child
-{
-    margin-top:0;
-}
-
 .containerGrey {
     background-color: $colorGrey;
     color: #C0C0C0;

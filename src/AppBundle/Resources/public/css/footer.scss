@@ -1,0 +1,26 @@
+.footer {
+    background-color: $colorGrey;
+    border-color: #080808;
+    color: silver;
+}
+
+.footer a {
+    color: silver;
+}
+
+.footerDestination a {
+    color: grey !important;
+}
+
+.footer #listCountries {
+    margin-bottom: 30px;
+}
+
+.footer .columnsFooter {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 10em;
+    }
+}

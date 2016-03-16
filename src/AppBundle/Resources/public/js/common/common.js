@@ -25,4 +25,12 @@ $().ready(function () {
     });
 
     $.material.init();
+
+
+    $('.columnsFooter').masonry({
+        itemSelector: '.country',
+        columnWidth: ".country",
+        percentPosition: true
+    });
+
 });

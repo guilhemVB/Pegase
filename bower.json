@@ -26,6 +26,7 @@
     "bootstrap-social": "~4.12.0",
     "bootstrap-datepicker": "~1.5.1",
     "x-editable": "~1.5.1",
-    "bootstrap-confirmation2": "~2.2.0"
+    "bootstrap-confirmation2": "~2.2.0",
+    "masonry": "^4.0.0"
   }
 }

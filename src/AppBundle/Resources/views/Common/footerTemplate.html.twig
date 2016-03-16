@@ -2,16 +2,20 @@
 
     <div class="row" id="listCountries">
         <div class="col-lg-10 col-lg-offset-1 columnsFooter">
-            <ul>
             {% for country in countries %}
-                <li class=""><a href="{{ url('country', {'slug' : country.slug }) }}">{{ country.name }}</a></li>
+                <ul class="country">
+                    <li>
+                        <a href="{{ url('country', {'slug' : country.slug }) }}">{{ country.name }}</a>
 
-                {% for destination in country.destinations %}
-                    <li class=" footerDestination"><a href="{{ url('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></li>
-                {% endfor %}
+                        <ul>
+                            {% for destination in country.destinations %}
+                                <li class="footerDestination"><a href="{{ url('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a></li>
+                            {% endfor %}
+                        </ul>
 
+                    </li>
+                </ul>
             {% endfor %}
-            </ul>
         </div>
     </div>
 
