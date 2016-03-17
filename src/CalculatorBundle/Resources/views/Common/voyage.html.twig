@@ -1,0 +1,23 @@
+<div class="col-md-4 col-sm-6 containerPadding15">
+
+    {% set bannerAssetURL = image_banner_destinations_path ~ stats.mainDestination.slug ~ '.JPG' %}
+    {% set imageUrl = image_banner_default %}
+    {% if bannerAssetURL|asset_exists %}
+        {% set imageUrl = bannerAssetURL %}
+    {% endif %}
+
+    <a href="{{ url('voyage', {'token' : voyage.token}) }}">
+        <img src="{{ asset(imageUrl) }}"
+             class="img-responsive img-thumbnail"
+             alt="{{ voyage.name }}">
+
+
+        <h2 class="text-center">{{ voyage.name }}</h2>
+    </a>
+
+    <div class="text-center">
+        <span class="label label-primary">{{ stats.nbDays }} jours</span>
+        <span class="label label-success">{{ stats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+    </div>
+
+</div>
