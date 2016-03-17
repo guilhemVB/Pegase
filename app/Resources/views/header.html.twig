@@ -24,7 +24,7 @@
             {% if app.user is not null and is_granted('ROLE_USER') %}
                 <ul class="nav navbar-nav">
                     <li {% if activeDashboard is defined %}class="active"{% endif %}>
-                        <a href="{{ path('dashboard') }}">Tableau de bord</a>
+                        <a href="{{ path('voyages') }}">Tableau de bord</a>
                     </li>
                 </ul>
 

@@ -38,7 +38,7 @@ class VoyagesController extends Controller
         foreach ($voyages as $voyage) {
             $stages = $voyage->getStages();
             $stats = $voyageStats->calculate($voyage, $stages, [
-                new StatCalculatorDestinations(),
+                new StatCalculatorDestinations(3),
                 new StatCalculatorPrices(),
                 new StatCalculatorNumberDays(),
             ]);

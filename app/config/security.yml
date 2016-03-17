@@ -34,7 +34,7 @@ security:
 #            anonymous: ~
             pattern: ^/
             form_login:
-                default_target_path: /voyage/tableau-de-bord
+                default_target_path: /voyages
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
             logout:       true

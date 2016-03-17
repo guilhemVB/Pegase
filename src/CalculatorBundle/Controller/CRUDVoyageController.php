@@ -41,9 +41,9 @@ class CRUDVoyageController extends Controller
 
         /** @var CRUDVoyage $CRUDVoyage */
         $CRUDVoyage = $this->get('crud_voyage');
-        $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination);
+        $voyage = $CRUDVoyage->add($this->getUser(), $name, $deparatureDate, $destination);
 
-        return new JsonResponse(['nextUri' => $this->generateUrl('dashboard')]);
+        return new JsonResponse(['nextUri' => $this->generateUrl('voyage', ['token' => $voyage->getToken()])]);
     }
 
 
@@ -68,9 +68,9 @@ class CRUDVoyageController extends Controller
 
         /** @var CRUDVoyage $CRUDVoyage */
         $CRUDVoyage = $this->get('crud_voyage');
-        $CRUDVoyage->update($voyage, $name, $deparatureDate, $destination);
+        $voyage = $CRUDVoyage->update($voyage, $name, $deparatureDate, $destination);
 
-        return new JsonResponse(['nextUri' => $this->generateUrl('dashboard')]);
+        return new JsonResponse(['nextUri' => $this->generateUrl('voyage', ['token' => $voyage->getToken()])]);
     }
 
 

@@ -5,10 +5,12 @@ namespace CalculatorBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
 use CalculatorBundle\Repository\StageRepository;
+use CalculatorBundle\Repository\VoyageRepository;
 use CalculatorBundle\Service\Stats\VoyageStats;
 use CalculatorBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,21 +22,26 @@ class VoyageController extends Controller
 {
 
     /**
-     * @Route("/tableau-de-bord", name="dashboard")
+     * @Route("/tableau-de-bord/{token}", name="voyage")
+     * @param string $token
+     * @return RedirectResponse|Response
      */
-    public function dashboardAction()
+    public function dashboardAction($token)
     {
         /** @var User $user */
         $user = $this->getUser();
-        $voyages = $user->getVoyages();
-
-        if (count($voyages) == 0) {
-            return $this->redirectToRoute('createVoyage');
-        }
-        $voyage = $voyages[0];
 
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'token' => $token]);
+
+        if (!$voyage) {
+            return $this->redirectToRoute('createVoyage');
+        }
 
         /** @var $countryRepository CountryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
@@ -69,12 +76,6 @@ class VoyageController extends Controller
      */
     public function createVoyageAction()
     {
-        /** @var User $user */
-        $user = $this->getUser();
-
-        if (count($user->getVoyages()) != 0) {
-            return $this->redirectToRoute('dashboard');
-        }
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
