@@ -1,0 +1,51 @@
+{% set title = "Liste de mes voyages" %}
+{% set keywords = "voyages, liste de voyages, backpack" %}
+{% set description = "Liste de vos futurs voyages." %}
+{% set type = "article" %}
+{% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
+
+{% set activeDashboard = true %}
+{% extends "::layout.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets output='css/calculator.{version}.min.css' '@CalculatorBundle/Resources/public/css/dist/*' vars=["version"] filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container-fluid borderBotOrange backgroundWhite containerPadding15">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-1 col-sm-7">
+                <h1 class="titleOrange">Liste de vos voyages</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid containerPadding containerVoyagesList">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                {% for voyageWithStats in voyagesWithStats %}
+                    {% include 'CalculatorBundle:Common:voyage.html.twig' with {
+                        'voyage' : voyageWithStats.voyage,
+                        'stats' : voyageWithStats.stats
+                    } %}
+                {% endfor %}
+
+                <div class="col-md-4 col-sm-6 containerPadding15 text-center addVoyage">
+                    <a href="{{ url('createVoyage') }}">
+                        <i class="fa fa-plus-circle"></i>
+                        <h2 class="text-center">Ajouter</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
