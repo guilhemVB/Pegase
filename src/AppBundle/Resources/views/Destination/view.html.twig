@@ -60,7 +60,7 @@
                     </h1>
                 </div>
                 <div class="col-lg-4 col-sm-5" id="btnAddToVoyage">
-                    {{ btnAddToVoyage | raw }}
+                    {#{{ btnAddToVoyage | raw }}#}
                 </div>
             </div>
         </div>
@@ -240,15 +240,7 @@
             </div>
         {% endif %}
 
-        {#<div class="container-fluid containerPadding">#}
-        {#<div class="container">#}
-        {#{% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'destination_' ~ destination.id} %}#}
-        {#</div>#}
-        {#</div>#}
-
-        {#{% include 'AppBundle:Destination:destinationShareBtn.html.twig' %}#}
-
-        {% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}
+        {#{% include 'AppBundle:Destination:addAndRemoveToVoyageModal.html.twig' %}#}
 
     </div>
 
@@ -261,8 +253,8 @@
     <script src="{{ asset('assets/maplace-js/dist/maplace.min.js') }}"></script>
     <script>
         var maplaceData = {{ maplaceData|raw }};
-        var addStageUrl = "{{ path('addStage', {'id' : destination.id}) }}";
-        var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
+        {#var addStageUrl = "{{ path('addStage', {'voyageId' : 0, 'destinationId' : destination.id}) }}";#}
+        {#var removeStageUrl = "{{ path('removeStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";#}
     </script>
     {% javascripts output='js/destination/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/destination/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

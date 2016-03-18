@@ -3,9 +3,12 @@
 namespace CalculatorBundle\Controller;
 
 use AppBundle\Entity\Destination;
+use AppBundle\Repository\DestinationRepository;
 use CalculatorBundle\Entity\Stage;
 use AppBundle\Entity\User;
+use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Repository\StageRepository;
+use CalculatorBundle\Repository\VoyageRepository;
 use CalculatorBundle\Service\CRUD\CRUDStage;
 use CalculatorBundle\Service\Stats\VoyageStats;
 use CalculatorBundle\Service\VoyageService;
@@ -22,22 +25,30 @@ class CRUDStageController extends Controller
 {
 
     /**
-     * @Route("/create/destination/{id}/add", name="addStage")
-     * @param Destination $destination
+     * @Route("/create/voyage/{voyageId}/destination/{destinationId}/add", name="addStage")
+     * @param int $voyageId
+     * @param int $destinationId
      * @param Request $request
      * @return JsonResponse
      */
-    public function addStageAction(Destination $destination, Request $request)
+    public function addStageAction($voyageId, $destinationId, Request $request)
     {
         /** @var User $user */
         $user = $this->getUser();
 
-        $voyages = $user->getVoyages();
-        if (count($voyages) === 0) {
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $voyageId]);
+
+        if (!$voyage) {
             $error = "Can't find voyage";
             return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
         }
-        $voyage = $voyages[0];
 
         $nbDays = $request->get('nbDays');
         if ($nbDays == 0) {
@@ -45,12 +56,14 @@ class CRUDStageController extends Controller
             return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
         }
 
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
+
+        $destination = $destinationRepository->find($destinationId);
+
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->add($destination, $voyage, $nbDays);
-
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
 
         /** @var $stageRepository StageRepository */
         $stageRepository = $em->getRepository('CalculatorBundle:Stage');
@@ -87,16 +100,38 @@ class CRUDStageController extends Controller
     }
 
     /**
-     * @Route("/{id}/change-transport-type", name="changeTransportTypeStage")
-     * @param Stage $stage
+     * @Route("/{stageId}/voyage/{voyageId}/change-transport-type", name="changeTransportTypeStage")
+     * @param int $stageId
+     * @param int $voyageId
      * @param Request $request
      * @return JsonResponse
      */
-    public function changeTransportTypeStageAction(Stage $stage, Request $request)
+    public function changeTransportTypeStageAction($stageId, $voyageId, Request $request)
     {
-        $transportType = $request->get('transportType');
+        /** @var User $user */
+        $user = $this->getUser();
 
-        $voyage = $stage->getVoyage();
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $voyageId]);
+
+        if (!$voyage) {
+            $error = "Can't find voyage";
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
+        }
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
+
+        /** @var Stage $stage */
+        $stage = $stageRepository->find($stageId);
+
+        $transportType = $request->get('transportType');
 
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
@@ -105,12 +140,6 @@ class CRUDStageController extends Controller
         /** @var VoyageService $voyageService */
         $voyageService = $this->get('voyage_service');
         $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $stageRepository StageRepository */
-        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
@@ -128,13 +157,37 @@ class CRUDStageController extends Controller
 
 
     /**
-     * @Route("/{id}/remove", name="removeStage")
-     * @param Stage $stage
+     * @Route("/{stageId}/voyage/{voyageId}/remove", name="removeStage")
+     * @param int $stageId
+     * @param int $voyageId
      * @param Request $request
      * @return JsonResponse
      */
-    public function removeStageAction(Stage $stage, Request $request)
+    public function removeStageAction($stageId, $voyageId, Request $request)
     {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $voyageId]);
+
+        if (!$voyage) {
+            $error = "Can't find voyage";
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
+        }
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
+
+        /** @var Stage $stage */
+        $stage = $stageRepository->find($stageId);
+
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->remove($stage);
@@ -143,12 +196,6 @@ class CRUDStageController extends Controller
         $voyage = $stage->getVoyage();
 
         $response = ['success' => true];
-
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $stageRepository StageRepository */
-        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 
         if ($request->get('addBtnAddToVoyage')) {
             $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
@@ -181,15 +228,39 @@ class CRUDStageController extends Controller
 
 
     /**
-     * @Route("/{id}/changePosition", name="changePositionStage")
-     * @param Stage $stage
+     * @Route("/{stageId}/voyage/{voyageId}/changePosition", name="changePositionStage")
+     * @param int $stageId
+     * @param int $voyageId
      * @param Request $request
      * @return JsonResponse
      */
-    public function changeStagePositionAction(Stage $stage, Request $request)
+    public function changeStagePositionAction($stageId, $voyageId, Request $request)
     {
         $newPosition = $request->get('newPosition');
         $oldPosition = $request->get('oldPosition');
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $voyageId]);
+
+        if (!$voyage) {
+            $error = "Can't find voyage";
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
+        }
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
+
+        /** @var Stage $stage */
+        $stage = $stageRepository->find($stageId);
 
         $voyage = $stage->getVoyage();
 
@@ -200,12 +271,6 @@ class CRUDStageController extends Controller
         /** @var VoyageService $voyageService */
         $voyageService = $this->get('voyage_service');
         $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $stageRepository StageRepository */
-        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');

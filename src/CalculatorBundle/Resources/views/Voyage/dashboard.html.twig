@@ -60,9 +60,9 @@
     <script src="{{ asset('assets/bootstrap-confirmation2/bootstrap-confirmation.min.js') }}"></script>
     <script>
         var maplaceData = {{ maplaceData|raw }};
-        var changePositionStageUrl = "{{ path('changePositionStage', {'id' : 0}) }}";
-        var addStageUrl = "{{ path('addStage', {'id' : 0}) }}";
-        var removeStageUrl = "{{ path('removeStage', {'id' : 0}) }}";
+        var changePositionStageUrl = "{{ path('changePositionStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";
+        var addStageUrl = "{{ path('addStage', {'voyageId' : voyage.id, 'destinationId' : 0}) }}";
+        var removeStageUrl = "{{ path('removeStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";
         var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
 
         var currentVoyageName = "{{ voyage.name|raw }}";
@@ -77,7 +77,7 @@
         var voyageCRUDUpdateShowPricesInPublicUrl = "{{ path('voyageCRUDUpdateShowPricesInPublic', {'id' : voyage.id}) }}";
 
         var changeTransportTypeVoyageUrl = "{{ path('changeTransportTypeVoyage', {'id' : 0}) }}";
-        var changeTransportTypeStageUrl = "{{ path('changeTransportTypeStage', {'id' : 0}) }}";
+        var changeTransportTypeStageUrl = "{{ path('changeTransportTypeStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";
     </script>
     {% javascripts output='js/dashboard/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/dashboard/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

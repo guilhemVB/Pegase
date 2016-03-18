@@ -4,6 +4,7 @@ namespace CalculatorBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
+use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Repository\StageRepository;
 use CalculatorBundle\Repository\VoyageRepository;
 use CalculatorBundle\Service\Stats\VoyageStats;
@@ -37,6 +38,7 @@ class VoyageController extends Controller
         /** @var $voyageRepository VoyageRepository */
         $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
 
+        /** @var Voyage $voyage */
         $voyage = $voyageRepository->findOneBy(['user' => $user, 'token' => $token]);
 
         if (!$voyage) {

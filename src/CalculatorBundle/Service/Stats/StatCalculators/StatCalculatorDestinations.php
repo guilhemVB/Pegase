@@ -29,7 +29,7 @@ class StatCalculatorDestinations implements StatCalculatorInterface
 
     public function addStage(Stage $stage)
     {
-        foreach ($this->stagesWithNbDays as $stageWithNbDays) {
+        foreach ($this->stagesWithNbDays as &$stageWithNbDays) {
             /** @var Destination $destination */
             $destination = $stageWithNbDays['destination'];
             if ($destination->getId() == $stage->getDestination()->getId()) {
