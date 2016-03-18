@@ -19,19 +19,28 @@ class StatCalculatorDestinations implements StatCalculatorInterface
         $this->nbDestinationToReturn = $nbDestinationToReturn;
     }
 
-    public function addStage(Stage $stage)
-    {
-        $this->stagesWithNbDays[] = [
-            'destination' => $stage->getDestination(),
-            'nbDays' => $stage->getNbDays(),
-        ];
-    }
-
     public function addFirstStep(Voyage $voyage)
     {
         $this->stagesWithNbDays[] = [
             'destination' => $voyage->getStartDestination(),
             'nbDays' => 0,
+        ];
+    }
+
+    public function addStage(Stage $stage)
+    {
+        foreach ($this->stagesWithNbDays as $stageWithNbDays) {
+            /** @var Destination $destination */
+            $destination = $stageWithNbDays['destination'];
+            if ($destination->getId() == $stage->getDestination()->getId()) {
+                $stageWithNbDays['nbDays'] += $stage->getNbDays();
+                return;
+            }
+        }
+
+        $this->stagesWithNbDays[] = [
+            'destination' => $stage->getDestination(),
+            'nbDays' => $stage->getNbDays(),
         ];
     }
 
@@ -41,7 +50,7 @@ class StatCalculatorDestinations implements StatCalculatorInterface
     public function getStats()
     {
         usort($this->stagesWithNbDays, function($a, $b) {
-            return $a['nbDays'] - $b['nbDays'];
+            return $b['nbDays'] - $a['nbDays'];
         });
 
         $data = [];

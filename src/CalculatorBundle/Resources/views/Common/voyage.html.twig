@@ -1,42 +1,38 @@
 <div class="col-md-4 col-sm-6 containerPadding15">
 
-    {{ dump(stats.mainDestinations ) }}
+    <a href="{{ url('voyage', {'token' : voyage.token}) }}">
+        <div class="row">
+            <div class="col-xs-12">
+                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[0].slug ~ '.JPG' %}
+                <img src="{{ asset(imageUrl) }}"
+                     class="img-responsive img-thumbnail"
+                     alt="{{ stats.mainDestinations[0].name }}"
+                     data-toggle="tooltip" data-placement="top" title="{{ stats.mainDestinations[0].name }}">
+            </div>
+            {% if stats.mainDestinations|length > 2 %}
+                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[1].slug ~ '.JPG' %}
+                <div class="col-xs-6 imageLeft">
+                    <img src="{{ asset(imageUrl) }}"
+                         class="img-responsive img-thumbnail"
+                         alt="{{ stats.mainDestinations[1].name }}"
+                         data-toggle="tooltip" data-placement="left" title="{{ stats.mainDestinations[1].name }}">
+                </div>
+                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[2].slug ~ '.JPG' %}
+                <div class="col-xs-6 imageRight">
+                    <img src="{{ asset(imageUrl) }}"
+                         class="img-responsive img-thumbnail"
+                         alt="{{ stats.mainDestinations[2].name }}"
+                         data-toggle="tooltip" data-placement="right" title="{{ stats.mainDestinations[2].name }}">
+                </div>
+            {% endif %}
+        </div>
 
-    {#{% set imageUrl = image_banner_default %}#}
-    {#{% if stats.mainDestination.slug is defined %}#}
-        {#{% set bannerAssetURL = image_banner_destinations_path ~ stats.mainDestination.slug ~ '.JPG' %}#}
-    {#{% else %}#}
-        {#{% set bannerAssetURL = image_banner_destinations_path ~ voyage.startDestination.slug ~ '.JPG' %}#}
-    {#{% endif %}#}
-    {#{% if bannerAssetURL|asset_exists %}#}
-        {#{% set imageUrl = bannerAssetURL %}#}
-    {#{% endif %}#}
+        <h2 class="text-center ellipsis">{{ voyage.name }}</h2>
+    </a>
 
-    {#<a href="{{ url('voyage', {'token' : voyage.token}) }}">#}
-        {#<div class="row">#}
-            {#<div class="col-xs-12">#}
-                {#<img src="{{ asset(imageUrl) }}"#}
-                     {#class="img-responsive"#}
-                     {#alt="{{ voyage.name }}">#}
-            {#</div>#}
-            {#<div class="col-xs-6 imageLeft">#}
-                {#<img src="{{ asset(imageUrl) }}"#}
-                     {#class="img-responsive"#}
-                     {#alt="{{ voyage.name }}">#}
-            {#</div>#}
-            {#<div class="col-xs-6 imageRight">#}
-                {#<img src="{{ asset(imageUrl) }}"#}
-                     {#class="img-responsive"#}
-                     {#alt="{{ voyage.name }}">#}
-            {#</div>#}
-        {#</div>#}
-
-        {#<h2 class="text-center ellipsis">{{ voyage.name }}</h2>#}
-    {#</a>#}
-
-    {#<div class="text-center">#}
-        {#<span class="label label-warning">{{ stats.nbDays }} jours</span>#}
-        {#<span class="label label-success">{{ stats.totalCost|number_format(0, ',', ' ') }} &euro;</span>#}
-    {#</div>#}
+    <div class="text-center">
+        <span class="label label-warning">{{ stats.nbDays }} jours</span>
+        <span class="label label-success">{{ stats.totalCost|number_format(0, ',', ' ') }} &euro;</span>
+    </div>
 
 </div>
