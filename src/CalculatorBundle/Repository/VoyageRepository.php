@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class VoyageRepository extends EntityRepository
 {
+    /**
+     * @param string $userId
+     * @return Voyage[]
+     */
+    public function findTypicalVoyages($userId)
+    {
+        $qb = $this->createQueryBuilder('voyage')
+            ->select('voyage')
+            ->join('voyage.user', 'user')
+            ->join('voyage.stages', 'stages')
+            ->where('user.id = :userId')
+            ->setParameter('userId', $userId);
+
+        return $qb->getQuery()->getResult();
+    }
 }

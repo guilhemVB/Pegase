@@ -25,6 +25,5 @@ class TypicalVoyageRepository extends EntityRepository
         } catch (\Exception $e) {
             return [];
         }
-
     }
 }

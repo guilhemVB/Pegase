@@ -2,8 +2,12 @@
 
 namespace CalculatorBundle\Controller;
 
+use CalculatorBundle\Repository\VoyageRepository;
+use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorDestinations;
+use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorNumberDays;
+use CalculatorBundle\Service\Stats\StatCalculators\StatCalculatorPrices;
+use CalculatorBundle\Service\Stats\VoyageStats;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use CalculatorBundle\Repository\TypicalVoyageRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,30 +24,32 @@ class TypicalVoyageController extends Controller
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
-        /** @var $typicalVoyageRepository TypicalVoyageRepository */
-        $typicalVoyageRepository = $em->getRepository('CalculatorBundle:TypicalVoyage');
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
 
-        $typicalsVoyage = $typicalVoyageRepository->findAllTypicalVoyages();
+        $voyages = $voyageRepository->findTypicalVoyages($this->getParameter('typical_voyage_user_id'));
+
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $voyagesWithStats = [];
+        foreach ($voyages as $voyage) {
+            $stages = $voyage->getStages();
+            $stats = $voyageStats->calculate($voyage, $stages, [
+                new StatCalculatorDestinations(3),
+                new StatCalculatorPrices(),
+                new StatCalculatorNumberDays(),
+            ]);
+            $voyagesWithStats[] = [
+                'voyage' => $voyage,
+                'stats' => $stats,
+            ];
+        }
 
         return $this->render('CalculatorBundle:TypicalVoyage:view.html.twig',
-            ['typicalsVoyage' => $typicalsVoyage,]);
+            [
+                'voyagesWithStats' => $voyagesWithStats
+            ]);
     }
 
-    /**
-     * @Route("/admin/idees-de-voyages", name="adminIdeasOfTravels")
-     * @return Response
-     */
-    public function adminIdeasOfTravelsAction()
-    {
-        /** @var $em EntityManager $em */
-        $em = $this->get('doctrine')->getManager();
-
-        /** @var $typicalVoyageRepository TypicalVoyageRepository */
-        $typicalVoyageRepository = $em->getRepository('CalculatorBundle:TypicalVoyage');
-
-        $typicalsVoyage = $typicalVoyageRepository->findAllTypicalVoyages();
-
-        return $this->render('CalculatorBundle:TypicalVoyage:view.html.twig',
-            ['typicalsVoyage' => $typicalsVoyage,]);
-    }
 }

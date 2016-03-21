@@ -32,6 +32,8 @@ parameters:
 
     available_journey_api: ~
 
+    typical_voyage_user_id: ~
+
 twig:
     globals:
         image_banner_destinations_path : %image_banner_destinations_path%

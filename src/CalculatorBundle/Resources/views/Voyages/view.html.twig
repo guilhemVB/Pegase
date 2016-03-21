@@ -34,7 +34,8 @@
                 {% for voyageWithStats in voyagesWithStats %}
                     {% include 'CalculatorBundle:Common:voyage.html.twig' with {
                         'voyage' : voyageWithStats.voyage,
-                        'stats' : voyageWithStats.stats
+                        'stats' : voyageWithStats.stats,
+                        'linkShare' : false
                     } %}
                 {% endfor %}
 

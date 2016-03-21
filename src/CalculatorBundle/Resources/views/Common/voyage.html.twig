@@ -1,6 +1,6 @@
 <div class="col-md-4 col-sm-6 containerPadding15">
 
-    <a href="{{ url('voyage', {'token' : voyage.token}) }}">
+    <a href="{% if linkShare %}{{ url('shareVoyage', {'token' : voyage.token}) }}{% else %}{{ url('voyage', {'token' : voyage.token}) }}{% endif %}">
         <div class="row">
             <div class="col-xs-12">
                 {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[0].slug ~ '.JPG' %}

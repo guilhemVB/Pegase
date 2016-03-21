@@ -9,6 +9,14 @@
 {% extends "::layout.html.twig" %}
 
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets output='css/calculator.{version}.min.css' '@CalculatorBundle/Resources/public/css/dist/*' vars=["version"] filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+
 {% block body %}
     <div id="voyagesView">
 
@@ -21,11 +29,15 @@
         </div>
 
 
-        <div class="container-fluid">
-            <div class="container">
-                <div class="row">
-                    {% for typicalVoyage in typicalsVoyage %}
-                        {% include 'Calculator:TypicalVoyage:typicalVoyage.html.twig' %}
+        <div class="container-fluid containerVoyagesList">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                    {% for voyageWithStats in voyagesWithStats %}
+                        {% include 'CalculatorBundle:Common:voyage.html.twig' with {
+                        'voyage' : voyageWithStats.voyage,
+                        'stats' : voyageWithStats.stats,
+                        'linkShare' : true
+                        } %}
                     {% endfor %}
                 </div>
             </div>
