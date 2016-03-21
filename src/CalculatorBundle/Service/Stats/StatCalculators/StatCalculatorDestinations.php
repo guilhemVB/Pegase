@@ -64,6 +64,7 @@ class StatCalculatorDestinations implements StatCalculatorInterface
                     'slug' => $destination->getSlug(),
                 ];
             }
+
             return ['mainDestination' => $data];
         } elseif($this->nbDestinationToReturn >= 2) {
             for($i = 0; $i < $this->nbDestinationToReturn ; $i++) {
