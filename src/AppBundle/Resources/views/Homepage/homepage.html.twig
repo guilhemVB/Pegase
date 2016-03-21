@@ -27,6 +27,21 @@
 
         {% include 'AppBundle:Homepage:homepageCarousel.html.twig' %}
 
+        <div class="container-fluid containerVoyagesList borderBotOrange backgroundWhite">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-sm-12">
+                    <h2 class="text-center titleOrange">Exemples d'itinéraires</h2>
+                    {% for voyageWithStats in lastVoyagesWithStats %}
+                        {% include 'CalculatorBundle:Common:voyage.html.twig' with {
+                        'voyage' : voyageWithStats.voyage,
+                        'stats' : voyageWithStats.stats,
+                        'linkShare' : true
+                        } %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
         <div id="homepagePresentation" class="container-fluid containerPadding text-center">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
@@ -68,32 +83,8 @@
                         journée sur place en sac à dos et d'autres informations utiles.
                     </p>
                 </div>
-
-
-                {#<div class="col-md-5 col-sm-6">#}
-                {#<h2>Préparer un voyage</h2>#}
-
-                {#<p class="text-center">#}
-                {#Ce site vous permet d'organiser au mieux vos voyages. Choisissez vos destinations, le temps#}
-                {#que vous souhaitez y rester et vous saurez si vous y êtes aux bonnes périodes et combien#}
-                {#votre voyage vous coûtera.#}
-                {#</p>#}
-                {#</div>#}
             </div>
 
-            {#<div id="connectionRow" class="row">#}
-            {#<div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3 col-xs-6">#}
-            {#<button type="button" class="btn btn-primary btn-lg btn-block pull-left"#}
-            {#data-toggle="modal" data-target="#connectionModal">#}
-            {#<i class="fa fa-sign-in"></i> Connexion#}
-            {#</button>#}
-            {#</div>#}
-            {#<div class="col-md-2 col-sm-3 col-xs-6">#}
-            {#<a href="{{ path('fos_user_registration_register') }}" role="button"#}
-            {#class="btn btn-success btn-lg btn-block pull-right">#}
-            {#<i class="fa fa-user"></i> Inscription</a>#}
-            {#</div>#}
-            {#</div>#}
         </div>
 
         <div class="container-fluid containerPadding text-center">
