@@ -50,13 +50,6 @@
     {% javascripts output='js/common/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/common/*.min.js' vars=["version"] %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
-    <script>
-        var navbarInfosUrl = null;
-        {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
-        navbarInfosUrl = "{{ path('navbarInfos') }}";
-        {% endif %}
-    </script>
 {% endblock %}
 
 </body>
