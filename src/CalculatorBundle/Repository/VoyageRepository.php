@@ -25,6 +25,7 @@ class VoyageRepository extends EntityRepository
             ->join('voyage.stages', 'stages')
             ->where('user.id = :userId')
             ->groupBy('voyage.id')
+            ->addGroupBy('voyage.name')
             ->setParameter('userId', $userId);
 
         if ($limit) {
