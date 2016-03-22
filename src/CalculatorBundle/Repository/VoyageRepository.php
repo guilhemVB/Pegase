@@ -33,6 +33,7 @@ class VoyageRepository extends EntityRepository
             ->addGroupBy('voyage.transportType')
             ->addGroupBy('voyage.startDestination')
             ->addGroupBy('voyage.user')
+            ->addGroupBy('voyage.availableJourney')
             ->setParameter('userId', $userId);
 
         if ($limit) {
