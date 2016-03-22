@@ -26,6 +26,11 @@ class VoyageRepository extends EntityRepository
             ->where('user.id = :userId')
             ->groupBy('voyage.id')
             ->addGroupBy('voyage.name')
+            ->addGroupBy('voyage.token')
+            ->addGroupBy('voyage.urlMinified')
+            ->addGroupBy('voyage.showPricesInPublic')
+            ->addGroupBy('voyage.startDate')
+            ->addGroupBy('voyage.transportType')
             ->setParameter('userId', $userId);
 
         if ($limit) {
