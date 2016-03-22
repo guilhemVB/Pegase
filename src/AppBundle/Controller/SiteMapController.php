@@ -7,6 +7,7 @@ use CalculatorBundle\Entity\TypicalVoyage;
 use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use CalculatorBundle\Repository\TypicalVoyageRepository;
+use CalculatorBundle\Repository\VoyageRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -29,9 +30,9 @@ class SiteMapController extends Controller
                    'changefreq' => 'weekly',
                    'priority'   => '1.0'];
 
-//        $urls[] = ['loc'        => $this->get('router')->generate('ideasOfTravels', [], true),
-//                   'changefreq' => 'weekly',
-//                   'priority'   => '0.9'];
+        $urls[] = ['loc'        => $this->get('router')->generate('ideasOfTravels', [], true),
+                   'changefreq' => 'weekly',
+                   'priority'   => '0.9'];
 
         $urls[] = ['loc'        => $this->get('router')->generate('destinationsList', [], true),
                    'changefreq' => 'weekly',
@@ -40,7 +41,7 @@ class SiteMapController extends Controller
         $urls[] = ['loc'        => $this->get('router')->generate('fos_user_registration_register', [], true),
                    'changefreq' => 'monthly',
                    'priority'   => '0.7'];
-//
+
         $urls[] = ['loc'        => $this->get('router')->generate('fos_user_security_login', [], true),
                    'changefreq' => 'monthly',
                    'priority'   => '0.7'];
@@ -70,18 +71,17 @@ class SiteMapController extends Controller
                            'priority'   => '0.7'];
             }
         }
-//
-//
-//        /** @var $typicalVoyageRepository TypicalVoyageRepository */
-//        $typicalVoyageRepository = $em->getRepository('CalculatorBundle:TypicalVoyage');
-//        $typicalVoyages = $typicalVoyageRepository->findAll();
-//
-//        /** @var TypicalVoyage $typicalVoyage */
-//        foreach ($typicalVoyages as $typicalVoyage) {
-//            $urls[] = ['loc'        => $this->get('router')->generate('shareVoyage', ['token' => $typicalVoyage->getVoyage()->getToken()], true),
-//                       'changefreq' => 'monthly',
-//                       'priority'   => '0.7'];
-//        }
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        $voyages = $voyageRepository->findTypicalVoyages($this->getParameter('typical_voyage_user_id'));
+
+        foreach ($voyages as $voyage) {
+            $urls[] = ['loc'        => $this->get('router')->generate('shareVoyage', ['token' => $voyage->getToken()], true),
+                       'changefreq' => 'monthly',
+                       'priority'   => '0.8'];
+        }
 
         return $this->render('AppBundle:SiteMap:sitemap.xml.twig', ['urls' => $urls]);
     }

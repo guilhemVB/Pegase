@@ -1,5 +1,9 @@
 # Le Monde En Sac Upgrade guide
 
+## v0.3.3
+
+- Add typical voyage
+
 ## v0.3.2
 
 - Add transport cost
