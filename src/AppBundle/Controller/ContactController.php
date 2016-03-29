@@ -15,7 +15,7 @@ class ContactController extends Controller
 {
 
     /**
-     * @Route("/", name="contact")
+     * @Route("", name="contact")
      * @return Response
      */
     public function contactAction()
