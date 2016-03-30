@@ -18,10 +18,8 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 # Node
-add-apt-repository ppa:chris-lea/node.js
-apt-get update
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 apt-get install -y nodejs
-npm install -g npm
 npm install -g bower
 npm install -g grunt-cli
 
@@ -48,9 +46,8 @@ echo "bind-address 0.0.0.0" >> /etc/mysql/my.cnf
 mysql -u root -pvagrant -e "GRANT ALL PRIVILEGES  on *.* to root@'%' IDENTIFIED BY 'vagrant'; FLUSH PRIVILEGES;"
 service mysql restart
 
-# We create needed folders for siteanalyzer.local
-#mkdir /data/www/common/siteanalyzer.local -p
-#chown -R www-data:www-data /data
+# Databases creation
+echo "create database travel; create database travel_test;" | mysql -u root -pvagrant
 
 # Applying agentfowarding
 echo -e "Host *\n    ForwardAgent yes" > /home/vagrant/.ssh/config
@@ -93,3 +90,13 @@ service apache2 restart
 # We add gitlab to known hosts
 #ssh-keyscan -H gitlab.rvip.fr > /etc/ssh/ssh_known_hosts
 ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts
+
+# syslog
+echo "local0.* /vagrant/app/logs/dev.log" > /etc/rsyslog.d/fortress.conf
+sed -i 's/#$ModLoad imudp/$ModLoad imudp/g' /etc/rsyslog.conf
+sed -i 's/#$UDPServerRun 514/$UDPServerRun 514/g' /etc/rsyslog.conf
+service rsyslog restart
+
+# nfs shared folder
+apt-get install cachefilesd
+echo "RUN=yes" > /etc/default/cachefilesd
