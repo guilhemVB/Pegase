@@ -24,8 +24,8 @@ class CountryContext extends CommonContext
             $country->setName($countryRow['nom'])
                 ->setCapitalName($countryRow['capitale'])
                 ->setCurrency($this->findCurrencyByCode($countryRow['monnaie']))
-                ->setVisaInformation("Visa gratuit")
-                ->setVisaDuration("3 mois");
+                ->setVisaInformation(isset($countryRow['visa']) ? $countryRow['visa'] : 'Visa gratuit pour la France')
+                ->setVisaDuration(isset($countryRow['durée du visa']) ? $countryRow['durée du visa'] : '3 mois');
 
             $this->em->persist($country);
         }

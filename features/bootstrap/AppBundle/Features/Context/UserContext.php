@@ -27,18 +27,18 @@ class UserContext extends CommonContext
         foreach ($tableUsers as $userRow) {
             $name = $userRow['nom'];
             $password = isset($userRow['mot de passe']) ? $userRow['mot de passe'] : $name;
+            $email = isset($userRow['email']) ? $userRow['email'] : 'guilhem@guilhem.com';
 
-//            $user = new User();
-//
             $user = $this->userManager->createUser();
             $user->setUsername($name);
             $user->setPlainPassword($password);
-            $user->setEmail('guilhem@guilhem.com');
-            $this->userManager->updateUser($user);
+            $user->setEmail($email);
 
-//            $this->em->persist($user);
+            if (isset($userRow['role'])) {
+                $user->addRole($userRow['role']);
+            }
+            $this->userManager->updateUser($user);
         }
-//        $this->em->flush();
 
     }
 }
