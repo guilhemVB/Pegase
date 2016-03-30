@@ -62,8 +62,8 @@ Feature: Available Journey calculator
             | Marseille   | 1              |
             | Dijon       | 1              |
         Then il existe les transports suivants au voyage "TDM" :
-            | depuis | jusqu'à  | type de transport |
-            | Lyon   | Mrseille | BUS               |
+            | depuis | jusqu'à   | type de transport |
+            | Lyon   | Marseille | BUS               |
         Given les possibilitées de transports :
             | depuis    | jusqu'à | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
             | Paris     | Lyon    | 52         | 56          | 50         | 120         | 5        | 630       |
