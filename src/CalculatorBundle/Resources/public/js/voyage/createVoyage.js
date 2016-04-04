@@ -30,6 +30,12 @@ $().ready(function () {
         theme: "bootstrap"
     });
 
+    $(document).ready(function () {
+        $("#createVoyage select").val(defaultStartDestinationId).trigger("change");
+
+    });
+
+
     $("#createVoyage button").on("click", function() {
         if ($('#voyageName').val()) {
             $("#errorBlockName").addClass("hidden");

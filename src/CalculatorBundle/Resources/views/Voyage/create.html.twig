@@ -59,6 +59,7 @@
     <script src="{{ asset('assets/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
     <script>
         var voyageCRUDCreateUrl = "{{ path('voyageCRUDCreate') }}";
+        var defaultStartDestinationId = "{{ defaultStartDestinationId }}";
     </script>
     {% javascripts output='js/voyage/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/voyage/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

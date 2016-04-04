@@ -4,6 +4,7 @@ namespace CalculatorBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Repository\CountryRepository;
+use AppBundle\Repository\DestinationRepository;
 use CalculatorBundle\Entity\Voyage;
 use CalculatorBundle\Repository\StageRepository;
 use CalculatorBundle\Repository\VoyageRepository;
@@ -56,7 +57,7 @@ class VoyageController extends Controller
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
         /** @var VoyageService $voyageService */
-        $voyageService =$this->get('voyage_service');
+        $voyageService = $this->get('voyage_service');
         $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
 
         /** @var VoyageStats $voyageStats */
@@ -64,11 +65,11 @@ class VoyageController extends Controller
 
         return $this->render('CalculatorBundle:Voyage:dashboard.html.twig',
             [
-                'voyage'       => $voyage,
+                'voyage' => $voyage,
                 'stagesSorted' => $stagesSorted,
-                'maplaceData'  => json_encode($maplaceData),
-                'voyageStats'  => $voyageStats->calculateAllStats($voyage, $stagesSorted),
-                'countries'    => $countries,
+                'maplaceData' => json_encode($maplaceData),
+                'voyageStats' => $voyageStats->calculateAllStats($voyage, $stagesSorted),
+                'countries' => $countries,
             ]);
     }
 
@@ -84,8 +85,16 @@ class VoyageController extends Controller
         /** @var $countryRepository CountryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
 
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
+
+        $defaultStartDestinationId = $destinationRepository->findOneByName('Paris')->getId();
+
         $countries = $countryRepository->findCountriesWithDestinations();
-        return $this->render('CalculatorBundle:Voyage:create.html.twig', ['countries' => $countries]);
+        return $this->render('CalculatorBundle:Voyage:create.html.twig', [
+            'countries' => $countries,
+            'defaultStartDestinationId' => $defaultStartDestinationId,
+        ]);
     }
 
 }

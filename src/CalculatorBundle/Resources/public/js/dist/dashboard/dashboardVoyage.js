@@ -285,7 +285,6 @@ $().ready(function () {
                 disabledActions();
             },
             success: function (response, newValue) {
-                $.updateNavBarInfos();
                 updateStats(response.statsView);
                 updateListDestinations(response.destinationListView);
 
