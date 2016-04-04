@@ -1,5 +1,5 @@
-{% set title = "Création de votre voyage" %}
-{% set description = "Création de votre voyage" %}
+{% set title = "Création d'un voyage" %}
+{% set description = "Création 'un voyage" %}
 {% set type = "website" %}
 {% set imageUrl = image_banner_homepage_path ~ 'temple_raw.JPG' %}
 
@@ -20,12 +20,16 @@
 
 {% block body %}
 
+    <div id="createVoyage" class="container-fluid borderBotOrange backgroundWhite containerPadding15">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h1>Création d'un voyage</h1>
+            </div>
+        </div>
+    </div>
+
     <div id="createVoyage" class="container-fluid containerPadding">
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 page-header">
-                <h1>Création de votre voyage</h1>
-            </div>
-
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                 <div class="well">
                     {% include 'CalculatorBundle:Voyage:createForm.html.twig' with {'selectId' : 'selectDestination'} %}
