@@ -7,6 +7,7 @@ use CalculatorBundle\Worker\UpdateVoyageWorker;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\LockHandler;
 
 class FetchAvailableJourneyCommand extends ContainerAwareCommand
 {
@@ -20,6 +21,12 @@ class FetchAvailableJourneyCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $lock = new LockHandler('app:journey');
+        if (!$lock->lock()) {
+            $output->writeln('The command is already running in another process.');
+            return ;
+        }
+
         $now = new \DateTime();
         $output->writeln('<comment>Start : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
 
