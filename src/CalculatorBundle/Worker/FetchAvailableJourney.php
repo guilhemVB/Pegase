@@ -54,6 +54,11 @@ class FetchAvailableJourney
         try {
             foreach ($fromDestinations as $fromDestination) {
                 foreach ($toDestinations as $toDestination) {
+
+                    if ($nbFetch == 0) {
+                        return;
+                    }
+
                     if ($fromDestination->getId() == $toDestination->getId()) {
                         continue;
                     }
@@ -65,6 +70,7 @@ class FetchAvailableJourney
 
                     $this->logger->info("Fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
                     $data = $this->journeyFetcher->fetch($fromDestination, $toDestination);
+                    $nbFetch--;
 
                     if (!$data) {
                         $this->logger->error("Can't fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
@@ -85,12 +91,6 @@ class FetchAvailableJourney
 
                     $this->em->persist($availableJourney);
                     $this->em->flush();
-
-                    $nbFetch--;
-
-                    if ($nbFetch == 0) {
-                        return;
-                    }
 
                     sleep(rand(8, 15));
                 }
