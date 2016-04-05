@@ -36,9 +36,10 @@ class FetchAvailableJourney
     }
 
     /**
+     * @param int $nbFetch
      * @throws \Exception
      */
-    public function fetchAll()
+    public function fetch($nbFetch = 200)
     {
         /** @var DestinationRepository $destinationRepository */
         $destinationRepository = $this->em->getRepository('AppBundle:Destination');
@@ -85,7 +86,13 @@ class FetchAvailableJourney
                     $this->em->persist($availableJourney);
                     $this->em->flush();
 
-                    sleep(12);
+                    $nbFetch--;
+
+                    if ($nbFetch == 0) {
+                        return;
+                    }
+
+                    sleep(rand(8, 15));
                 }
             }
         } catch (\Exception $e) {

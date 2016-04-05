@@ -119,7 +119,7 @@ class JourneyContext extends CommonContext
      */
     public function jeLanceLaRécupérationDesTransportsPossibles()
     {
-        $this->fetchAvailableJourney->fetchAll();
+        $this->fetchAvailableJourney->fetch();
     }
 
     /**

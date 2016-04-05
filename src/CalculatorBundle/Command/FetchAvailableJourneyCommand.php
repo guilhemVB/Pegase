@@ -32,7 +32,7 @@ class FetchAvailableJourneyCommand extends ContainerAwareCommand
 
         /** @var FetchAvailableJourney $fetchAvailableJourney */
         $fetchAvailableJourney = $this->getContainer()->get('fetch_available_journey_worker');
-        $fetchAvailableJourney->fetchAll();
+        $fetchAvailableJourney->fetch();
 
         /** @var UpdateVoyageWorker $updateVoyageWorker */
         $updateVoyageWorker = $this->getContainer()->get('update_voyages_worker');
