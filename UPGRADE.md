@@ -1,5 +1,11 @@
 # Le Monde En Sac Upgrade guide
 
+
+## v0.3.4
+
+- Limit fetch of typical voyage
+- Change style of voyage creation
+
 ## v0.3.3
 
 - Add typical voyage
