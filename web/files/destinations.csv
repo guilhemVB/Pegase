@@ -28,7 +28,7 @@ A présent Berlin est une capitale artistique et culturelle mondiale. Avec plus 
 > Grimper au sommet de la tour de télévision de l'Alexanderplatz pour une vue à 360° de la capitale allemande.
 > Se rendre au Café de Moscou, un des endroits les plus animés de la ville.";15;29;0;0;1;2;3;3;3;3;3;2;1;0;52.516304;13.3766257;;;;;
 Allemagne;Hamburg;;;;23;27;0;0;0;1;1;3;3;3;2;1;1;0;53.5511063;9.9815264;;;;;
-Allemagne;Munich;;;;19;27;0;0;0;1;1;2;2;3;1;1;1;0;48.1370459;11.5476436;;;;;
+Allemagne;Munich;;;> En octobre, aller à l'Oktoberfest, la plus célèbre fête de la bière du monde;19;27;0;0;0;1;1;2;2;3;1;1;1;0;48.1370459;11.5476436;;;;;
 Argentine;Buenos Aires;oui;"Fondée en 1580 par des colons Espagnols, la ville a prospéré grâce au commerce du cuir. A la fin du 18ème siècle, la ville connue une forte croissance grâce à une importante immigration de Français, d'Italiens et d'Espagnols. Au cours du 20ème siècle, les militaires ont à plusieurs reprises pris le pouvoir, avant de laisser définitivement place à la démocratie en 1983.
 Aujourd’hui Buenos Aires est toujours majoritairement peuplée de descendants de colons européens. Le quartier de La Boca (voir photo) rappelle les rues de Naples, les hôtels particuliers de la Recoleta ont un style très Parisien et les larges avenues du centre-ville évoquent celles de Madrid.
 Commencez par parcourir l’histoire de la ville sur la Plaza de Mayo, puis initiez-vous au tango dans une ""milongas"" du quartier de San Telmo, et enfin assistez à une rencontre de football au stade de La Bombonera, et vous découvrirez le charme de Buenos Aires !";"> Flâner dans la Boca (rue commerçante très animée).
@@ -310,14 +310,18 @@ France;Bordeaux;;;"> Faire un arrêt dans un magasin Baillardran pour déguster 
 > Se faire plaisir sans se ruiner en faisant un tour dans un des magasins d'usine de grandes marques, le long des quais
 > A vélo, faire le tour des vignobles du Pessac Leognan pour découvrir les meilleurs vins de la région (Pape Clément, Haut Bailly ...).
 > Traverser la plus grande place d'Europe, la place des Quiconces et observer la fontaine des Girondins";23;31;2;2;2;2;2;3;3;3;3;2;2;2;44.8415719;-0.570082;;;;;
-France;Lyon;;;"> Pour les gourmands, éveiller ses sens en promenant dans les halles de Lyon.
-> Les jours de beaux temps, balader au parc de la tête d'or et voir le zoo (gratuit).
+France;Lyon;;"Fondée par les Romains au 1er siècle, Lyon est situé au carrefour du Rhône et de la Saône. Longtemps ""capitale des Gaules"" (on l'appelle encore parfois ainsi aujourd'hui), Lyon a été un haut lieu d'échanges et de commerce pendant plusieurs siècles.
+Commencez par monter sur les hauteurs de la ville pour visiter la basilique de Fourviere. La grande nef principale est somptueuse grâce aux vitraux et aux nombreuses mosaïques murales. Une fois la visite terminée et la vue sur Lyon admirée, descendez les nombreuses marches et vous arriverez dans le ""vieux Lyon"". Ce quartier regorge de ""Traboules"" et de ruelles aux accents moyenâgeux. Enfin, faites une halte à la cathédrale de Lyon, puis raversez la Saône pour aller sur la presqu'île, direction l'immense place Bellecour et la magnifique place des Terreaux.
+Envie de vivre comme un Lyonnais le temps d'une après-midi ? Prenez une trottinette (les Lyonnais se déplacent beaucoup comme ça) et allez vous balader au Parc de la Tête d'Or avec son zoo gratuit. Sortez du parc côté sud-ouest et descendez les quais du Rhône pour arriver aux péniches. Prenez un verre sur une des péniches, profitez du soleil, et vous serez un vrai Lyonnais !";"> Monter au sommet de la colline de Fourvière pour visiter la basilique et admirer la vue superbe sur la ville.
+> Découvrir le théâtre romain de Fourvière, assez peu connu mais bien conservé.
 > Dîner dans un des fameux bouchon lyonnais et déguster une spécialité (graton, quenelle, abats, tarte à la praline ...).
-> Boire un verre sur une péniche des quais du Rhones.
-> Déambuler dans les ruelles pavés du vieux Lyon.
-> Monter à Fourvière pour une vue imprenable sur la ville.
-> Savourer une glace chez Nardone, meilleur glacier artisanal de la région.
-> Venir le weekend du 8 décembre pour la fête des lumières où les façades des monuments se parent de jeux de lumières et de musique.";20;28;1;2;2;2;2;3;3;3;3;2;2;2;45.7635056;4.8492387;;;;;
+> Pour les gourmands, se rendre aux Halles de Lyon Paul Bocuse pour éveiller ses sens
+> Se balader au parc de la tête d'or et y pique-niquer près du lac par beau temps
+> Savourer une glace chez ""Nardone"", meilleur glacier artisanal de la région.
+> Venir le weekend du 8 décembre pour la fête des lumières où les façades des monuments se parent de jeux de lumières et de musique.
+> Se relaxer en buvant un verre sur une péniche sur les berges du Rhône. Happy hour de 17h à 20h.
+> Déambuler dans la rue pavée Du Boeuf, et son ambiance médiévale. L'entrée des traboules y sera indiquée
+> Monter les pentes du quartier de la Croix Rousse en partant de la place des Terreaux.";20;28;1;2;2;2;2;3;3;3;3;2;2;2;45.7635056;4.8492387;;;;;
 France;Nice;;;;18;43;2;2;2;2;3;3;3;3;3;3;2;2;43.6950824;7.2576875;;;;;
 France;Paris;oui;"A l’origine une petite ville gallo-romaine appelé Lutèce, la ville s’est développé jusqu’à devenir la capitale de la France. Berceau de la révolution Française, c’est ici que sont nés les idées des lumières, notamment les droits de l’Homme. 
 De nombreux musées et monuments mondialement connus se trouvent à Paris : le musée Louvre composé de plus de 460 000 œuvres, Notre Dame de Paris, la Tour Eiffel ou encore le chateau de Versailles.
