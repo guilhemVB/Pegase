@@ -80,8 +80,20 @@ class FetchAvailableJourney
                     $availableJourney = $this->extractAvailableJourney($data);
 
                     if (is_null($availableJourney->getFlyPrices()) && is_null($availableJourney->getBusPrices()) && is_null($availableJourney->getTrainPrices())) {
-                        $this->logger->error("No prices extracted from data from " . $fromDestination->getName() . " to " . $toDestination->getName());
-                        continue;
+                        /** @var AvailableJourney $currentReverseAvailableJourney */
+                        $currentReverseAvailableJourney = $this->availableJourneyRepository->findOneBy(['fromDestination' => $toDestination, 'toDestination' => $fromDestination]);
+
+                        if (is_null($currentReverseAvailableJourney)) {
+                            $this->logger->error("No prices extracted from data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                            continue;
+                        } else {
+                            $availableJourney->setBusPrices($currentReverseAvailableJourney->getBusPrices());
+                            $availableJourney->setBusTime($currentReverseAvailableJourney->getBusTime());
+                            $availableJourney->setFlyPrices($currentReverseAvailableJourney->getFlyPrices());
+                            $availableJourney->setFlyTime($currentReverseAvailableJourney->getFlyTime());
+                            $availableJourney->setTrainPrices($currentReverseAvailableJourney->getTrainPrices());
+                            $availableJourney->setTrainTime($currentReverseAvailableJourney->getTrainTime());
+                        }
                     }
 
                     $availableJourney->setFromDestination($fromDestination);
