@@ -68,7 +68,6 @@ class FetchAvailableJourney
                         continue;
                     }
 
-                    $this->logger->info("Fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
                     $APIResult = $this->journeyFetcher->fetch($fromDestination, $toDestination);
                     $data = $APIResult['data'];
                     $url = $APIResult['url'];
