@@ -39,7 +39,7 @@ class FetchAvailableJourney
      * @param int $nbFetch
      * @throws \Exception
      */
-    public function fetch($nbFetch = 200)
+    public function fetch($nbFetch = 10)
     {
         /** @var DestinationRepository $destinationRepository */
         $destinationRepository = $this->em->getRepository('AppBundle:Destination');
@@ -69,11 +69,13 @@ class FetchAvailableJourney
                     }
 
                     $this->logger->info("Fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
-                    $data = $this->journeyFetcher->fetch($fromDestination, $toDestination);
+                    $APIResult = $this->journeyFetcher->fetch($fromDestination, $toDestination);
+                    $data = $APIResult['data'];
+                    $url = $APIResult['url'];
                     $nbFetch--;
 
                     if (!$data) {
-                        $this->logger->error("Can't fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                        $this->logger->error("Can't fetch data from " . $fromDestination->getName() . " to " . $toDestination->getName() . ". URL : $url");
                         continue;
                     }
 
@@ -84,7 +86,7 @@ class FetchAvailableJourney
                         $currentReverseAvailableJourney = $this->availableJourneyRepository->findOneBy(['fromDestination' => $toDestination, 'toDestination' => $fromDestination]);
 
                         if (is_null($currentReverseAvailableJourney)) {
-                            $this->logger->error("No prices extracted from data from " . $fromDestination->getName() . " to " . $toDestination->getName());
+                            $this->logger->error("No prices extracted from data from " . $fromDestination->getName() . " to " . $toDestination->getName() . ". URL : $url");
                             continue;
                         } else {
                             $availableJourney->setBusPrices($currentReverseAvailableJourney->getBusPrices());

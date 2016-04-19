@@ -19,7 +19,7 @@ class JourneyFetcherMock implements JourneyFetcherInterface
         $file = file_get_contents(__DIR__ . sprintf("/../../../../features/bootstrap/AppBundle/data/%s.json", $fileName));
 
         if ($file) {
-            return json_decode($file, true);
+            return ['data' => json_decode($file, true), 'url' => $fileName];
         } else {
             throw new \Exception("$fileName doesn't exist in the mock.");
         }
