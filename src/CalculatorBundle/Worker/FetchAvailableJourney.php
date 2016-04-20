@@ -78,7 +78,13 @@ class FetchAvailableJourney
                         continue;
                     }
 
-                    $availableJourney = $this->extractAvailableJourney($data);
+                    try {
+                        $availableJourney = $this->extractAvailableJourney($data);
+                    } catch (\Exception $e) {
+                        $this->em->flush();
+                        $this->logger->error("Error during extract of available journey from " . $fromDestination->getName() . " to " . $toDestination->getName() . ". Error : " . $e->getMessage());
+                        throw $e;
+                    }
 
                     if (is_null($availableJourney->getFlyPrices()) && is_null($availableJourney->getBusPrices()) && is_null($availableJourney->getTrainPrices())) {
                         /** @var AvailableJourney $currentReverseAvailableJourney */
@@ -158,6 +164,7 @@ class FetchAvailableJourney
     /**
      * @param array $availableRoutes
      * @return AvailableJourney
+     * @throws \Exception
      */
     private function createAvailableJourney($availableRoutes)
     {
@@ -182,6 +189,8 @@ class FetchAvailableJourney
             } elseif ($typeOfTransport === CRUDStage::BUS) {
                 $availableJourney->setBusPrices($bestPriceAndDuration['price']);
                 $availableJourney->setBusTime($bestPriceAndDuration['duration']);
+            } else {
+                throw new \Exception("Unknow type of transport '$typeOfTransport'. ". json_encode($availableRoutes));
             }
 
         }
