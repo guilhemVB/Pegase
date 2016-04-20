@@ -39,7 +39,7 @@ class FetchAvailableJourney
      * @param int $nbFetch
      * @throws \Exception
      */
-    public function fetch($nbFetch = 200)
+    public function fetch($nbFetch = 150)
     {
         /** @var DestinationRepository $destinationRepository */
         $destinationRepository = $this->em->getRepository('AppBundle:Destination');
