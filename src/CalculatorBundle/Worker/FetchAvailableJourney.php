@@ -105,7 +105,7 @@ class FetchAvailableJourney
                     $this->em->persist($availableJourney);
                     $this->em->flush();
 
-                    sleep(rand(8, 15));
+                    sleep(rand(1, 2));
                 }
             }
         } catch (\Exception $e) {
