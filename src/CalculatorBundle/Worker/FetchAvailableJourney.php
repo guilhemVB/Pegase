@@ -46,15 +46,16 @@ class FetchAvailableJourney
 
         /** @var Destination[] $fromDestinations */
         $fromDestinations = $destinationRepository->findAll();
+        shuffle($fromDestinations);
         /** @var Destination[] $toDestinations */
         $toDestinations = $destinationRepository->findAll();
+        shuffle($toDestinations);
 
         $nbAvailableJourneyExtracted = 0;
 
         try {
             foreach ($fromDestinations as $fromDestination) {
                 foreach ($toDestinations as $toDestination) {
-
                     if ($nbFetch == 0) {
                         return;
                     }
@@ -128,7 +129,7 @@ class FetchAvailableJourney
      * @return AvailableJourney
      * @throws \Exception
      */
-    private function extractAvailableJourney($data)
+    public function extractAvailableJourney($data)
     {
         try {
             $routes = $data['routes'];

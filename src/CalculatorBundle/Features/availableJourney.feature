@@ -75,3 +75,6 @@ Feature: Available Journey calculator
             | Lyon      | Marseille | BUS               |
             | Marseille | Dijon     | BUS               |
 
+    @skip
+    Scenario: debug calcul trajet disponible
+        When j'affiche le trajet trouvé entre "san-francisco" et "yosemite-park"

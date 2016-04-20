@@ -1,4 +1,7 @@
 default:
+    gherkin:
+        filters:
+            tags: ~@skip
     extensions:
         Behat\Symfony2Extension: ~
     suites:

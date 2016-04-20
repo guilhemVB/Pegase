@@ -2,7 +2,6 @@
 
 namespace AppBundle\Features\Context;
 
-use AppBundle\Entity\Destination;
 use AppKernel;
 use Behat\Gherkin\Node\TableNode;
 use CalculatorBundle\Entity\AvailableJourney;
@@ -154,5 +153,16 @@ class JourneyContext extends CommonContext
     public function jeMetÀJourLesVoyagesAvecLesTrajetsDisponibles()
     {
         $this->updateVoyageWorker->run();
+    }
+
+    /**
+     * @When j'affiche le trajet trouvé entre :fromDestinationName et :toDestinationName
+     */
+    public function jAfficheLeTrajetTrouvéEntreEt($fromDestinationName, $toDestinationName)
+    {
+        $fileName = $fromDestinationName . '-' . $toDestinationName;
+        $file = file_get_contents(__DIR__ . sprintf("/../../data/%s.json", $fileName));
+
+        var_dump($this->fetchAvailableJourney->extractAvailableJourney(json_decode($file, true)));
     }
 }
