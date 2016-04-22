@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\LockHandler;
+use Psr\Log\LoggerInterface;
 
 class FetchAvailableJourneyCommand extends ContainerAwareCommand
 {
@@ -21,8 +22,12 @@ class FetchAvailableJourneyCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /** @var LoggerInterface $logger*/
+        $logger = $this->getContainer()->get('logger');
+
         $lock = new LockHandler('app:journey');
         if (!$lock->lock()) {
+            $logger->error("The command 'app:journey' is already running in another process. Can't launch it twice at same time.");
             $output->writeln('The command is already running in another process.');
             return ;
         }
@@ -33,6 +38,8 @@ class FetchAvailableJourneyCommand extends ContainerAwareCommand
         /** @var FetchAvailableJourney $fetchAvailableJourney */
         $fetchAvailableJourney = $this->getContainer()->get('fetch_available_journey_worker');
         $fetchAvailableJourney->fetch();
+
+        $lock->release();
 
         /** @var UpdateVoyageWorker $updateVoyageWorker */
         $updateVoyageWorker = $this->getContainer()->get('update_voyages_worker');
