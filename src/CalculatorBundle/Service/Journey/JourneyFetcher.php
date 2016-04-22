@@ -30,6 +30,8 @@ class JourneyFetcher implements JourneyFetcherInterface
         $result = curl_exec($ch);
         curl_close($ch);
 
+        sleep(rand(1, 2));
+
         return ['data' => json_decode($result, true), 'url' => $url];
     }
 }
