@@ -45,11 +45,9 @@ class FetchAvailableJourney
         $destinationRepository = $this->em->getRepository('AppBundle:Destination');
 
         /** @var Destination[] $fromDestinations */
-        $fromDestinations = $destinationRepository->findAll();
-        shuffle($fromDestinations);
+        $fromDestinations = $destinationRepository->findBy([], ['id' => 'DESC']);
         /** @var Destination[] $toDestinations */
-        $toDestinations = $destinationRepository->findAll();
-        shuffle($toDestinations);
+        $toDestinations = $destinationRepository->findBy([], ['id' => 'DESC']);
 
         $nbAvailableJourneyExtracted = 0;
 
