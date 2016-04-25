@@ -61,7 +61,8 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 options: {
-                    style: 'compressed'
+                    style: 'compressed',
+                    sourcemap: 'none'
                 },
                 files: {
                     'src/AppBundle/Resources/public/css/dist/app.min.css': 'src/AppBundle/Resources/public/css/global.scss',
