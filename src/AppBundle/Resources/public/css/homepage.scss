@@ -6,103 +6,133 @@
     color: inherit;
 }
 
-#carouselHomepage .carousel-caption {
-    height: 65%;
-    text-shadow: 1px 1px 3px black;
+#carouselHomepage {
+
+    em {
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 60px;
+        padding-bottom: 25px;
+        font-weight: 400;
+    }
+
+    h2 {
+        font-size: 40px;
+        padding-bottom: 25px;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .carousel-caption {
+        height: 70%;
+        text-shadow: 1px 1px 3px black;
+    }
 }
 
-#carouselHomepage em, #carouselHomepage  p {
-    font-weight: 400;
-}
-
-#carouselHomepage em, #carouselHomepage  h2,
-#carouselHomepage em, #carouselHomepage  h1 {
-    font-weight: 400;
-}
-
-#carouselHomepage h1 {
-    font-size: 60px;
-    padding-bottom: 25px;
-}
-
-#carouselHomepage h2 {
-    font-size: 40px;
-    padding-bottom: 25px;
-}
-
-#carouselHomepage p {
-    font-size: 18px;
+@media screen and (max-width: 1200px) {
+    #carouselHomepage {
+        .carousel-caption {
+            height: 85%;
+        }
+    }
 }
 
 @media screen and (max-width: 992px) {
-    #carouselHomepage .carousel-caption {
-        height: 80%;
-    }
-    #carouselHomepage h1 {
-        font-size: 45px;
-        padding-bottom: 15px;
-    }
-    #carouselHomepage h2 {
-        font-size: 35px;
-        padding-bottom: 15px;
-    }
-    #carouselHomepage p {
-        font-size: 16px;
+    #carouselHomepage {
+        .carousel-caption {
+            height: 80%;
+        }
+
+        h1 {
+            font-size: 45px;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 35px;
+            padding-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .carousel-indicators {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: 768px) {
-    #carouselHomepage .carousel-caption {
-        height: initial;
-    }
-    #carouselHomepage h1 {
-        font-size: 35px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage h2 {
-        font-size: 30px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage p {
-        font-size: 14px;
-    }
+    #carouselHomepage {
 
-    #carouselHomepage .btn {
-        display: none;
+        h1 {
+            font-size: 35px;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            padding-bottom: 0;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .btn {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: 460px) {
-    #carouselHomepage .carousel-caption {
-        height: initial;
-    }
-    #carouselHomepage h1 {
-        font-size: 35px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage h2 {
-        font-size: 30px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage p {
-        display: none;
+    #carouselHomepage {
+        .carousel-caption {
+            height: initial;
+        }
+
+        h1 {
+            font-size: 35px;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 30px;
+            padding-bottom: 0;
+        }
+
+        p {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: 390px) {
-    #carouselHomepage .carousel-caption {
-        height: initial;
-    }
-    #carouselHomepage h1 {
-        font-size: 25px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage h2 {
-        font-size: 20px;
-        padding-bottom: 0;
-    }
-    #carouselHomepage p {
-        display: none;
+    #carouselHomepage {
+        .carousel-caption {
+            height: initial;
+        }
+
+        h1 {
+            font-size: 25px;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 20px;
+            padding-bottom: 0;
+        }
+
+        p {
+            display: none;
+        }
     }
 }
 
