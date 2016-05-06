@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 containerPadding15">
+<div class="col-md-4 col-sm-6 containerPadding15 {% if divClass is defined %}{{ divClass }}{% endif %}">
 
     <a href="{% if linkShare %}{{ url('shareVoyage', {'token' : voyage.token}) }}{% else %}{{ url('voyage', {'token' : voyage.token}) }}{% endif %}">
         <div class="row">

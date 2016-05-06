@@ -33,11 +33,20 @@
                 <div class="col-lg-10 col-lg-offset-1 col-sm-12">
                     <h2 class="text-center titleOrange">Exemples d'itinéraires</h2>
                     {% for voyageWithStats in lastVoyagesWithStats %}
-                        {% include 'CalculatorBundle:Common:voyage.html.twig' with {
-                        'voyage' : voyageWithStats.voyage,
-                        'stats' : voyageWithStats.stats,
-                        'linkShare' : true
-                        } %}
+                        {% if loop.index0 >= 2 %}
+                            {% include 'CalculatorBundle:Common:voyage.html.twig' with {
+                            'voyage' : voyageWithStats.voyage,
+                            'stats' : voyageWithStats.stats,
+                            'linkShare' : true,
+                            'divClass' : 'hidden-xs hidden-sm'
+                            } %}
+                        {% else %}
+                            {% include 'CalculatorBundle:Common:voyage.html.twig' with {
+                            'voyage' : voyageWithStats.voyage,
+                            'stats' : voyageWithStats.stats,
+                            'linkShare' : true
+                            } %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
