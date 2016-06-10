@@ -38,4 +38,4 @@ ricbra_robots_txt:
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
-    prefix:   /admin
+    prefix:   /admin/users

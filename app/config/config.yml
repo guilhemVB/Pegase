@@ -114,7 +114,7 @@ easy_admin:
         User:
             class: AppBundle\Entity\User
             list:
-                fields: ['id', 'username', 'email', 'roles', 'enabled', 'voyages']
+                fields: ['id', 'username', 'email', 'lastLogin', 'enabled', 'voyages', 'roles']
         Voyage:
             class: CalculatorBundle\Entity\Voyage
             list:
