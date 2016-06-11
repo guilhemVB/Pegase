@@ -12,13 +12,27 @@
 
 .btn-twitter {
   color: #ffffff !important;
-}
-
-.btn-twitter {
-  color: #ffffff !important;
   background-color: #55ACEE !important;
+
+  &:hover {
+    background-color: #2795e9 !important;
+  }
 }
 
-.btn-twitter:hover {
-  background-color: #2795e9 !important;
+.btn-facebook {
+  color:#fff !important;
+  background-color:#3b5998 !important;
+
+  &:hover {
+    background-color:#2d4373 !important;
+  }
+}
+
+.btn-instagram {
+  color:#fff !important;
+  background-color:#3f729b !important;
+
+  &:hover {
+    background-color:#305777 !important;
+  }
 }

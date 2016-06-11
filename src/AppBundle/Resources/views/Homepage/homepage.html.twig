@@ -16,7 +16,8 @@
         "sameAs" : [
             "https://twitter.com/LeMondeEnSac",
             "https://plus.google.com/+Lemondeensac",
-            "https://www.instagram.com/lemondeensac/"
+            "https://www.instagram.com/lemondeensac/",
+            "https://www.facebook.com/lemondeensac/"
         ]
     }
     </script>
@@ -98,16 +99,11 @@
         </div>
 
         <div class="container-fluid containerPadding text-center">
-
-            <a href="https://twitter.com/LeMondeEnSac" class="twitter-follow-button" data-show-count="false"
-               data-size="large">Follow @LeMondeEnSac</a>
-
-            {#<div#}
-            {#class="fb-like"#}
-            {#data-share="false"#}
-            {#data-width="450"#}
-            {#data-show-faces="true">#}
-            {#</div>#}
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    {% include 'AppBundle:Common:socialIcons.html.twig' %}
+                </div>
+            </div>
 
         </div>
 

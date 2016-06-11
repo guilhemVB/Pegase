@@ -2,25 +2,31 @@
     background-color: $colorGrey;
     border-color: #080808;
     color: silver;
-}
 
-.footer a {
-    color: silver;
-}
+    a {
+        color: silver;
+    }
 
-.footerDestination a {
-    color: grey !important;
-}
+    #listCountries {
+        margin-bottom: 30px;
+    }
 
-.footer #listCountries {
-    margin-bottom: 30px;
-}
+    .columnsFooter {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 10em;
+        }
+    }
 
-.footer .columnsFooter {
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        width: 10em;
+    .footerDestination {
+        a {
+            color: grey !important;
+        }
+    }
+
+    .socialIconsFooter {
+        margin-bottom: 10px;
     }
 }
