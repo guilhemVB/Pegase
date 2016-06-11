@@ -41,6 +41,31 @@ class CommandController extends Controller
     }
 
     /**
+     * @Route("/importCurrencies", name="importCurrencies")
+     * @return Response
+     */
+    public function importCurrenciesAction()
+    {
+        $kernel = $this->get('kernel');
+        $application = new Application($kernel);
+        $application->setAutoExit(false);
+
+        $input = new ArrayInput([
+            'command' => 'app:import:currencies',
+            'fileName' => '../web/files/devises.csv',
+        ]);
+
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+
+        $content = $output->fetch();
+
+        $content = str_replace("\n", '<br>', $content);
+
+        return new Response($content);
+    }
+
+    /**
      * @Route("/importDestinations", name="importDestinations")
      * @return Response
      */

@@ -50,5 +50,5 @@ security:
         - { path: ^/share, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/voyage, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/crud, role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
         - { path: ^/command/, role: ROLE_SUPER_ADMIN }

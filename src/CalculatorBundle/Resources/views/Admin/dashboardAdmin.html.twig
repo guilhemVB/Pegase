@@ -148,7 +148,7 @@
         <div class="container-fluid containerBlue containerPadding15">
             <div class="row">
                 <div class="col-sm-12">
-                    <h2>Lancement des commandes</h2>
+                    <h2>Commandes d'imports</h2>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ path('importCountries') }}" class="btn btn-raised btn-warning btn-block" target="_blank"
@@ -159,11 +159,20 @@
                        target="_blank" role="button">Importer les destinations</a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ path('updateRates') }}" class="btn btn-raised btn-warning btn-block" target="_blank"
+                    <a href="{{ path('importCurrencies') }}" class="btn btn-raised btn-warning btn-block"
+                       target="_blank" role="button">Importer les devises</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Commandes de mise à jours</h2>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ path('updateRates') }}" class="btn btn-raised btn-success btn-block" target="_blank"
                        role="button">Mettre à jour les taux</a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ path('calculateJourney') }}" class="btn btn-raised btn-warning btn-block"
+                    <a href="{{ path('calculateJourney') }}" class="btn btn-raised btn-success btn-block"
                        target="_blank" role="button">Calculer les trajets</a>
                 </div>
             </div>
