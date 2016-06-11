@@ -12,7 +12,8 @@ module.exports = function (grunt) {
                     'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.js': 'src/AppBundle/Resources/public/js/destinationList/*.js',
                     'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.js': 'src/CalculatorBundle/Resources/public/js/voyage/*.js',
                     'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.js': 'src/CalculatorBundle/Resources/public/js/dashboard/*.js',
-                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js': 'src/CalculatorBundle/Resources/public/js/share/*.js'
+                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js': 'src/CalculatorBundle/Resources/public/js/share/*.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/admin/dashboardAdmin.js': 'src/CalculatorBundle/Resources/public/js/admin/*.js'
                 }
             }
         },
@@ -27,7 +28,8 @@ module.exports = function (grunt) {
                     'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.min.js': 'src/AppBundle/Resources/public/js/dist/destinationList/destinationList.js',
                     'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/voyage/createVoyage.js',
                     'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/dashboard/dashboardVoyage.js',
-                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js'
+                    'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.min.js': 'src/CalculatorBundle/Resources/public/js/dist/share/shareVoyage.js',
+                    'src/CalculatorBundle/Resources/public/js/dist/admin/dashboardAdmin.min.js': 'src/CalculatorBundle/Resources/public/js/dist/admin/dashboardAdmin.js'
                 }
             }
         },

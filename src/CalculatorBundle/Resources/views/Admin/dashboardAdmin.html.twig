@@ -1,0 +1,188 @@
+{% set title = "Tableau de bord Administrateur" %}
+{% set description = "" %}
+{% set type = "" %}
+{% set imageUrl = "" %}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets output='css/calculator.{version}.min.css' '@CalculatorBundle/Resources/public/css/dist/*' vars=["version"] filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/select2/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/select2-bootstrap-css/select2-bootstrap.min.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div id="dashboardAdmin">
+        <div class="container-fluid borderBotOrange backgroundWhite containerPadding15">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="titleOrange">Tableau de bord Administrateur</h1>
+                </div>
+            </div>
+
+            <div class="row count_row">
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-user"></i> Nb Utilisateurs</span>
+
+                    <div class="count">{{ nbUser|number_format(0, ',', ' ') }}</div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-globe"></i> Nb Pays</span>
+
+                    <div class="count">{{ countries|number_format(0, ',', ' ') }}</div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-building"></i> Nb Destinations</span>
+
+                    <div class="count">{{ nbDestinations|number_format(0, ',', ' ') }}</div>
+                    <span class="count_bottom">{{ nbDestinationsCompletes }} complètes</span>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-plane"></i> Nb de voyages planifiés</span>
+
+                    <div class="count">{{ nbVoyages|number_format(0, ',', ' ') }}</div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-car"></i> Nb de trajets récupérés</span>
+
+                    <div class="count">{{ nbJourney|number_format(0, ',', ' ') }}</div>
+                    {% if missingJourneys|length > 0 %}
+                        <span class="count_bottom red"><i
+                                    class="fa fa-exclamation-triangle"></i> {{ missingJourneys|length|number_format(0, ',', ' ') }}
+                            manquants</span>
+                    {% endif %}
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-ship"></i> Nb d'idées de voyages</span>
+
+                    <div class="count">{{ nbTypicalVoyages|number_format(0, ',', ' ') }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid containerPadding15">
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Voir un trajet</h2>
+                        </div>
+                        <div class="col-sm-10 col-sm-offset-1">
+
+
+                            <form class="form-horizontal" id="seeJourneyForm">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label for="fromDestination">Depuis</label>
+                                        {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'fromDestination'} %}
+                                        <span id="errorBlockDestination_fromDestination" class="error-block hidden">Veuillez choisir une destination.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="toDestination">Jusqu'à</label>
+                                        {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'toDestination'} %}
+                                        <span id="errorBlockDestination_toDestination" class="error-block hidden">Veuillez choisir une destination.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-raised btn-primary"
+                                                data-loading-text="Chargement ...">Afficher</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-8">
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2>Liste des trajets manquants (max 10)</h2>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Depuis</th>
+                                    <th>Jusqu'à</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for missingJourney in missingJourneys|slice(0, 10) %}
+                                    <tr>
+                                        <td>{{ missingJourney.from.name }}</td>
+                                        <td>{{ missingJourney.to.name }}</td>
+                                        <td>
+                                            <button class="btn-add-journey btn btn-raised btn-success btn-sm"
+                                                    type="button" data-from-destination-id="{{ missingJourney.from.id }}"
+                                                    data-to-destination-id="{{ missingJourney.to.id }}"
+                                                    data-loading-text="Chargement...">
+                                                <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid containerBlue containerPadding15">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Lancement des commandes</h2>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ path('importCountries') }}" class="btn btn-raised btn-warning btn-block" target="_blank"
+                       role="button">Importer les pays</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ path('importDestinations') }}" class="btn btn-raised btn-warning btn-block"
+                       target="_blank" role="button">Importer les destinations</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ path('updateRates') }}" class="btn btn-raised btn-warning btn-block" target="_blank"
+                       role="button">Mettre à jour les taux</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ path('calculateJourney') }}" class="btn btn-raised btn-warning btn-block"
+                       target="_blank" role="button">Calculer les trajets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'CalculatorBundle:Admin:availableJourneyModal.html.twig' %}
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/select2/select2_locale_fr.js') }}"></script>
+    <script>
+        var getJourneyUrl = "{{ path('getJourney') }}";
+        var editJourneyUrl = "{{ path('editJourney') }}";
+    </script>
+    {% javascripts output='js/admin/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/admin/*.min.js' vars=["version"] %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
