@@ -35,7 +35,7 @@
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-globe"></i> Nb Pays</span>
 
-                    <div class="count">{{ countries|number_format(0, ',', ' ') }}</div>
+                    <div class="count">{{ countries|length|number_format(0, ',', ' ') }}</div>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-building"></i> Nb Destinations</span>
