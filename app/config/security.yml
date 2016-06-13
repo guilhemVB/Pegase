@@ -24,7 +24,7 @@ security:
                 realm: "Acces restricted"
                 provider: fos_userbundle
         admin:
-            pattern: ^/admin/
+            pattern: ^/admin$
 #            pattern: ^/
             anonymous: true
             http_basic:
