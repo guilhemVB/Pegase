@@ -20,6 +20,11 @@ services:
             - @doctrine.orm.entity_manager
             - @journey_service
 
+    crud_available_journey:
+        class : CalculatorBundle\Service\CRUD\CRUDAvailableJourney
+        arguments:
+            - @doctrine.orm.entity_manager
+
     crud_voyage:
         class : CalculatorBundle\Service\CRUD\CRUDVoyage
         arguments:

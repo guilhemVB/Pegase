@@ -3,8 +3,10 @@
 namespace AppBundle\Features\Context;
 
 use AppKernel;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use CalculatorBundle\Entity\AvailableJourney;
+use CalculatorBundle\Service\CRUD\CRUDAvailableJourney;
 use CalculatorBundle\Worker\FetchAvailableJourney;
 use CalculatorBundle\Worker\UpdateVoyageWorker;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -17,11 +19,15 @@ class JourneyContext extends CommonContext
     /** @var UpdateVoyageWorker */
     private $updateVoyageWorker;
 
+    /** @var CRUDAvailableJourney */
+    private $CRUDAvailableJourney;
+
     public function __construct(ContainerInterface $container)
     {
         parent::__construct($container);
         $this->fetchAvailableJourney = $container->get('fetch_available_journey_worker');
         $this->updateVoyageWorker = $container->get('update_voyages_worker');
+        $this->CRUDAvailableJourney = $container->get('crud_available_journey');
     }
 
     /**
@@ -128,6 +134,8 @@ class JourneyContext extends CommonContext
     {
         $availableJourneyRepository = $this->em->getRepository('CalculatorBundle:AvailableJourney');
 
+        $this->assertSameSize($tableAvailableJourney->getHash(), $availableJourneyRepository->findAll());
+
         foreach ($tableAvailableJourney as $availableJourneyRow) {
             $fromDestination = $this->findDestinationByName($availableJourneyRow['depuis']);
             $toDestination = $this->findDestinationByName($availableJourneyRow["jusqu'à"]);
@@ -164,5 +172,14 @@ class JourneyContext extends CommonContext
         $file = file_get_contents(__DIR__ . sprintf("/../../data/%s.json", $fileName));
 
         var_dump($this->fetchAvailableJourney->extractAvailableJourney(json_decode($file, true)));
+    }
+
+    /**
+     * @When je supprime les transports liés à la destination :destinationName
+     */
+    public function jeSupprimeLesTransportsLiésÀLaDestination($destinationName)
+    {
+        $destination = $this->findDestinationByName($destinationName);
+        $this->CRUDAvailableJourney->removeAvailableJourneyByDestination($destination);
     }
 }
