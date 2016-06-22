@@ -34,6 +34,19 @@ $().ready(function () {
         seeJourney($('#fromDestination').val(), $('#toDestination').val());
     });
 
+    $("#deleteJourneysForm").submit(function (event) {
+        event.preventDefault();
+
+        if ($('#deleteJourneyDestination').val() === "") {
+            return;
+        }
+
+        $("#deleteJourneysForm button").button('loading');
+        $.get(deleteJourneysUrl, {destinationId: $('#deleteJourneyDestination').val()}, function (response) {
+            location.reload();
+        }, "json");
+    });
+
     $(".btn-add-journey").on('click', function() {
         seeJourney($(this).data('fromDestinationId'), $(this).data('toDestinationId'));
     });

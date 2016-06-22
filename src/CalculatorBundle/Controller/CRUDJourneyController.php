@@ -5,6 +5,7 @@ namespace CalculatorBundle\Controller;
 use AppBundle\Repository\DestinationRepository;
 use CalculatorBundle\Entity\AvailableJourney;
 use CalculatorBundle\Repository\AvailableJourneyRepository;
+use CalculatorBundle\Service\CRUD\CRUDAvailableJourney;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Serializer\Serializer;
@@ -148,6 +149,27 @@ class CRUDJourneyController extends Controller
         }
 
         return new JsonResponse([]);
+    }
+
+    /**
+     * @Route("/deleteJourneys", name="deleteJourneys")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function deleteJourneysAction(Request $request)
+    {
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $destinationRepository DestinationRepository */
+        $destinationRepository = $em->getRepository('AppBundle:Destination');
+
+        $destination = $destinationRepository->find($request->get('destinationId'));
+
+        /** @var CRUDAvailableJourney $CRUDAvailableJourney */
+        $CRUDAvailableJourney = $this->get('crud_available_journey');
+
+        return new JsonResponse($CRUDAvailableJourney->removeAvailableJourneyByDestination($destination));
     }
 
 }

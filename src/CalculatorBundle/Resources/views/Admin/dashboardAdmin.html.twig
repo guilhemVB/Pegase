@@ -99,8 +99,33 @@
                                 </fieldset>
                             </form>
                         </div>
-
                     </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-12">
+                            <h2>Supprimer les trajets d'une destination</h2>
+                        </div>
+                        <div class="col-sm-10 col-sm-offset-1">
+
+
+                            <form class="form-horizontal" id="deleteJourneysForm">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label for="deleteJourneyDestination">Depuis et vers</label>
+                                        {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'deleteJourneyDestination'} %}
+                                        <span id="errorBlockDestination_fromDestination" class="error-block hidden">Veuillez choisir une destination.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-raised btn-danger"
+                                                data-loading-text="Chargement ...">Supprimer</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-sm-8">
 
@@ -191,6 +216,7 @@
     <script>
         var getJourneyUrl = "{{ path('getJourney') }}";
         var editJourneyUrl = "{{ path('editJourney') }}";
+        var deleteJourneysUrl = "{{ path('deleteJourneys') }}";
     </script>
     {% javascripts output='js/admin/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/admin/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>
