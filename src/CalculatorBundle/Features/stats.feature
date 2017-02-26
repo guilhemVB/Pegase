@@ -18,7 +18,7 @@ Feature: Stats voyage
             | Boston    | Etat-Unis | 42.359370 | -71.059168 | 50                    | 40                     |
         Given les possibilitées de transports :
             | depuis    | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
-            | Paris     | Lyon      | 52         | 56          | 50         | 120         | 5        | 6:30      |
+            | Paris     | Lyon      | 52         | 56          | 50         | 120         | 5        | 390       |
             | Lyon      | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
             | Marseille | New-York  | 599        | 859         |            |             |          |           |
             | New-York  | Boston    |            |             | 195        | 279         |          |           |
