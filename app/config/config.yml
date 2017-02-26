@@ -118,7 +118,7 @@ easy_admin:
         Voyage:
             class: CalculatorBundle\Entity\Voyage
             list:
-                fields: ['id', 'name', 'urlMinified', 'user']
+                fields: ['id', 'name', { property: 'urlMinified', template: 'print_url' }, 'stages', 'user']
         Currency:
             class: AppBundle\Entity\Currency
         Country:
