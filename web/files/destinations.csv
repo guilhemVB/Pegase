@@ -43,7 +43,7 @@ Commencez par parcourir l’histoire de la ville sur la Plaza de Mayo, puis init
 > Admirer le Tango dansé par les Argentins.
 > Regarder un match de football. 
 > Goûter à un morceau de bœuf argentin.";14;17;3;3;3;3;1;1;1;1;1;2;3;3;-34.6084373;-58.373264;
-Argentine;Puerto Iguazù (chutes d'Iguazù);;;;10;;1;1;1;2;3;3;3;3;3;2;2;1;-25.598143;-54.570490;
+Argentine;Puerto Iguazù (chutes d'Iguazù);;;;10;26;1;1;1;2;3;3;3;3;3;2;2;1;-25.598143;-54.570490;1
 Argentine;Córdoba;;"Deuxième plus grande ville du pays, Córdoba est située au centre de l'Argentine, dans la Pampa. Ville universitaire au passé culturel très riche, c'est un peu la rivale de Buenos Aires. Injustement peu fréquentée par les touristes, la ville regorge de maisons coloniales et d'églises catholiques fondées par les Jésuites.
 La région de Córdoba ne manque également pas d'attraits. Allez vous balader dans le parc national ""del condorito"" pour tenter d'y apercevoir des Condors au milieu des sierras puis rendez-vous à Alta Gracia pour visiter son estancia jésuite ainsi que la maison d'enfance de Che Guevara. La ville et sa région mériteraient d'être plus connues.";"> Visiter le riche patrimoine Jésuite de la ville : le collège national de Montserrat, l'église de la Compagnie de Jésus, la Manzana Jesuítica et l'ancienne Université.
 > Le weekend en fin de journée, aller au marché artisanal et profiter le soir de l'ambiance du quartier.
@@ -115,7 +115,10 @@ Culturellement, la ville possède de nombreux musées. Le musée d'ethnographie 
 La Paz mérite le détour, mais elle demande du temps à ses visiteurs, non seulement pour s'acclimater à l'altitude mais aussi pour découvrir les multiples facettes de la ville.";"> Se rendre à la place Murillo où est érigé le palais législatif, et à la place San Francisco abritant la cathédrale.
 > Apprécier l'architecture des belles maisons coloniales de la calle Jaen.
 > Parcourir les marchés artisanaux de la calle Sagarnaga ou le marché de la sorcellerie.
-> Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;-16.4955017;-68.134689;
+> Profiter de l'animation de l'Avenida del sol.";8;15;1;1;1;1;1;1;1;1;1;1;1;1;-16.4955017;-68.134689;3
+Bolivie;Potosi;;;> Ne manquez pas la visite guidée en français de la maison de la monnaie, l'un des plus gros centre où la monnaie était frappée pour la couronne d'Espagne.;8;12;0;1;1;2;3;3;2;2;2;2;1;0;-19.589006;-65.753668;1
+Bolivie;Sucre;;;> Admirer la vue sur la ville depuis le mirador de la Recoleta;8;9;1;1;2;2;3;3;3;3;3;2;2;1;-19.047879;-65.259602;2
+Bolivie;Salar d'Uyuni;;;> Admirer le lever de soleil sur le plan d'eau sur le Salar d'Uyuni.;18;42;0;1;1;3;3;2;2;1;2;2;1;1;-20.460873;-66.826226;4
 Brésil;Rio de Janeiro;;"Découverte par un explorateur portugais en 1502, Rio de Janeiro est d’abord une zone de troc entre les indiens et les européens. Ce n’est qu’en 1700 que de l’or et des joyaux sont découverts à proximité, permettant l’essor de la ville. En 1808, elle devient étonnamment la capitale du royaume du Portugal jusqu’à l’indépendance du Brésil, en 1822.
 Ancienne capitale du pays, Rio de Janeiro est un incontournable du Brésil, et même du continent sud-américain. Elle est célèbre pour son éblouissant carnaval, son Christ Rédempteur (Corcovado), ses plages magnifiques et ses matchs de foot. Pourtant elle a encore bien plus à offrir : nuits festives, musées, gastronomie, aventures de plein air… les attraits ne manquent pas.
 Ajoutez-y son climat plus que clément, la joie de vivre des ses habitants, ses nombreuses activités  et vous comprendrez pourquoi au moins 5 jours sont nécessaires pour découvrir Rio de Janeiro.";"> Profiter des répétitions des écoles de samba pour un avant-goût du carnaval de Rio à moindre coût. Elles commencent environ 6 mois avant le carnaval.
@@ -204,11 +207,10 @@ Chine;Shanghai;;;"> Boire un verre au Vue Bar pour une vue imprenable sur Shangh
 > Balader dans les jardins Yuyuan et se retrouver dans l'atmosphère de la dynastie Ming
 > Découvrir un hobby millénaire et s'étonner devant l'enthousiasme des chinois pour une lutte opposants... 2 criquets (ou autres insectes). Tous  les matins rue Liuhekou.
 > Se promener sur le Bund, célèbre promenade de Shanghai";10;27;1;1;1;2;3;2;2;2;2;3;1;1;31.2396935;121.4996185;
-Colombie;Bogota;oui;;"> Déambuler dans le quartier de la Candelaria, centre historique de la ville
-> Se méler aux spectateurs lors d'un match de foot et profiter de l'ambiance électrique.
-> Consacrer un moment à la visite du Musée de l'Or et admirer la plus importante collection d'orfèvrerie pré-colombienne
-> Faire une excursion à 1h au nord de la ville pour ressentir l'atmosphèremystique de la cathédrale de sel, creuser à 180m de profondeur.
-";10;11;3;3;2;1;2;2;2;2;3;2;2;2;4.6682475;-74.1011817;
+Colombie;Bogota;oui;;"
+";10;11;3;3;2;1;2;2;2;2;3;2;2;2;4.6682475;-74.1011817;3
+Colombie;Medellin;;;;8;10;2;2;2;2;1;1;2;2;2;2;2;2;6.251484;-75.567671;3
+Colombie;Salento et la Vallée de Cocora;;;> Se balader au milieu des palmiers de la vallée de Cocora;8;10;3;2;1;1;1;2;2;2;2;3;3;3;4.637562;-75.569756;2
 Costa Rica;San Jose;oui;"Située à 1200 mètres d’altitude et entourée de montagnes et de volcans, San José a été fondée en 1738 et devient la capitale du Costa Rica en 1823. La ville a été bâtie grâce au commerce du café dont les plantations entourent toujours la ville.
 San José a conservé peu de bâtiments coloniaux, mais le théâtre national construit en 1890 vaut le détour. Le musée du Jade, le musée de l’or ou encore le musée national vous en apprendront plus sur l’histoire de la civilisation costaricienne.
 Bien qu'on y trouve musées, restos et sorties nocturnes, San José est souvent considérée comme une étape par les touristes plus attirés par les richesses naturelles du Costa Rica. Allez faire un tour au marché central et vous comprendrez pourquoi San José gagne à être connue. Le charme de la ville et l’accueil des habitants (les Ticos) y sont très agréables.";"> Se rendre à la Esmeralda vers 23 heures et profiter de la musique jouée par les trios ou les mariachis qui attendent les clients.
