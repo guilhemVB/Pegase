@@ -54,7 +54,7 @@ $().ready(function () {
 
         $("#containerAddDestination form button").button('loading');
         disabledActions();
-        var url = addStageUrl.replace("0", data.destinationId);
+        var url = addStageUrl.replace("/0", "/" + data.destinationId);
         $.post(url, data, function (response) {
             maplace.Load({
                 locations: response.maplaceData,
@@ -133,7 +133,7 @@ $().ready(function () {
         $(".btnDeleteStage").on('click', function (e) {
             $(this).html('<i class="fa fa-spinner fa-spin"></i>');
             disabledActions();
-            var url = removeStageUrl.replace("0", $(this).data('stageId'));
+            var url = removeStageUrl.replace("/0", "/" + $(this).data('stageId'));
             $.post(url, function (response) {
                 maplace.Load({
                     locations: response.maplaceData,
