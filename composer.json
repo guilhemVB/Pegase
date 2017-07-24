@@ -36,9 +36,6 @@
         "coresphere/console-bundle": "dev-master"
     },
     "scripts": {
-        "pre-install-cmd": [
-            "AppBundle\\Heroku\\Heroku::populateEnvironmentDatabase"
-        ],
         "post-root-package-install": [
             "SymfonyStandard\\Composer::hookRootPackageInstall"
         ],
