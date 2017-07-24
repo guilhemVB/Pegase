@@ -42,7 +42,7 @@ class HomepageController extends Controller
 
         $lastDestinationsCreated = $destinationRepository->findLastCompleteDestinations();
 
-        $voyages = $voyageRepository->findTypicalVoyages($this->getParameter('typical_voyage_user_id'), 3);;
+        $voyages = $voyageRepository->findTypicalVoyages($this->getParameter('typical_voyage_user_id'), 3);
 
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
