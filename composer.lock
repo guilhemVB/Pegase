@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f14daecd06b798900eed7f7e08f662f",
+    "content-hash": "e6573337d953e23e2774cb052f7d58a3",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2197,62 +2197,6 @@
             "time": "2014-09-04T22:10:45+00:00"
         },
         {
-            "name": "coresphere/console-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CoreSphere/ConsoleBundle.git",
-                "reference": "d310cef0c90c654f8770bd42b51b880661f4f613"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CoreSphere/ConsoleBundle/zipball/d310cef0c90c654f8770bd42b51b880661f4f613",
-                "reference": "d310cef0c90c654f8770bd42b51b880661f4f613",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5",
-                "symfony/console": "~2.7|~3.0",
-                "symfony/dependency-injection": "~2.7|~3.0",
-                "symfony/event-dispatcher": "~2.7|~3.0",
-                "symfony/framework-bundle": "~2.7|~3.0",
-                "symfony/http-kernel": "~2.7|~3.0"
-            },
-            "require-dev": {
-                "doctrine/doctrine-fixtures-bundle": "^2.2",
-                "doctrine/doctrine-migrations-bundle": "^1.0",
-                "phpunit/phpunit": "^4.8",
-                "symfony/finder": "^2.7"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "CoreSphere\\ConsoleBundle\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Laszlo Korte",
-                    "email": "coresphere@laszlokorte.de"
-                },
-                {
-                    "name": "Marmus Ullman",
-                    "email": "mail@markus-ullmann.de"
-                }
-            ],
-            "description": "This bundle allows you accessing the symfony2 console via your browser",
-            "keywords": [
-                "console",
-                "javascript",
-                "symfony"
-            ],
-            "time": "2015-09-24T00:13:07+00:00"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
             "source": {
@@ -3505,8 +3449,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ricbra/robots-txt-bundle": 20,
-        "behat/symfony2-extension": 0,
-        "coresphere/console-bundle": 20
+        "behat/symfony2-extension": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
