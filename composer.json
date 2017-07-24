@@ -28,7 +28,6 @@
         "ricbra/robots-txt-bundle": "dev-master",
         "ext-intl": "^1.1",
         "ext-mbstring": "*",
-        "friendsofsymfony/comment-bundle": "^2.0",
         "javiereguiluz/easyadmin-bundle": "^1.11"
     },
     "require-dev": {

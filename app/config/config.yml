@@ -97,14 +97,6 @@ fos_user:
         address:        "%mailer_user%"
         sender_name:    Laura, webmaster Le Monde en Sac
 
-#fos_comment:
-#    db_driver: orm
-#    class:
-#        model:
-#            comment: AppBundle\Entity\Comment
-#            thread: AppBundle\Entity\Thread
-#            vote: AppBundle\Entity\Vote
-
 ricbra_robots_txt:
     allow_robots: %allow_robots%
 
