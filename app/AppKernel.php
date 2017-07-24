@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new CalculatorBundle\CalculatorBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new AppUserBundle\AppUserBundle(),
             new Ricbra\Bundle\RobotsTxtBundle\RicbraRobotsTxtBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),

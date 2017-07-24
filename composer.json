@@ -22,8 +22,6 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/doctrine-behaviors": "~1.0",
         "friendsofsymfony/user-bundle": "~1.3",
-        "doctrine/migrations": "dev-master",
-        "doctrine/doctrine-migrations-bundle": "dev-master",
         "twig/extensions": "^1.3",
         "ricbra/robots-txt-bundle": "dev-master",
         "ext-intl": "^1.1",
