@@ -2,7 +2,7 @@ services:
     app.twig_extension:
         class: AppBundle\Twig\AssetExistsExtension
         arguments:
-            - @kernel
+            - "@kernel"
         public: false
         tags:
             - { name: twig.extension }
@@ -10,4 +10,4 @@ services:
     maplace_marker_builder:
         class : AppBundle\Service\MaplaceMarkerBuilder
         arguments:
-            - @twig
+            - "@twig"

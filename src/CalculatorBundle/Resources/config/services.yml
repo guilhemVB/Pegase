@@ -3,7 +3,7 @@ services:
     voyage_stats:
         class : CalculatorBundle\Service\Stats\VoyageStats
         arguments:
-            - @twig
+            - "@twig"
 
     best_journey_finder:
         class: CalculatorBundle\Service\Journey\BestJourneyFinder
@@ -11,54 +11,54 @@ services:
     journey_service:
         class: CalculatorBundle\Service\Journey\JourneyService
         arguments:
-            - @doctrine.orm.entity_manager
-            - @best_journey_finder
+            - "@doctrine.orm.entity_manager"
+            - "@best_journey_finder"
 
     crud_stage:
         class : CalculatorBundle\Service\CRUD\CRUDStage
         arguments:
-            - @doctrine.orm.entity_manager
-            - @journey_service
+            - "@doctrine.orm.entity_manager"
+            - "@journey_service"
 
     crud_available_journey:
         class : CalculatorBundle\Service\CRUD\CRUDAvailableJourney
         arguments:
-            - @doctrine.orm.entity_manager
+            - "@doctrine.orm.entity_manager"
 
     crud_voyage:
         class : CalculatorBundle\Service\CRUD\CRUDVoyage
         arguments:
-            - @doctrine.orm.entity_manager
-            - @google_url_shortener_api
-            - @journey_service
+            - "@doctrine.orm.entity_manager"
+            - "@google_url_shortener_api"
+            - "@journey_service"
 
     voyage_service:
         class : CalculatorBundle\Service\VoyageService
         arguments:
-            - @doctrine.orm.entity_manager
-            - @maplace_marker_builder
+            - "@doctrine.orm.entity_manager"
+            - "@maplace_marker_builder"
 
     google_url_shortener_api:
         class : CalculatorBundle\Service\GoogleUrlShortener\GoogleUrlShortenerApi
         arguments:
-            - %api_google_key%
-            - @router
+            - '%api_google_key%'
+            - "@router"
 
     journey_fetcher:
         class: CalculatorBundle\Service\Journey\JourneyFetcher
         arguments:
-            - %available_journey_api%
+            - '%available_journey_api%'
 
     fetch_available_journey_worker:
         class: CalculatorBundle\Worker\FetchAvailableJourney
         arguments:
-            - @doctrine.orm.entity_manager
-            - @journey_fetcher
-            - @logger
+            - "@doctrine.orm.entity_manager"
+            - "@journey_fetcher"
+            - "@logger"
 
     update_voyages_worker:
         class: CalculatorBundle\Worker\UpdateVoyageWorker
         arguments:
-            - @doctrine.orm.entity_manager
-            - @best_journey_finder
-            - @logger
+            - "@doctrine.orm.entity_manager"
+            - "@best_journey_finder"
+            - "@logger"

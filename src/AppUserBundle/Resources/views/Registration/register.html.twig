@@ -23,8 +23,7 @@
             <div class="col-sm-5 col-sm-offset-1 col-lg-4 col-lg-offset-1">
                 <div class="well">
 
-                    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"
-                          class="fos_user_registration_register">
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
                         <div class="form-group">
                             {{ form_label(form.username, "Nom d'utilisateur") }}
@@ -58,7 +57,7 @@
 
                         {{ form_widget(form) }}
 
-                    </form>
+                    {{ form_end(form) }}
 
                 </div>
             </div>

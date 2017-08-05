@@ -1,6 +1,10 @@
 # Le Monde En Sac Upgrade guide
 
 
+## v0.4.0
+
+- Update to Symfony3
+
 ## v0.3.4
 
 - Limit fetch of typical voyage
