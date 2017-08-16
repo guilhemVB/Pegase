@@ -23,6 +23,33 @@ class HomepageController extends Controller
      */
     public function homepageAction()
     {
+//        // For some users works using the gethostbyname function
+//        $smtp_host_ip = gethostbyname('smtp.gmail.com');
+//        var_dump($smtp_host_ip);
+//
+//        // But for others only the smtp address
+//        $smtp_host_ip = 'smtp.gmail.com';
+//
+//        $transport = \Swift_SmtpTransport::newInstance($smtp_host_ip, 587, 'ssl')->setUsername('lms.env.dev@gmail.com')->setPassword('A.vion89');
+//        $mailer = \Swift_Mailer::newInstance($transport);
+//
+//        $message = \Swift_Message::newInstance()
+//            ->setFrom(array("bourgoin.guilhem@gmail.com" => 'John Doe'))
+//            ->setTo(array("bourgoin.guilhem@gmail.com" => 'John Doe'));
+//        $message->setBody('<h3>Contact message</h3>', 'text/html');
+//
+//        $mailer->send($message);
+//
+//
+//        die;
+
+
+
+
+
+
+
+
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 

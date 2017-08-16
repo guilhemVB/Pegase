@@ -1,4 +1,4 @@
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
     <div class="form-group">
         {{ form_label(form.username, "Nom d'utilisateur") }}
@@ -26,4 +26,4 @@
 
     {{ form_widget(form) }}
 
-</form>
+{{ form_end(form) }}
