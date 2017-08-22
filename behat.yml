@@ -4,7 +4,18 @@ default:
             tags: ~@skip
     extensions:
         Behat\Symfony2Extension: ~
+        Imbo\BehatApiExtension:
+            apiClient:
+                base_uri: http://localhost:8000
     suites:
+        api:
+            type: symfony_bundle
+            bundle: 'AppBundle'
+            contexts :
+                - Imbo\BehatApiExtension\Context\ApiContext
+                - AppBundle\Features\Context\FeatureContext
+                - AppBundle\Features\Context\UserContext:
+                    container: '@service_container'
         backend_calculator:
             type: symfony_bundle
             bundle: 'CalculatorBundle'

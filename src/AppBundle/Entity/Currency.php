@@ -5,10 +5,15 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Table(name="currency")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CurrencyRepository")
+ * @UniqueEntity("name")
  */
 class Currency
 {
@@ -21,30 +26,39 @@ class Currency
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"view"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Assert\NotBlank
+     * @Groups({"view"})
      */
     private $name;
 
     /**
      * @var string
      * @ORM\Column(type="string", length=16, nullable=false)
+     * @Assert\NotBlank
+     * @Groups({"view"})
      */
     private $code;
 
     /**
      * @var float
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"view"})
+     * @Assert\Type("float")
      */
     private $eurRate;
 
     /**
      * @var float
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"view"})
+     * @Assert\Type("float")
      */
     private $usdRate;
 
