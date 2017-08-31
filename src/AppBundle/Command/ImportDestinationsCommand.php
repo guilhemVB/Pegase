@@ -138,6 +138,26 @@ class ImportDestinationsCommand extends ContainerAwareCommand
         }
         $em->flush();
         $em->clear();
+
+        $countries = $countryRepository->findCountriesWithDestinations();
+        foreach ($countries as $country) {
+            $destinations = $country->getDestinations();
+            $sumPriceAccommodation = 0;
+            $sumPriceLifeCost = 0;
+            foreach ($destinations as $destination) {
+                $sumPriceAccommodation += $destination->getPriceAccommodation();
+                $sumPriceLifeCost += $destination->getPriceLifeCost();
+            }
+
+            $nbDestinations = count($destinations);
+
+            $country->setPriceAccommodation($sumPriceAccommodation / $nbDestinations);
+            $country->setPriceLifeCost($sumPriceLifeCost / $nbDestinations);
+
+            $em->persist($country);
+        }
+        $em->flush();
+        $em->clear();
     }
 
     /**
