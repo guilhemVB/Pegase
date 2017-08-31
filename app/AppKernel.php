@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Ricbra\Bundle\RobotsTxtBundle\RicbraRobotsTxtBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

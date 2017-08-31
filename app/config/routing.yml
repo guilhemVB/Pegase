@@ -6,6 +6,10 @@ calculator:
     resource: "@CalculatorBundle/Controller"
     type:     annotation
 
+country:
+    type: rest
+    resource: AppBundle\Controller\ApiCountryController
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

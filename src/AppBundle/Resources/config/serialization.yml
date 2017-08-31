@@ -1,0 +1,33 @@
+AppBundle\Entity\Country:
+    attributes:
+        id:
+            groups: ['c-list', 'c-complete']
+        name:
+            groups: ['c-list', 'c-complete']
+        slug:
+            groups: ['c-list', 'c-complete']
+        codeAlpha2:
+            groups: ['c-list', 'c-complete']
+        codeAlpha3:
+            groups: ['c-list', 'c-complete']
+        totalPrices:
+            groups: ['c-list', 'c-complete']
+        visaInformation:
+            groups: ['c-complete']
+        visaDuration:
+            groups: ['c-complete']
+        languages:
+            groups: ['c-complete']
+        population:
+            groups: ['c-complete']
+        destinations:
+            groups: ['c-complete']
+
+AppBundle\Entity\Destination:
+    attributes:
+        id:
+            groups: ['d-list']
+        name:
+            groups: ['d-list']
+        slug:
+            groups: ['d-list']
