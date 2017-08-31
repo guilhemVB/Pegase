@@ -16,7 +16,10 @@
         "doctrine/orm": "^2.5",
         "friendsofsymfony/user-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "javiereguiluz/easyadmin-bundle": "^1.11",
         "knplabs/doctrine-behaviors": "^1.4",
+        "pcrov/jsonreader": "^0.6.3",
+        "ricbra/robots-txt-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/assetic-bundle": "^2.8",
@@ -25,9 +28,7 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/extensions": "^1.5",
-        "twig/twig": "^1.0||^2.0",
-        "javiereguiluz/easyadmin-bundle": "^1.11",
-        "ricbra/robots-txt-bundle": "dev-master"
+        "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
         "behat/symfony2-extension": "^2.1",
@@ -53,7 +54,7 @@
     },
     "config": {
         "platform": {
-            "php": "5.5.9"
+            "php": "7.0"
         },
         "sort-packages": true
     },
