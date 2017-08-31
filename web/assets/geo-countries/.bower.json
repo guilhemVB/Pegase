@@ -1,0 +1,14 @@
+{
+  "name": "geo-countries",
+  "homepage": "https://github.com/datasets/geo-countries",
+  "_release": "048111ec1c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "048111ec1ca009c72a17a736e27b9076437a99e4"
+  },
+  "_source": "git://github.com/datasets/geo-countries.git",
+  "_target": "*",
+  "_originalSource": "datasets/geo-countries",
+  "_direct": true
+}
