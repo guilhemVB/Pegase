@@ -15,15 +15,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class UpdateGeoJsonCountriesFileCommand extends ContainerAwareCommand
 {
-
-    /** @var  AssetExistsExtension */
-    private $assetExistsExtension;
-
-    /** @var  string */
-    private $imagePath;
 
     protected function configure()
     {
@@ -43,9 +38,6 @@ class UpdateGeoJsonCountriesFileCommand extends ContainerAwareCommand
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
     }
 
-    /**
-     * @param OutputInterface $output
-     */
     private function import(OutputInterface $output)
     {
         /** @var EntityManager $em */
@@ -53,6 +45,9 @@ class UpdateGeoJsonCountriesFileCommand extends ContainerAwareCommand
 
         /** @var CountryRepository $countryRepository */
         $countryRepository = $em->getRepository('AppBundle:Country');
+
+        /** @var Kernel $kernel */
+        $kernel = $this->getContainer()->get('kernel');
 
         $countries = $countryRepository->findCountriesWithDestinations();
 
@@ -62,16 +57,15 @@ class UpdateGeoJsonCountriesFileCommand extends ContainerAwareCommand
                 'id' => $country->getId(),
                 'name' => $country->getName(),
                 'slug' => $country->getSlug(),
-                'priceAccommodation' =>$country->getPriceAccommodation(),
-                'priceLifeCost' =>$country->getPriceLifeCost(),
-                'totalPrices' =>$country->getTotalPrices(),
-                'codeAlpha2' =>$country->getCodeAlpha2(),
-                'codeAlpha3' =>$country->getCodeAlpha3(),
+                'priceAccommodation' => $country->getPriceAccommodation(),
+                'priceLifeCost' => $country->getPriceLifeCost(),
+                'totalPrices' => $country->getTotalPrices(),
+                'codeAlpha2' => $country->getCodeAlpha2(),
+                'codeAlpha3' => $country->getCodeAlpha3(),
+                'viewUrl' =>  $kernel->getContainer()->get('router')->generate(
+                    'country', ['slug' => $country->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL)
             ];
         }
-
-
-        $kernel = $this->getContainer()->get('kernel');
 
         $fileName = $kernel->getProjectDir() . "/web/assets/geo-countries/data/countries.geojson";
 
