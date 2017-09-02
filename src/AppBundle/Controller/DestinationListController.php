@@ -33,17 +33,6 @@ class DestinationListController extends Controller
 
         $countries = $countryRepository->findCountriesWithDestinations();
 
-        /** @var $destinationRepository DestinationRepository */
-        $destinationRepository = $em->getRepository('AppBundle:Destination');
-
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinationRepository->findAll(), ['disableZoom' => true]);
-
-        return $this->render('AppBundle:Destination:list.html.twig',
-            [
-                'countries'    => $countries,
-                'maplaceData' => json_encode($maplaceData),
-            ]);
+        return $this->render('AppBundle:Destination:list.html.twig', ['countries'    => $countries]);
     }
 }

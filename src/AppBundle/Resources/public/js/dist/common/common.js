@@ -29,7 +29,8 @@ var map = function(options){
 
     this.construct = function(options){
         $.extend(vars , options);
-        vars.mymap = L.map(vars.mapName).setView([23.872326, 10.586547], 2); // .fitWorld();
+        vars.mymap = L.map(vars.mapName);
+        setDefaultZoom();
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -55,7 +56,12 @@ var map = function(options){
             });
 
             L.geoJson(statesData, {style: style, onEachFeature: onEachFeature}).addTo(vars.mymap);
+            setDefaultZoom();
         });
+    };
+
+    var setDefaultZoom = function() {
+        vars.mymap.setView([23.872326, 10.586547], 2); //.fitWorld();
     };
 
     var getColor = function(price) {
