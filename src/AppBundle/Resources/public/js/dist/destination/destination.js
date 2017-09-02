@@ -1,14 +1,10 @@
 $().ready(function () {
 
-    $(document).ready(function () {
-        if (typeof(Maplace) !== 'undefined') {
-            new Maplace({
-                locations: maplaceData,
-                map_div: '#gmap',
-                controls_on_map: false
-            }).Load();
-        }
+    var myMap = new map({
+        mapName : 'gmap'
     });
+
+    myMap.printDestinations(false);
 
     //$('#addToVoyageModal').on('show.bs.modal', function (event) {
     //    var button = $(event.relatedTarget);

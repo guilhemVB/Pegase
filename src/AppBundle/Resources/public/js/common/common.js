@@ -227,13 +227,13 @@ var map = function(options){
                 }
             });
 
+            vars.mymap.fitBounds([
+                [maxLat + 1, minLon - 1],
+                [minLat - 1, maxLon + 1]
+            ]);
+
             if (destinationsData.length == 1) {
-                vars.mymap.setZoom(8);
-            } else {
-                vars.mymap.fitBounds([
-                    [maxLat + 1, minLon - 1],
-                    [minLat - 1, maxLon + 1]
-                ]);
+                vars.mymap.setZoom(9);
             }
         });
     };
