@@ -1,13 +1,11 @@
 $().ready(function () {
+    var myMap = new map({
+            mapName : 'gmap',
+            accessToken : accessTokenMapbox
+        });
 
-    $(document).ready(function () {
-        if (typeof(Maplace) !== 'undefined') {
-            new Maplace({
-                locations: maplaceData,
-                map_div: '#gmap',
-                controls_on_map: false
-            }).Load();
-        }
-    });
-
+    myMap.enableLegend();
+    myMap.printCountries(myMap.onEachFeatureCountry);
+    myMap.enableInformationOnOver();
+    myMap.setClickActionFollowURL();
 });

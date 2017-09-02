@@ -88,6 +88,11 @@ class CommandController extends Controller
         ]);
         $application->run($input, $output);
 
+        $input = new ArrayInput([
+            'command' => 'app:update:geojson-country',
+        ]);
+        $application->run($input, $output);
+
         $content = $output->fetch();
 
         $content = str_replace("\n", '<br>', $content);

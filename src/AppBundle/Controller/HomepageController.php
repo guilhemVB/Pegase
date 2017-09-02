@@ -32,14 +32,6 @@ class HomepageController extends Controller
         /** @var $voyageRepository VoyageRepository */
         $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
 
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-
-        /** @var Destination[] $allDestinations */
-        $allDestinations = $destinationRepository->findBy([], ['latitude' => 'DESC']);
-
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($allDestinations, ['disableZoom' => true]);
-
         $lastDestinationsCreated = $destinationRepository->findLastCompleteDestinations();
 
         $voyages = $voyageRepository->findTypicalVoyages($this->getParameter('typical_voyage_user_id'), 3);
@@ -63,7 +55,7 @@ class HomepageController extends Controller
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
-                'maplaceData'             => json_encode($maplaceData),
+                'accessTokenMapbox'       => $this->getParameter('accessTokenMapbox'),
                 'lastDestinationsCreated' => $lastDestinationsCreated,
                 'lastVoyagesWithStats'    => $lastVoyagesWithStats,
             ]);

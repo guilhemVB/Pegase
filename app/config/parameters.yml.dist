@@ -28,6 +28,7 @@ parameters:
 
     api_rate_key: ~
     api_google_key: ~
+    accessTokenMapbox: ~
 
     available_journey_api: ~
 
