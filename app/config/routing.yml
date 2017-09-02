@@ -10,6 +10,10 @@ country:
     type: rest
     resource: AppBundle\Controller\ApiCountryController
 
+country:
+    type: rest
+    resource: AppBundle\Controller\ApiMapController
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

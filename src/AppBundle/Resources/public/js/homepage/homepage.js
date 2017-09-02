@@ -1,8 +1,7 @@
 $().ready(function () {
     var myMap = new map({
-            mapName : 'gmap',
-            accessToken : accessTokenMapbox
-        });
+        mapName : 'gmap'
+    });
 
     myMap.enableLegend();
     myMap.printCountries(myMap.onEachFeatureCountry);

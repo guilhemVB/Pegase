@@ -55,7 +55,6 @@ class HomepageController extends Controller
 
         return $this->render('AppBundle:Homepage:homepage.html.twig',
             [
-                'accessTokenMapbox'       => $this->getParameter('accessTokenMapbox'),
                 'lastDestinationsCreated' => $lastDestinationsCreated,
                 'lastVoyagesWithStats'    => $lastVoyagesWithStats,
             ]);

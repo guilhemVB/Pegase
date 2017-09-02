@@ -25,22 +25,7 @@ class CountryController extends Controller
 //            return $this->redirectToRoute('destination', ['slug' => $destinations[0]->getSlug()], 301);
 //        }
 
-        $destinations = $country->getDestinations();
-        $options = ['disableZoom' => true];
-
-        if (count($destinations) <= 1) {
-            $options['addDefaultZoom'] = true;
-        }
-
-        /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
-        $maplaceMarkerBuilder = $this->get('maplace_marker_builder');
-        $maplaceData = $maplaceMarkerBuilder->buildMarkerFromDestinations($destinations, $options);
-
-        return $this->render('AppBundle:Country:view.html.twig',
-            [
-                'country'     => $country,
-                'maplaceData' => json_encode($maplaceData),
-            ]);
+        return $this->render('AppBundle:Country:view.html.twig', ['country' => $country]);
     }
 
 }

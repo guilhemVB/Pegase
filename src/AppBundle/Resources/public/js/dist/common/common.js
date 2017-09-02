@@ -22,7 +22,6 @@ var map = function(options){
     var vars = {
         mymap  : null,
         mapName : 'map',
-        accessToken : '',
         info : null,
         informationOnOverEnabled: false,
         clickAction: function(){}
@@ -36,7 +35,7 @@ var map = function(options){
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox.streets',
-            accessToken: vars.accessToken
+            accessToken: accessTokenMapbox
         }).addTo(vars.mymap);
 
         vars.info = L.control();
@@ -44,8 +43,7 @@ var map = function(options){
 
     this.printCountries = function(onEachFeature){
         onEachFeature = onEachFeature || null;
-        //$.getJSON("../assets/geo-countries/data/countries.geojson", function (statesData) {
-        $.getJSON("../files/countries.geojson", function (statesData) {
+        $.getJSON(geoJsonMapPath, function (statesData) {
             $.each(statesData.features, function (i) {
                 var feature = statesData.features[i];
 
@@ -181,8 +179,63 @@ var map = function(options){
         vars.info.addTo(vars.mymap);
     };
 
-    this.printMarker = function(markerLocation) {
-        var marker = L.marker(markerLocation).addTo(vars.mymap);
+    var printMarker = function(destinationData, addPopup)
+    {
+        var mapIcon = L.icon({
+            iconUrl: destinationData.icon,
+            iconSize:     [12, 20], // size of the icon
+            iconAnchor:   [6, 20], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
+        });
+
+        var marker = L.marker([destinationData.lat, destinationData.lon], {icon: mapIcon}).addTo(vars.mymap);
+        if (addPopup) {
+            marker.bindPopup(destinationData.html);
+        }
+    };
+
+
+    this.printDestinations = function(addPopup){
+        $.getJSON(getDestinationsInfoUrl, function (destinationsData) {
+            console.log(destinationsData);
+
+            var maxLon = null, minLon = null, maxLat = null, minLat = null;
+
+            $.each(destinationsData, function(i){
+                var destinationData = destinationsData[i];
+
+                printMarker(destinationData, addPopup);
+
+                if (maxLon == null) {
+                    maxLat = destinationData.lat;
+                    minLat = destinationData.lat;
+                    maxLon = destinationData.lon;
+                    minLon = destinationData.lon
+                } else {
+                    if (destinationData.lat > maxLat) {
+                        maxLat = destinationData.lat;
+                    }
+                    if(destinationData.lat < minLat) {
+                        minLat = destinationData.lat;
+                    }
+                    if (destinationData.lon > maxLon) {
+                        maxLon = destinationData.lon;
+                    }
+                    if(destinationData.lon < minLon) {
+                        minLon = destinationData.lon;
+                    }
+                }
+            });
+
+            if (destinationsData.length == 1) {
+                vars.mymap.setZoom(8);
+            } else {
+                vars.mymap.fitBounds([
+                    [maxLat + 1, minLon - 1],
+                    [minLat - 1, maxLon + 1]
+                ]);
+            }
+        });
     };
 
 

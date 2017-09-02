@@ -28,7 +28,8 @@ parameters:
 
     api_rate_key: ~
     api_google_key: ~
-    accessTokenMapbox: ~
+    access_token_mapbox: ~
+    geo_json_map_path: ~
 
     available_journey_api: ~
 
@@ -40,3 +41,5 @@ twig:
         image_banner_countries_path : %image_banner_countries_path%
         image_banner_homepage_path : %image_banner_homepage_path%
         image_banner_default : %image_banner_default%
+        access_token_mapbox: '%access_token_mapbox%'
+        geo_json_map_path: '%geo_json_map_path%'

@@ -70,14 +70,6 @@
     }
 }
 
-.markerLabel {
-    font-size: 16px;
-}
-
-.markerPrice {
-    font-size: 9px;
-}
-
 .containerGrey {
     background-color: $colorGrey;
     color: #C0C0C0;
@@ -157,11 +149,6 @@
     margin-right: 10px;
 }
 
-.flagGmap {
-    margin-right: 10px;
-    margin-left: 20px;
-}
-
 .flagCountryStage {
     margin-bottom: 2px;
 }
@@ -231,3 +218,19 @@
     }
 }
 
+.leaflet-popup-content {
+    margin: 8px 12px;
+
+    .flagGmap {
+        margin-right: 10px;
+        margin-bottom: 3px;
+    }
+
+    .markerLabel {
+        font-size: 16px;
+    }
+
+    .markerPrice {
+        font-size: 10px;
+    }
+}
