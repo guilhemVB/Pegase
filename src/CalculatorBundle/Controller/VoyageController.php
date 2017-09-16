@@ -56,10 +56,6 @@ class VoyageController extends Controller
 
         $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
 
-        /** @var VoyageService $voyageService */
-        $voyageService = $this->get('voyage_service');
-        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
@@ -67,7 +63,6 @@ class VoyageController extends Controller
             [
                 'voyage' => $voyage,
                 'stagesSorted' => $stagesSorted,
-                'maplaceData' => json_encode($maplaceData),
                 'voyageStats' => $voyageStats->calculateAllStats($voyage, $stagesSorted),
                 'countries' => $countries,
             ]);

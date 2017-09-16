@@ -70,16 +70,14 @@ var map = function(options){
             var layer = vars.mymap._layers[ml];
             if(layer.feature && layer.feature.properties.ISO_A3) {
                 var iso3CurrentCountry = layer.feature.properties.ISO_A3;
-                if (countries.indexOf(iso3CurrentCountry) > -1) {
-                    selectCountry(layer);
-                }
+                layer.feature.selected = countries.indexOf(iso3CurrentCountry) > -1;
+                selectCountry(layer);
             }
         });
     };
 
     var selectCountry = function(target) {
-        if (target.options.fillColor != colorSelected) {
-            target.feature.selected = true;
+        if (target.feature.selected) {
             target.setStyle({fillColor: colorSelected});
         } else {
             target.setStyle(style(target.feature));
@@ -148,7 +146,9 @@ var map = function(options){
 
     this.setClickActionSelectCountry = function() {
         vars.clickAction = function(e) {
-            selectCountry(e.target);
+            var target = e.target;
+            target.feature.selected = target.options.fillColor != colorSelected;
+            selectCountry(target);
         };
     };
 

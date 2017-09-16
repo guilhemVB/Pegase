@@ -56,12 +56,8 @@ $().ready(function () {
         disabledActions();
         var url = addStageUrl.replace("/0", "/" + data.destinationId);
         $.post(url, data, function (response) {
-            maplace.Load({
-                locations: response.maplaceData,
-                map_div: '#gmap',
-                controls_on_map: false,
-                type: 'polyline'
-            });
+            myMap.selectCountries(response.voyageStats.listCountries);
+
             updateStats(response.statsView);
             updateListDestinations(response.destinationListView);
 
@@ -89,8 +85,6 @@ $().ready(function () {
      *********************************************************/
 
 
-    var maplace = null;
-
     function disabledActions() {
         $("#containerAddDestination button").prop('disabled', true);
         $.sortaleElement.option("disabled", true);
@@ -107,14 +101,16 @@ $().ready(function () {
         $(".radio input").removeAttr("disabled");
     }
 
-
+    var myMap = null;
     $(document).ready(function () {
-        maplace = new Maplace({
-            locations: maplaceData,
-            map_div: '#gmap',
-            controls_on_map: false,
-            type: 'polyline'
-        }).Load();
+        myMap = new map({
+            mapName : 'gmap'
+        });
+
+        myMap.enableLegend(true);
+        myMap.enableInformationOnOver();
+        //myMap.setClickActionSelectCountry();
+        myMap.printCountries(myMap.onEachFeatureCountry, listCountriesInVoyage);
 
         initConfirmation();
         initSortable();
@@ -135,12 +131,8 @@ $().ready(function () {
             disabledActions();
             var url = removeStageUrl.replace("/0", "/" + $(this).data('stageId'));
             $.post(url, function (response) {
-                maplace.Load({
-                    locations: response.maplaceData,
-                    map_div: '#gmap',
-                    controls_on_map: false,
-                    type: 'polyline'
-                });
+                myMap.selectCountries(response.voyageStats.listCountries);
+
                 updateStats(response.statsView);
                 updateListDestinations(response.destinationListView);
 
@@ -200,12 +192,8 @@ $().ready(function () {
 
                 disabledActions();
                 $.post(url, data, function (response) {
-                    maplace.Load({
-                        locations: response.maplaceData,
-                        map_div: '#gmap',
-                        controls_on_map: false,
-                        type: 'polyline'
-                    });
+                    myMap.selectCountries(response.voyageStats.listCountries);
+
                     updateStats(response.statsView);
                     updateListDestinations(response.destinationListView);
 
@@ -240,12 +228,6 @@ $().ready(function () {
                 var url = changePositionStageUrl.replace(0, stageId);
                 disabledActions();
                 $.post(url, data, function (response) {
-                    maplace.Load({
-                        locations: response.maplaceData,
-                        map_div: '#gmap',
-                        controls_on_map: false,
-                        type: 'polyline'
-                    });
                     updateStats(response.statsView);
                     updateListDestinations(response.destinationListView);
 

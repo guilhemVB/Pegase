@@ -111,10 +111,6 @@ class CRUDVoyageController extends Controller
         $CRUDVoyage = $this->get('crud_voyage');
         $CRUDVoyage->changeTransportType($voyage, $transportType);
 
-        /** @var VoyageService $voyageService */
-        $voyageService = $this->get('voyage_service');
-        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
         /** @var $em EntityManager $em */
         $em = $this->get('doctrine')->getManager();
 
@@ -128,7 +124,7 @@ class CRUDVoyageController extends Controller
         $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
-            'maplaceData'         => $maplaceData,
+            'voyageStats'         => $voyageStatsCalculated,
             'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
             'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
                 ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),

@@ -8,7 +8,7 @@ $().ready(function () {
         myMap.enableLegend(true);
         myMap.enableInformationOnOver();
         //myMap.setClickActionSelectCountry();
-        myMap.printCountries(myMap.onEachFeatureCountry, voyageStats.listCountries);
+        myMap.printCountries(myMap.onEachFeatureCountry, listCountriesInVoyage);
 
         $('[data-toggle="tooltip"]').tooltip();
     });

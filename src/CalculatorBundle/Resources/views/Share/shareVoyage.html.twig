@@ -50,7 +50,7 @@
     {{ parent() }}
     {% include 'AppBundle:Common:mapScriptsImportation.html.twig' %}
     <script>
-        var voyageStats = {{ voyageStats|json_encode|raw }};
+        var listCountriesInVoyage = {{ voyageStats.listCountries|json_encode|raw }};
     </script>
     {% javascripts output='js/share/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/share/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

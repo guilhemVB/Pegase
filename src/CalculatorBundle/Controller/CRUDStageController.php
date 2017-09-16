@@ -80,9 +80,6 @@ class CRUDStageController extends Controller
                     'stages'      => $stagesWithThisDestination,
                 ]);
         } else {
-            /** @var VoyageService $voyageService */
-            $voyageService = $this->get('voyage_service');
-            $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
 
             /** @var VoyageStats $voyageStats */
             $voyageStats = $this->get('voyage_stats');
@@ -90,7 +87,7 @@ class CRUDStageController extends Controller
             $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
             $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
-            $response['maplaceData'] = $maplaceData;
+            $response['voyageStats'] = $voyageStatsCalculated;
             $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
             $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
                 ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
@@ -137,10 +134,6 @@ class CRUDStageController extends Controller
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->changeTransportType($stage, $transportType);
 
-        /** @var VoyageService $voyageService */
-        $voyageService = $this->get('voyage_service');
-        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
@@ -148,7 +141,7 @@ class CRUDStageController extends Controller
         $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
-            'maplaceData'         => $maplaceData,
+            'voyageStats'         => $voyageStatsCalculated,
             'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
             'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
                 ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
@@ -207,9 +200,6 @@ class CRUDStageController extends Controller
                     'stages'      => $stages,
                 ]);
         } else {
-            /** @var VoyageService $voyageService */
-            $voyageService = $this->get('voyage_service');
-            $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
 
             /** @var VoyageStats $voyageStats */
             $voyageStats = $this->get('voyage_stats');
@@ -217,7 +207,7 @@ class CRUDStageController extends Controller
             $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
             $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
-            $response['maplaceData'] = $maplaceData;
+            $response['voyageStats'] = $voyageStatsCalculated;
             $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
             $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
                 ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
@@ -268,10 +258,6 @@ class CRUDStageController extends Controller
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->changePosition($stage, $oldPosition, $newPosition);
 
-        /** @var VoyageService $voyageService */
-        $voyageService = $this->get('voyage_service');
-        $maplaceData = $voyageService->buildMaplaceDataFromVoyage($voyage);
-
         /** @var VoyageStats $voyageStats */
         $voyageStats = $this->get('voyage_stats');
 
@@ -279,7 +265,6 @@ class CRUDStageController extends Controller
         $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
         return new JsonResponse([
-            'maplaceData'         => $maplaceData,
             'statsView'           => $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]),
             'destinationListView' => $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
                 ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]),
