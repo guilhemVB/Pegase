@@ -14,9 +14,9 @@ class StatCalculatorCountries implements StatCalculatorInterface
     {
         $country = $stage->getDestination()->getCountry();
 
-        $this->countries[$country->getName()] =
-            isset($this->countries[$country->getName()]) ?
-                $this->countries[$country->getName()] + 1 :
+        $this->countries[$country->getCodeAlpha3()] =
+            isset($this->countries[$country->getCodeAlpha3()]) ?
+                $this->countries[$country->getCodeAlpha3()] + 1 :
                 1;
     }
 
@@ -29,6 +29,9 @@ class StatCalculatorCountries implements StatCalculatorInterface
      */
     public function getStats()
     {
-        return ['nbCountries' => count($this->countries)];
+        return [
+            'nbCountries' => count($this->countries),
+            'listCountries' => array_keys($this->countries),
+        ];
     }
 }

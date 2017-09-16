@@ -47,11 +47,10 @@
 
 
 {% block javascripts %}
-    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
     {{ parent() }}
-    <script src="{{ asset('assets/maplace-js/dist/maplace.min.js') }}"></script>
+    {% include 'AppBundle:Common:mapScriptsImportation.html.twig' %}
     <script>
-        var maplaceData = {{ maplaceData|raw }};
+        var voyageStats = {{ voyageStats|json_encode|raw }};
     </script>
     {% javascripts output='js/share/app.{version}.min.js' '@CalculatorBundle/Resources/public/js/dist/share/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

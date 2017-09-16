@@ -26,6 +26,8 @@ var map = function(options){
         informationOnOverEnabled: false,
         clickAction: function(){}
     };
+    var self = this;
+    var colorSelected = "#0C9915";
 
     this.construct = function(options){
         $.extend(vars , options);
@@ -42,14 +44,15 @@ var map = function(options){
         vars.info = L.control();
     };
 
-    this.printCountries = function(onEachFeature){
+    this.printCountries = function(onEachFeature, countriesToSelect){
         onEachFeature = onEachFeature || null;
+        countriesToSelect = countriesToSelect || [];
         $.getJSON(geoJsonMapPath, function (statesData) {
             $.each(statesData.features, function (i) {
                 var feature = statesData.features[i];
 
                 feature.properties.price = feature.properties.totalPrices.toFixed(0);
-
+                feature.selected = false;
             });
             statesData.features = jQuery.grep(statesData.features, function(feature) {
                 return feature.properties.price;
@@ -57,7 +60,31 @@ var map = function(options){
 
             L.geoJson(statesData, {style: style, onEachFeature: onEachFeature}).addTo(vars.mymap);
             setDefaultZoom();
+
+            self.selectCountries(countriesToSelect);
         });
+    };
+
+    this.selectCountries = function(countries) {
+        $.each(vars.mymap._layers, function(ml){
+            var layer = vars.mymap._layers[ml];
+            if(layer.feature && layer.feature.properties.ISO_A3) {
+                var iso3CurrentCountry = layer.feature.properties.ISO_A3;
+                if (countries.indexOf(iso3CurrentCountry) > -1) {
+                    selectCountry(layer);
+                }
+            }
+        });
+    };
+
+    var selectCountry = function(target) {
+        if (target.options.fillColor != colorSelected) {
+            target.feature.selected = true;
+            target.setStyle({fillColor: colorSelected});
+        } else {
+            target.setStyle(style(target.feature));
+            target.feature.selected = false;
+        }
     };
 
     var setDefaultZoom = function() {
@@ -84,7 +111,7 @@ var map = function(options){
         };
     };
 
-    var highlightFeature = function(e) {
+    var highlightFeatureCountry = function(e) {
         var layer = e.target;
 
         layer.setStyle({
@@ -103,7 +130,7 @@ var map = function(options){
         }
     };
 
-    var resetHighlight = function(e){
+    var resetHighlightCountry = function(e){
         var layer = e.target;
 
         layer.setStyle({
@@ -121,13 +148,7 @@ var map = function(options){
 
     this.setClickActionSelectCountry = function() {
         vars.clickAction = function(e) {
-            var colorSelected = "#0C9915";
-            var target = e.target;
-            if (target.options.fillColor != colorSelected) {
-                target.setStyle({fillColor: colorSelected});
-            } else {
-                target.setStyle(style(target.feature))
-            }
+            selectCountry(e.target);
         };
     };
 
@@ -139,13 +160,34 @@ var map = function(options){
 
     this.onEachFeatureCountry = function(feature, layer) {
         layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
+            mouseover: highlightFeatureCountry,
+            mouseout: resetHighlightCountry,
             click: vars.clickAction
         });
     };
 
-    this.enableLegend = function() {
+    //var highlightFeatureDestination = function(e) {
+    //    var layer = e.target;
+    //    console.log(layer);
+    //    if (vars.informationOnOverEnabled) {
+    //        vars.info.update(layer);
+    //    }
+    //};
+    //
+    //var resetHighlightDestination = function() {
+    //    if (vars.informationOnOverEnabled) {
+    //        vars.info.update();
+    //    }
+    //};
+    //
+    //this.onEachFeatureDestination = function(feature, layer) {
+    //    layer.on({
+    //        mouseover: highlightFeatureDestination,
+    //        mouseout: resetHighlightDestination
+    //    });
+    //};
+
+    this.enableLegend = function(isWithSelectedCountry) {
         var legend = L.control({position: 'bottomleft'});
 
         legend.onAdd = function (map) {
@@ -157,6 +199,11 @@ var map = function(options){
                 div.innerHTML +=
                     '<i style="background:' + getColor(grades[i] + 1) + '"></i>' +
                     grades[i] + (grades[i + 1] ? ' à ' + grades[i + 1] + ' €<br>' : '+ €') + '';
+            }
+
+            if (isWithSelectedCountry) {
+                div.innerHTML +=
+                    '<br><i style="background:' + colorSelected + '"></i> Selectionné';
             }
 
             return div;
@@ -177,15 +224,15 @@ var map = function(options){
         // method that we will use to update the control based on feature properties passed
         vars.info.update = function (props) {
             this._div.innerHTML =
-            (props ? '<b>' + props.name + ' - ' + props.price + '€/jour</b>' +
-            '<img src="http://www.geonames.org/flags/x/' + props.codeAlpha2.toLowerCase() + '.gif" class="flagCountrySmall flagGmap pull-right" alt="drapeau ' + props.name + '">'
+            (props ? '<b>' + props.name + ' - ' + props.price + '€/jour</b> ' +
+            ' <img src="http://www.geonames.org/flags/x/' + props.codeAlpha2.toLowerCase() + '.gif" class="flagCountrySmall flagGmap flagGmapInfo pull-right" alt="drapeau ' + props.name + '">'
                 : 'Survoler un pays');
         };
 
         vars.info.addTo(vars.mymap);
     };
 
-    var printMarker = function(destinationData, addPopup)
+    var printMarker = function(destinationData, addPopup, onEachFeature)
     {
         var mapIcon = L.icon({
             iconUrl: destinationData.icon,
@@ -194,23 +241,22 @@ var map = function(options){
             popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
         });
 
-        var marker = L.marker([destinationData.lat, destinationData.lon], {icon: mapIcon}).addTo(vars.mymap);
+        var marker = L.marker([destinationData.lat, destinationData.lon], {icon: mapIcon, onEachFeature: onEachFeature}).addTo(vars.mymap);
         if (addPopup) {
             marker.bindPopup(destinationData.html);
         }
     };
 
 
-    this.printDestinations = function(addPopup){
+    this.printDestinations = function(addPopup, onEachFeature){
+        onEachFeature = onEachFeature || null;
         $.getJSON(getDestinationsInfoUrl, function (destinationsData) {
-            console.log(destinationsData);
-
             var maxLon = null, minLon = null, maxLat = null, minLat = null;
 
             $.each(destinationsData, function(i){
                 var destinationData = destinationsData[i];
 
-                printMarker(destinationData, addPopup);
+                printMarker(destinationData, addPopup, onEachFeature);
 
                 if (maxLon == null) {
                     maxLat = destinationData.lat;
@@ -242,6 +288,18 @@ var map = function(options){
                 vars.mymap.setZoom(9);
             }
         });
+    };
+
+    this.getSelectedCountries = function() {
+        var selectedCountries = [];
+        $.each(vars.mymap._layers, function(ml){
+            var layer = vars.mymap._layers[ml];
+            if(layer.feature && layer.selected) {
+                selectedCountries.push(layer.selected);
+            }
+        });
+
+        return selectedCountries;
     };
 
 

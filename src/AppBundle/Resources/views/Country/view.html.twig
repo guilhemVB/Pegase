@@ -161,7 +161,7 @@
     {{ parent() }}
     {% include 'AppBundle:Common:mapScriptsImportation.html.twig' %}
     <script>
-        var getDestinationsInfoUrl = "{{ path('app_apimap_getdestinations', {'slug' : country.slug}) }}";
+        var getDestinationsInfoUrl = "{{ path('app_apimap_getdestinationsbycountry', {'slug' : country.slug}) }}";
     </script>
     {% javascripts output='js/country/app.{version}.min.js' '@AppBundle/Resources/public/js/dist/country/*.min.js' vars=["version"] %}
     <script src="{{ asset_url }}"></script>

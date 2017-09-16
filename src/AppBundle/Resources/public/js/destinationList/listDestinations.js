@@ -4,17 +4,16 @@ $().ready(function () {
     var $btnSeeDestination = $("#btnSeeDestination");
     var $formGroupDestinations = $("#formGroupDestinations");
 
-
     var myMap = new map({
         mapName : 'gmap'
     });
     myMap.enableLegend();
-
-    myMap.printDestinations(true);
-
-    myMap.printCountries(myMap.onEachFeatureCountry);
     myMap.enableInformationOnOver();
     myMap.setClickActionFollowURL();
+
+    myMap.printDestinations(true, myMap.onEachFeatureDestination);
+
+    myMap.printCountries(myMap.onEachFeatureCountry);
 
     function format(country) {
         if (country.id) {

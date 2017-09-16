@@ -1,12 +1,14 @@
 $().ready(function () {
 
     $(document).ready(function () {
-        new Maplace({
-            locations: maplaceData,
-            map_div: '#gmap',
-            controls_on_map: false,
-            type: 'polyline'
-        }).Load();
+        var myMap = new map({
+            mapName : 'gmap'
+        });
+
+        myMap.enableLegend(true);
+        myMap.enableInformationOnOver();
+        //myMap.setClickActionSelectCountry();
+        myMap.printCountries(myMap.onEachFeatureCountry, voyageStats.listCountries);
 
         $('[data-toggle="tooltip"]').tooltip();
     });
