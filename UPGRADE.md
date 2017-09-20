@@ -1,6 +1,10 @@
 # Le Monde En Sac Upgrade guide
 
 
+## v0.4.1
+
+- New javascript map : Leaflet
+
 ## v0.4.0
 
 - Update to Symfony3
