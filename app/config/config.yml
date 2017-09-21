@@ -43,6 +43,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         fos_csrf_provider: "@security.csrf.token_manager"
+        access_token_mapbox: "%access_token_mapbox%"
+        geo_json_map_path: "%geo_json_map_path%"
 
 # Assetic Configuration
 assetic:
