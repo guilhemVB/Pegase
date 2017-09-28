@@ -9,7 +9,7 @@
 {% endif %}
 
 {% if currentDestinationSlug != destination.slug %}
-<a href="{{ path('destination', {'slug' : destination.slug }) }}">
+<a href="{{ path('destination', {'slug' : destination.slug }) }}" class="vignetteDestination" data-destinationid="{{ destination.id }}">
     {% endif %}
 
     <img class="img-responsive img-thumbnail" src="{{ asset(bannerUrl) }}"

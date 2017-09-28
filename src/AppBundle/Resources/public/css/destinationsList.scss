@@ -1,0 +1,69 @@
+.leaflet-marker-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.marker {
+  margin-top: 7px;
+  margin-left: 7px;
+  position: relative;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #352222;
+
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #a94442;
+    z-index: 10;
+    position: absolute;
+  }
+
+  .pulse {
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    top: -32px;
+    left: -32px;
+    z-index: 2;
+    opacity: 0;
+    border: 10px solid rgb(76, 72, 77);;
+    background: transparent;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    -webkit-animation: flash 1s ease-out;
+    -moz-animation: flash 1s ease-out;
+    animation: flash 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+  @-moz-keyframes pulse {
+    0% {-moz-transform: scale(0);opacity: 0.0;}
+    25% {-moz-transform: scale(0);opacity: 0.1;}
+    50% {-moz-transform: scale(0.1);opacity: 0.3;}
+    75% {-moz-transform: scale(0.5);opacity: 0.5;}
+    100% {-moz-transform: scale(1);opacity: 0.0;}
+  }
+
+  @-webkit-keyframes "flash" {
+    0% {-webkit-transform: scale(0);opacity: 0.0;}
+    25% {-webkit-transform: scale(0);opacity: 0.1;}
+    50% {-webkit-transform: scale(0.1);opacity: 0.3;}
+    75% {-webkit-transform: scale(0.5);opacity: 0.5;}
+    100% {-webkit-transform: scale(1);opacity: 0.0;}
+  }
+}
+
+#destinationsListView {
+  .marker {
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}

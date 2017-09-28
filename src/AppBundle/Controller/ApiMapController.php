@@ -20,7 +20,7 @@ class ApiMapController extends FOSRestController
      * @param Request $request
      * @return array
      */
-    public function getDestinationsBycountryAction(Country $country, Request $request)
+    public function getDestinationsByCountryAction(Country $country, Request $request)
     {
         /** @var MaplaceMarkerBuilder $maplaceMarkerBuilder */
         $maplaceMarkerBuilder = $this->get('maplace_marker_builder');

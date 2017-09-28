@@ -234,11 +234,17 @@ var map = function(options){
 
     var printMarker = function(destinationData, addPopup, onEachFeature)
     {
-        var mapIcon = L.icon({
+        /*var mapIcon = L.icon({
             iconUrl: destinationData.icon,
             iconSize:     [12, 20], // size of the icon
             iconAnchor:   [6, 20], // point of the icon which will correspond to marker's location
             popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
+        });*/
+
+        var mapIcon = L.divIcon({
+            iconSize: [22, 22],
+            className: 'css-icon',
+            html: '<div class="marker" data-destinationId="' + destinationData.id + '"><div class="dot"></div></div>'
         });
 
         var marker = L.marker([destinationData.lat, destinationData.lon], {icon: mapIcon, onEachFeature: onEachFeature}).addTo(vars.mymap);

@@ -83,8 +83,10 @@ class MaplaceMarkerBuilder
         if (!$options['disableHtml']) {
             if (!is_null($destination)) {
                 $dataMaplace['html'] = $this->twig->render('AppBundle:Destination:googleMarkerDestination.html.twig', ['destination' => $destination]);
+                $dataMaplace['id'] = $destination->getId();
             } elseif (!is_null($country)) {
                 $dataMaplace['html'] = $this->twig->render('AppBundle:Country:googleMarkerCountry.html.twig', ['country' => $country]);
+                $dataMaplace['id'] = $country->getId();
             }
         }
 
