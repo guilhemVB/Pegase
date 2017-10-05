@@ -6,16 +6,23 @@ Feature: Stats voyage
             | Euro              | EUR  |
             | Dollard Américain | USD  |
         Given les pays :
-            | nom       | capitale   | monnaie |
-            | France    | Paris      | EUR     |
-            | Etat-Unis | Washington | USD     |
+            | nom       | capitale   | CodeAlpha3 | monnaie | prix de l'hébergement | prix du cout de la vie |
+            | France    | Paris      | FRA        | EUR     |                       |                        |
+            | Belgique  | Bruxelles  | BEL        | EUR     | 25                    | 25                     |
+            | Etat-Unis | Washington | USA        | USD     |                       |                        |
         Given les destinations :
-            | nom       | pays      | latitude  | longitude  | prix de l'hébergement | prix du cout de la vie |
-            | Paris     | France    | 48.864592 | 2.336492   | 30                    | 20                     |
-            | Lyon      | France    | 45.756573 | 4.818846   | 15                    | 10                     |
-            | Marseille | France    | 43.288654 | 5.354511   | 20                    | 20                     |
-            | New-York  | Etat-Unis | 40.732977 | -73.993414 | 60                    | 35                     |
-            | Boston    | Etat-Unis | 42.359370 | -71.059168 | 50                    | 40                     |
+            | nom       | pays      | latitude   | longitude  | prix de l'hébergement | prix du cout de la vie |
+            | Paris     | France    | 48.864592  | 2.336492   | 30                    | 20                     |
+            | Lyon      | France    | 45.756573  | 4.818846   | 15                    | 10                     |
+            | Marseille | France    | 43.288654  | 5.354511   | 20                    | 20                     |
+            | New-York  | Etat-Unis | 40.732977  | -73.993414 | 60                    | 35                     |
+            | Boston    | Etat-Unis | 42.359370  | -71.059168 | 50                    | 40                     |
+            | Bruges    | Belgique  | 50.8439026 | 4.3469415  | 30                    | 25                     |
+        Given les destinations par défaut :
+            | pays      | destination |
+            | France    | Paris       |
+            | Belgique  | Bruges      |
+            | Etat-Unis | New-York    |
         Given les possibilitées de transports :
             | depuis    | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
             | Paris     | Lyon      | 52         | 56          | 50         | 120         | 5        | 390       |
@@ -30,12 +37,13 @@ Feature: Stats voyage
             | nom | date de départ | destination de départ |
             | TDM | 01/01/2015     | Paris                 |
         When j'ajoute les étapes suivantes au voyage "TDM" :
-            | destination | nombre de jour |
-            | Lyon        | 7              |
-            | Marseille   | 3              |
-            | New-York    | 8              |
-            | Boston      | 2              |
-            | Paris       | 1              |
+            | destination | pays     | nombre de jour |
+            | Lyon        |          | 7              |
+            | Marseille   |          | 3              |
+            | New-York    |          | 8              |
+            | Boston      |          | 2              |
+            | Paris       |          | 1              |
+            |             | Belgique | 2              |
         Then il existe les transports suivants au voyage "TDM" :
             | depuis    | jusqu'à   | type de transport |
             | Paris     | Lyon      | BUS               |
@@ -44,8 +52,8 @@ Feature: Stats voyage
             | New-York  | Boston    | TRAIN             |
             | Boston    | Paris     | BUS               |
         Then les statistiques du voyage "TDM" sont :
-            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
-            | 5         | 2720       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
+            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | étape principale |
+            | 6         | 2820       | 23    | 01/01/2015  | 24/01/2015  | 3          | 13069    | New-York         |
         When je change le mode de transport à "FLY" pour le trajet de "Lyon" à "Marseille" du voyage "TDM"
         Then il existe les transports suivants au voyage "TDM" :
             | depuis    | jusqu'à   | type de transport |
@@ -55,8 +63,8 @@ Feature: Stats voyage
             | New-York  | Boston    | TRAIN             |
             | Boston    | Paris     | BUS               |
         Then les statistiques du voyage "TDM" sont :
-            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | destination principale |
-            | 5         | 2903       | 21    | 01/01/2015  | 22/01/2015  | 2          | 12806    | New-York               |
+            | nb étapes | cout total | durée | date départ | date retour | nb de pays | distance | étape principale |
+            | 6         | 3003       | 23    | 01/01/2015  | 24/01/2015  | 3          | 13069    | New-York         |
 
 
 

@@ -54,7 +54,7 @@ class VoyageContext extends CommonContext
             $this->assertEquals($statsRow['date retour'], $stats['endDate']->format('d/m/Y'));
             $this->assertEquals($statsRow['nb de pays'], $stats['nbCountries']);
             $this->assertEquals($statsRow['distance'], round($stats['crowFliesDistance']));
-            $this->assertEquals($statsRow['destination principale'], $stats['mainDestination']['name']);
+            $this->assertEquals($statsRow['étape principale'], $stats['mainDestination']['name']);
         }
     }
 }

@@ -54,7 +54,7 @@ $().ready(function () {
 
         $("#containerAddDestination form button").button('loading');
         disabledActions();
-        var url = addStageUrl.replace("/0", "/" + data.destinationId);
+        var url = addStageDestinationUrl.replace("/0", "/" + data.destinationId);
         $.post(url, data, function (response) {
             myMap.selectCountries(response.voyageStats.listCountries);
 

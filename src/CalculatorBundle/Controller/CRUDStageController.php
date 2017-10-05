@@ -2,7 +2,9 @@
 
 namespace CalculatorBundle\Controller;
 
+use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
+use AppBundle\Repository\CountryRepository;
 use AppBundle\Repository\DestinationRepository;
 use CalculatorBundle\Entity\Stage;
 use AppBundle\Entity\User;
@@ -13,25 +15,65 @@ use CalculatorBundle\Service\CRUD\CRUDStage;
 use CalculatorBundle\Service\Stats\VoyageStats;
 use CalculatorBundle\Service\VoyageService;
 use Doctrine\ORM\EntityManager;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Route("/crud/stage")
- */
-class CRUDStageController extends Controller
+class CRUDStageController extends FOSRestController
 {
+    /**
+     * @Rest\View()
+     * @Rest\Post("/api/stage/destination")
+     * @param Request $request
+     * @return array
+     */
+    public function postStageDestinationAction(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var VoyageRepository $voyageRepository */
+        $voyageRepository = $this->getDoctrine()->getRepository(Voyage::class);
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $request->get('voyageId')]);
+
+        if (empty($voyage)) {
+            return new JsonResponse(['message' => 'Voyage not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        /** @var DestinationRepository $destinationRepository */
+        $destinationRepository = $this->getDoctrine()->getRepository(Destination::class);
+        $destination = $destinationRepository->find($request->get('destinationId'));
+
+        if (empty($destination)) {
+            return new JsonResponse(['message' => 'Destination not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $nbDays = $request->get('nbDays');
+        if (empty($nbDays) || $nbDays == 0) {
+            return new JsonResponse(['message' => "nbDays can't be empty"], Response::HTTP_NOT_FOUND);
+        }
+
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->addDestination($destination, $voyage, $nbDays);
+
+        return new JsonResponse(['message' => 'Stage created'], Response::HTTP_CREATED);
+    }
+
 
     /**
-     * @Route("/create/voyage/{voyageId}/destination/{destinationId}/add", name="addStage")
+     * @Route("/create/voyage/{voyageId}/destination/{destinationId}/add", name="addStageDestination")
      * @param int $voyageId
      * @param int $destinationId
      * @param Request $request
      * @return JsonResponse
      */
-    public function addStageAction($voyageId, $destinationId, Request $request)
+    public function addStageDestinationAction($voyageId, $destinationId, Request $request)
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -63,35 +105,83 @@ class CRUDStageController extends Controller
 
         /** @var CRUDStage $CRUDStage */
         $CRUDStage = $this->get('crud_stage');
-        $CRUDStage->add($destination, $voyage, $nbDays);
+        $CRUDStage->addDestination($destination, $voyage, $nbDays);
 
         /** @var $stageRepository StageRepository */
         $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 
-        $stagesWithThisDestination = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
+        $response = ['success' => true];
+
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
+
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
+
+        $response['voyageStats'] = $voyageStatsCalculated;
+        $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
+        $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+            ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
+
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/create/voyage/{voyageId}/country/{countryId}/add", name="addStageCountry")
+     * @param int $voyageId
+     * @param int $countryId
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function addStageCountryAction($voyageId, $countryId, Request $request)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        /** @var $em EntityManager $em */
+        $em = $this->get('doctrine')->getManager();
+
+        /** @var $voyageRepository VoyageRepository */
+        $voyageRepository = $em->getRepository('CalculatorBundle:Voyage');
+
+        /** @var Voyage $voyage */
+        $voyage = $voyageRepository->findOneBy(['user' => $user, 'id' => $voyageId]);
+
+        if (!$voyage) {
+            $error = "Can't find voyage";
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
+        }
+
+        $nbDays = $request->get('nbDays');
+        if ($nbDays == 0) {
+            $error = "nbDays cannot be empty";
+            return new JsonResponse(['error' => $error, 'nextUri' => $this->generateUrl('dashboard')], 400);
+        }
+
+        /** @var $countryRepository CountryRepository */
+        $countryRepository = $em->getRepository('AppBundle:Country');
+
+        $country = $countryRepository->find($countryId);
+
+        /** @var CRUDStage $CRUDStage */
+        $CRUDStage = $this->get('crud_stage');
+        $CRUDStage->addCountry($country, $voyage, $nbDays);
+
+        /** @var $stageRepository StageRepository */
+        $stageRepository = $em->getRepository('CalculatorBundle:Stage');
 
         $response = ['success' => true];
 
-        if ($request->get('addBtnAddToVoyage')) {
-            $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
-                [
-                    'user'        => $this->getUser(),
-                    'destination' => $destination,
-                    'stages'      => $stagesWithThisDestination,
-                ]);
-        } else {
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
 
-            /** @var VoyageStats $voyageStats */
-            $voyageStats = $this->get('voyage_stats');
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
-            $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
-            $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
-
-            $response['voyageStats'] = $voyageStatsCalculated;
-            $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
-            $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
-                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
-        }
+        $response['voyageStats'] = $voyageStatsCalculated;
+        $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
+        $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+            ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
 
         return new JsonResponse($response);
     }
@@ -148,7 +238,6 @@ class CRUDStageController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/{stageId}/voyage/{voyageId}/remove", name="removeStage")
      * @param int $stageId
@@ -185,33 +274,20 @@ class CRUDStageController extends Controller
         $CRUDStage = $this->get('crud_stage');
         $CRUDStage->remove($stage);
 
-        $destination = $stage->getDestination();
         $voyage = $stage->getVoyage();
 
         $response = ['success' => true];
 
-        if ($request->get('addBtnAddToVoyage')) {
-            $stages = $stageRepository->findStagesFromDestinationAndVoyage($destination, $voyage);
+        /** @var VoyageStats $voyageStats */
+        $voyageStats = $this->get('voyage_stats');
 
-            $response['btnAddToVoyage'] = $this->renderView('AppBundle:Destination:addAndRemoveDestinationBtn.html.twig',
-                [
-                    'user'        => $this->getUser(),
-                    'destination' => $destination,
-                    'stages'      => $stages,
-                ]);
-        } else {
+        $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
+        $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
 
-            /** @var VoyageStats $voyageStats */
-            $voyageStats = $this->get('voyage_stats');
-
-            $stagesSorted = $stageRepository->findBy(['voyage' => $voyage], ['position' => 'ASC']);
-            $voyageStatsCalculated = $voyageStats->calculateAllStats($voyage, $stagesSorted);
-
-            $response['voyageStats'] = $voyageStatsCalculated;
-            $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
-            $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
-                ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
-        }
+        $response['voyageStats'] = $voyageStatsCalculated;
+        $response['statsView'] = $this->renderView('CalculatorBundle:Voyage:dashboardStats.html.twig', ['voyageStats' => $voyageStatsCalculated]);
+        $response['destinationListView'] = $this->renderView('CalculatorBundle:Voyage:dashboardDestinationsList.html.twig',
+            ['stagesSorted' => $stagesSorted, 'voyage' => $voyage, 'voyageStats' => $voyageStatsCalculated]);
 
         return new JsonResponse($response);
     }

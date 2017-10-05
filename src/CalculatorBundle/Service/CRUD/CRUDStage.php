@@ -2,6 +2,7 @@
 
 namespace CalculatorBundle\Service\CRUD;
 
+use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use CalculatorBundle\Entity\Stage;
 use CalculatorBundle\Entity\Voyage;
@@ -39,16 +40,44 @@ class CRUDStage
 
 
     /**
+     * @param Country $country
+     * @param Voyage $voyage
+     * @param int $nbDays
+     * @return Stage
+     */
+    public function addCountry(Country $country, Voyage $voyage, $nbDays)
+    {
+        return $this->add(null, $country, $voyage, $nbDays);
+    }
+
+
+    /**
      * @param Destination $destination
      * @param Voyage $voyage
      * @param int $nbDays
      * @return Stage
      */
-    public function add(Destination $destination, Voyage $voyage, $nbDays)
+    public function addDestination(Destination $destination, Voyage $voyage, $nbDays)
+    {
+        return $this->add($destination, null, $voyage, $nbDays);
+    }
+
+    /**
+     * @param Destination|null $destination
+     * @param Country|null $country
+     * @param Voyage $voyage
+     * @param int $nbDays
+     * @return Stage
+     */
+    private function add(Destination $destination = null, Country $country = null, Voyage $voyage, $nbDays)
     {
         $nbStages = count($voyage->getStages());
         $stage = new Stage();
-        $stage->setDestination($destination);
+        if (!is_null($destination)) {
+            $stage->setDestination($destination);
+        } elseif(!is_null($country)) {
+            $stage->setCountry($country);
+        }
         $stage->setNbDays($nbDays);
         $stage->setPosition($nbStages + 1);
         $stage->setVoyage($voyage);

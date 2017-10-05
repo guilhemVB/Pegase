@@ -59,7 +59,7 @@
     <script>
         var listCountriesInVoyage = {{ voyageStats.listCountries|json_encode|raw }};
         var changePositionStageUrl = "{{ path('changePositionStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";
-        var addStageUrl = "{{ path('addStage', {'voyageId' : voyage.id, 'destinationId' : 0}) }}";
+        var addStageDestinationUrl = "{{ path('addStageDestination', {'voyageId' : voyage.id, 'destinationId' : 0}) }}";
         var removeStageUrl = "{{ path('removeStage', {'voyageId' : voyage.id, 'stageId' : 0}) }}";
         var changeNbDaysStageUrl = "{{ path('changeNbDaysStage') }}";
 

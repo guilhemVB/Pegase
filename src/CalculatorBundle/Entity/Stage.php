@@ -2,6 +2,7 @@
 
 namespace CalculatorBundle\Entity;
 
+use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,6 +33,7 @@ class Stage
     /**
      * @var Destination
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination", inversedBy="stages")
+     * @ORM\JoinColumn(name="destination_id", referencedColumnName="id", nullable=true)
      */
     private $destination;
 
@@ -40,6 +42,13 @@ class Stage
      * @ORM\Column(type="float", nullable=false)
      */
     private $nbDays;
+
+    /**
+     * @var Country
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Country", inversedBy="stages")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=true)
+     */
+    private $country;
 
     /**
      * @var int
@@ -131,5 +140,21 @@ class Stage
     public function getNbDays()
     {
         return $this->nbDays;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param Country $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
     }
 }

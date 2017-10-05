@@ -2,6 +2,7 @@
 
 namespace CalculatorBundle\Service\Stats\StatCalculators;
 
+use AppBundle\Entity\Country;
 use AppBundle\Entity\Destination;
 use CalculatorBundle\Entity\Stage;
 use CalculatorBundle\Entity\Voyage;
@@ -23,25 +24,43 @@ class StatCalculatorDestinations implements StatCalculatorInterface
     {
         $this->stagesWithNbDays[] = [
             'destination' => $voyage->getStartDestination(),
-            'nbDays' => 0,
+            'nbDays'      => 0,
         ];
     }
 
     public function addStage(Stage $stage)
     {
         foreach ($this->stagesWithNbDays as &$stageWithNbDays) {
-            /** @var Destination $destination */
-            $destination = $stageWithNbDays['destination'];
-            if ($destination->getId() == $stage->getDestination()->getId()) {
-                $stageWithNbDays['nbDays'] += $stage->getNbDays();
-                return;
+
+            if (isset($stageWithNbDays['destination'])) {
+                /** @var Destination $destination */
+                $destination = $stageWithNbDays['destination'];
+                if (!is_null($stage->getDestination()) && $destination->getId() == $stage->getDestination()->getId()) {
+                    $stageWithNbDays['nbDays'] += $stage->getNbDays();
+                    return;
+                }
+            } elseif (isset($stageWithNbDays['country'])) {
+                /** @var Country $country */
+                $country = $stageWithNbDays['country'];
+                if (!is_null($stage->getCountry()) && $country->getId() == $stage->getCountry()->getId()) {
+                    $stageWithNbDays['nbDays'] += $stage->getNbDays();
+                    return;
+                }
+
             }
         }
 
-        $this->stagesWithNbDays[] = [
-            'destination' => $stage->getDestination(),
-            'nbDays' => $stage->getNbDays(),
-        ];
+        if (!is_null($stage->getDestination())) {
+            $this->stagesWithNbDays[] = [
+                'destination' => $stage->getDestination(),
+                'nbDays'      => $stage->getNbDays(),
+            ];
+        } elseif (!is_null($stage->getCountry())) {
+            $this->stagesWithNbDays[] = [
+                'country' => $stage->getCountry(),
+                'nbDays'  => $stage->getNbDays(),
+            ];
+        }
     }
 
     /**
@@ -49,37 +68,52 @@ class StatCalculatorDestinations implements StatCalculatorInterface
      */
     public function getStats()
     {
-        usort($this->stagesWithNbDays, function($a, $b) {
+        usort($this->stagesWithNbDays, function ($a, $b) {
             return $b['nbDays'] - $a['nbDays'];
         });
 
         $data = [];
-        if (1 == $this->nbDestinationToReturn) {
+        if ($this->nbDestinationToReturn == 1) {
             if (isset($this->stagesWithNbDays[0])) {
-                /** @var Destination $destination */
-                $destination = $this->stagesWithNbDays[0]['destination'];
+                /** @var Destination|Country $destinationOrCountry */
+                if (isset($this->stagesWithNbDays[0]['destination'])) {
+                    $destinationOrCountry = $this->stagesWithNbDays[0]['destination'];
+                    $type = 'destination';
+                } else {
+                    $destinationOrCountry = $this->stagesWithNbDays[0]['country'];
+                    $type = 'country';
+                }
                 $data = [
-                    'id' => $destination->getId(),
-                    'name' => $destination->getName(),
-                    'slug' => $destination->getSlug(),
+                    'id'   => $destinationOrCountry->getId(),
+                    'name' => $destinationOrCountry->getName(),
+                    'slug' => $destinationOrCountry->getSlug(),
+                    'type' => $type,
                 ];
             }
 
             return ['mainDestination' => $data];
-        } elseif($this->nbDestinationToReturn >= 2) {
-            for($i = 0; $i < $this->nbDestinationToReturn ; $i++) {
+        } elseif ($this->nbDestinationToReturn >= 2) {
+            for ($i = 0; $i < $this->nbDestinationToReturn; $i++) {
                 if (isset($this->stagesWithNbDays[$i])) {
-                    /** @var Destination $destination */
-                    $destination = $this->stagesWithNbDays[$i]['destination'];
+                    /** @var Destination|Country $destinationOrCountry */
+                    if (isset($this->stagesWithNbDays[0]['destination'])) {
+                        $destinationOrCountry = $this->stagesWithNbDays[$i]['destination'];
+                        $type = 'destination';
+                    } else {
+                        $destinationOrCountry = $this->stagesWithNbDays[$i]['country'];
+                        $type = 'country';
+                    }
                     $data[] = [
-                        'id' => $destination->getId(),
-                        'name' => $destination->getName(),
-                        'slug' => $destination->getSlug(),
+                        'id'   => $destinationOrCountry->getId(),
+                        'name' => $destinationOrCountry->getName(),
+                        'slug' => $destinationOrCountry->getSlug(),
+                        'type' => $type,
                     ];
                 }
             }
+
+            return ['mainDestinations' => $data];
         }
 
-        return ['mainDestinations' => $data];
     }
 }
