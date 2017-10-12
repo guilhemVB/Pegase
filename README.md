@@ -8,6 +8,14 @@ Le Monde en Sac is a travels website. It allow you to get informations about des
 Upgrade guide [UPGRADE.md](UPGRADE.md)
 file.
 
+## Docker
+
+```
+docker-compose build
+docker-compose up -d --remove-orphans
+```
+
+
 ## Tests
 
 You have to create the database `travel_test`, then, launch the script `test.sh`

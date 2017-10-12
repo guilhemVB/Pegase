@@ -23,4 +23,4 @@ node_modules
 .sass-cache
 .vagrant
 app/Resources/views/footer.html.twig
-
+docker-compose.yml
