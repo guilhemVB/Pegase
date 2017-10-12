@@ -18,7 +18,7 @@ use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class CommonContext extends \PHPUnit_Framework_TestCase implements Context
+abstract class CommonContext extends \PHPUnit_Framework_TestCase implements Context
 {
 
     /** @var  EntityManager */

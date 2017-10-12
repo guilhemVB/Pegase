@@ -17,27 +17,6 @@ class CountryContext extends CommonContext
     }
 
     /**
-     * @Given les pays :
-     */
-    public function lesPays(TableNode $tableCountries)
-    {
-        foreach ($tableCountries as $countryRow) {
-            $country = new Country();
-            $country->setName($countryRow['nom'])
-                ->setCapitalName($countryRow['capitale'])
-                ->setCurrency($this->findCurrencyByCode($countryRow['monnaie']))
-                ->setVisaInformation(isset($countryRow['visa']) ? $countryRow['visa'] : 'Visa gratuit pour la France')
-                ->setVisaDuration(isset($countryRow['durée du visa']) ? $countryRow['durée du visa'] : '3 mois')
-                ->setPriceAccommodation(isset($countryRow["prix de l'hébergement"]) ? $countryRow["prix de l'hébergement"] : null)
-                ->setPriceLifeCost(isset($countryRow["prix du cout de la vie"]) ? $countryRow["prix du cout de la vie"] : null)
-                ->setCodeAlpha3(isset($countryRow["CodeAlpha3"]) ? $countryRow["CodeAlpha3"] : null);
-
-            $this->em->persist($country);
-        }
-        $this->em->flush();
-    }
-
-    /**
      * @Given les destinations par défaut :
      */
     public function lesDestinationsParDefaut(TableNode $tableCountries)

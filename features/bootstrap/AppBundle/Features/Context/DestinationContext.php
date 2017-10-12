@@ -17,17 +17,6 @@ class DestinationContext extends CommonContext
     }
 
     /**
-     * @Given les destinations :
-     */
-    public function lesDestinations(TableNode $tableDestinations)
-    {
-        foreach ($tableDestinations->getHash() as $destinationRow) {
-            $this->completeDestination(new Destination(), $destinationRow);
-        }
-        $this->em->flush();
-    }
-
-    /**
      * @When je modifie les destinations :
      */
     public function jeModifieLesDestinations(TableNode $tableDestinations)

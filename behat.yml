@@ -10,6 +10,8 @@ default:
             bundle: 'CalculatorBundle'
             contexts :
                 - AppBundle\Features\Context\FeatureContext
+                - AppBundle\Features\Context\CommonGivenContext:
+                    container: '@service_container'
                 - AppBundle\Features\Context\CountryContext:
                     container: '@service_container'
                 - AppBundle\Features\Context\DestinationContext:
@@ -19,8 +21,6 @@ default:
                 - AppBundle\Features\Context\VoyageContext:
                     container: '@service_container'
                 - AppBundle\Features\Context\StageContext:
-                    container: '@service_container'
-                - AppBundle\Features\Context\CurrencyContext:
                     container: '@service_container'
                 - AppBundle\Features\Context\JourneyContext:
                     container: '@service_container'

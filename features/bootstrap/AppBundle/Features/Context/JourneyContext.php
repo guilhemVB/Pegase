@@ -31,34 +31,6 @@ class JourneyContext extends CommonContext
     }
 
     /**
-     * @Given les possibilitées de transports :
-     */
-    public function lesPossibilitéesDeTransports(TableNode $tableAvailableJourney)
-    {
-        foreach ($tableAvailableJourney as $availableJourneyRow) {
-            $availableJourney = new AvailableJourney();
-            $availableJourney->setFromDestination($this->findDestinationByName($availableJourneyRow['depuis']))
-                ->setToDestination($this->findDestinationByName($availableJourneyRow["jusqu'à"]));
-
-            if ($availableJourneyRow['prix avion']) {
-                $availableJourney->setFlyPrices($availableJourneyRow['prix avion'])
-                    ->setFlyTime($availableJourneyRow['temps avion']);
-            }
-            if ($availableJourneyRow['prix bus']) {
-                $availableJourney->setBusPrices($availableJourneyRow['prix bus'])
-                    ->setBusTime($availableJourneyRow['temps bus']);
-            }
-            if ($availableJourneyRow['prix train']) {
-                $availableJourney->setTrainPrices($availableJourneyRow['prix train'])
-                    ->setTrainTime($availableJourneyRow['temps train']);
-            }
-
-            $this->em->persist($availableJourney);
-        }
-        $this->em->flush();
-    }
-
-    /**
      * @When je change le mode de transport à :transportType pour le trajet de :fromDestination à :toDestination du voyage :voyageName
      */
     public function jeChangeLeModeDeTransportAPourLeTrajetDeÀDeLUtilisateur($transportType, $fromDestination, $toDestination, $voyageName)

@@ -1,22 +1,22 @@
 Feature: Available Journey calculator
 
     Scenario: Récupérer et stocker et mettre à jour les trajets
-        Given les monnaies :
-            | nom               | code |
+        Given entities "AppBundle\Entity\Currency" :
+            | name              | code |
             | Euro              | EUR  |
             | Dollard Américain | USD  |
             | Livre sterling    | GBP  |
-        Given les pays :
-            | nom          | capitale   | monnaie |
-            | France       | Paris      | EUR     |
-            | Etat-Unis    | Washington | USD     |
-            | Royaume-Unis | Londres    | GBP     |
-        Given les destinations :
-            | nom      | pays         | longitude   | latitude   |
-            | Paris    | France       | 2.2946583   | 48.8580101 |
-            | Lyon     | France       | 4.8492387   | 45.7635056 |
-            | Londres  | Royaume-Unis | -0.0775694  | 51.5082493 |
-            | New-York | Etat-Unis    | -73.9862683 | 40.7590453 |
+        Given entities "AppBundle\Entity\Country" :
+            | name         | capitalName | codeAlpha3 | AppBundle\Entity\Currency:code | visaInformation | visaDuration |
+            | France       | Paris       | FRA        | EUR                            | Visa gratuit    | 90 jours     |
+            | Royaume-Unis | Londres     | UNK        | GBP                            | Visa très cher  | 30 jours     |
+            | Etat-Unis    | Washington  | USA        | USD                            | ESTA            | 30 jours     |
+        Given entities "AppBundle\Entity\Destination" :
+            | name     | AppBundle\Entity\Country:name | latitude    | longitude  |
+            | Paris    | France                        | 2.2946583   | 48.8580101 |
+            | Lyon     | France                        | 4.8492387   | 45.7635056 |
+            | New-York | Etat-Unis                     | -73.9862683 | 40.7590453 |
+            | Londres  | Royaume-Unis                  | -0.0775694  | 51.5082493 |
         When je lance la récupération des transports possibles
         Then les possibilitées de transports sont :
             | depuis   | jusqu'à  | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
@@ -44,21 +44,21 @@ Feature: Available Journey calculator
 
 
     Scenario: Mettre à jour les voyages après l'ajout d'un trajets
-        Given les monnaies :
-            | nom  | code |
+        Given entity "AppBundle\Entity\Currency" :
+            | name | code |
             | Euro | EUR  |
-        Given les pays :
-            | nom    | capitale | monnaie |
-            | France | Paris    | EUR     |
-        Given les destinations :
-            | nom       | pays   |
-            | Paris     | France |
-            | Lyon      | France |
-            | Marseille | France |
-            | Dijon     | France |
-        Given les possibilitées de transports :
-            | depuis | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
-            | Lyon   | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
+        Given entity "AppBundle\Entity\Country" :
+            | name   | capitalName | codeAlpha3 | AppBundle\Entity\Currency:code | visaInformation | visaDuration |
+            | France | Paris       | FRA        | EUR                            | Visa gratuit    | 90 jours     |
+        Given entities "AppBundle\Entity\Destination" :
+            | name      | AppBundle\Entity\Country:name | latitude    | longitude  |
+            | Paris     | France                        | 2.2946583   | 48.8580101 |
+            | Lyon      | France                        | 4.8492387   | 45.7635056 |
+            | Marseille | France                        | -73.9862683 | 40.7590453 |
+            | Dijon     | France                        | -0.0775694  | 51.5082493 |
+        Given entities "CalculatorBundle\Entity\AvailableJourney" :
+            | fromDestination:AppBundle\Entity\Destination:name | toDestination:AppBundle\Entity\Destination:name | flyPrices | flyTime | trainPrices | trainTime | busPrices | busTime |
+            | Lyon                                              | Marseille                                       | 207       | 211     | 66          | 212       | 24        | 280     |
         Given les utilisateurs :
             | nom     |
             | guilhem |
@@ -73,10 +73,10 @@ Feature: Available Journey calculator
         Then il existe les transports suivants au voyage "TDM" :
             | depuis | jusqu'à   | type de transport |
             | Lyon   | Marseille | BUS               |
-        Given les possibilitées de transports :
-            | depuis    | jusqu'à | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
-            | Paris     | Lyon    | 52         | 56          | 50         | 120         | 5        | 630       |
-            | Marseille | Dijon   | 52         | 56          | 50         | 120         | 5        | 630       |
+        Given entities "CalculatorBundle\Entity\AvailableJourney" :
+            | fromDestination:AppBundle\Entity\Destination:name | toDestination:AppBundle\Entity\Destination:name | flyPrices | flyTime | trainPrices | trainTime | busPrices | busTime |
+            | Paris                                             | Lyon                                            | 52        | 56      | 50          | 120       | 5         | 630     |
+            | Marseille                                         | Dijon                                           | 52        | 56      | 50          | 120       | 5         | 630     |
         When je met à jour les voyages avec les trajets disponibles
         Then il existe les transports suivants au voyage "TDM" :
             | depuis    | jusqu'à   | type de transport |
@@ -85,13 +85,13 @@ Feature: Available Journey calculator
             | Marseille | Dijon     | BUS               |
         When je supprime les transports liés à la destination "Dijon"
         Then les possibilitées de transports sont :
-            | depuis   | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
-            | Paris    | Lyon      | 52         | 56          | 50         | 120         | 5        | 630       |
-            | Lyon     | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
+            | depuis | jusqu'à   | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
+            | Paris  | Lyon      | 52         | 56          | 50         | 120         | 5        | 630       |
+            | Lyon   | Marseille | 207        | 211         | 66         | 212         | 24       | 280       |
         Then il existe les transports suivants au voyage "TDM" :
-            | depuis    | jusqu'à   | type de transport |
-            | Paris     | Lyon      | BUS               |
-            | Lyon      | Marseille | BUS               |
+            | depuis | jusqu'à   | type de transport |
+            | Paris  | Lyon      | BUS               |
+            | Lyon   | Marseille | BUS               |
 
     @skip
     Scenario: debug calcul trajet disponible
