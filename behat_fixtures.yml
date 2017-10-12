@@ -9,18 +9,10 @@ default:
             bundle: 'CalculatorBundle'
             paths:
                 - src/AppBundle/Fixtures/
+                - src/CalculatorBundle/Fixtures/
             contexts :
-                - AppBundle\Features\Context\FixturesContext
-                - AppBundle\Features\Context\CountryContext:
-                    container: '@service_container'
-                - AppBundle\Features\Context\DestinationContext:
+                - AppBundle\Features\Context\CommonGivenContext:
                     container: '@service_container'
                 - AppBundle\Features\Context\UserContext:
-                    container: '@service_container'
-                - AppBundle\Features\Context\VoyageContext:
-                    container: '@service_container'
-                - AppBundle\Features\Context\StageContext:
-                    container: '@service_container'
-                - AppBundle\Features\Context\JourneyContext:
                     container: '@service_container'
 

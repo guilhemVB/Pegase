@@ -24,9 +24,15 @@ class CommonGivenContext extends CommonContext
         foreach ($table as $row) {
             $entity = new $entityName();
             foreach ($row as $propertyName => $value) {
+                if (!$value || empty($value)) {
+                    continue;
+                }
+
                 $entityNameAndFieldName = explode(":", $propertyName);
                 $countEntityNameAndFieldName = count($entityNameAndFieldName);
+
                 if ($countEntityNameAndFieldName > 1) {
+                    // is Entity
                     $relatedEntity = $this->findEntityByField($entityNameAndFieldName[$countEntityNameAndFieldName - 2], $entityNameAndFieldName[$countEntityNameAndFieldName - 1], $value);
                     if ($countEntityNameAndFieldName === 3) {
                         $property = "set" . $entityNameAndFieldName[$countEntityNameAndFieldName - 3];
@@ -37,8 +43,11 @@ class CommonGivenContext extends CommonContext
                     $entity->$property($relatedEntity);
                 } else {
                     $property = "set$propertyName";
-                    if (!$value || empty($value)) {
-                        $value = null;
+                    preg_match('#\(+(.*)\)+#', $propertyName, $variableType);
+                    if ($variableType) {
+                        $value = new $variableType[1]($value);
+                        $propertyName = explode("(", $propertyName)[0];
+                        $property = "set$propertyName";
                     }
                     $entity->$property($value);
                 }

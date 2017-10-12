@@ -18,7 +18,7 @@ Feature: Available Journey calculator
             | New-York | Etat-Unis                     | -73.9862683 | 40.7590453 |
             | Londres  | Royaume-Unis                  | -0.0775694  | 51.5082493 |
         When je lance la récupération des transports possibles
-        Then les possibilitées de transports sont :
+        Given les possibilitées de transports sont :
             | depuis   | jusqu'à  | prix avion | temps avion | prix train | temps train | prix bus | temps bus |
             | Paris    | Lyon     | 136        | 269         | 82         | 152         | 21       | 452       |
             | Paris    | Londres  | 111        | 319         | 235        | 205         | 47       | 587       |

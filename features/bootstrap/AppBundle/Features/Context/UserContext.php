@@ -33,6 +33,7 @@ class UserContext extends CommonContext
             $user->setUsername($name);
             $user->setPlainPassword($password);
             $user->setEmail($email);
+            $user->setEnabled(true);
 
             if (isset($userRow['role'])) {
                 $user->addRole($userRow['role']);
