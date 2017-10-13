@@ -9,9 +9,9 @@
                     <div class="row">
 
                         <div class="form-group col-sm-5 col-xs-12">
-                            <label id="labelDestination" for="addDestination">Destination</label>
-                            {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination'} %}
-                            <span id="errorBlockDestination_addDestination" class="error-block hidden">Veuillez choisir une destination.</span>
+                            <label id="labelDestination" for="addDestination">Pays ou destination</label>
+                            {% include 'AppBundle:Destination:selectDestination.html.twig' with {'selectId' : 'addDestination', 'addCountrySelected' : true} %}
+                            <span id="errorBlockDestination_addDestination" class="error-block hidden">Veuillez choisir une destination ou un pays.</span>
                         </div>
 
                         <div class="form-group col-sm-4 col-xs-7">
