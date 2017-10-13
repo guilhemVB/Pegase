@@ -28,7 +28,7 @@ $().ready(function () {
         escapeMarkup: function (m) {
             return m;
         },
-        placeholder: "Choisir une destination",
+        placeholder: "Choisir une destination ou un pays",
         theme: "bootstrap"
     });
 
