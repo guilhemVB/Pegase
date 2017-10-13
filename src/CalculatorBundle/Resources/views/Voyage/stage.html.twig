@@ -1,4 +1,11 @@
-{% set destination = stage.destination %}
+{% if stage.destination is not null %}
+    {% set destination = stage.destination %}
+    {% set country = destination.country %}
+    {% set totalPrices = destination.totalPrices %}
+{% else %}
+    {% set country = stage.country %}
+    {% set totalPrices = country.totalPrices %}
+{% endif %}
 {% set stageStats = voyageStats.stagesStats[stage.id] %}
 
 <li class="stageMovable" data-stage-id="{{ stage.id }}">
@@ -7,14 +14,16 @@
         <div class="col-md-2 col-sm-1 col-xs-6 ellipsis">
             <span class="drag-handle handle-fa-icon"><i class="fa fa-lg fa-sort"></i></span>
             <img class='flagCountrySmall flagCountryStage'
-                 src='http://www.geonames.org/flags/x/{{ destination.country.codeAlpha2|lower }}.gif'/>
+                 src='http://www.geonames.org/flags/x/{{ country.codeAlpha2|lower }}.gif'/>
             <a class="hidden-sm"
-               href="{{ path('country', {'slug' : destination.country.slug }) }}">{{ destination.country.name }}</a>
+               href="{{ path('country', {'slug' : country.slug }) }}">{{ country.name }}</a>
         </div>
 
-        <div class="col-md-2 col-sm-2 col-xs-6 ellipsis">
-            <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
-        </div>
+            <div class="col-md-2 col-sm-2 col-xs-6 ellipsis">
+                {% if destination is defined %}
+                    <a href="{{ path('destination', {'slug' : destination.slug }) }}">{{ destination.name }}</a>
+                {% endif %}
+            </div>
 
         <div class="col-md-3 col-sm-4 col-xs-11 hidden-xs">
             <span class="stageStartDate" data-stage-id="{{ stage.id }}">
@@ -73,7 +82,7 @@
 
             <span class="stagePrice spanPrices" data-stage-id="{{ stage.id }}">
                 <span class="label label-success">
-                    {{ (destination.totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €
+                    {{ (totalPrices * stage.nbDays)|number_format(0, ',', ' ') }} €
                 </span>
             </span>
 
