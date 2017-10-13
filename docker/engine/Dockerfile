@@ -28,3 +28,12 @@ RUN apt-get update \
     && docker-php-source delete \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer \
     && chmod +x /usr/local/bin/composer
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g bower
+RUN npm install -g grunt-cli
+
+RUN apt-get install -y ruby-full
+RUN gem install bundler
+RUN gem install sass
