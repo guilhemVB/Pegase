@@ -96,7 +96,7 @@ class StatCalculatorDestinations implements StatCalculatorInterface
             for ($i = 0; $i < $this->nbDestinationToReturn; $i++) {
                 if (isset($this->stagesWithNbDays[$i])) {
                     /** @var Destination|Country $destinationOrCountry */
-                    if (isset($this->stagesWithNbDays[0]['destination'])) {
+                    if (isset($this->stagesWithNbDays[$i]['destination'])) {
                         $destinationOrCountry = $this->stagesWithNbDays[$i]['destination'];
                         $type = 'destination';
                     } else {
