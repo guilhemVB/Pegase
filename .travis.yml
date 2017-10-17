@@ -20,8 +20,8 @@ matrix:
   # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
   fast_finish: true
 
-env:
-  - SYMFONY_VERSION="3.3.*" DB=mysql
+#env:
+#  - SYMFONY_VERSION="3.3.*" DB=mysql
 
 before-install:
   - composer self-update
