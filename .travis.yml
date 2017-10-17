@@ -12,31 +12,34 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
+php:
+  - 7.0
+
 # Matrix to test in every php version
 matrix:
   # Fast finish allows to set the build as "finished" even if the "allow_failures" matrix elements are not finished yet.
   fast_finish: true
-  include:
-    - php: 7.0
 
 env:
   - SYMFONY_VERSION="3.3.*" DB=mysql
 
 before-install:
   - composer self-update
-  - mysql -e 'CREATE DATABASE symfony_test;'
-  - rm -rf app/cache/*
+  - rm -rf var/cache/*
 
 install:
-  - mysql -e 'SHOW DATABASES;'
   - composer install --no-scripts --dev
   - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - rm -rf app/cache/*
+  - rm -rf var/cache/*
+  - travis_retry php bin/console doctrine:database:create --env=test
+  - mysql -e 'SHOW DATABASES;' -u root
   - php bin/console doctrine:schema:update --force --env=test
 
 # Run script
 script:
   - bin/behat
-  - php bin/console doctrine:schema:validate --env=test
-  - php bin/console security:check
+#  - php bin/console doctrine:schema:validate --env=test
+#  - php bin/console security:check
 
+notifications:
+  email: false
