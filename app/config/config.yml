@@ -117,9 +117,6 @@ fos_rest:
             - { path: '^/api', priorities: ['json'], fallback_format: json, prefer_extension: false }
             - { path: '^/', stop: true }
 
-ricbra_robots_txt:
-    allow_robots: '%allow_robots%'
-
 easy_admin:
     disabled_actions: ['new', 'delete', 'edit']
     entities:

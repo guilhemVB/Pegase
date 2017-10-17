@@ -19,8 +19,6 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    allow_robots: true
-
     image_banner_destinations_path : images/banners/destinations/
     image_banner_countries_path : images/banners/countries/
     image_banner_homepage_path : images/banners/homepage/
