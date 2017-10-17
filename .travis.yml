@@ -24,6 +24,7 @@ matrix:
 #  - SYMFONY_VERSION="3.3.*" DB=mysql
 
 before-install:
+  - chmod +x bin/behat
   - composer self-update
   - rm -rf var/cache/*
 
@@ -39,7 +40,7 @@ install:
 script:
   - bin/behat
 #  - php bin/console doctrine:schema:validate --env=test
-#  - php bin/console security:check
+  - php bin/console security:check --env=test
 
 notifications:
   email: false
