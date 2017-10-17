@@ -29,7 +29,7 @@ class ApiCountryController extends FOSRestController
 
     /**
      * @Rest\View(serializerGroups={"c-complete", "d-list"})
-     * @Rest\Get("/api/country/{slug}")
+     * @Rest\Get("/api/countries/{slug}")
      * @param Country $country
      * @param Request $request
      * @return Country

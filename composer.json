@@ -18,6 +18,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "javiereguiluz/easyadmin-bundle": "^1.11",
         "knplabs/doctrine-behaviors": "^1.4",
+        "lexik/jwt-authentication-bundle": "^2.4",
         "pcrov/jsonreader": "^0.6.3",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",

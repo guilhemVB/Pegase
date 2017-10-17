@@ -16,6 +16,14 @@ docker-compose up -d --remove-orphans
 ```
 
 
+## Generate SSH keys for JWT authentication
+
+```
+mkdir var/jwt
+openssl genrsa -out var/jwt/private.pem -aes256 4096
+openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
+```
+
 ## Tests
 
 You have to create the database `travel_test`, then, launch the script `test.sh`
