@@ -40,7 +40,7 @@ install:
 script:
   - bin/behat
 #  - php bin/console doctrine:schema:validate --env=test
-  - php bin/console security:check --env=test
+#  - php bin/console security:check --env=test
 
 notifications:
   email: false
