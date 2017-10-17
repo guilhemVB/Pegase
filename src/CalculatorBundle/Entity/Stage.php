@@ -32,7 +32,7 @@ class Stage
 
     /**
      * @var Destination
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination", inversedBy="stages")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination")
      * @ORM\JoinColumn(name="destination_id", referencedColumnName="id", nullable=true)
      */
     private $destination;
@@ -45,7 +45,7 @@ class Stage
 
     /**
      * @var Country
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Country", inversedBy="stages")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Country")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=true)
      */
     private $country;

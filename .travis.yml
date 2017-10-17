@@ -39,7 +39,7 @@ install:
 # Run script
 script:
   - bin/behat
-#  - php bin/console doctrine:schema:validate --env=test
+  - php bin/console doctrine:schema:validate --env=test
 #  - php bin/console security:check --env=test
 
 notifications:
