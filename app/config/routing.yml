@@ -40,3 +40,8 @@ easy_admin_bundle:
 
 api_login_check:
     path: /api/login_check
+
+api:
+    resource: '.'
+    type:     'api_platform'
+    prefix:   '/apii' # Optional
