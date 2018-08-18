@@ -27,8 +27,13 @@ class StageContext extends CommonContext
     {
         $voyage = $this->findVoyageByName($voyageName);
         foreach ($tableStages as $stageRow) {
-            $destination = $this->findDestinationByName($stageRow['destination']);
-            $this->CRUDStage->add($destination, $voyage, $stageRow['nombre de jour']);
+            if (!empty($stageRow['destination'])) {
+                $destination = $this->findDestinationByName($stageRow['destination']);
+                $this->CRUDStage->addDestination($destination, $voyage, $stageRow['nombre de jour']);
+            } else {
+                $country = $this->findCountryByName($stageRow['pays']);
+                $this->CRUDStage->addCountry($country, $voyage, $stageRow['nombre de jour']);
+            }
         }
     }
 
@@ -65,10 +70,17 @@ class StageContext extends CommonContext
         $stageRepository = $this->em->getRepository('CalculatorBundle:Stage');
 
         foreach ($tableStages as $stageRow) {
-            $destination = $this->findDestinationByName($stageRow['destination']);
-            $this->assertNotNull(
-                $stageRepository->findOneBy(['voyage' => $voyage, 'destination' => $destination, 'position' => $stageRow['position']]),
-                "Can't find destination " . $destination->getName());
+            if (!empty($stageRow['destination'])) {
+                $destination = $this->findDestinationByName($stageRow['destination']);
+                $this->assertNotNull(
+                    $stageRepository->findOneBy(['voyage' => $voyage, 'destination' => $destination, 'position' => $stageRow['position']]),
+                    "Can't find destination " . $destination->getName());
+            } else {
+                $country = $this->findCountryByName($stageRow['pays']);
+                $this->assertNotNull(
+                    $stageRepository->findOneBy(['voyage' => $voyage, 'country' => $country, 'position' => $stageRow['position']]),
+                    "Can't find country " . $country->getName());
+            }
         }
     }
 

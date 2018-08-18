@@ -26,8 +26,15 @@ class StatCalculatorPrices implements StatCalculatorInterface
 
     public function addStage(Stage $stage)
     {
-        $priceAccommodation = $stage->getDestination()->getPriceAccommodation();
-        $priceLifeCost = $stage->getDestination()->getPriceLifeCost();
+        $priceAccommodation = 0;
+        $priceLifeCost = 0;
+        if (!is_null($stage->getDestination())) {
+            $priceAccommodation = $stage->getDestination()->getPriceAccommodation();
+            $priceLifeCost = $stage->getDestination()->getPriceLifeCost();
+        } elseif (!is_null($stage->getCountry())) {
+            $priceAccommodation = $stage->getCountry()->getPriceAccommodation();
+            $priceLifeCost = $stage->getCountry()->getPriceLifeCost();
+        }
         $nbDays = $stage->getNbDays();
         if ($stage->getTransportType()) {
             $priceAndTime = $stage->getPriceAndTimeTransport();

@@ -12,7 +12,11 @@ class StatCalculatorCountries implements StatCalculatorInterface
 
     public function addStage(Stage $stage)
     {
-        $country = $stage->getDestination()->getCountry();
+        if (!is_null($stage->getCountry())) {
+            $country = $stage->getCountry();
+        } else {
+            $country = $stage->getDestination()->getCountry();
+        }
 
         $this->countries[$country->getCodeAlpha3()] =
             isset($this->countries[$country->getCodeAlpha3()]) ?

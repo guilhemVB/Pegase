@@ -2,7 +2,11 @@
 {% set description = "Tableau de bord du voyage  : " ~ voyage.name ~ ". " %}
 {% if stagesSorted|length > 0 %}
     {% for stage in stagesSorted|slice(0, 5) %}
-        {% set description = description ~ stage.destination.name %}
+        {% if stage.destination is not null %}
+            {% set description = description ~ stage.destination.name %}
+        {% else %}
+            {% set description = description ~ stage.country.name %}
+        {% endif %}
 
         {% if loop.index0 < 5 and not loop.last %}
             {% set description = description ~ ", " %}

@@ -25,7 +25,12 @@ class StatCalculatorCrowFliesDistance implements StatCalculatorInterface
 
     public function addStage(Stage $stage)
     {
-        $this->calculateCrowDistance($stage->getDestination());
+        if (!is_null($stage->getCountry())) {
+            $defaultDestination = $stage->getCountry()->getDefaultDestination();
+        } else {
+            $defaultDestination = $stage->getDestination();
+        }
+        $this->calculateCrowDistance($defaultDestination);
     }
 
     /**

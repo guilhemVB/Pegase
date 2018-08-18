@@ -51,6 +51,13 @@ class Country
     private $capitalName;
 
     /**
+     * @var Destination
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Destination")
+     * @ORM\JoinColumn(name="defaultDestination_id", referencedColumnName="id", nullable=true)
+     */
+    private $defaultDestination;
+
+    /**
      * @var string
      * @ORM\Column(type="string", length=1024)
      */
@@ -380,6 +387,22 @@ class Country
         $this->currency = $currency;
 
         return $this;
+    }
+
+    /**
+     * @return Destination|null
+     */
+    public function getDefaultDestination()
+    {
+        return $this->defaultDestination;
+    }
+
+    /**
+     * @param Destination $defaultDestination
+     */
+    public function setDefaultDestination($defaultDestination)
+    {
+        $this->defaultDestination = $defaultDestination;
     }
 
 }

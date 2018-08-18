@@ -31,7 +31,7 @@ class ApiMapController extends FOSRestController
 
     /**
      * @Rest\View()
-     * @Rest\Get("/api/map/destination/{slug}")
+     * @Rest\Get("/api/map/destinations/{slug}")
      * @param Destination $destination
      * @param Request $request
      * @return array

@@ -3,21 +3,33 @@
     <a href="{% if linkShare %}{{ url('shareVoyage', {'token' : voyage.token}) }}{% else %}{{ url('voyage', {'token' : voyage.token}) }}{% endif %}">
         <div class="row">
             <div class="col-xs-12">
-                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[0].slug ~ '.JPG' %}
+                {% if stats.mainDestinations[0].type == 'destination' %}
+                    {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[0].slug ~ '.JPG' %}
+                {% else %}
+                    {% set imageUrl = image_banner_countries_path ~ stats.mainDestinations[0].slug ~ '.JPG' %}
+                {% endif %}
                 <img src="{{ asset(imageUrl) }}"
                      class="img-responsive img-thumbnail"
                      alt="{{ stats.mainDestinations[0].name }}"
                      data-toggle="tooltip" data-placement="top" title="{{ stats.mainDestinations[0].name }}">
             </div>
             {% if stats.mainDestinations|length > 2 %}
-                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[1].slug ~ '.JPG' %}
+                {% if stats.mainDestinations[1].type == 'destination' %}
+                    {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[1].slug ~ '.JPG' %}
+                {% else %}
+                    {% set imageUrl = image_banner_countries_path ~ stats.mainDestinations[1].slug ~ '.JPG' %}
+                {% endif %}
                 <div class="col-xs-6 imageLeft">
                     <img src="{{ asset(imageUrl) }}"
                          class="img-responsive img-thumbnail"
                          alt="{{ stats.mainDestinations[1].name }}"
                          data-toggle="tooltip" data-placement="left" title="{{ stats.mainDestinations[1].name }}">
                 </div>
-                {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[2].slug ~ '.JPG' %}
+                {% if stats.mainDestinations[2].type == 'destination' %}
+                    {% set imageUrl = image_banner_destinations_path ~ stats.mainDestinations[2].slug ~ '.JPG' %}
+                {% else %}
+                    {% set imageUrl = image_banner_countries_path ~ stats.mainDestinations[2].slug ~ '.JPG' %}
+                {% endif %}
                 <div class="col-xs-6 imageRight">
                     <img src="{{ asset(imageUrl) }}"
                          class="img-responsive img-thumbnail"

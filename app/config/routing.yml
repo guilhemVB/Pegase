@@ -33,11 +33,15 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-ricbra_robots_txt:
-    resource: "@RicbraRobotsTxtBundle/Resources/config/routing.yml"
-    prefix:   /
-
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin/users
+
+api_login_check:
+    path: /api/login_check
+
+api:
+    resource: '.'
+    type:     'api_platform'
+    prefix:   '/apii' # Optional
